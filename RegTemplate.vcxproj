@@ -93,6 +93,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FormatData.cpp" />
     <ClCompile Include="XmlData.cpp" />
     <QtRcc Include="RegulatoryTemplate.qrc" />
     <QtUic Include="RegulatoryTemplate.ui" />
@@ -102,6 +103,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="FormatData.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <QtMoc Include="XmlData.h" />

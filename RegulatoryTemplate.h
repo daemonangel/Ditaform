@@ -26,7 +26,6 @@ private slots:
 
 private:
     Ui::RegulatoryTemplateClass ui;
-    QGroupBox *contentUi_group();
     std::vector<std::string> lines;
     //std::vector<Platform> platforms;
 };

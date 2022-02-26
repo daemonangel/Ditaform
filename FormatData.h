@@ -5,13 +5,15 @@
 #include "pugixml.hpp"
 #include <ui_RegulatoryTemplate.h>
 
-class XmlData : public QWidget
+class FormatData : public QWidget
 {
 	Q_OBJECT
 
 public:
-	XmlData();
-	std::vector<std::pair<pugi::xml_node, std::string>> _keysList;
-	QString _prop;
+	FormatData();
+
+	QGroupBox* contentUi_group(std::vector<std::pair<pugi::xml_node, std::string>> keysList);
+	void contentPreview();
+
 	QTextBrowser* contentPreview_browser;
 };

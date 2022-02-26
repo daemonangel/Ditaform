@@ -6,6 +6,7 @@
 #include "pugixml.hpp"
 #include <iostream>
 #include "XmlData.h"
+#include "FormatData.h"
 
 RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     : QMainWindow(parent)
@@ -27,49 +28,15 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
     }
 }
 
-QGroupBox *RegulatoryTemplate::contentUi_group()
-{
-
-    //create group for each props where text is the props value converted to normal text. this_is_a_prop -> This Is A Prop
-    QGroupBox* groupBox = new QGroupBox(tr("Condition Name"));
-
-    //each group gets one checkbox where the checkbox objectName is the props value
-    auto action_checkbox = new QCheckBox(QObject::tr("Enable/Disable"));
-    QObject::connect(action_checkbox, SIGNAL(clicked(bool)), this, SLOT(enableDisableContent(bool, action_checkbox.text)));
-
-    //each group gets zero or more label/lineEdit pairs - one for each keyref found
-    auto keydef_label = new QLabel(QObject::tr("Keyref Value")); // text will be keyref value
-    auto keydef_edit = new QLineEdit;
-
-    //add the checkbox and all the label/lineEdit pairs to the group.
-    QVBoxLayout* vbox = new QVBoxLayout;
-    vbox->addWidget(action_checkbox);
-    vbox->addWidget(keydef_label);
-    vbox->addWidget(keydef_edit);
-    vbox->addStretch(1);
-    groupBox->setLayout(vbox);
-
-    return groupBox;
-}
-
 void RegulatoryTemplate::fileOpen()
 {
     //auto filename = QFileDialog::getOpenFileName(this, "Open File", "./");
     
-    //get the bookmap
-    pugi::xml_document bookmap;
-    pugi::xml_parse_result result = bookmap.load_file("../source/maps/bm-sample-source.ditamap");
+    XmlData XmlData;
+    FormatData FormatData;
 
-    //get the map by finding the first child chapter with a href attribute
-    pugi::xml_document map;
-    //auto mapHref = pugi::xml_node::find_child(allow_remote_predicate()).attribute("Href").value() << std::endl;
-
-    //XmlData s;
-    //how do i get the ui from the snippet class? I get an access violation error when I try to call ui.formLayout from snippet.cpp
-
-    //add one row for each box/textBrowser pair
-    auto contentPreview_browser = new QTextBrowser;
-    ui.formLayout->addRow(contentUi_group(), contentPreview_browser);
+    //for each group and preview set, add a row to the ui
+    ui.formLayout->addRow(FormatData.contentUi_group(XmlData._prop, XmlData._keysList), FormatData.contentPreview_browser);
 }
 
 void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
