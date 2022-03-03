@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
+  <title>Stuff</title>
+  <topicmeta>
+    <critdates>
+      <created date="2022-03-10"></created>
+    </critdates>
+  </topicmeta>
+  <keydef keys="degrees">
+    <topicmeta>
+      <keywords>
+        <keyword>75</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="something-boring">
+    <topicmeta>
+      <keywords>
+        <keyword>politics</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+ 
+  <topicref href="../topics/c-topic1.dita" type="concept"></topicref>
+  
+</map>

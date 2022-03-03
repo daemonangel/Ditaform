@@ -6,7 +6,6 @@
 #include "pugixml.hpp"
 #include <iostream>
 #include "XmlData.h"
-#include "FormatData.h"
 
 RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     : QMainWindow(parent)
@@ -32,11 +31,10 @@ void RegulatoryTemplate::fileOpen()
 {
     //auto filename = QFileDialog::getOpenFileName(this, "Open File", "./");
     
-    XmlData XmlData;
-    FormatData FormatData;
+    XmlData _XmlData;
 
-    //for each group and preview set, add a row to the ui
-    ui.formLayout->addRow(FormatData.contentUi_group(XmlData._prop, XmlData._keysList), FormatData.contentPreview_browser);
+    //for each prop set, add a row to the ui
+    //ui.formLayout->addRow(rowUi.textBrowser, rowUi.textBrowser);
 }
 
 void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
@@ -44,7 +42,7 @@ void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
     // to do - let user select the file instead of hard coding it
     pugi::xml_document doc;
 
-    pugi::xml_parse_result result = doc.load_file("../source/maps/bm-sample-source.ditamap");
+    pugi::xml_parse_result result = doc.load_file("source/maps/bm-sample-source.ditamap");
 
     pugi::xml_node bookmap = doc.child("bookmap");
 
@@ -55,5 +53,5 @@ void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
     
     prodnameNode.text().set("a test project");
 
-    doc.save_file("../source/maps/bm-sample-source1.ditamap");
+    doc.save_file("source/maps/bm-sample-source1.ditamap");
 }

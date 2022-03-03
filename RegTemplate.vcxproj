@@ -62,7 +62,7 @@
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <WarningLevel>Level4</WarningLevel>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -93,9 +93,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FormatData.cpp" />
+    <ClCompile Include="PropRow.cpp" />
     <ClCompile Include="XmlData.cpp" />
     <QtRcc Include="RegulatoryTemplate.qrc" />
+    <QtUic Include="PropRow.ui" />
     <QtUic Include="RegulatoryTemplate.ui" />
     <QtMoc Include="RegulatoryTemplate.h" />
     <ClCompile Include="pugixml.cpp" />
@@ -103,7 +104,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="FormatData.h" />
+    <QtMoc Include="PropRow.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <QtMoc Include="XmlData.h" />

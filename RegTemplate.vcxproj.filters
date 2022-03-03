@@ -46,7 +46,7 @@
     <ClCompile Include="XmlData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FormatData.cpp">
+    <ClCompile Include="PropRow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,8 +62,13 @@
     <QtMoc Include="XmlData.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="FormatData.h">
+    <QtMoc Include="PropRow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="PropRow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>
