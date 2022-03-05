@@ -22,8 +22,7 @@ void XmlData::ProcessData()
     auto mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
 
     pugi::xml_document mapFile;
-    auto *folder = "source/maps/";
-    pugi::xml_parse_result result2 = mapFile.load_file(*folder + mapHref); // m-sample-source.ditamap won't be found. need to add the folder path.
+    pugi::xml_parse_result result2 = mapFile.load_file("source/maps/" + mapHref);
 
     std::cout << mapFile << std::endl;
     //prodnameNode.text().set("a test project");
