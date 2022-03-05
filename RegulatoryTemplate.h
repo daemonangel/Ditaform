@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_RegulatoryTemplate.h"
+#include "qwidget.h"
 
 /*struct Platform
 {

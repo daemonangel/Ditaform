@@ -24,5 +24,6 @@
   </keydef>
  
   <topicref href="../topics/c-topic1.dita" type="concept"></topicref>
-  
+  <topicref href="../topics/c-topic2.dita" type="concept"></topicref>
+  <topicref href="../topics/c-topic3.dita" type="concept"></topicref>
 </map>

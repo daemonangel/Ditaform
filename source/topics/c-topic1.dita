@@ -2,7 +2,7 @@
 <concept
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
-<title props="props1">Trigger Mode</title>
+<title props="props1">Casual Conversation</title>
   <shortdesc props="props1">This is a short topic.</shortdesc>
  <conbody>
     <p props="props1">Choose one of the following:</p>

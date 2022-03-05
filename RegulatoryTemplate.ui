@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>695</width>
-    <height>573</height>
+    <height>240</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,202 +23,92 @@
    <property name="enabled">
     <bool>true</bool>
    </property>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>671</width>
-      <height>461</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="sizeAdjustPolicy">
-     <enum>QAbstractScrollArea::AdjustToContents</enum>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>-287</y>
-       <width>652</width>
-       <height>746</height>
-      </rect>
-     </property>
-     <layout class="QFormLayout" name="formLayout">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QScrollArea" name="scrollArea">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <property name="rowWrapPolicy">
-       <enum>QFormLayout::WrapLongRows</enum>
+      <property name="sizeAdjustPolicy">
+       <enum>QAbstractScrollArea::AdjustToContents</enum>
       </property>
-      <item row="0" column="0">
-       <widget class="QLabel" name="prodname_label">
-        <property name="text">
-         <string>Product Name</string>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>675</width>
+         <height>198</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetDefaultConstraint</enum>
         </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="prodname_edit"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="partnumber_label">
-        <property name="text">
-         <string>Part Number</string>
+        <property name="rowWrapPolicy">
+         <enum>QFormLayout::WrapLongRows</enum>
         </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLineEdit" name="partnumber_edit"/>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="month_label">
-        <property name="text">
-         <string>Month</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="month_edit"/>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="year_label">
-        <property name="text">
-         <string>Year</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLineEdit" name="year_edit"/>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="revision_label">
-        <property name="text">
-         <string>Revision</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="revision_edit"/>
-      </item>
-      <item row="5" column="0">
-       <widget class="QGroupBox" name="groupBox_2">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="title">
-         <string>c-rg-topic1</string>
-        </property>
-        <widget class="QCheckBox" name="checkBox_3">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>20</y>
-           <width>61</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>CheckBox</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_2">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>70</y>
-           <width>71</width>
-           <height>22</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>50</y>
-           <width>49</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Keydef1</string>
-         </property>
-        </widget>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QTextBrowser" name="textBrowser_2"/>
-      </item>
-      <item row="6" column="0">
-       <widget class="QGroupBox" name="groupBox_3">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>100</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="title">
-         <string>c-rg-topic2</string>
-        </property>
-        <widget class="QCheckBox" name="checkBox_4">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>20</y>
-           <width>61</width>
-           <height>20</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>CheckBox</string>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="lineEdit_3">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>40</y>
-           <width>71</width>
-           <height>22</height>
-          </rect>
-         </property>
-        </widget>
-       </widget>
-      </item>
-      <item row="6" column="1">
-       <widget class="QTextBrowser" name="textBrowser_3"/>
-      </item>
-      <item row="7" column="1">
-       <widget class="QTextBrowser" name="textBrowser_4"/>
-      </item>
-     </layout>
-    </widget>
-   </widget>
+        <item row="0" column="0">
+         <widget class="QLabel" name="prodname_label">
+          <property name="text">
+           <string>Product Name</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="prodname_edit"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="partnumber_label">
+          <property name="text">
+           <string>Part Number</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="partnumber_edit"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="month_label">
+          <property name="text">
+           <string>Month</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="month_edit"/>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="year_label">
+          <property name="text">
+           <string>Year</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="year_edit"/>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="revision_label">
+          <property name="text">
+           <string>Revision</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="revision_edit"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -237,15 +127,6 @@
    </widget>
    <addaction name="menuFile"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>

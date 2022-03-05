@@ -1,4 +1,7 @@
 #include "XmlData.h"
+#include <iostream>
+
+// Linker -> System -> SubSystem" to Console for testing - was originally Windows
 
 XmlData::XmlData()
     : QWidget()
@@ -9,17 +12,20 @@ XmlData::XmlData()
 void XmlData::ProcessData()
 {
     //get the bookmap file
+    auto bookFile = "source/maps/bm-sample-source.ditamap";
+
     pugi::xml_document bookmapFile;
-
-    pugi::xml_parse_result result = bookmapFile.load_file("source/maps/bm-sample-source.ditamap");
-
-    pugi::xml_node bookmap = bookmapFile.child("bookmap");
+    pugi::xml_parse_result result1 = bookmapFile.load_file(bookFile);
 
     //can also use xpath
-    //get the map by finding the first child chapter. only supporting one map per bookmap for now
-    auto chapterNode = bookmap.child("chapter");
-    auto mapFile = chapterNode.attribute("href").value();
+    //get the map by finding the first child chapter. only supporting one map.
+    auto mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
 
+    pugi::xml_document mapFile;
+    auto *folder = "source/maps/";
+    pugi::xml_parse_result result2 = mapFile.load_file(*folder + mapHref); // m-sample-source.ditamap won't be found. need to add the folder path.
+
+    std::cout << mapFile << std::endl;
     //prodnameNode.text().set("a test project");
 
     bookmapFile.save_file("source/maps/bm-sample-source1.ditamap");
