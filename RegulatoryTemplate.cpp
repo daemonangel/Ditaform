@@ -30,6 +30,8 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
 
 void RegulatoryTemplate::fileOpen()
 {
+    //should source files be hard coded inside the app instead of having user choosing them?
+    // 
     //auto filename = QFileDialog::getOpenFileName(this, "Open File", "./");
     
     XmlData _XmlData;
@@ -41,6 +43,9 @@ void RegulatoryTemplate::fileOpen()
         auto x = new PropRow(ui.centralWidget);
         ui.formLayout->addRow(x);
     }*/
+
+    auto x = new PropRow(ui.centralWidget);
+    ui.formLayout->addRow(x);
 
     _XmlData.ProcessData();
 }

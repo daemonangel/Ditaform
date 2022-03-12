@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<val
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
+	
+<prop att="props" val="props1" action="exclude"></prop>
+<prop att="props" val="props2" action="exclude"></prop>
+<prop att="props" val="props3" action="exclude"></prop>
+<prop att="props" val="props4" action="exclude"></prop>
+<prop att="props" val="props5" action="exclude"></prop>
+<prop att="props" val="props6" action="exclude"></prop>
+<prop att="props" val="props7" action="exclude"></prop></val>
