@@ -14,5 +14,5 @@ public:
 
 private:
 	Ui::PropRow ui;
-	const propValueCollection* const _myPropsRow;
+	const propValueCollection& _myPropsRow;
 };
