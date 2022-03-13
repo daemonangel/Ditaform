@@ -117,14 +117,14 @@ void XmlData::ProcessData()
 			_propsRows[i].propsNode.push_back(propResult.node());
 
 			//add all keyrefs inside this node
-			//auto _keyrefResult = propResult.node().select_nodes("//*[@keyref]");
+			auto keyrefResult = propResult.node().select_nodes(".//*[@keyref]");
 
 			//this only searches immediate children, need all descendants
-			for (auto& propChild : propResult.node())
+			for (auto& propChild : keyrefResult)
 			{
-				if (propChild.attribute("keyref"))
+				if (propChild.node().attribute("keyref"))
 				{
-					_propsRows[i]._keysList.push_back(propChild.attribute("keyref").value());
+					_propsRows[i]._keysList.push_back(propChild.node().attribute("keyref").value());
 				}
 			}
 
