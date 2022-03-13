@@ -5,7 +5,6 @@
 #include <format>
 #include "pugixml.hpp"
 #include <iostream>
-#include "XmlData.h"
 #include "PropRow.h"
 
 RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
@@ -34,20 +33,15 @@ void RegulatoryTemplate::fileOpen()
     // 
     //auto filename = QFileDialog::getOpenFileName(this, "Open File", "./");
     
-    XmlData _XmlData;
+    _xmlData = std::make_unique<XmlData>();
 
     //for each prop set, add a row to the ui
 
-    /*for (int i = 0; i < 500; i++)
+    for (auto& propRow : _xmlData->_propsRows)
     {
-        auto x = new PropRow(ui.centralWidget);
-        ui.formLayout->addRow(x);
-    }*/
-
-    auto x = new PropRow(ui.centralWidget);
-    ui.formLayout->addRow(x);
-
-    _XmlData.ProcessData();
+        auto propUI = new PropRow(propRow.second, ui.centralWidget);
+        ui.formLayout->addRow(propUI);
+    }
 }
 
 void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)

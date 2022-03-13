@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include "XmlData.h"
 #include "ui_RegulatoryTemplate.h"
 #include "qwidget.h"
 
@@ -28,5 +29,6 @@ private slots:
 private:
     Ui::RegulatoryTemplateClass ui;
     std::vector<std::string> lines;
+    std::unique_ptr<XmlData> _xmlData;
     //std::vector<Platform> platforms;
 };

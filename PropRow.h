@@ -2,15 +2,17 @@
 
 #include <QWidget>
 #include "ui_PropRow.h"
+#include "XmlData.h"
 
 class PropRow : public QWidget
 {
 	Q_OBJECT
 
 public:
-	PropRow(QWidget *parent = Q_NULLPTR);
+	PropRow(const propValueCollection& propsRow, QWidget *parent = Q_NULLPTR);
 	~PropRow();
 
 private:
 	Ui::PropRow ui;
+	const propValueCollection* const _myPropsRow;
 };
