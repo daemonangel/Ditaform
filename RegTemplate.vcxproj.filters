@@ -57,11 +57,11 @@
     <ClInclude Include="pugixml.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="XmlData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="XmlData.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="PropRow.h">
       <Filter>Header Files</Filter>
     </QtMoc>

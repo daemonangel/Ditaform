@@ -68,8 +68,6 @@ XmlData::XmlData()
 
 			//add all keyrefs inside this node
 			auto keyrefResult = propsNode.select_nodes(".//*[@keyref]");
-
-			//this only searches immediate children, need all descendants
 			for (auto& propChild : keyrefResult)
 			{
 				if (propChild.node().attribute("keyref"))
