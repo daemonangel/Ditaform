@@ -14,13 +14,26 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 		{
 			if (child.node().attribute("keyref"))
 			{
-				//remove line breaks from before and after these keyrefs
 				//replace keyref value with the matching keyword value from map file
-				ui.textBrowser->append(QString::fromStdString(child.node().attribute("keyref").value()));
+				ui.textBrowser->setFontPointSize(12);
+				ui.textBrowser->setTextColor(QColor(255, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Normal);
+				ui.textBrowser->insertPlainText(child.node().attribute("keyref").value());
+			}
+			else if (child.node().name() == std::string("title") || child.parent().name() == std::string("title"))
+			{
+				ui.textBrowser->setFontPointSize(16);
+				ui.textBrowser->setTextColor(QColor(0, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Bold);
+				ui.textBrowser->insertPlainText(child.node().value());
+				ui.textBrowser->insertHtml("<br>"); //line break
 			}
 			else
 			{
-				ui.textBrowser->append(QString::fromStdString(child.node().value()));
+				ui.textBrowser->setFontPointSize(12);
+				ui.textBrowser->setTextColor(QColor(0, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Normal);
+				ui.textBrowser->insertPlainText(child.node().value());
 			}
 		}
 	}
