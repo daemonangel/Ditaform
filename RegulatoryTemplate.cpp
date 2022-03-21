@@ -29,10 +29,14 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
 
 void RegulatoryTemplate::fileOpen()
 {
-    //should source files be hard coded inside the app instead of having user choosing them?
-    // 
-    //auto filename = QFileDialog::getOpenFileName(this, "Open File", "./");
-    
+    //save a copy of the source bookmap to user defined location/file
+    auto saveFile = QFileDialog::getSaveFileName(this, tr("Choose a folder"), "bm-PRODUCT-rg-en.ditamap", tr("DITA Map (*.ditamap)"));
+    _xmlData = std::make_unique<XmlData>();
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(_xmlData->sourceFile);
+    pugi::xml_node bookmap = doc.child("bookmap");
+    doc.save_file(saveFile.toStdString().c_str());
+
     _xmlData = std::make_unique<XmlData>();
 
     //for each prop set, add a row to the ui
@@ -46,19 +50,58 @@ void RegulatoryTemplate::fileOpen()
 
 void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
 {
-    // to do - let user select the file instead of hard coding it
+    //saveFile = null
     pugi::xml_document doc;
-
-    pugi::xml_parse_result result = doc.load_file("source/maps/bm-sample-source.ditamap");
-
+    pugi::xml_parse_result result = doc.load_file(saveFile.toStdString().c_str());
     pugi::xml_node bookmap = doc.child("bookmap");
 
-    // can also use xpath
-    //std::cout << "Bookmap prodname: " << bookmap.child("bookmeta").child("prodinfo").child("prodname").text().get() << std::endl;
-
     auto prodnameNode = bookmap.child("bookmeta").child("prodinfo").child("prodname");
-    
-    prodnameNode.text().set("a test project");
+    prodnameNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    doc.save_file(saveFile.toStdString().c_str());
+}
 
-    doc.save_file("source/maps/bm-sample-source1.ditamap");
+void RegulatoryTemplate::partnumEdit([[maybe_unused]] const QString& metadata)
+{
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(RegulatoryTemplate::saveFile.toStdString().c_str());
+    pugi::xml_node bookmap = doc.child("bookmap");
+
+    auto partnumNode = bookmap.child("bookmeta").child("bookid").child("bookpartno");
+    partnumNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    doc.save_file(RegulatoryTemplate::saveFile.toStdString().c_str());
+}
+
+void RegulatoryTemplate::monthEdit([[maybe_unused]] const QString& metadata)
+{
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(RegulatoryTemplate::saveFile.toStdString().c_str());
+    pugi::xml_node bookmap = doc.child("bookmap");
+
+    auto monthNode = bookmap.child("bookmeta").child("publisherinformation").child("published").child("completed").child("month");
+    monthNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    doc.save_file(RegulatoryTemplate::saveFile.toStdString().c_str());
+}
+
+void RegulatoryTemplate::yearEdit([[maybe_unused]] const QString& metadata)
+{
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(RegulatoryTemplate::saveFile.toStdString().c_str());
+    pugi::xml_node bookmap = doc.child("bookmap");
+
+    auto yearCompletedNode = bookmap.child("bookmeta").child("publisherinformation").child("published").child("completed").child("year");
+    auto yearCopyrightNode = bookmap.child("bookmeta").child("bookrights").child("copyrlast").child("year");
+    yearCompletedNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    yearCopyrightNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    doc.save_file(RegulatoryTemplate::saveFile.toStdString().c_str());
+}
+
+void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
+{
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file(RegulatoryTemplate::saveFile.toStdString().c_str());
+    pugi::xml_node bookmap = doc.child("bookmap");
+
+    auto revisionNode = bookmap.child("bookmeta").child("bookid").child("volume");
+    revisionNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    doc.save_file(RegulatoryTemplate::saveFile.toStdString().c_str());
 }

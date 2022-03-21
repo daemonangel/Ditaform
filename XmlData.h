@@ -31,4 +31,5 @@ public:
 	std::vector<std::string> _topicHrefs; //from map: list of all the hrefs to topics
 	std::unordered_map<std::string, propValueCollection> _propsRows;
 	std::vector<pugi::xml_document> xmlDocs;
+	const char* sourceFile = "source/bm-sample-source.ditamap";
 };

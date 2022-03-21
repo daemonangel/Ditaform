@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<bookmap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
+	<title>Sample Source</title>
+	<bookmeta>
+		<shortdesc />
+		<publisherinformation>
+			<published>
+				<completed>
+					<month>May</month>
+					<year>2021</year>
+				</completed>
+			</published>
+		</publisherinformation>
+		<category>Product Reference Guide</category>
+		<prodinfo>
+			<prodname>Product Name</prodname>
+			<vrmlist>
+				<vrm version="0" />
+			</vrmlist>
+			<series>Product Series</series>
+		</prodinfo>
+		<bookid>
+			<bookpartno>as</bookpartno>
+			<booknumber />
+			<volume>Rev A</volume>
+		</bookid>
+		<bookrights>
+			<copyrfirst>
+				<year>2016</year>
+			</copyrfirst>
+			<copyrlast>
+				<year>2022</year>
+			</copyrlast>
+			<bookowner>
+				<organization>Michelle Allison</organization>
+			</bookowner>
+		</bookrights>
+	</bookmeta>
+	<chapter format="ditamap" href="m-sample-source.ditamap" type="map" />
+</bookmap>

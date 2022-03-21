@@ -170,10 +170,78 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>partnumber_edit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>partnumEdit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>79</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>month_edit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>monthEdit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>107</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>year_edit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>yearEdit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>revision_edit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>revisionEdit(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>clicked()</slot>
   <slot>prodnameEdit(QString)</slot>
   <slot>fileOpen()</slot>
+  <slot>partnumEdit(QString)</slot>
+  <slot>monthEdit(QString)</slot>
+  <slot>yearEdit(QString)</slot>
+  <slot>revisionEdit(QString)</slot>
  </slots>
 </ui>

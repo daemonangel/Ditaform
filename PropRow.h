@@ -3,6 +3,7 @@
 #include <QWidget>
 #include "ui_PropRow.h"
 #include "XmlData.h"
+#include <QLabel>
 
 class PropRow : public QWidget
 {

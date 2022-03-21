@@ -31,9 +31,8 @@ std::vector<std::string> GetTopicHrefs(const pugi::xml_document& mapFile)
 XmlData::XmlData()
 {
 	//get the bookmap file.
-	auto bookFile = "source/bm-sample-source.ditamap";
 	auto& bookmapFile = xmlDocs.emplace_back();
-	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(bookFile);
+	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(sourceFile);
 
 	//get the map file. only supporting one map.
 	auto mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
