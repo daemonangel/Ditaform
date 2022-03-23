@@ -32,7 +32,7 @@ XmlData::XmlData()
 {
 	//get the bookmap file.
 	auto& bookmapFile = xmlDocs.emplace_back();
-	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(sourceFile);
+	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(sourceBookmapFile);
 
 	//get the map file. only supporting one map.
 	auto mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
