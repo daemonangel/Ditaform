@@ -11,8 +11,8 @@ RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    RegulatoryTemplate::fileOpen();
-    RegulatoryTemplate::loadSource();
+    //RegulatoryTemplate::fileSaveAs();
+    //RegulatoryTemplate::loadSource();
 }
 
 void RegulatoryTemplate::enableDisableContent(bool checked)
@@ -29,7 +29,7 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
     }
 }
 
-void RegulatoryTemplate::fileOpen()
+void RegulatoryTemplate::fileSaveAs()
 {
     _xmlData = std::make_unique<XmlData>();
 
@@ -108,7 +108,7 @@ void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
-void RegulatoryTemplate::updateKeyref([[maybe_unused]] const QString& metadata) // need to connect this slot to signal from dynamically created propsRow input fields
+void RegulatoryTemplate::updateKeyref() // need to connect this slot to signal from dynamically created propsRow input fields
 {
     pugi::xml_node map = mapDoc.child("map");
     //search all keydef nodes in the map for keys value that matches the object name

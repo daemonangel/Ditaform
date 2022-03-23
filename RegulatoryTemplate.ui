@@ -123,13 +123,19 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
   <action name="actionOpen">
    <property name="text">
-    <string>Open</string>
+    <string>Save As...</string>
+   </property>
+  </action>
+  <action name="actionNew">
+   <property name="text">
+    <string>New</string>
    </property>
   </action>
  </widget>
@@ -158,7 +164,7 @@
    <sender>actionOpen</sender>
    <signal>triggered()</signal>
    <receiver>RegulatoryTemplateClass</receiver>
-   <slot>fileOpen()</slot>
+   <slot>fileSaveAs()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -234,14 +240,31 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionNew</sender>
+   <signal>triggered()</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>loadSource()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>clicked()</slot>
   <slot>prodnameEdit(QString)</slot>
-  <slot>fileOpen()</slot>
+  <slot>fileSaveAs()</slot>
   <slot>partnumEdit(QString)</slot>
   <slot>monthEdit(QString)</slot>
   <slot>yearEdit(QString)</slot>
   <slot>revisionEdit(QString)</slot>
+  <slot>loadSource()</slot>
  </slots>
 </ui>

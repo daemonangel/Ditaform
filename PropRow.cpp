@@ -32,6 +32,10 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 				label->setText(child.node().attribute("keyref").value());
 				QTextEdit* input = new QTextEdit(this);
 				input->setObjectName(child.node().attribute("keyref").value());
+
+				//connect signal textchanged from input object to function updateKeyref in RegulatoryTemplate class
+				_RegulatoryTemplate = std::make_unique<RegulatoryTemplate>();
+				connect(input, SIGNAL(textChanged()), _RegulatoryTemplate.get(), SLOT(updateKeyref()));
 				ui.verticalLayout->addWidget(line);
 				ui.verticalLayout->addWidget(label);
 				ui.verticalLayout->addWidget(input);	

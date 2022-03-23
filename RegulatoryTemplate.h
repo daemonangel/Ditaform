@@ -9,6 +9,9 @@ class RegulatoryTemplate : public QMainWindow
 {
     Q_OBJECT
 
+public slots:
+    
+
 public:
     RegulatoryTemplate(QWidget *parent = Q_NULLPTR);
     QString bookFile;
@@ -25,8 +28,8 @@ private slots:
     void monthEdit(const QString& metadata);
     void yearEdit(const QString& metadata);
     void revisionEdit(const QString& metadata);
-    void updateKeyref(const QString& metadata);
-    void fileOpen();
+    void updateKeyref();
+    void fileSaveAs();
     void loadSource();
     
     //void thingClicked(const QString& selection);
