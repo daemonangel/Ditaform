@@ -29,7 +29,7 @@ private slots:
     void yearEdit(const QString& metadata);
     void revisionEdit(const QString& metadata);
     void updateKeyref();
-    void fileSaveAs();
+    void fileSave();
     void loadSource();
     
     //void thingClicked(const QString& selection);

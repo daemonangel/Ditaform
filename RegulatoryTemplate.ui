@@ -123,19 +123,24 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionNew"/>
-    <addaction name="actionOpen"/>
+    <addaction name="load_menu"/>
+    <addaction name="save_menu"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
-  <action name="actionOpen">
+  <action name="saveAs_menu">
    <property name="text">
     <string>Save As...</string>
    </property>
   </action>
-  <action name="actionNew">
+  <action name="load_menu">
    <property name="text">
     <string>New</string>
+   </property>
+  </action>
+  <action name="save_menu">
+   <property name="text">
+    <string>Save</string>
    </property>
   </action>
  </widget>
@@ -156,22 +161,6 @@
     </hint>
     <hint type="destinationlabel">
      <x>343</x>
-     <y>273</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>actionOpen</sender>
-   <signal>triggered()</signal>
-   <receiver>RegulatoryTemplateClass</receiver>
-   <slot>fileSaveAs()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>-1</x>
-     <y>-1</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>341</x>
      <y>273</y>
     </hint>
    </hints>
@@ -241,10 +230,26 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionNew</sender>
+   <sender>load_menu</sender>
    <signal>triggered()</signal>
    <receiver>RegulatoryTemplateClass</receiver>
    <slot>loadSource()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>fileSave()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -260,11 +265,11 @@
  <slots>
   <slot>clicked()</slot>
   <slot>prodnameEdit(QString)</slot>
-  <slot>fileSaveAs()</slot>
   <slot>partnumEdit(QString)</slot>
   <slot>monthEdit(QString)</slot>
   <slot>yearEdit(QString)</slot>
   <slot>revisionEdit(QString)</slot>
   <slot>loadSource()</slot>
+  <slot>fileSave()</slot>
  </slots>
 </ui>

@@ -11,8 +11,7 @@ RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    //RegulatoryTemplate::fileSaveAs();
-    //RegulatoryTemplate::loadSource();
+    //ui is loaded each time loadSource() runs because of third property in connect() in PropRow.cpp
 }
 
 void RegulatoryTemplate::enableDisableContent(bool checked)
@@ -29,34 +28,45 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
     }
 }
 
-void RegulatoryTemplate::fileSaveAs()
+void RegulatoryTemplate::fileSave()
 {
-    _xmlData = std::make_unique<XmlData>();
+    if (!bookFile.isEmpty())
+    {
+        bookDoc.save_file(bookFile.toStdString().c_str());
+        valDoc.save_file(ditavalFile.toStdString().c_str());
+        mapDoc.save_file(mapFile.toStdString().c_str());
+    }
+    else
+    {
+        _xmlData = std::make_unique<XmlData>();
 
-    //save a copy of the source files to user defined location/file for bookmap
-    //bookmap
-    bookFile = QFileDialog::getSaveFileName(this, tr("Save As..."), "bm-PRODUCT-rg-en.ditamap", tr("DITA Map (*.ditamap)"));
-    pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile);
-    pugi::xml_node bookmap = bookDoc.child("bookmap");
-    bookDoc.save_file(bookFile.toStdString().c_str());
+        //save a copy of the source files to user defined location/file for bookmap
+        //bookmap
+        bookFile = QFileDialog::getSaveFileName(this, tr("Save As..."), "bm-PRODUCT-rg-en.ditamap", tr("DITA Map (*.ditamap)"));
+        pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile);
+        pugi::xml_node bookmap = bookDoc.child("bookmap");
+        bookDoc.save_file(bookFile.toStdString().c_str());
 
-    //ditaval
-    //need to update the file name to dv- and everything that comes after bm- in the bookFile name.
-    ditavalFile = QFileInfo(bookFile).absolutePath() + "/dv-PRODUCT-rg-en.ditaval";
-    pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
-    valDoc.save_file(ditavalFile.toStdString().c_str());
+        //ditaval
+        //TO DO: Update the file name to dv- and everything that comes after bm- in the bookFile name.
+        ditavalFile = QFileInfo(bookFile).absolutePath() + "/dv-PRODUCT-rg-en.ditaval";
+        pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
+        valDoc.save_file(ditavalFile.toStdString().c_str());
 
-    //map
-    //need to update the file name to m- and everything that comes after bm- in the bookFile name.
-    //will need to update the bookmap file to match
-    mapFile = QFileInfo(bookFile).absolutePath() + "/m-PRODUCT-rg-en.ditamap";
-    pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile);
-    mapDoc.save_file(mapFile.toStdString().c_str()); 
+        //map
+        //To DO: Update the file name to m- and everything that comes after bm- in the bookFile name. Update the bookmap file to match.
+        mapFile = QFileInfo(bookFile).absolutePath() + "/m-PRODUCT-rg-en.ditamap";
+        pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile);
+        mapDoc.save_file(mapFile.toStdString().c_str());
+    }
+    
 }
 
 void RegulatoryTemplate::loadSource()
 {
     _xmlData = std::make_unique<XmlData>();
+
+    //TO DO - if propsRows already exist, delete them before loading
 
     //for each prop set, add a row to the ui
     for (auto& propRow : _xmlData->_propsRows)
@@ -108,8 +118,9 @@ void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
-void RegulatoryTemplate::updateKeyref() // need to connect this slot to signal from dynamically created propsRow input fields
+void RegulatoryTemplate::updateKeyref()
 {
+    //map is showing as empty. i think it's because there is a different instance of this class created by PropRows.
     pugi::xml_node map = mapDoc.child("map");
     //search all keydef nodes in the map for keys value that matches the object name
     //set the value of node.child("topicmeta").child("keywords").child("keyword") to ui.objectName->text().toStdString().c_str();
