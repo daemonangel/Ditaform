@@ -35,7 +35,8 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 
 				//connect signal textchanged from input object to function updateKeyref in RegulatoryTemplate class
 				_RegulatoryTemplate = std::make_unique<RegulatoryTemplate>();
-				connect(input, SIGNAL(textChanged()), _RegulatoryTemplate.get(), SLOT(updateKeyref()));
+				connect(input, SIGNAL(textChanged()), _RegulatoryTemplate.get(), SLOT(updateKeyref(const QObject&)));
+
 				ui.verticalLayout->addWidget(line);
 				ui.verticalLayout->addWidget(label);
 				ui.verticalLayout->addWidget(input);	

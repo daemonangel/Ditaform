@@ -271,5 +271,6 @@
   <slot>revisionEdit(QString)</slot>
   <slot>loadSource()</slot>
   <slot>fileSave()</slot>
+  <slot>updateKeyref(QString)</slot>
  </slots>
 </ui>

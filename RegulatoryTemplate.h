@@ -10,16 +10,16 @@ class RegulatoryTemplate : public QMainWindow
     Q_OBJECT
 
 public slots:
+    static void updateKeyref(const QObject& senderObject);
     
-
 public:
     RegulatoryTemplate(QWidget *parent = Q_NULLPTR);
-    QString bookFile;
-    QString ditavalFile;
-    QString mapFile;
-    pugi::xml_document bookDoc;
-    pugi::xml_document valDoc;
-    pugi::xml_document mapDoc;
+    static QString* bookFile;
+    static QString* ditavalFile;
+    static QString* mapFile;
+    static pugi::xml_document* bookDoc;
+    static pugi::xml_document* valDoc;
+    static pugi::xml_document* mapDoc;
 
 private slots:
     void enableDisableContent(bool checked);
@@ -28,12 +28,8 @@ private slots:
     void monthEdit(const QString& metadata);
     void yearEdit(const QString& metadata);
     void revisionEdit(const QString& metadata);
-    void updateKeyref();
     void fileSave();
     void loadSource();
-    
-    //void thingClicked(const QString& selection);
-    //void thingClicked(int row);
 
 private:
     Ui::RegulatoryTemplateClass ui;
