@@ -10,16 +10,16 @@ class RegulatoryTemplate : public QMainWindow
     Q_OBJECT
 
 public slots:
-    static void updateKeyref(const QObject& senderObject);
+    void updateKeyref();
     
 public:
     RegulatoryTemplate(QWidget *parent = Q_NULLPTR);
-    static QString* bookFile;
-    static QString* ditavalFile;
-    static QString* mapFile;
-    static pugi::xml_document* bookDoc;
-    static pugi::xml_document* valDoc;
-    static pugi::xml_document* mapDoc;
+    static QString bookFile;
+    static QString ditavalFile;
+    static QString mapFile;
+    static pugi::xml_document bookDoc;
+    static pugi::xml_document valDoc;
+    static pugi::xml_document mapDoc;
 
 private slots:
     void enableDisableContent(bool checked);
