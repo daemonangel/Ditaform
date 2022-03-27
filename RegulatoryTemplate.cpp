@@ -131,21 +131,27 @@ void RegulatoryTemplate::updateKeyref()
 {
     auto senderObject = QObject::sender();
     auto senderName = senderObject->objectName();
-    //map is showing as empty. i think it's because there is a different instance of this class created by PropRows.
+
     pugi::xml_node map = mapDoc.child("map");
     //search all keydef nodes in the map for keys value that matches the object name
     //set the value of node.child("topicmeta").child("keywords").child("keyword") to ui.objectName->text().toStdString().c_str();
+
+    //only something-boring and ex-name work
+    //if there are two props rows each with same props name with a different keyref it fails
+    //if the keyrefs are out of order it fails
+    //need better method for checking
     auto keysResult = map.select_nodes(".//*[@keys]");
     for (auto& key : keysResult)
     {
         if (key.node().attribute("keys").value() == senderName)
         {
             auto keyValue = key.node().child("topicmeta").child("keywords").child("keyword");
-            keyValue.text().set(senderObject->objectName().toStdString().c_str());
+            QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
+            keyValue.text().set(senderText->toPlainText().toStdString().c_str()); //this is setting keyValue to the senderObject name...
         }
     }
 
     mapDoc.save_file(RegulatoryTemplate::mapFile.toStdString().c_str());
 }
 
-//TODO get list of keyref values from topics into a vector and check against the list of keysResult
+//TODO get list of keyref values from topics into a vector and check against the list of keysResult - easy: compare list sizes - better: compare list sizes and values

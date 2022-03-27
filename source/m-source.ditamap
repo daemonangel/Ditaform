@@ -14,10 +14,24 @@
       </keywords>
     </topicmeta>
   </keydef>
+  <keydef keys="degrees-again">
+    <topicmeta>
+      <keywords>
+        <keyword>84</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
   <keydef keys="something-boring">
     <topicmeta>
       <keywords>
         <keyword>politics</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="ex-name">
+    <topicmeta>
+      <keywords>
+        <keyword>Geri</keyword>
       </keywords>
     </topicmeta>
   </keydef>
