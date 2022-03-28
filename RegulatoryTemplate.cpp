@@ -18,7 +18,6 @@ RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    //ui is loaded each time loadSource() runs because of third property in connect() in PropRow.cpp
 }
 
 void RegulatoryTemplate::enableDisableContent(bool checked)
@@ -134,16 +133,13 @@ void RegulatoryTemplate::updateKeyref()
 
     pugi::xml_node map = mapDoc.child("map");
     //search all keydef nodes in the map for keys value that matches the object name
-    //set the value of node.child("topicmeta").child("keywords").child("keyword") to ui.objectName->text().toStdString().c_str();
-
-    //only something-boring and ex-name work
-    //if there are two props rows each with same props name with a different keyref it fails
-    //if the keyrefs are out of order it fails
-    //need better method for checking
+    
+    //if same props row has more than one keyref, only the last one created emits a signal
     auto keysResult = map.select_nodes(".//*[@keys]");
     for (auto& key : keysResult)
     {
-        if (key.node().attribute("keys").value() == senderName)
+        QString keyName = key.node().first_attribute().value();
+        if (keyName == senderName)
         {
             auto keyValue = key.node().child("topicmeta").child("keywords").child("keyword");
             QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
