@@ -12,7 +12,7 @@ QString RegulatoryTemplate::ditavalFile;
 QString RegulatoryTemplate::mapFile;
 pugi::xml_document RegulatoryTemplate::bookDoc;
 pugi::xml_document RegulatoryTemplate::valDoc;
-pugi::xml_document RegulatoryTemplate::mapDoc;
+pugi::xml_document mapDoc;
 
 RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     : QMainWindow(parent)
@@ -72,8 +72,16 @@ void RegulatoryTemplate::loadSource()
 {
     _xmlData = std::make_unique<XmlData>();
 
-    //TODO - if propsRows already exist, delete them before loading
-
+    //TODO - test that reloading rows works as expected.
+    //if the row count is more than the number of premade rows, delete the dynamically created rows
+    if (ui.formLayout->rowCount() > premadeRows)
+    {
+        auto rowCount = ui.formLayout->rowCount() - 1;
+        for (int i = rowCount; i >= premadeRows; i--)
+        {
+            ui.formLayout->removeRow(i);
+        }
+    }
     //for each prop set, add a row to the ui
     for (auto& propRow : _xmlData->_propsRows)
     {
@@ -125,29 +133,3 @@ void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
     revisionNode.text().set(ui.prodname_edit->text().toStdString().c_str());
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
-
-void RegulatoryTemplate::updateKeyref()
-{
-    auto senderObject = QObject::sender();
-    auto senderName = senderObject->objectName();
-
-    pugi::xml_node map = mapDoc.child("map");
-    //search all keydef nodes in the map for keys value that matches the object name
-    
-    //if same props row has more than one keyref, only the last one created emits a signal
-    auto keysResult = map.select_nodes(".//*[@keys]");
-    for (auto& key : keysResult)
-    {
-        QString keyName = key.node().first_attribute().value();
-        if (keyName == senderName)
-        {
-            auto keyValue = key.node().child("topicmeta").child("keywords").child("keyword");
-            QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
-            keyValue.text().set(senderText->toPlainText().toStdString().c_str()); //this is setting keyValue to the senderObject name...
-        }
-    }
-
-    mapDoc.save_file(RegulatoryTemplate::mapFile.toStdString().c_str());
-}
-
-//TODO get list of keyref values from topics into a vector and check against the list of keysResult - easy: compare list sizes - better: compare list sizes and values

@@ -14,8 +14,10 @@ public:
 	PropRow(const propValueCollection& propsRow, QWidget *parent = Q_NULLPTR);
 	~PropRow();
 
+private slots:
+	void updateKeyref();
+
 private:
 	Ui::PropRow ui;
 	const propValueCollection& _myPropsRow;
-	std::unique_ptr<RegulatoryTemplate> _RegulatoryTemplate;
 };

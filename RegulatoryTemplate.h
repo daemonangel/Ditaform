@@ -5,21 +5,14 @@
 #include "ui_RegulatoryTemplate.h"
 #include "qwidget.h"
 
+extern pugi::xml_document mapDoc;
+
 class RegulatoryTemplate : public QMainWindow
 {
     Q_OBJECT
-
-public slots:
-    void updateKeyref();
     
 public:
     RegulatoryTemplate(QWidget *parent = Q_NULLPTR);
-    static QString bookFile;
-    static QString ditavalFile;
-    static QString mapFile;
-    static pugi::xml_document bookDoc;
-    static pugi::xml_document valDoc;
-    static pugi::xml_document mapDoc;
 
 private slots:
     void enableDisableContent(bool checked);
@@ -35,4 +28,10 @@ private:
     Ui::RegulatoryTemplateClass ui;
     std::vector<std::string> lines;
     std::unique_ptr<XmlData> _xmlData;
+    static QString bookFile;
+    static QString ditavalFile;
+    static QString mapFile;
+    static pugi::xml_document bookDoc;
+    static pugi::xml_document valDoc;
+    int premadeRows = 5; //number of premade form rows
 };

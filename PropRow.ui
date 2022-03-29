@@ -81,4 +81,7 @@
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
  <connections/>
+ <slots>
+  <signal>textChanged()</signal>
+ </slots>
 </ui>

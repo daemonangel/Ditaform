@@ -30,13 +30,13 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 				label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 				label->setFont(labelFont);
 				label->setText(child.node().attribute("keyref").value());
-				QTextEdit* input = new QTextEdit(this);
+				QTextEdit* input = new QTextEdit();
 				auto senderName = child.node().attribute("keyref").value();
 				input->setObjectName(senderName);
 
-				//connect signal textchanged from input object to function updateKeyref in RegulatoryTemplate class
-				_RegulatoryTemplate = std::make_unique<RegulatoryTemplate>();
-				bool connectResult = connect(input, &QTextEdit::textChanged, _RegulatoryTemplate.get(), &RegulatoryTemplate::updateKeyref);
+				//connect signal textchanged from input object to slot function updateKeyref
+				//bool connectResult = connect(input, &QTextEdit::textChanged, _RegulatoryTemplate.get(), &RegulatoryTemplate::updateKeyref);
+				bool connectResult = connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
 
 				ui.verticalLayout->addWidget(line);
 				ui.verticalLayout->addWidget(label);
@@ -64,6 +64,30 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 	//set title of groupbox to the props node name
 	ui.propRow_group->setTitle(QString::fromStdString(_myPropsRow.propsName));
 }
+
+void PropRow::updateKeyref()
+{
+	auto senderObject = QObject::sender();
+	auto senderName = senderObject->objectName();
+
+	pugi::xml_node map = mapDoc.child("map");
+	//search all keydef nodes in the map for keys value that matches the object name
+
+	//if same props row has more than one keyref, only the last one created emits a signal
+	auto keysResult = map.select_nodes(".//*[@keys]");
+	for (auto& key : keysResult)
+	{
+		QString keyName = key.node().first_attribute().value();
+		if (keyName == senderName)
+		{
+			auto keyValue = key.node().child("topicmeta").child("keywords").child("keyword");
+			QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
+			keyValue.text().set(senderText->toPlainText().toStdString().c_str()); //this is setting keyValue to the senderObject name...
+		}
+	}
+}
+
+//TODO get list of keyref values from topics into a vector and check against the list of keysResult - easy: compare list sizes - better: compare list sizes and values
 
 PropRow::~PropRow()
 {

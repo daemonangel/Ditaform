@@ -11,7 +11,7 @@ std::vector<key_value_pair> GetKeyDefsAndValues(const pugi::xml_document& mapFil
 	{
 		keysAndValues.emplace_back(result.node().attribute("keys").value(), result.node().child_value("keywords"));
 	}
-
+	
 	return keysAndValues;
 }
 
@@ -74,6 +74,7 @@ XmlData::XmlData()
 					propsRow._keysList.push_back(propChild.node().attribute("keyref").value());
 				}
 			}
+			//TODO need a way to deal with multiple instances of the same keyref in the form. maybe when u edit one, it automatically puts the same text in all of them?
 
 			//std::cout << "prop value='" << propsNode.attribute("props").value() << "'\n";
 			//std::cout << "    struct value='" << _propsRows[i].propsName << ", in row " << i << "'\n";
