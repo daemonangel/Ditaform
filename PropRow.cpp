@@ -63,10 +63,18 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 
 	//set title of groupbox to the props node name
 	ui.propRow_group->setTitle(QString::fromStdString(_myPropsRow.propsName));
+
+	//set object name of checkbox to the props node name
+	ui.propRow_check->setObjectName(QString::fromStdString(_myPropsRow.propsName));
+
+	//connect checkbox signal to updateDitaval slot
+	bool connectResult = connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitaval);
 }
 
 void PropRow::updateKeyref()
 {
+	//TODO get list of keyref values from topics into a vector and check against the list of keysResult - easy: compare list sizes - better: compare list sizes and values
+
 	auto senderObject = QObject::sender();
 	auto senderName = senderObject->objectName();
 
@@ -87,7 +95,23 @@ void PropRow::updateKeyref()
 	}
 }
 
-//TODO get list of keyref values from topics into a vector and check against the list of keysResult - easy: compare list sizes - better: compare list sizes and values
+void PropRow::updateDitaval()
+{
+	QCheckBox* senderObject = qobject_cast<QCheckBox*>(QObject::sender());
+	auto senderName = senderObject->objectName();
+
+	pugi::xml_node val = valDoc.child("val");
+	auto node = val.find_child_by_attribute("val", senderName.toStdString().c_str());
+
+	if (senderObject->isChecked())
+	{
+		node.attribute("action").set_value("include");
+	}
+	else
+	{
+		node.attribute("action").set_value("exclude");
+	}
+}
 
 PropRow::~PropRow()
 {

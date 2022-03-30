@@ -16,6 +16,7 @@ public:
 
 private slots:
 	void updateKeyref();
+	void updateDitaval();
 
 private:
 	Ui::PropRow ui;

@@ -6,6 +6,7 @@
 #include "qwidget.h"
 
 extern pugi::xml_document mapDoc;
+extern pugi::xml_document valDoc;
 
 class RegulatoryTemplate : public QMainWindow
 {
@@ -22,16 +23,17 @@ private slots:
     void yearEdit(const QString& metadata);
     void revisionEdit(const QString& metadata);
     void fileSave();
+    void fileSaveAs();
     void loadSource();
 
 private:
     Ui::RegulatoryTemplateClass ui;
     std::vector<std::string> lines;
     std::unique_ptr<XmlData> _xmlData;
+    QString bookFileSave;
     static QString bookFile;
     static QString ditavalFile;
     static QString mapFile;
     static pugi::xml_document bookDoc;
-    static pugi::xml_document valDoc;
     int premadeRows = 5; //number of premade form rows
 };

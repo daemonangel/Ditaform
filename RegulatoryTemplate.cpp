@@ -2,7 +2,6 @@
 #include "qmessagebox.h"
 #include "qfiledialog.h"
 #include "qinputdialog.h"
-#include <format>
 #include "pugixml.hpp"
 #include <iostream>
 #include "PropRow.h"
@@ -11,7 +10,7 @@ QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
 QString RegulatoryTemplate::mapFile;
 pugi::xml_document RegulatoryTemplate::bookDoc;
-pugi::xml_document RegulatoryTemplate::valDoc;
+pugi::xml_document valDoc;
 pugi::xml_document mapDoc;
 
 RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
@@ -48,24 +47,51 @@ void RegulatoryTemplate::fileSave()
 
         //save a copy of the source files to user defined location/file for bookmap
         //bookmap
-        bookFile = QFileDialog::getSaveFileName(this, tr("Save As..."), "bm-PRODUCT-rg-en.ditamap", tr("DITA Map (*.ditamap)"));
+        bookFileSave = QFileDialog::getSaveFileName(this, tr("Save As..."), "product-rg-en.ditamap", tr("DITA Map (*.ditamap)"));
+        bookFile = QFileInfo(bookFileSave).absolutePath() + "/bm-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
         pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile);
         pugi::xml_node bookmap = bookDoc.child("bookmap");
         bookDoc.save_file(bookFile.toStdString().c_str());
 
         //ditaval
-        //TODO: Update the file name to dv- and everything that comes after bm- in the bookFile name.
-        ditavalFile = QFileInfo(bookFile).absolutePath() + "/dv-PRODUCT-rg-en.ditaval";
+        ditavalFile = QFileInfo(bookFileSave).absolutePath() + "/dv-" + QFileInfo(bookFileSave).baseName() + ".ditaval";
         pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
         valDoc.save_file(ditavalFile.toStdString().c_str());
 
         //map
-        //TODO: Update the file name to m- and everything that comes after bm- in the bookFile name. Update the bookmap file to match.
-        mapFile = QFileInfo(bookFile).absolutePath() + "/m-PRODUCT-rg-en.ditamap";
+        mapFile = QFileInfo(bookFileSave).absolutePath() + "/m-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
         pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile);
         mapDoc.save_file(mapFile.toStdString().c_str());
     }
-    
+    //TODO: On closing the app, check if file is saved. If it isn't ask user if they want to save the file.
+    // https://doc.qt.io/qt-5/qfilesystemwatcher.html#fileChanged
+    //TODO: Notify the user somehow that they have unsaved changes
+}
+
+void RegulatoryTemplate::fileSaveAs()
+{
+    _xmlData = std::make_unique<XmlData>();
+
+    //save a copy of the source files to user defined location/file for bookmap
+    //bookmap
+    bookFileSave = QFileDialog::getSaveFileName(this, tr("Save As..."), "PRODUCT-rg-en.ditamap", tr("DITA Map (*.ditamap)"));
+    bookFile = QFileInfo(bookFileSave).absolutePath() + "/bm-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
+    pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile);
+    pugi::xml_node bookmap = bookDoc.child("bookmap");
+    bookDoc.save_file(bookFile.toStdString().c_str());
+
+    //ditaval
+    //TODO: Update the file name to dv- and everything that comes after bm- in the bookFile name.
+
+    ditavalFile = QFileInfo(bookFileSave).absolutePath() + "/dv-" + QFileInfo(bookFileSave).baseName() + ".ditaval";
+    pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
+    valDoc.save_file(ditavalFile.toStdString().c_str());
+
+    //map
+    //TODO: Update the file name to m- and everything that comes after bm- in the bookFile name. Update the bookmap file to match.
+    mapFile = QFileInfo(bookFileSave).absolutePath() + "/m-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
+    pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile);
+    mapDoc.save_file(mapFile.toStdString().c_str());
 }
 
 void RegulatoryTemplate::loadSource()

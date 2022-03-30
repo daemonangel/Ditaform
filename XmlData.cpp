@@ -35,6 +35,7 @@ XmlData::XmlData()
 	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(sourceBookmapFile);
 
 	//get the map file. only supporting one map.
+	//TODO support multiple maps - maybe do this after first release
 	auto mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
 	auto& mapFile = xmlDocs.emplace_back();
 	auto fullMapPath = std::string("source/") + mapHref;
