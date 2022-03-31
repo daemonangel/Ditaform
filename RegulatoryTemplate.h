@@ -25,6 +25,7 @@ private slots:
     void fileSave();
     void fileSaveAs();
     void loadSource();
+    void autoUpdateDupKeyrefs();
 
 private:
     Ui::RegulatoryTemplateClass ui;
