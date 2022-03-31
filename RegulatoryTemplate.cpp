@@ -81,14 +81,11 @@ void RegulatoryTemplate::fileSaveAs()
     bookDoc.save_file(bookFile.toStdString().c_str());
 
     //ditaval
-    //TODO: Update the file name to dv- and everything that comes after bm- in the bookFile name.
-
     ditavalFile = QFileInfo(bookFileSave).absolutePath() + "/dv-" + QFileInfo(bookFileSave).baseName() + ".ditaval";
     pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
     valDoc.save_file(ditavalFile.toStdString().c_str());
 
     //map
-    //TODO: Update the file name to m- and everything that comes after bm- in the bookFile name. Update the bookmap file to match.
     mapFile = QFileInfo(bookFileSave).absolutePath() + "/m-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
     pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile);
     mapDoc.save_file(mapFile.toStdString().c_str());
@@ -115,7 +112,13 @@ void RegulatoryTemplate::loadSource()
         ui.formLayout->addRow(propUI);
     }
 
-    //maybe instead of connecting PropRow/input signal to updateKeyref, after data loads find all the keyrefs and connect them in the UI?
+    //TODO need a way to deal with multiple instances of the same keyref in the form. maybe when u edit one, it automatically puts the same text in all of them?
+    //connect all QTextEdit textChange signals to autoUpdateDupKeyrefs slot
+    auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>();
+    for (auto& key : keyrefs)
+    {
+        bool connectResult = connect(key, &QTextEdit::textChanged, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
+    }
 }
 
 void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
@@ -158,4 +161,22 @@ void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
     auto revisionNode = bookmap.child("bookmeta").child("bookid").child("volume");
     revisionNode.text().set(ui.prodname_edit->text().toStdString().c_str());
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
+}
+
+void RegulatoryTemplate::autoUpdateDupKeyrefs()
+{
+    auto senderObject = QObject::sender();
+    auto senderName = senderObject->objectName();
+
+    auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>(senderName);
+    for (auto& key : keyrefs)
+    {
+        auto keyName = key->objectName();
+        if (senderName == key->objectName() && !key->hasFocus())
+        {
+            QTextEdit* senderCast = qobject_cast<QTextEdit*>(senderObject);
+            auto senderText = senderCast->toPlainText();
+            key->setPlainText(senderText);
+        }
+    }
 }

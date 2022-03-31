@@ -21,4 +21,5 @@ private slots:
 private:
 	Ui::PropRow ui;
 	const propValueCollection& _myPropsRow;
+	std::unique_ptr<RegulatoryTemplate> _RegulatoryTemplate;
 };
