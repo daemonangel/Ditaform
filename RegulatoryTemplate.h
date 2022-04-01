@@ -4,6 +4,8 @@
 #include "XmlData.h"
 #include "ui_RegulatoryTemplate.h"
 #include "qwidget.h"
+#include "qinputdialog.h"
+#include <QtGui>
 
 extern pugi::xml_document mapDoc;
 extern pugi::xml_document valDoc;
@@ -27,6 +29,9 @@ private slots:
     void loadSource();
     void autoUpdateDupKeyrefs();
 
+protected:
+    void closeEvent(QCloseEvent* event);
+
 private:
     Ui::RegulatoryTemplateClass ui;
     std::vector<std::string> lines;
@@ -37,4 +42,6 @@ private:
     static QString mapFile;
     static pugi::xml_document bookDoc;
     int premadeRows = 5; //number of premade form rows
+
+    bool maybeSave();
 };

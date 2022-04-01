@@ -69,6 +69,8 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 
 	//connect checkbox signal to updateDitaval slot
 	bool connectResult = connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitaval);
+
+	//TODO checkboxes not always working
 }
 
 void PropRow::updateKeyref()

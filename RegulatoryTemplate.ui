@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>695</width>
-    <height>247</height>
+    <height>248</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,7 +44,7 @@
          <x>0</x>
          <y>0</y>
          <width>675</width>
-         <height>205</height>
+         <height>206</height>
         </rect>
        </property>
        <layout class="QFormLayout" name="formLayout">
@@ -125,7 +125,7 @@
     </property>
     <addaction name="load_menu"/>
     <addaction name="save_menu"/>
-    <addaction name="actionSave_As"/>
+    <addaction name="saveAs_menu_2"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -144,7 +144,7 @@
     <string>Save</string>
    </property>
   </action>
-  <action name="actionSave_As">
+  <action name="saveAs_menu_2">
    <property name="text">
     <string>Save As</string>
    </property>
@@ -268,7 +268,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>actionSave_As</sender>
+   <sender>saveAs_menu_2</sender>
    <signal>triggered()</signal>
    <receiver>RegulatoryTemplateClass</receiver>
    <slot>fileSaveAs()</slot>

@@ -19,6 +19,31 @@ RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     ui.setupUi(this);
 }
 
+void RegulatoryTemplate::closeEvent(QCloseEvent *event)
+{
+    if (maybeSave()) {
+        fileSave();
+        event->accept();
+    }
+    else {
+        event->accept();
+    }
+}
+
+bool RegulatoryTemplate::maybeSave()
+{
+    QMessageBox::StandardButton ret;
+    ret = QMessageBox::warning(this, tr("Application"),
+        tr("Save file before closing?"),
+        QMessageBox::Save | QMessageBox::Close);
+    if (ret == QMessageBox::Save)
+        return true;
+    else if (ret == QMessageBox::Close)
+        return false;
+}
+
+//TODO make a button that exports versions of the document with translation info, like language codes. this is for later.
+
 void RegulatoryTemplate::enableDisableContent(bool checked)
 {
     if (checked)
@@ -33,6 +58,8 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
     }
 }
 
+//TODO add a button to load files - loaded file should also populate the keyref QTextEdits
+
 void RegulatoryTemplate::fileSave()
 {
     if (!bookFile.isEmpty())
@@ -43,25 +70,7 @@ void RegulatoryTemplate::fileSave()
     }
     else
     {
-        _xmlData = std::make_unique<XmlData>();
-
-        //save a copy of the source files to user defined location/file for bookmap
-        //bookmap
-        bookFileSave = QFileDialog::getSaveFileName(this, tr("Save As..."), "product-rg-en.ditamap", tr("DITA Map (*.ditamap)"));
-        bookFile = QFileInfo(bookFileSave).absolutePath() + "/bm-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
-        pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile);
-        pugi::xml_node bookmap = bookDoc.child("bookmap");
-        bookDoc.save_file(bookFile.toStdString().c_str());
-
-        //ditaval
-        ditavalFile = QFileInfo(bookFileSave).absolutePath() + "/dv-" + QFileInfo(bookFileSave).baseName() + ".ditaval";
-        pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
-        valDoc.save_file(ditavalFile.toStdString().c_str());
-
-        //map
-        mapFile = QFileInfo(bookFileSave).absolutePath() + "/m-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
-        pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile);
-        mapDoc.save_file(mapFile.toStdString().c_str());
+        RegulatoryTemplate::fileSaveAs();
     }
     //TODO: On closing the app, check if file is saved. If it isn't ask user if they want to save the file.
     // https://doc.qt.io/qt-5/qfilesystemwatcher.html#fileChanged
@@ -74,19 +83,19 @@ void RegulatoryTemplate::fileSaveAs()
 
     //save a copy of the source files to user defined location/file for bookmap
     //bookmap
-    bookFileSave = QFileDialog::getSaveFileName(this, tr("Save As..."), "PRODUCT-rg-en.ditamap", tr("DITA Map (*.ditamap)"));
-    bookFile = QFileInfo(bookFileSave).absolutePath() + "/bm-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
+    bookFile = QFileDialog::getSaveFileName(this, tr("Save As..."), "PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
+
     pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile);
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     bookDoc.save_file(bookFile.toStdString().c_str());
 
     //ditaval
-    ditavalFile = QFileInfo(bookFileSave).absolutePath() + "/dv-" + QFileInfo(bookFileSave).baseName() + ".ditaval";
+    ditavalFile = QFileInfo(bookFile).absolutePath() + "/dv-" + QFileInfo(bookFile).baseName() + ".ditaval";
     pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
     valDoc.save_file(ditavalFile.toStdString().c_str());
 
     //map
-    mapFile = QFileInfo(bookFileSave).absolutePath() + "/m-" + QFileInfo(bookFileSave).baseName() + ".ditamap";
+    mapFile = QFileInfo(bookFile).absolutePath() + "/m-" + QFileInfo(bookFile).baseName() + ".ditamap";
     pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile);
     mapDoc.save_file(mapFile.toStdString().c_str());
 }
@@ -165,18 +174,25 @@ void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
 
 void RegulatoryTemplate::autoUpdateDupKeyrefs()
 {
+    //temporarily turn off the signal from sender
     auto senderObject = QObject::sender();
+
+    senderObject->blockSignals(true);
     auto senderName = senderObject->objectName();
+    QTextEdit* senderCast = qobject_cast<QTextEdit*>(senderObject);
 
     auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>(senderName);
+    if (keyrefs.size() < 2) { return; }; //only continue if list has at least 2 items
+
     for (auto& key : keyrefs)
     {
         auto keyName = key->objectName();
-        if (senderName == key->objectName() && !key->hasFocus())
+        auto focus = key->hasFocus();
+        if (senderName == key->objectName())
         {
-            QTextEdit* senderCast = qobject_cast<QTextEdit*>(senderObject);
             auto senderText = senderCast->toPlainText();
             key->setPlainText(senderText);
         }
     }
+    senderObject->blockSignals(false);
 }
