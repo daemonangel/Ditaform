@@ -15,26 +15,48 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 		{
 			if (child.node().attribute("keyref"))
 			{
-				ui.textBrowser->setStyleSheet("* {color: red; font-size: 10pt; font-weight: normal; font-family: arial}");
-				insertKeyref(child.node());
+				ui.textBrowser->setFontPointSize(10);
+				ui.textBrowser->setTextColor(QColor(255, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Normal);
+				ui.textBrowser->insertPlainText(child.node().attribute("keyref").value());
+				insertKeyrefInput(child.node());
 			}
 			else if (child.node().name() == std::string("title") || child.parent().name() == std::string("title"))
 			{
-				ui.textBrowser->setStyleSheet("* {color: black; font-size: 16pt; font-weight: bold; font-family: arial}");
-				ui.textBrowser->insertHtml(child.node().value());
+				ui.textBrowser->setFontPointSize(16);
+				ui.textBrowser->setTextColor(QColor(0, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Bold);
+				ui.textBrowser->insertPlainText(child.node().value());
 				ui.textBrowser->insertHtml("<br>"); //line break
 			}
 			else if (child.parent().name() == std::string("li") && !child.node().previous_sibling().attribute("keyref"))
 			{
-				auto text = std::string("<li>") + child.node().value() + std::string("</li>");
-				ui.textBrowser->insertHtml(text.c_str());
-				ui.textBrowser->insertHtml("<br>"); //line break
+				ui.textBrowser->setFontPointSize(10);
+				ui.textBrowser->setTextColor(QColor(0, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Normal);
+				ui.textBrowser->insertHtml("&bull; ");
+				ui.textBrowser->insertPlainText(child.node().value());
+				// maybe if ul, ol, steps, get all the li or cmd nodes and put them in a QT list
+			}
+			else if (child.parent().name() == std::string("cmd") && !child.node().previous_sibling().attribute("keyref"))
+			{
+				ui.textBrowser->setFontPointSize(10);
+				ui.textBrowser->setTextColor(QColor(255, 0, 255));
+				ui.textBrowser->setFontWeight(QFont::Normal);
+				ui.textBrowser->insertHtml("&bull; ");
+				ui.textBrowser->insertPlainText(child.node().value());
 			}
 			else
 			{
-				ui.textBrowser->setStyleSheet("* {color: black; font-size: 10pt; font-weight: normal; font-family: arial}");
-				ui.textBrowser->insertHtml(child.node().value());
-				ui.textBrowser->insertHtml("<br>"); //line break
+				ui.textBrowser->setFontPointSize(10);
+				ui.textBrowser->setTextColor(QColor(0, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Normal);
+				ui.textBrowser->insertPlainText(child.node().value());
+				//add a line break if last node in block
+				if (child.node() == child.parent().last_child())
+				{
+					ui.textBrowser->insertHtml("<br>"); //line break
+				}
 			}
 		}
 	}
@@ -49,10 +71,8 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 	connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitaval);
 }
 
-void PropRow::insertKeyref(const pugi::xml_node& node)
+void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 {
-	ui.textBrowser->insertHtml(node.attribute("keyref").value());
-
 	//add keyref to the group box
 	QFrame* line = new QFrame(this);
 	line->setFrameStyle(QFrame::NoFrame);

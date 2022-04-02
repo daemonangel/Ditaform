@@ -22,5 +22,6 @@ private:
 	Ui::PropRow ui;
 	const propValueCollection& _myPropsRow;
 	std::unique_ptr<RegulatoryTemplate> _RegulatoryTemplate;
-	void insertKeyref(const pugi::xml_node&);
+	
+	void insertKeyrefInput(const pugi::xml_node&);
 };
