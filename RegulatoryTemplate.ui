@@ -9,9 +9,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>695</width>
+    <width>750</width>
     <height>248</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>RegulatoryTemplate</string>
@@ -22,6 +28,12 @@
   <widget class="QWidget" name="centralWidget">
    <property name="enabled">
     <bool>true</bool>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -43,9 +55,15 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>675</width>
+         <width>730</width>
          <height>206</height>
         </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <layout class="QFormLayout" name="formLayout">
         <property name="sizeConstraint">
@@ -56,6 +74,15 @@
         </property>
         <item row="0" column="0">
          <widget class="QLabel" name="prodname_label">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Product Name</string>
           </property>
@@ -66,6 +93,15 @@
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="partnumber_label">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Part Number</string>
           </property>
@@ -76,6 +112,15 @@
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="month_label">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Month</string>
           </property>
@@ -86,6 +131,15 @@
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="year_label">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Year</string>
           </property>
@@ -96,6 +150,15 @@
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="revision_label">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Revision</string>
           </property>
@@ -115,7 +178,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>695</width>
+     <width>750</width>
      <height>22</height>
     </rect>
    </property>
@@ -123,9 +186,11 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="load_menu"/>
+    <addaction name="new_menu"/>
     <addaction name="save_menu"/>
     <addaction name="saveAs_menu_2"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -134,9 +199,9 @@
     <string>Save As...</string>
    </property>
   </action>
-  <action name="load_menu">
+  <action name="new_menu">
    <property name="text">
-    <string>New</string>
+    <string>Load</string>
    </property>
   </action>
   <action name="save_menu">
@@ -147,6 +212,11 @@
   <action name="saveAs_menu_2">
    <property name="text">
     <string>Save As</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Close</string>
    </property>
   </action>
  </widget>
@@ -236,10 +306,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>load_menu</sender>
+   <sender>new_menu</sender>
    <signal>triggered()</signal>
    <receiver>RegulatoryTemplateClass</receiver>
-   <slot>loadSource()</slot>
+   <slot>fileLoad()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -283,6 +353,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionClose</sender>
+   <signal>triggered()</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>347</x>
+     <y>123</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>clicked()</slot>
@@ -291,9 +377,10 @@
   <slot>monthEdit(QString)</slot>
   <slot>yearEdit(QString)</slot>
   <slot>revisionEdit(QString)</slot>
-  <slot>loadSource()</slot>
+  <slot>fileLoad()</slot>
   <slot>fileSave()</slot>
   <slot>updateKeyref(QString)</slot>
   <slot>fileSaveAs()</slot>
+  <slot>closeEvent(QCloseEvent)</slot>
  </slots>
 </ui>

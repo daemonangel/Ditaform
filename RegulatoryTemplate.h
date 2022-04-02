@@ -26,7 +26,7 @@ private slots:
     void revisionEdit(const QString& metadata);
     void fileSave();
     void fileSaveAs();
-    void loadSource();
+    void fileLoad();
     void autoUpdateDupKeyrefs();
 
 protected:
@@ -44,4 +44,9 @@ private:
     int premadeRows = 5; //number of premade form rows
 
     bool maybeSave();
+    void loadSource();
+    void clearBookInfo();
+    void removePropRows();
+    void addPropRows();
+    void connectPropRowTextChange();
 };

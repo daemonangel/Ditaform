@@ -5,6 +5,8 @@
 #include "pugixml.hpp"
 #include <iostream>
 #include "PropRow.h"
+#include <format>
+#include <QDateTime>
 
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
@@ -19,8 +21,25 @@ RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     ui.setupUi(this);
 }
 
+class SignalBlocker
+{
+private:
+    QObject* _widget;
+public:
+    SignalBlocker(QObject* widget)
+    {
+        _widget = widget;
+        _widget->blockSignals(true);
+    }
+    ~SignalBlocker()
+    {
+        _widget->blockSignals(false);
+    }
+};
+
 void RegulatoryTemplate::closeEvent(QCloseEvent *event)
 {
+    //TODO: On closing the app, check if file is saved. If it isn't ask user if they want to save the file.
     if (maybeSave()) {
         fileSave();
         event->accept();
@@ -38,10 +57,9 @@ bool RegulatoryTemplate::maybeSave()
         QMessageBox::Save | QMessageBox::Close);
     if (ret == QMessageBox::Save)
         return true;
-    else if (ret == QMessageBox::Close)
+    else
         return false;
 }
-
 //TODO make a button that exports versions of the document with translation info, like language codes. this is for later.
 
 void RegulatoryTemplate::enableDisableContent(bool checked)
@@ -60,6 +78,12 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
 
 //TODO add a button to load files - loaded file should also populate the keyref QTextEdits
 
+void RegulatoryTemplate::fileLoad()
+{
+    loadSource();
+    fileSaveAs();
+}
+
 void RegulatoryTemplate::fileSave()
 {
     if (!bookFile.isEmpty())
@@ -70,27 +94,25 @@ void RegulatoryTemplate::fileSave()
     }
     else
     {
-        RegulatoryTemplate::fileSaveAs();
+        fileSaveAs();
     }
-    //TODO: On closing the app, check if file is saved. If it isn't ask user if they want to save the file.
     // https://doc.qt.io/qt-5/qfilesystemwatcher.html#fileChanged
-    //TODO: Notify the user somehow that they have unsaved changes
+    //TODO: Notify the user that they have unsaved changes. This is for later.
 }
 
 void RegulatoryTemplate::fileSaveAs()
 {
     _xmlData = std::make_unique<XmlData>();
 
-    //save a copy of the source files to user defined location/file for bookmap
     //bookmap
     bookFile = QFileDialog::getSaveFileName(this, tr("Save As..."), "PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
-
     pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile);
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     bookDoc.save_file(bookFile.toStdString().c_str());
 
     //ditaval
-    ditavalFile = QFileInfo(bookFile).absolutePath() + "/dv-" + QFileInfo(bookFile).baseName() + ".ditaval";
+    QString format("%1/dv-%2.ditaval");
+    ditavalFile = format.arg(QFileInfo(bookFile).absolutePath()).arg(QFileInfo(bookFile).baseName());
     pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
     valDoc.save_file(ditavalFile.toStdString().c_str());
 
@@ -100,11 +122,25 @@ void RegulatoryTemplate::fileSaveAs()
     mapDoc.save_file(mapFile.toStdString().c_str());
 }
 
+//C++ string = auto ditavalFile = std::format("{}/dv-{}.ditaval", QFileInfo(bookFile).absolutePath(), QFileInfo(bookFile).baseName());
+
 void RegulatoryTemplate::loadSource()
 {
     _xmlData = std::make_unique<XmlData>();
 
-    //TODO - test that reloading rows works as expected.
+    removePropRows();
+
+    clearBookInfo();
+
+    //TODO allow user to choose the source files and save the file locations to the variables in XmlData
+
+    addPropRows();
+
+    connectPropRowTextChange();
+}
+
+void RegulatoryTemplate::removePropRows()
+{
     //if the row count is more than the number of premade rows, delete the dynamically created rows
     if (ui.formLayout->rowCount() > premadeRows)
     {
@@ -114,19 +150,34 @@ void RegulatoryTemplate::loadSource()
             ui.formLayout->removeRow(i);
         }
     }
+}
+
+void RegulatoryTemplate::clearBookInfo()
+{
+    //empty text from the remaining rows
+    for (auto& row : ui.centralWidget->findChildren<QLineEdit*>())
+    {
+        row->setText("");
+    }
+}
+
+void RegulatoryTemplate::addPropRows()
+{
     //for each prop set, add a row to the ui
     for (auto& propRow : _xmlData->_propsRows)
     {
         auto propUI = new PropRow(propRow.second, ui.centralWidget);
         ui.formLayout->addRow(propUI);
     }
+}
 
-    //TODO need a way to deal with multiple instances of the same keyref in the form. maybe when u edit one, it automatically puts the same text in all of them?
+void RegulatoryTemplate::connectPropRowTextChange()
+{
     //connect all QTextEdit textChange signals to autoUpdateDupKeyrefs slot
     auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>();
     for (auto& key : keyrefs)
     {
-        bool connectResult = connect(key, &QTextEdit::textChanged, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
+        connect(key, &QTextEdit::textChanged, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
     }
 }
 
@@ -176,8 +227,8 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs()
 {
     //temporarily turn off the signal from sender
     auto senderObject = QObject::sender();
+    SignalBlocker blocker(senderObject);
 
-    senderObject->blockSignals(true);
     auto senderName = senderObject->objectName();
     QTextEdit* senderCast = qobject_cast<QTextEdit*>(senderObject);
 
@@ -187,12 +238,11 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs()
     for (auto& key : keyrefs)
     {
         auto keyName = key->objectName();
-        auto focus = key->hasFocus();
         if (senderName == key->objectName())
         {
             auto senderText = senderCast->toPlainText();
-            key->setPlainText(senderText);
+            key->clear();
+            key->insertPlainText(senderText);
         }
     }
-    senderObject->blockSignals(false);
 }

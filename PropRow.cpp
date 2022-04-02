@@ -15,48 +15,26 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 		{
 			if (child.node().attribute("keyref"))
 			{
-				ui.textBrowser->setFontPointSize(12);
-				ui.textBrowser->setTextColor(QColor(255, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Normal);
-				ui.textBrowser->insertPlainText(child.node().attribute("keyref").value());
-
-				//add keyref to the group box
-				QFrame* line = new QFrame(this);
-				line->setFrameStyle(QFrame::NoFrame);
-				line->setLineWidth(5);
-				QFont labelFont("Normal", 10, QFont::Bold);
-				QLabel* label = new QLabel(this);
-				label->setFrameStyle(QFrame::NoFrame);
-				label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-				label->setFont(labelFont);
-				label->setText(child.node().attribute("keyref").value());
-				QTextEdit* input = new QTextEdit();
-				auto senderName = child.node().attribute("keyref").value();
-				input->setObjectName(senderName);
-
-				//connect signal textchanged from input object to slot function updateKeyref
-				//bool connectResult = connect(input, &QTextEdit::textChanged, _RegulatoryTemplate.get(), &RegulatoryTemplate::updateKeyref);
-				bool connectResult = connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
-
-				ui.verticalLayout->addWidget(line);
-				ui.verticalLayout->addWidget(label);
-				ui.verticalLayout->addWidget(input);
+				ui.textBrowser->setStyleSheet("* {color: red; font-size: 10pt; font-weight: normal; font-family: arial}");
+				insertKeyref(child.node());
 			}
 			else if (child.node().name() == std::string("title") || child.parent().name() == std::string("title"))
 			{
-				ui.textBrowser->setFontPointSize(16);
-				ui.textBrowser->setTextColor(QColor(0, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Bold);
-				ui.textBrowser->insertPlainText(child.node().value());
+				ui.textBrowser->setStyleSheet("* {color: black; font-size: 16pt; font-weight: bold; font-family: arial}");
+				ui.textBrowser->insertHtml(child.node().value());
+				ui.textBrowser->insertHtml("<br>"); //line break
+			}
+			else if (child.parent().name() == std::string("li") && !child.node().previous_sibling().attribute("keyref"))
+			{
+				auto text = std::string("<li>") + child.node().value() + std::string("</li>");
+				ui.textBrowser->insertHtml(text.c_str());
 				ui.textBrowser->insertHtml("<br>"); //line break
 			}
 			else
 			{
-				ui.textBrowser->setFontPointSize(12);
-				ui.textBrowser->setTextColor(QColor(0, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Normal);
-				ui.textBrowser->insertPlainText(child.node().value());
-				ui.textBrowser->insertHtml("<p>"); //line break
+				ui.textBrowser->setStyleSheet("* {color: black; font-size: 10pt; font-weight: normal; font-family: arial}");
+				ui.textBrowser->insertHtml(child.node().value());
+				ui.textBrowser->insertHtml("<br>"); //line break
 			}
 		}
 	}
@@ -68,10 +46,38 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 	ui.propRow_check->setObjectName(QString::fromStdString(_myPropsRow.propsName));
 
 	//connect checkbox signal to updateDitaval slot
-	bool connectResult = connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitaval);
-
-	//TODO checkboxes not always working
+	connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitaval);
 }
+
+void PropRow::insertKeyref(const pugi::xml_node& node)
+{
+	ui.textBrowser->insertHtml(node.attribute("keyref").value());
+
+	//add keyref to the group box
+	QFrame* line = new QFrame(this);
+	line->setFrameStyle(QFrame::NoFrame);
+	line->setLineWidth(5);
+
+	QLabel* label = new QLabel(this);
+	label->setFrameStyle(QFrame::NoFrame);
+	label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	QFont labelFont("Normal", 10, QFont::Bold);
+	label->setFont(labelFont);
+	label->setText(node.attribute("keyref").value());
+
+	QTextEdit* input = new QTextEdit();
+	auto senderName = node.attribute("keyref").value();
+	input->setObjectName(senderName);
+	input->setMaximumSize(QSize(130, 50));
+	input->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
+
+	//connect signal textchanged from input object to slot function updateKeyref
+	connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
+
+	ui.verticalLayout->addWidget(line);
+	ui.verticalLayout->addWidget(label);
+	ui.verticalLayout->addWidget(input);
+};
 
 void PropRow::updateKeyref()
 {
@@ -81,9 +87,7 @@ void PropRow::updateKeyref()
 	auto senderName = senderObject->objectName();
 
 	pugi::xml_node map = mapDoc.child("map");
-	//search all keydef nodes in the map for keys value that matches the object name
 
-	//if same props row has more than one keyref, only the last one created emits a signal
 	auto keysResult = map.select_nodes(".//*[@keys]");
 	for (auto& key : keysResult)
 	{

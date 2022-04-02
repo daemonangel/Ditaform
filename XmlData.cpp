@@ -34,8 +34,9 @@ XmlData::XmlData()
 	auto& bookmapFile = xmlDocs.emplace_back();
 	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(sourceBookmapFile);
 
-	//get the map file. only supporting one map.
-	//TODO support multiple maps - maybe do this after first release
+	//TODO support multiple maps. This is for later.
+	
+	//get the map file.
 	auto mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
 	auto& mapFile = xmlDocs.emplace_back();
 	auto fullMapPath = std::string("source/") + mapHref;
@@ -47,8 +48,11 @@ XmlData::XmlData()
 
 	std::cout << fullMapPath << std::endl;
 
-	std::cout << "propsRows stores " << int(_propsRows.size()) << " items.\n";
+	processTopics();
+}
 
+void XmlData::processTopics()
+{
 	for (const auto& href : _topicHrefs) // fancy ranged for-loop
 	{
 		//get the topic file.
@@ -75,10 +79,6 @@ XmlData::XmlData()
 					propsRow._keysList.push_back(propChild.node().attribute("keyref").value());
 				}
 			}
-
-			//std::cout << "prop value='" << propsNode.attribute("props").value() << "'\n";
-			//std::cout << "    struct value='" << _propsRows[i].propsName << ", in row " << i << "'\n";
 		}
-		std::cout << "propsRows stores " << int(_propsRows.size()) << " items.\n";
 	}
 }
