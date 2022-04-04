@@ -20,10 +20,27 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 				ui.textBrowser->setFontWeight(QFont::Normal);
 				ui.textBrowser->insertPlainText(child.node().attribute("keyref").value());
 				insertKeyrefInput(child.node());
+				//add a line break if last node in block
+				if (child.node() == child.parent().last_child())
+				{
+					ui.textBrowser->insertHtml("<br>"); //line break
+				}
+			}
+			if (child.parent().name() == std::string("uicontrol"))
+			{
+				ui.textBrowser->setFontPointSize(10);
+				ui.textBrowser->setTextColor(QColor(0, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Bold);
+				ui.textBrowser->insertPlainText(child.node().value());
+				//add a line break if last node in block
+				if (child.parent() == child.parent().parent().last_child())
+				{
+					ui.textBrowser->insertHtml("<br>"); //line break
+				}
 			}
 			else if (child.node().name() == std::string("title") || child.parent().name() == std::string("title"))
 			{
-				ui.textBrowser->setFontPointSize(16);
+				ui.textBrowser->setFontPointSize(14);
 				ui.textBrowser->setTextColor(QColor(0, 0, 0));
 				ui.textBrowser->setFontWeight(QFont::Bold);
 				ui.textBrowser->insertPlainText(child.node().value());
@@ -34,18 +51,44 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 				ui.textBrowser->setFontPointSize(10);
 				ui.textBrowser->setTextColor(QColor(0, 0, 0));
 				ui.textBrowser->setFontWeight(QFont::Normal);
-				ui.textBrowser->insertHtml("&bull; ");
+				//if first node in block
+				if (child.node() == child.parent().first_child())
+				{
+					ui.textBrowser->insertPlainText("[bullet] ");
+				}
 				ui.textBrowser->insertPlainText(child.node().value());
-				// maybe if ul, ol, steps, get all the li or cmd nodes and put them in a QT list
+				//add a line break if last node in block
+				if (child.node() == child.parent().last_child())
+				{
+					ui.textBrowser->insertHtml("<br>"); //line break
+				}
 			}
 			else if (child.parent().name() == std::string("cmd") && !child.node().previous_sibling().attribute("keyref"))
 			{
 				ui.textBrowser->setFontPointSize(10);
-				ui.textBrowser->setTextColor(QColor(255, 0, 255));
+				ui.textBrowser->setTextColor(QColor(0, 0, 0));
 				ui.textBrowser->setFontWeight(QFont::Normal);
-				ui.textBrowser->insertHtml("&bull; ");
+				ui.textBrowser->insertPlainText("[step] ");
 				ui.textBrowser->insertPlainText(child.node().value());
+				//add a line break if last node in block
+				if (child.node() == child.parent().last_child())
+				{
+					ui.textBrowser->insertHtml("<br>"); //line break
+				}
 			}
+			/*else if (child.node().name() == std::string("alt"))
+			{
+				ui.textBrowser->setFontPointSize(10);
+				ui.textBrowser->setTextColor(QColor(0, 0, 0));
+				ui.textBrowser->setFontWeight(QFont::Normal);
+				ui.textBrowser->insertPlainText("[image] ");
+				ui.textBrowser->insertPlainText(child.node().value());
+				//add a line break if last node in block
+				if (child.node() == child.parent().last_child())
+				{
+					ui.textBrowser->insertHtml("<br>"); //line break
+				}
+			}*/
 			else
 			{
 				ui.textBrowser->setFontPointSize(10);
@@ -53,7 +96,7 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 				ui.textBrowser->setFontWeight(QFont::Normal);
 				ui.textBrowser->insertPlainText(child.node().value());
 				//add a line break if last node in block
-				if (child.node() == child.parent().last_child())
+				if (child.node() == child.parent().last_child() && child.node().type() != pugi::node_element)
 				{
 					ui.textBrowser->insertHtml("<br>"); //line break
 				}

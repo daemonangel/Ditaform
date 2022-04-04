@@ -13,7 +13,7 @@
       <li props="props5">So, what else can we talk about?</li>
       <li props="props6">I would like to discuss <ph keyref="something-boring"></ph>.</li>
       <li props="props4">That is great news. I hope the temperature will be <ph keyref="degrees-again"></ph> degrees.</li>
-      <li props="props7">I have to leave. Goodbye.</li>
+      <li props="props7">I have to leave. <uicontrol>Goodbye</uicontrol>.</li>
 	</ul>
   </conbody> 
 </concept>

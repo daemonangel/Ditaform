@@ -39,4 +39,7 @@
   <topicref href="c-topic1.dita" type="concept"></topicref>
   <topicref href="c-topic2.dita" type="concept"></topicref>
   <topicref href="c-topic3.dita" type="concept"></topicref>
+  <topicref href="c-topic4.dita" type="concept"></topicref>
+  <topicref href="c-topic5.dita" type="concept"></topicref>
+  <topicref href="c-topic6.dita" type="concept"></topicref>
 </map>
