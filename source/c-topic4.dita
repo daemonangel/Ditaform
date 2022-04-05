@@ -5,8 +5,8 @@
 <title props="props13">Casual Conversation</title>
   <shortdesc props="props13">This is a short topic.</shortdesc>
  <conbody props="props14">
-    <p>Choose one of the following:</p><br/>
-    <ul>
+    <p>This is some text in a paragraph block. Not a list. A paragraph!</p>
+    <ul><p>Choose one of the following:</p>
       <li>This is a piece of content. Hello. How are you today? I am well thank you. Nice weather we are having.</li>
       <li>It is a little cold today, but I heard it will be warmer next week.</li>
       <li>That is great news, <ph keyref="ex-name"></ph>. I hope the temperature will be <ph keyref="degrees"></ph> degrees.</li>

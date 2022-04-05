@@ -11,97 +11,7 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 		//get all nodes inside this props
 		auto allText = node.select_nodes(".//node()");
 
-		for (auto& child : allText)
-		{
-			if (child.node().attribute("keyref"))
-			{
-				ui.textBrowser->setFontPointSize(10);
-				ui.textBrowser->setTextColor(QColor(255, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Normal);
-				ui.textBrowser->insertPlainText(child.node().attribute("keyref").value());
-				insertKeyrefInput(child.node());
-				//add a line break if last node in block
-				if (child.node() == child.parent().last_child())
-				{
-					ui.textBrowser->insertHtml("<br>"); //line break
-				}
-			}
-			if (child.parent().name() == std::string("uicontrol"))
-			{
-				ui.textBrowser->setFontPointSize(10);
-				ui.textBrowser->setTextColor(QColor(0, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Bold);
-				ui.textBrowser->insertPlainText(child.node().value());
-				//add a line break if last node in block
-				if (child.parent() == child.parent().parent().last_child())
-				{
-					ui.textBrowser->insertHtml("<br>"); //line break
-				}
-			}
-			else if (child.node().name() == std::string("title") || child.parent().name() == std::string("title"))
-			{
-				ui.textBrowser->setFontPointSize(14);
-				ui.textBrowser->setTextColor(QColor(0, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Bold);
-				ui.textBrowser->insertPlainText(child.node().value());
-				ui.textBrowser->insertHtml("<br>"); //line break
-			}
-			else if (child.parent().name() == std::string("li") && !child.node().previous_sibling().attribute("keyref"))
-			{
-				ui.textBrowser->setFontPointSize(10);
-				ui.textBrowser->setTextColor(QColor(0, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Normal);
-				//if first node in block
-				if (child.node() == child.parent().first_child())
-				{
-					ui.textBrowser->insertPlainText("[bullet] ");
-				}
-				ui.textBrowser->insertPlainText(child.node().value());
-				//add a line break if last node in block
-				if (child.node() == child.parent().last_child())
-				{
-					ui.textBrowser->insertHtml("<br>"); //line break
-				}
-			}
-			else if (child.parent().name() == std::string("cmd") && !child.node().previous_sibling().attribute("keyref"))
-			{
-				ui.textBrowser->setFontPointSize(10);
-				ui.textBrowser->setTextColor(QColor(0, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Normal);
-				ui.textBrowser->insertPlainText("[step] ");
-				ui.textBrowser->insertPlainText(child.node().value());
-				//add a line break if last node in block
-				if (child.node() == child.parent().last_child())
-				{
-					ui.textBrowser->insertHtml("<br>"); //line break
-				}
-			}
-			/*else if (child.node().name() == std::string("alt"))
-			{
-				ui.textBrowser->setFontPointSize(10);
-				ui.textBrowser->setTextColor(QColor(0, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Normal);
-				ui.textBrowser->insertPlainText("[image] ");
-				ui.textBrowser->insertPlainText(child.node().value());
-				//add a line break if last node in block
-				if (child.node() == child.parent().last_child())
-				{
-					ui.textBrowser->insertHtml("<br>"); //line break
-				}
-			}*/
-			else
-			{
-				ui.textBrowser->setFontPointSize(10);
-				ui.textBrowser->setTextColor(QColor(0, 0, 0));
-				ui.textBrowser->setFontWeight(QFont::Normal);
-				ui.textBrowser->insertPlainText(child.node().value());
-				//add a line break if last node in block
-				if (child.node() == child.parent().last_child() && child.node().type() != pugi::node_element)
-				{
-					ui.textBrowser->insertHtml("<br>"); //line break
-				}
-			}
-		}
+		formatRows(allText);
 	}
 
 	//set title of groupbox to the props node name
@@ -179,6 +89,116 @@ void PropRow::updateDitaval()
 	else
 	{
 		node.attribute("action").set_value("exclude");
+	}
+}
+
+void PropRow::formatRows(const pugi::xpath_node_set& allText)
+{
+	QTextCursor cursor = ui.textBrowser->textCursor();
+
+	QTextListFormat::Style bulletStyle = QTextListFormat::ListDisc;
+	QTextListFormat bulletList;
+
+	QTextListFormat::Style numberStyle = QTextListFormat::ListDecimal;
+	QTextListFormat numberList;
+
+	QTextBlockFormat blockFormat = cursor.blockFormat();
+
+	for (auto& child : allText)
+	{
+		//inline formatting
+		if (child.node().attribute("keyref"))
+		{
+			ui.textBrowser->setFontPointSize(10);
+			ui.textBrowser->setTextColor(QColor(255, 0, 0));
+			ui.textBrowser->setFontWeight(QFont::Normal);
+			ui.textBrowser->insertPlainText(child.node().attribute("keyref").value());
+			insertKeyrefInput(child.node());
+		}
+		else if (child.parent().name() == std::string("uicontrol"))
+		{
+			ui.textBrowser->setFontPointSize(10);
+			ui.textBrowser->setTextColor(QColor(0, 0, 0));
+			ui.textBrowser->setFontWeight(QFont::Bold);
+			ui.textBrowser->insertPlainText(child.node().value());
+		}
+
+		//block formatting
+		else if (child.node().name() == std::string("alt"))
+		{
+			ui.textBrowser->setFontPointSize(10);
+			ui.textBrowser->setTextColor(QColor(255, 0, 255));
+			ui.textBrowser->setFontWeight(QFont::Normal);
+			ui.textBrowser->insertPlainText("[image] ");
+			ui.textBrowser->insertPlainText(child.node().value());
+			ui.textBrowser->insertPlainText(" [image]");
+			//add a line break if last node in block
+			if (child.node() == child.parent().last_child())
+			{
+				cursor.insertBlock();
+			}
+		}
+		else if (child.node().name() == std::string("title") || child.parent().name() == std::string("title"))
+		{
+			ui.textBrowser->setFontPointSize(14);
+			ui.textBrowser->setTextColor(QColor(0, 0, 0));
+			ui.textBrowser->setFontWeight(QFont::Bold);
+			ui.textBrowser->insertPlainText(child.node().value());
+			cursor.insertBlock();
+		}
+		else if (child.parent().name() == std::string("li") && !child.node().previous_sibling().attribute("keyref"))
+		{
+			std::cout << "Parent: " + std::string(child.parent().name()) + "\n    Node: " + std::string(child.node().name()) << std::endl;
+			ui.textBrowser->setFontPointSize(10);
+			ui.textBrowser->setTextColor(QColor(0, 0, 0));
+			ui.textBrowser->setFontWeight(QFont::Normal);
+			bulletList.setStyle(bulletStyle);
+			if (child.node() == child.parent().first_child())
+			{
+				cursor.insertText(child.node().value());
+				cursor.createList(bulletList);
+			}
+			else if (child.node() == child.parent().last_child())
+			{
+				cursor.insertBlock();
+			}
+			else
+			{
+				cursor.insertText(child.node().value());
+			}
+		}
+		else if (child.parent().name() == std::string("cmd") && !child.node().previous_sibling().attribute("keyref"))
+		{
+			ui.textBrowser->setFontPointSize(10);
+			ui.textBrowser->setTextColor(QColor(0, 0, 0));
+			ui.textBrowser->setFontWeight(QFont::Normal);
+			numberList.setStyle(numberStyle);
+			if (child.node() == child.parent().first_child())
+			{
+				cursor.insertText(child.node().value());
+				cursor.createList(numberList);
+			}
+			else if (child.node() == child.parent().parent().last_child())
+			{
+				cursor.insertBlock();
+			}
+			else
+			{
+				cursor.insertText(child.node().value());
+			}
+		}
+		else
+		{
+			ui.textBrowser->setFontPointSize(10);
+			ui.textBrowser->setTextColor(QColor(0, 0, 0));
+			ui.textBrowser->setFontWeight(QFont::Normal);
+			ui.textBrowser->insertPlainText(child.node().value());
+			//add a line break if last node in block
+			if (child.node() == child.parent().last_child() && child.node().type() != pugi::node_element && !pugi::node_null)
+			{
+				cursor.insertBlock();
+			}
+		}
 	}
 }
 
