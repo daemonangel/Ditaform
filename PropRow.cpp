@@ -104,8 +104,17 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 
 	QTextBlockFormat blockFormat = cursor.blockFormat();
 
+	pugi::xpath_query list_item_query("//li");
+	pugi::xpath_query first_list_item_query("//ul[1]");
+	pugi::xpath_query last_list_item_query("//ul[last()]");
+
 	for (auto& child : allText)
 	{
+		bool list_item = child.node().select_node(list_item_query).node();
+		bool first_list_item = child.node().select_node(first_list_item_query).node();
+		bool last_list_item = child.node().select_node(last_list_item_query).node();
+
+		std::cout << "Non-List Item: " + std::string(child.node().name()) << std::endl;
 		//inline formatting
 		if (child.node().attribute("keyref"))
 		{
@@ -146,26 +155,16 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 			ui.textBrowser->insertPlainText(child.node().value());
 			cursor.insertBlock();
 		}
-		else if (child.parent().name() == std::string("li") && !child.node().previous_sibling().attribute("keyref"))
+		else if (list_item)
 		{
-			std::cout << "Parent: " + std::string(child.parent().name()) + "\n    Node: " + std::string(child.node().name()) << std::endl;
+			std::cout << "List Item: " + std::string(child.node().name()) << std::endl;
 			ui.textBrowser->setFontPointSize(10);
 			ui.textBrowser->setTextColor(QColor(0, 0, 0));
 			ui.textBrowser->setFontWeight(QFont::Normal);
-			bulletList.setStyle(bulletStyle);
-			if (child.node() == child.parent().first_child())
-			{
-				cursor.insertText(child.node().value());
-				cursor.createList(bulletList);
-			}
-			else if (child.node() == child.parent().last_child())
-			{
-				cursor.insertBlock();
-			}
-			else
-			{
-				cursor.insertText(child.node().value());
-			}
+			
+			if (first_list_item) { bulletList.setStyle(bulletStyle); cursor.insertText(child.node().value()); cursor.createList(bulletList); }
+			else if (last_list_item) { cursor.insertBlock(); } 
+			else { cursor.insertText(child.node().value()); }
 		}
 		else if (child.parent().name() == std::string("cmd") && !child.node().previous_sibling().attribute("keyref"))
 		{
