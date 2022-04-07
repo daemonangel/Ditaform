@@ -104,30 +104,46 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 
 	QTextBlockFormat blockFormat = cursor.blockFormat();
 
-	pugi::xpath_query list_item_query("//li");
-	pugi::xpath_query first_list_item_query("//ul[1]");
-	pugi::xpath_query last_list_item_query("//ul[last()]");
+	QTextCharFormat charDefault;
+	charDefault.setFontWeight(400);
+	charDefault.setFontPointSize(10);
+	charDefault.setForeground(Qt::black);
 
+	QTextCharFormat charTitle;
+	charTitle.setFontWeight(700);
+	charTitle.setFontPointSize(14);
+	charTitle.setForeground(Qt::black);
+
+	pugi::xpath_query list_item_query("ancestor-or-self::li"); // li can be the root node of a row
+	pugi::xpath_query first_list_item_query(".//*[1]");
+	pugi::xpath_query has_next_sibling_query(".//following-sibling::*");
+
+	pugi::xpath_query title_query("parent::title");
+
+	pugi::xpath_query keyref_query("ancestor-or-self::*[@keyref]");
+		 
 	for (auto& child : allText)
 	{
+		cursor.setCharFormat(charDefault);
+
 		bool list_item = child.node().select_node(list_item_query).node();
 		bool first_list_item = child.node().select_node(first_list_item_query).node();
-		bool last_list_item = child.node().select_node(last_list_item_query).node();
+		bool has_next_sibling_item = child.node().select_node(has_next_sibling_query).node();
 
-		std::cout << "Non-List Item: " + std::string(child.node().name()) << std::endl;
+		bool title_item = child.node().select_node(title_query).node();
+
+		bool keyref_item = child.node().select_node(keyref_query).node();
+
+		std::cout << "Node: " + std::string(child.node().name()) + "\n    Value: " + std::string(child.node().value()) + "\n" << std::endl;
 		//inline formatting
-		if (child.node().attribute("keyref"))
+		if (keyref_item)
 		{
-			ui.textBrowser->setFontPointSize(10);
 			ui.textBrowser->setTextColor(QColor(255, 0, 0));
-			ui.textBrowser->setFontWeight(QFont::Normal);
 			ui.textBrowser->insertPlainText(child.node().attribute("keyref").value());
 			insertKeyrefInput(child.node());
 		}
 		else if (child.parent().name() == std::string("uicontrol"))
 		{
-			ui.textBrowser->setFontPointSize(10);
-			ui.textBrowser->setTextColor(QColor(0, 0, 0));
 			ui.textBrowser->setFontWeight(QFont::Bold);
 			ui.textBrowser->insertPlainText(child.node().value());
 		}
@@ -135,9 +151,7 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 		//block formatting
 		else if (child.node().name() == std::string("alt"))
 		{
-			ui.textBrowser->setFontPointSize(10);
 			ui.textBrowser->setTextColor(QColor(255, 0, 255));
-			ui.textBrowser->setFontWeight(QFont::Normal);
 			ui.textBrowser->insertPlainText("[image] ");
 			ui.textBrowser->insertPlainText(child.node().value());
 			ui.textBrowser->insertPlainText(" [image]");
@@ -147,30 +161,21 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 				cursor.insertBlock();
 			}
 		}
-		else if (child.node().name() == std::string("title") || child.parent().name() == std::string("title"))
+		else if (title_item)
 		{
-			ui.textBrowser->setFontPointSize(14);
-			ui.textBrowser->setTextColor(QColor(0, 0, 0));
-			ui.textBrowser->setFontWeight(QFont::Bold);
-			ui.textBrowser->insertPlainText(child.node().value());
+			cursor.setCharFormat(charTitle);
+			cursor.insertText(child.node().value());
 			cursor.insertBlock();
 		}
-		else if (list_item)
+		else if (list_item && !child.node().empty() && !keyref_item)
 		{
-			std::cout << "List Item: " + std::string(child.node().name()) << std::endl;
-			ui.textBrowser->setFontPointSize(10);
-			ui.textBrowser->setTextColor(QColor(0, 0, 0));
-			ui.textBrowser->setFontWeight(QFont::Normal);
-			
-			if (first_list_item) { bulletList.setStyle(bulletStyle); cursor.insertText(child.node().value()); cursor.createList(bulletList); }
-			else if (last_list_item) { cursor.insertBlock(); } 
-			else { cursor.insertText(child.node().value()); }
+			std::cout << "List Node: " + std::string(child.node().name()) + "\n    List Value: " + std::string(child.node().value()) + "\n" << std::endl;
+			bulletList.setStyle(bulletStyle);
+			cursor.insertText(child.node().value()); cursor.createList(bulletList);
+			if (!has_next_sibling_item) { cursor.insertBlock(); }
 		}
 		else if (child.parent().name() == std::string("cmd") && !child.node().previous_sibling().attribute("keyref"))
 		{
-			ui.textBrowser->setFontPointSize(10);
-			ui.textBrowser->setTextColor(QColor(0, 0, 0));
-			ui.textBrowser->setFontWeight(QFont::Normal);
 			numberList.setStyle(numberStyle);
 			if (child.node() == child.parent().first_child())
 			{
@@ -188,10 +193,7 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 		}
 		else
 		{
-			ui.textBrowser->setFontPointSize(10);
-			ui.textBrowser->setTextColor(QColor(0, 0, 0));
-			ui.textBrowser->setFontWeight(QFont::Normal);
-			ui.textBrowser->insertPlainText(child.node().value());
+			cursor.insertText(child.node().value());
 			//add a line break if last node in block
 			if (child.node() == child.parent().last_child() && child.node().type() != pugi::node_element && !pugi::node_null)
 			{
