@@ -114,27 +114,26 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 	charTitle.setFontPointSize(14);
 	charTitle.setForeground(Qt::black);
 
-	pugi::xpath_query list_item_query("ancestor-or-self::li"); // li can be the root node of a row
-	pugi::xpath_query first_list_item_query(".//*[1]");
-	pugi::xpath_query has_next_sibling_query(".//following-sibling::*");
-
-	pugi::xpath_query title_query("parent::title");
-
 	pugi::xpath_query keyref_query("ancestor-or-self::*[@keyref]");
+	pugi::xpath_query uicontrol_query("ancestor-or-self::uicontrol");
+	pugi::xpath_query list_item_query("ancestor-or-self::li"); // li can be the root node of a row
+	pugi::xpath_query step_item_query("ancestor-or-self::cmd");
+	pugi::xpath_query has_next_sibling_query(".//following-sibling::*");
+	pugi::xpath_query title_query("parent::title");
+	pugi::xpath_query alt_query("parent::alt");
 		 
 	for (auto& child : allText)
 	{
 		cursor.setCharFormat(charDefault);
 
-		bool list_item = child.node().select_node(list_item_query).node();
-		bool first_list_item = child.node().select_node(first_list_item_query).node();
-		bool has_next_sibling_item = child.node().select_node(has_next_sibling_query).node();
-
-		bool title_item = child.node().select_node(title_query).node();
-
 		bool keyref_item = child.node().select_node(keyref_query).node();
+		bool uicontrol_item = child.node().select_node(uicontrol_query).node();
+		bool list_item = child.node().select_node(list_item_query).node();
+		bool step_item = child.node().select_node(step_item_query).node();
+		bool has_next_sibling_item = child.node().select_node(has_next_sibling_query).node();
+		bool title_item = child.node().select_node(title_query).node();
+		bool alt_item = child.node().select_node(alt_query).node();
 
-		std::cout << "Node: " + std::string(child.node().name()) + "\n    Value: " + std::string(child.node().value()) + "\n" << std::endl;
 		//inline formatting
 		if (keyref_item)
 		{
@@ -142,24 +141,19 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 			ui.textBrowser->insertPlainText(child.node().attribute("keyref").value());
 			insertKeyrefInput(child.node());
 		}
-		else if (child.parent().name() == std::string("uicontrol"))
+		else if (uicontrol_item)
 		{
 			ui.textBrowser->setFontWeight(QFont::Bold);
 			ui.textBrowser->insertPlainText(child.node().value());
 		}
 
 		//block formatting
-		else if (child.node().name() == std::string("alt"))
+		else if (alt_item)
 		{
 			ui.textBrowser->setTextColor(QColor(255, 0, 255));
-			ui.textBrowser->insertPlainText("[image] ");
-			ui.textBrowser->insertPlainText(child.node().value());
-			ui.textBrowser->insertPlainText(" [image]");
-			//add a line break if last node in block
-			if (child.node() == child.parent().last_child())
-			{
-				cursor.insertBlock();
-			}
+			auto text = "[image] " + std::string(child.node().value()) + " [image]";
+			ui.textBrowser->insertPlainText(text.c_str());
+			if (!has_next_sibling_item) { cursor.insertBlock(); }
 		}
 		else if (title_item)
 		{
@@ -167,39 +161,23 @@ void PropRow::formatRows(const pugi::xpath_node_set& allText)
 			cursor.insertText(child.node().value());
 			cursor.insertBlock();
 		}
-		else if (list_item && !child.node().empty() && !keyref_item)
+		else if (list_item && !keyref_item)
 		{
-			std::cout << "List Node: " + std::string(child.node().name()) + "\n    List Value: " + std::string(child.node().value()) + "\n" << std::endl;
 			bulletList.setStyle(bulletStyle);
 			cursor.insertText(child.node().value()); cursor.createList(bulletList);
 			if (!has_next_sibling_item) { cursor.insertBlock(); }
 		}
-		else if (child.parent().name() == std::string("cmd") && !child.node().previous_sibling().attribute("keyref"))
+		else if (step_item && !keyref_item)
 		{
 			numberList.setStyle(numberStyle);
-			if (child.node() == child.parent().first_child())
-			{
-				cursor.insertText(child.node().value());
-				cursor.createList(numberList);
-			}
-			else if (child.node() == child.parent().parent().last_child())
-			{
-				cursor.insertBlock();
-			}
-			else
-			{
-				cursor.insertText(child.node().value());
-			}
+			cursor.insertText(child.node().value()); cursor.createList(numberList);
+			if (!has_next_sibling_item) { cursor.insertBlock(); }
 		}
 		else
 		{
 			cursor.insertText(child.node().value());
-			//add a line break if last node in block
-			if (child.node() == child.parent().last_child() && child.node().type() != pugi::node_element && !pugi::node_null)
-			{
-				cursor.insertBlock();
-			}
-		}
+			if (!has_next_sibling_item) { cursor.insertBlock(); }
+		}	
 	}
 }
 

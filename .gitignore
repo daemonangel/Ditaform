@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/PRODUCT-rg-en.ditamap
+/m-PRODUCT-rg-en.ditamap
+/dv-PRODUCT-rg-en.ditaval
