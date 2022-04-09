@@ -1,4 +1,5 @@
 #include "XmlData.h"
+#include "Dita2Html.h"
 
 // Linker -> System -> SubSystem" to Console for testing - was originally Windows
 
@@ -59,8 +60,8 @@ void XmlData::processTopics()
 		auto& topicFile = xmlDocs.emplace_back();
 		auto fullTopicPath = std::string("source/") + href;
 		pugi::xml_parse_result resultTopic = topicFile.load_file(fullTopicPath.c_str());
-
-		auto _propResult = topicFile.select_nodes("//*[@props]");
+		Dita2Html::convertDitaTags(topicFile);
+		auto _propResult = topicFile.select_nodes(".//*[@props]");
 		for (auto& propResult : _propResult)
 		{
 			auto propsNode = propResult.node();
@@ -71,13 +72,10 @@ void XmlData::processTopics()
 			propsRow.propsNodes.push_back(propsNode);
 
 			//add all keyrefs inside this node
-			auto keyrefResult = propsNode.select_nodes(".//*[@keyref]");
+			auto keyrefResult = propsNode.select_nodes(".//*[@auto_keyref]");
 			for (auto& propChild : keyrefResult)
 			{
-				if (propChild.node().attribute("keyref"))
-				{
-					propsRow._keysList.push_back(propChild.node().attribute("keyref").value());
-				}
+				propsRow._keysList.push_back(propChild.node().attribute("keyref").value());
 			}
 		}
 	}

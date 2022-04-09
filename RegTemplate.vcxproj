@@ -64,6 +64,7 @@
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <DiagnosticsFormat>Caret</DiagnosticsFormat>
+      <DisableSpecificWarnings>4127</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -93,6 +94,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dita2Html.cpp" />
     <ClCompile Include="PropRow.cpp" />
     <ClCompile Include="XmlData.cpp" />
     <QtRcc Include="RegulatoryTemplate.qrc" />
@@ -105,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="PropRow.h" />
+    <ClInclude Include="Dita2Html.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <ClInclude Include="XmlData.h" />

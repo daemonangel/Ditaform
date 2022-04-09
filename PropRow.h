@@ -24,5 +24,4 @@ private:
 	std::unique_ptr<RegulatoryTemplate> _RegulatoryTemplate;
 	
 	void insertKeyrefInput(const pugi::xml_node&);
-	void formatRows(const pugi::xpath_node_set&);
 };
