@@ -27,6 +27,21 @@ pugi::xml_node CreateNode(pugi::xml_node& parent, const std::string& name, const
 	return n;
 }
 
+void WrapNode(pugi::xml_node& node, const std::string& name)
+{
+	auto originalName = std::string(node.name());
+	node.set_name(name.c_str());
+
+	auto n = node.append_child(originalName.c_str());
+	auto a = n.append_attribute("skip");
+	a.set_value("yes");
+
+	for (auto& child : node)
+	{
+		n.append_move(child);
+	}
+}
+
 void SetNodeText(pugi::xml_node& node, const pugi::char_t* text)
 {
 	for (auto& n : node.children())
@@ -53,14 +68,19 @@ void ph_node(pugi::xml_node& node)
 
 void uicontrol_node(pugi::xml_node& node)
 {
-	node.set_name("font");
+	node.set_name("font-weight");
 	CreateAttrib(node, "weight", "bold");
 }
 
-void list_node(pugi::xml_node& node)
+void li_node(pugi::xml_node& node)
 {
-	node.set_name("li");
-	CreateAttrib(node, "weight", "bold");
+	WrapNode(node, "ul");
+}
+
+void title_node(pugi::xml_node& node)
+{
+	node.set_name("h1");
+	
 }
 
 /*void default_tag(pugi::xml_node& node)
@@ -79,7 +99,8 @@ std::unordered_map<std::string, nodeEditingFunction> nodeEditingMap =
 {
     {"ph", ph_node},
     {"uicontrol", uicontrol_node},
-    {"li", list_node},
+    {"li", li_node},
+    {"title", title_node},
 };
 
 struct simple_walker : pugi::xml_tree_walker
@@ -87,7 +108,7 @@ struct simple_walker : pugi::xml_tree_walker
     virtual bool for_each(pugi::xml_node& node)
     {
         auto it = nodeEditingMap.find(node.name());
-        if (it != nodeEditingMap.end()) // found something
+        if (it != nodeEditingMap.end() && !node.attribute("skip")) // found something
         {
 #if _DEBUG
 			std::stringstream ss;

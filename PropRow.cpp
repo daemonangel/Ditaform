@@ -20,7 +20,7 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 		std::stringstream nodestream;
 		node.print(nodestream, "", pugi::format_raw);
 		auto text = nodestream.str();
-		ui.textBrowser->insertPlainText(text.c_str());
+		ui.textBrowser->insertHtml(text.c_str());
 	}
 
 	//set title of groupbox to the props node name
