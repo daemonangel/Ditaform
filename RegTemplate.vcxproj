@@ -31,7 +31,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
-    <QtInstall>6.2.2_msvc2019_64</QtInstall>
+    <QtInstall>msvc2019_6.2.2_64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
@@ -94,8 +94,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Dita2Html.cpp" />
+    <ClCompile Include="DitaConvertTags.cpp" />
+    <ClCompile Include="DitaWellFormedHtml.cpp" />
     <ClCompile Include="PropRow.cpp" />
+    <ClCompile Include="Xml.cpp" />
     <ClCompile Include="XmlData.cpp" />
     <QtRcc Include="RegulatoryTemplate.qrc" />
     <QtUic Include="PropRow.ui" />
@@ -107,9 +109,11 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="PropRow.h" />
-    <ClInclude Include="Dita2Html.h" />
+    <ClInclude Include="DitaConvertTags.h" />
+    <ClInclude Include="DitaWellFormedHtml.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
+    <ClInclude Include="Xml.h" />
     <ClInclude Include="XmlData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

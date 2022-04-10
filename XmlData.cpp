@@ -1,5 +1,5 @@
 #include "XmlData.h"
-#include "Dita2Html.h"
+#include "DitaConvertTags.h"
 
 // Linker -> System -> SubSystem" to Console for testing - was originally Windows
 
@@ -60,7 +60,7 @@ void XmlData::processTopics()
 		auto& topicFile = xmlDocs.emplace_back();
 		auto fullTopicPath = std::string("source/") + href;
 		pugi::xml_parse_result resultTopic = topicFile.load_file(fullTopicPath.c_str());
-		Dita2Html::convertDitaTags(topicFile);
+		DitaConvertTags::convert(topicFile);
 		auto _propResult = topicFile.select_nodes(".//*[@props]");
 		for (auto& propResult : _propResult)
 		{

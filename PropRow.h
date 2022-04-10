@@ -19,6 +19,7 @@ private slots:
 	void updateDitaval();
 
 private:
+	const int* i;
 	Ui::PropRow ui;
 	const propValueCollection& _myPropsRow;
 	std::unique_ptr<RegulatoryTemplate> _RegulatoryTemplate;
