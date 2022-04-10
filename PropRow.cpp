@@ -38,7 +38,7 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 	//connect checkbox signal to updateDitaval slot
 	connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitaval);
 
-	std::cout << "PropRow Html: " << ui.textBrowser->toHtml().toStdString();
+	std::cout << "\n\nPropRow Html: " << ui.textBrowser->toHtml().toStdString();
 }
 
 void PropRow::insertKeyrefInput(const pugi::xml_node& node)
