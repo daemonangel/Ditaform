@@ -21,13 +21,12 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 		}
 		auto nodeCopy = doc.append_copy(node);
 		DitaWellFormedHtml::makeWellFormed(nodeCopy);
-		//ui.textBrowser->insertHtml(rowHtml.c_str());
 	}
 
 	std::stringstream ss;
 	doc.print(ss);
 
-	ui.textBrowser->insertHtml(QString::fromStdString(ss.str()));
+	ui.textBrowser->setHtml(QString::fromStdString(ss.str()));
 
 	//set title of groupbox to the props node name
 	ui.propRow_group->setTitle(QString::fromStdString(_myPropsRow.propsName));
@@ -37,8 +36,6 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 
 	//connect checkbox signal to updateDitaval slot
 	connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitaval);
-
-	std::cout << "\n\nPropRow Html: " << ui.textBrowser->toHtml().toStdString();
 }
 
 void PropRow::insertKeyrefInput(const pugi::xml_node& node)

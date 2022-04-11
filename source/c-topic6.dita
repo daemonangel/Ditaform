@@ -11,7 +11,9 @@
 			<step><cmd>Ask the person a question about themself.</cmd></step>
 			<step><cmd>Find a common interest to talk about.</cmd></step>
 			<step><cmd>Politely excuse yourself.</cmd>
-			<info><image href="M:\Zorya\leaf.svg"><alt>Two-wheeled bicycle</alt>
+			<info><image href="sample.svg"><alt>SVG Leaf</alt>
+</image></info>
+<info><image href="sample.png"><alt>PNG Leaf</alt>
 </image></info></step>
 		</steps>
 	</taskbody> 

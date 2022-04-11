@@ -26,7 +26,61 @@ void DitaConvertTags::uicontrol_node(pugi::xml_node& node)
 void DitaConvertTags::title_node(pugi::xml_node& node)
 {
 	node.set_name("h1");
-	
+}
+
+void DitaConvertTags::div_tag(pugi::xml_node& node)
+{
+	node.set_name("div");
+}
+
+void DitaConvertTags::p_tag(pugi::xml_node& node)
+{
+	node.set_name("p");
+}
+
+void DitaConvertTags::step_node(pugi::xml_node& node)
+{
+	node.set_name("li");
+}
+
+void DitaConvertTags::steps_node(pugi::xml_node& node)
+{
+	node.set_name("ol");
+}
+
+void DitaConvertTags::image_node(pugi::xml_node& node)
+{
+	node.set_name("img");
+	node.attribute("href").set_name("src");
+}
+
+void DitaConvertTags::table_node(pugi::xml_node& node)
+{
+	node.set_name("table");
+	Xml::CreateAttrib(node, "border", "1");
+	Xml::CreateAttrib(node, "cellpadding", "3");
+	Xml::CreateAttrib(node, "cellspacing", "0");
+}
+
+void DitaConvertTags::tgroup_node(pugi::xml_node& node)
+{
+	node.set_name("tbody");
+}
+
+void DitaConvertTags::row_node(pugi::xml_node& node)
+{
+	node.set_name("tr");
+}
+
+void DitaConvertTags::entry_node(pugi::xml_node& node)
+{
+	node.set_name("td");
+}
+
+void DitaConvertTags::note_node(pugi::xml_node& node)
+{
+	node.set_name("p");
+	//add admonitions in BOLD: before the node text
 }
 
 /*void DitaConvertTags::default_tag(pugi::xml_node& node)
@@ -43,9 +97,38 @@ void DitaConvertTags::do_nothing([[maybe_unused]] pugi::xml_node& node)
 
 std::unordered_map<std::string, DitaConvertTags::nodeEditingFunction> DitaConvertTags::nodeEditingMap =
 {
-    {"ph", DitaConvertTags::ph_node},
+    //miscellaneous
+	{"ph", DitaConvertTags::ph_node},
     {"uicontrol", DitaConvertTags::uicontrol_node},
     {"title", DitaConvertTags::title_node},
+    {"image", DitaConvertTags::image_node},
+    {"note", DitaConvertTags::note_node},
+
+	//ordered list
+    {"step", DitaConvertTags::step_node},
+    {"steps", DitaConvertTags::steps_node},
+
+	//topics
+    {"concept", DitaConvertTags::div_tag},
+    {"task", DitaConvertTags::div_tag},
+    {"reference", DitaConvertTags::div_tag},
+    {"topic", DitaConvertTags::div_tag},
+    {"figure", DitaConvertTags::div_tag},
+
+	//blocks
+    {"shortdesc", DitaConvertTags::p_tag},
+    {"info", DitaConvertTags::p_tag},
+    {"cmd", DitaConvertTags::p_tag},
+
+	//tables
+    {"table", DitaConvertTags::table_node},
+    {"tgroup", DitaConvertTags::tgroup_node},
+    {"row", DitaConvertTags::row_node},
+    {"entry", DitaConvertTags::entry_node},
+	{"simpletable", DitaConvertTags::table_node},
+	{"sthead", DitaConvertTags::row_node},
+	{"strow", DitaConvertTags::row_node},
+	{"stentry", DitaConvertTags::entry_node},
 };
 
 struct convert_tags_walker : pugi::xml_tree_walker

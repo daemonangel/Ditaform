@@ -12,7 +12,7 @@ public:
 
 private:
 	static pugi::xml_node li_node(pugi::xml_node& node);
-	static pugi::xml_node h1_node(pugi::xml_node& node);
+	static pugi::xml_node add_break(pugi::xml_node& node);
 	static pugi::xml_node do_nothing(pugi::xml_node& node);
 	//pugi::xml_node default_tag(const pugi::xml_node& node)
 

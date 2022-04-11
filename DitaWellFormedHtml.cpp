@@ -14,7 +14,7 @@ pugi::xml_node DitaWellFormedHtml::li_node(pugi::xml_node& node)
 	return ulNode;
 }
 
-pugi::xml_node DitaWellFormedHtml::h1_node(pugi::xml_node& node)
+pugi::xml_node DitaWellFormedHtml::add_break(pugi::xml_node& node)
 {
 	Xml::CreateNode(node.parent(), "br", "");
 	return node;
@@ -37,7 +37,7 @@ pugi::xml_node DitaWellFormedHtml::do_nothing(pugi::xml_node& node)
 std::unordered_map<std::string, DitaWellFormedHtml::nodeEditingFunction> DitaWellFormedHtml::nodeEditingMap =
 {
 	{"li", DitaWellFormedHtml::li_node},
-	{"h1", DitaWellFormedHtml::h1_node},
+	//{"thead", DitaWellFormedHtml::thead_node},
 };
 
 struct make_well_formed_walker : pugi::xml_tree_walker
@@ -45,7 +45,7 @@ struct make_well_formed_walker : pugi::xml_tree_walker
 	virtual bool for_each(pugi::xml_node& node)
 	{
 		auto it = DitaWellFormedHtml::nodeEditingMap.find(node.name());
-		if (it != DitaWellFormedHtml::nodeEditingMap.end() && !node.attribute("skip")) // found something
+		if (it != DitaWellFormedHtml::nodeEditingMap.end()) // found something
 		{
 			it->second(node);
 		}
@@ -65,7 +65,7 @@ std::string DitaWellFormedHtml::makeWellFormed(pugi::xml_node& node)
 	//newDoc.append_copy(node);
 
 	auto it = DitaWellFormedHtml::nodeEditingMap.find(node.name());
-	if (it != DitaWellFormedHtml::nodeEditingMap.end() && !node.attribute("skip")) // found something
+	if (it != DitaWellFormedHtml::nodeEditingMap.end()) // found something
 	{
 		it->second(node);
 	}
