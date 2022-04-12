@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include "pugixml.hpp"
 #include <iostream>
+#include "qstring.h"
 
 //need a vector to hold all the structs?
 
@@ -32,7 +33,7 @@ public:
 	std::vector<std::string> _topicHrefs; //from map: list of all the hrefs to topics
 	std::unordered_map<std::string, propValueCollection> _propsRows;
 	std::vector<pugi::xml_document> xmlDocs;
-	const char* sourceBookmapFile = "source/bm-source.ditamap";
-	const char* sourceMapFile = "source/m-source.ditamap";
-	const char* sourceDitavalFile = "source/dv-source.ditaval";
+	QString sourceBookmapFile = "source/bm-source.ditamap";
+	QString sourceMapFile = "source/m-source.ditamap";
+	QString sourceDitavalFile = "source/dv-source.ditaval";
 };

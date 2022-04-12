@@ -24,7 +24,7 @@ private slots:
     void monthEdit(const QString& metadata);
     void yearEdit(const QString& metadata);
     void revisionEdit(const QString& metadata);
-    void fileSave();
+    bool fileSave();
     void fileSaveAs();
     void fileLoad();
     void autoUpdateDupKeyrefs();

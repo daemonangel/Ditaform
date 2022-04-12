@@ -3,6 +3,7 @@
 
 // Linker -> System -> SubSystem" to Console for testing - was originally Windows
 
+//TODO future support for keydef to resource file
 std::vector<key_value_pair> GetKeyDefsAndValues(const pugi::xml_document& mapFile)
 {
 	std::vector<key_value_pair> keysAndValues;
@@ -33,7 +34,7 @@ XmlData::XmlData()
 {
 	//get the bookmap file.
 	auto& bookmapFile = xmlDocs.emplace_back();
-	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(sourceBookmapFile);
+	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(sourceBookmapFile.toStdString().c_str());
 
 	//TODO support multiple maps. This is for later.
 	

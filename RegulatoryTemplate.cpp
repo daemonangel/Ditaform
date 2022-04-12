@@ -39,26 +39,28 @@ public:
 
 void RegulatoryTemplate::closeEvent(QCloseEvent *event)
 {
-    //TODO: On closing the app, check if file is saved. If it isn't ask user if they want to save the file.
     if (maybeSave()) {
-        fileSave();
         event->accept();
     }
     else {
-        event->accept();
+        event->ignore();
     }
 }
 
 bool RegulatoryTemplate::maybeSave()
 {
+    //Save = Save, Cancel = return to app, Discard = close app without changes
+    //If you Save, but then cancel without saving, you return to the app
     QMessageBox::StandardButton ret;
     ret = QMessageBox::warning(this, tr("Application"),
         tr("Save file before closing?"),
-        QMessageBox::Save | QMessageBox::Close);
+        QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
     if (ret == QMessageBox::Save)
-        return true;
-    else
+        return fileSave();
+    else if (ret == QMessageBox::Cancel)
         return false;
+    else
+        return true;
 }
 //TODO make a button that exports versions of the document with translation info, like language codes. this is for later.
 
@@ -84,20 +86,23 @@ void RegulatoryTemplate::fileLoad()
     fileSaveAs();
 }
 
-void RegulatoryTemplate::fileSave()
+bool RegulatoryTemplate::fileSave()
 {
     if (!bookFile.isEmpty())
     {
         bookDoc.save_file(bookFile.toStdString().c_str());
         valDoc.save_file(ditavalFile.toStdString().c_str());
         mapDoc.save_file(mapFile.toStdString().c_str());
+        return true;
     }
     else
     {
         fileSaveAs();
+        return false;
     }
     // https://doc.qt.io/qt-5/qfilesystemwatcher.html#fileChanged
-    //TODO: Notify the user that they have unsaved changes. This is for later.
+    //TODO: Notify the user that they have unsaved changes while editing using an *. 
+    //TODO: Notify user via a popup that they have unsaved changes when closing the app.
 }
 
 void RegulatoryTemplate::fileSaveAs()
@@ -106,19 +111,19 @@ void RegulatoryTemplate::fileSaveAs()
 
     //bookmap
     bookFile = QFileDialog::getSaveFileName(this, tr("Save As..."), "PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
-    pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile);
+    pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile.toStdString().c_str());
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     bookDoc.save_file(bookFile.toStdString().c_str());
 
     //ditaval
     QString format("%1/dv-%2.ditaval");
     ditavalFile = format.arg(QFileInfo(bookFile).absolutePath()).arg(QFileInfo(bookFile).baseName());
-    pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile);
+    pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile.toStdString().c_str());
     valDoc.save_file(ditavalFile.toStdString().c_str());
 
     //map
     mapFile = QFileInfo(bookFile).absolutePath() + "/m-" + QFileInfo(bookFile).baseName() + ".ditamap";
-    pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile);
+    pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile.toStdString().c_str());
     mapDoc.save_file(mapFile.toStdString().c_str());
 }
 
