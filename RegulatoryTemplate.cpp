@@ -11,6 +11,9 @@
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
 QString RegulatoryTemplate::mapFile;
+QString RegulatoryTemplate::sourceBookmapFile;
+QString RegulatoryTemplate::sourceMapFile;
+QString RegulatoryTemplate::sourceDitavalFile;
 pugi::xml_document RegulatoryTemplate::bookDoc;
 pugi::xml_document valDoc;
 pugi::xml_document mapDoc;
@@ -88,6 +91,7 @@ void RegulatoryTemplate::fileLoad()
 
 bool RegulatoryTemplate::fileSave()
 {
+    //TODO: Future? Make it so that you don't have to save the file before you can make any changes to the form.
     if (!bookFile.isEmpty())
     {
         bookDoc.save_file(bookFile.toStdString().c_str());
@@ -111,19 +115,19 @@ void RegulatoryTemplate::fileSaveAs()
 
     //bookmap
     bookFile = QFileDialog::getSaveFileName(this, tr("Save As..."), "PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
-    pugi::xml_parse_result result = bookDoc.load_file(_xmlData->sourceBookmapFile.toStdString().c_str());
+    pugi::xml_parse_result result = bookDoc.load_file(sourceBookmapFile.toStdString().c_str());
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     bookDoc.save_file(bookFile.toStdString().c_str());
 
     //ditaval
     QString format("%1/dv-%2.ditaval");
     ditavalFile = format.arg(QFileInfo(bookFile).absolutePath()).arg(QFileInfo(bookFile).baseName());
-    pugi::xml_parse_result valResult = valDoc.load_file(_xmlData->sourceDitavalFile.toStdString().c_str());
+    pugi::xml_parse_result valResult = valDoc.load_file(sourceDitavalFile.toStdString().c_str());
     valDoc.save_file(ditavalFile.toStdString().c_str());
 
     //map
     mapFile = QFileInfo(bookFile).absolutePath() + "/m-" + QFileInfo(bookFile).baseName() + ".ditamap";
-    pugi::xml_parse_result mapResult = mapDoc.load_file(_xmlData->sourceMapFile.toStdString().c_str());
+    pugi::xml_parse_result mapResult = mapDoc.load_file(sourceMapFile.toStdString().c_str());
     mapDoc.save_file(mapFile.toStdString().c_str());
 }
 
@@ -131,6 +135,10 @@ void RegulatoryTemplate::fileSaveAs()
 
 void RegulatoryTemplate::loadSource()
 {
+    sourceBookmapFile = QFileDialog::getOpenFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap)"));
+    sourceDitavalFile = QFileDialog::getOpenFileName(this, tr("Select Ditaval"), "", tr("DITA Bookmap (*.ditaval)"));
+    sourceMapFile = QFileDialog::getOpenFileName(this, tr("Select Map"), "", tr("DITA Bookmap (*.ditamap)"));
+    
     _xmlData = std::make_unique<XmlData>();
 
     removePropRows();
@@ -191,14 +199,14 @@ void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto prodnameNode = bookmap.child("bookmeta").child("prodinfo").child("prodname");
     prodnameNode.text().set(ui.prodname_edit->text().toStdString().c_str());
-    bookDoc.save_file(bookFile.toStdString().c_str());
+    bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
 void RegulatoryTemplate::partnumEdit([[maybe_unused]] const QString& metadata)
 {
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto partnumNode = bookmap.child("bookmeta").child("bookid").child("bookpartno");
-    partnumNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    partnumNode.text().set(ui.partnumber_edit->text().toStdString().c_str());
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
@@ -206,7 +214,7 @@ void RegulatoryTemplate::monthEdit([[maybe_unused]] const QString& metadata)
 {
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto monthNode = bookmap.child("bookmeta").child("publisherinformation").child("published").child("completed").child("month");
-    monthNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    monthNode.text().set(ui.month_edit->text().toStdString().c_str());
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
@@ -215,8 +223,8 @@ void RegulatoryTemplate::yearEdit([[maybe_unused]] const QString& metadata)
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto yearCompletedNode = bookmap.child("bookmeta").child("publisherinformation").child("published").child("completed").child("year");
     auto yearCopyrightNode = bookmap.child("bookmeta").child("bookrights").child("copyrlast").child("year");
-    yearCompletedNode.text().set(ui.prodname_edit->text().toStdString().c_str());
-    yearCopyrightNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    yearCompletedNode.text().set(ui.year_edit->text().toStdString().c_str());
+    yearCopyrightNode.text().set(ui.year_edit->text().toStdString().c_str());
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
@@ -224,7 +232,7 @@ void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
 {
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto revisionNode = bookmap.child("bookmeta").child("bookid").child("volume");
-    revisionNode.text().set(ui.prodname_edit->text().toStdString().c_str());
+    revisionNode.text().set(ui.revision_edit->text().toStdString().c_str());
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 

@@ -1,5 +1,6 @@
 #include "XmlData.h"
 #include "DitaConvertTags.h"
+#include "RegulatoryTemplate.h"
 
 // Linker -> System -> SubSystem" to Console for testing - was originally Windows
 
@@ -34,33 +35,35 @@ XmlData::XmlData()
 {
 	//get the bookmap file.
 	auto& bookmapFile = xmlDocs.emplace_back();
-	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(sourceBookmapFile.toStdString().c_str());
+	RegulatoryTemplate _regTemp;
+	pugi::xml_parse_result resultBookmap = bookmapFile.load_file(_regTemp.sourceBookmapFile.toStdString().c_str());
 
 	//TODO support multiple maps. This is for later.
 	
 	//get the map file.
-	auto mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
+	std::string mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
 	auto& mapFile = xmlDocs.emplace_back();
-	auto fullMapPath = std::string("source/") + mapHref;
-	pugi::xml_parse_result resultMap = mapFile.load_file(fullMapPath.c_str());
+	auto fullMapPath = QFileInfo(_regTemp.sourceBookmapFile).absolutePath() + "/" + mapHref.c_str();
+	pugi::xml_parse_result resultMap = mapFile.load_file(_regTemp.sourceMapFile.toStdString().c_str());
 
 	_keysValues = GetKeyDefsAndValues(mapFile);
 
 	_topicHrefs = GetTopicHrefs(mapFile);
 
-	std::cout << fullMapPath << std::endl;
+	std::cout << _regTemp.sourceMapFile.toStdString().c_str() << std::endl;
 
 	processTopics();
 }
 
 void XmlData::processTopics()
 {
+	RegulatoryTemplate _regTemp;
 	for (const auto& href : _topicHrefs) // fancy ranged for-loop
 	{
 		//get the topic file.
 		auto& topicFile = xmlDocs.emplace_back();
-		auto fullTopicPath = std::string("source/") + href;
-		pugi::xml_parse_result resultTopic = topicFile.load_file(fullTopicPath.c_str());
+		auto fullTopicPath = QFileInfo(_regTemp.sourceBookmapFile).absolutePath() + "/" + std::string(href).c_str();
+		pugi::xml_parse_result resultTopic = topicFile.load_file(fullTopicPath.toStdString().c_str());
 		DitaConvertTags::convert(topicFile);
 		auto _propResult = topicFile.select_nodes(".//*[@props]");
 		for (auto& propResult : _propResult)

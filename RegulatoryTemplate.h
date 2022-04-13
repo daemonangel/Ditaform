@@ -16,6 +16,9 @@ class RegulatoryTemplate : public QMainWindow
     
 public:
     RegulatoryTemplate(QWidget *parent = Q_NULLPTR);
+    static QString sourceBookmapFile;
+    static QString sourceMapFile;
+    static QString sourceDitavalFile;
 
 private slots:
     void enableDisableContent(bool checked);
@@ -36,7 +39,6 @@ private:
     Ui::RegulatoryTemplateClass ui;
     std::vector<std::string> lines;
     std::unique_ptr<XmlData> _xmlData;
-    QString bookFileSave;
     static QString bookFile;
     static QString ditavalFile;
     static QString mapFile;
