@@ -12,9 +12,9 @@ QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
 QString RegulatoryTemplate::mapFile;
 QString RegulatoryTemplate::sourceBookmapFile;
-QString RegulatoryTemplate::sourceMapFile;
 QString RegulatoryTemplate::sourceDitavalFile;
-pugi::xml_document RegulatoryTemplate::bookDoc;
+QString RegulatoryTemplate::sourceMapFile;
+pugi::xml_document bookDoc;
 pugi::xml_document valDoc;
 pugi::xml_document mapDoc;
 
@@ -113,43 +113,51 @@ void RegulatoryTemplate::fileSaveAs()
 {
     _xmlData = std::make_unique<XmlData>();
 
-    //bookmap
-    bookFile = QFileDialog::getSaveFileName(this, tr("Save As..."), "PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
-    pugi::xml_parse_result result = bookDoc.load_file(sourceBookmapFile.toStdString().c_str());
-    pugi::xml_node bookmap = bookDoc.child("bookmap");
+    //get new bookmap filename
+    bookFile = QFileDialog::getSaveFileName(this, tr("Save Bookmap As..."), "bm-PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
+    //get new ditaval filename
+    auto dir = QFileInfo(bookFile).absolutePath() + "/dv-PRODUCT-rg-en.ditaval";
+    ditavalFile = QFileDialog::getSaveFileName(this, tr("Save Ditaval As..."), dir, tr("Ditaval File (*.ditaval)"));
+    //save a copy of the map source file at the bookmap file location
+    mapFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(sourceMapFile).fileName();
+
+    //save all docs
     bookDoc.save_file(bookFile.toStdString().c_str());
-
-    //ditaval
-    QString format("%1/dv-%2.ditaval");
-    ditavalFile = format.arg(QFileInfo(bookFile).absolutePath()).arg(QFileInfo(bookFile).baseName());
-    pugi::xml_parse_result valResult = valDoc.load_file(sourceDitavalFile.toStdString().c_str());
     valDoc.save_file(ditavalFile.toStdString().c_str());
-
-    //map
-    mapFile = QFileInfo(bookFile).absolutePath() + "/m-" + QFileInfo(bookFile).baseName() + ".ditamap";
-    pugi::xml_parse_result mapResult = mapDoc.load_file(sourceMapFile.toStdString().c_str());
     mapDoc.save_file(mapFile.toStdString().c_str());
 }
 
+//QString format("%1/dv-%2.ditaval");
+//cppFormat = format.arg(QFileInfo(bookFile).absolutePath()).arg(QFileInfo(bookFile).baseName());
 //C++ string = auto ditavalFile = std::format("{}/dv-{}.ditaval", QFileInfo(bookFile).absolutePath(), QFileInfo(bookFile).baseName());
 
 void RegulatoryTemplate::loadSource()
 {
     sourceBookmapFile = QFileDialog::getOpenFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap)"));
+    pugi::xml_parse_result bookresult = bookDoc.load_file(sourceBookmapFile.toStdString().c_str());
     sourceDitavalFile = QFileDialog::getOpenFileName(this, tr("Select Ditaval"), "", tr("DITA Bookmap (*.ditaval)"));
-    sourceMapFile = QFileDialog::getOpenFileName(this, tr("Select Map"), "", tr("DITA Bookmap (*.ditamap)"));
-    
+    pugi::xml_parse_result valResult = valDoc.load_file(sourceDitavalFile.toStdString().c_str());
+    sourceMapFile = getMapFileFromBookmap();
+    pugi::xml_parse_result mapResult = mapDoc.load_file(sourceMapFile.toStdString().c_str());
+
     _xmlData = std::make_unique<XmlData>();
 
     removePropRows();
 
     clearBookInfo();
 
-    //TODO allow user to choose the source files and save the file locations to the variables in XmlData
-
     addPropRows();
 
     connectPropRowTextChange();
+}
+
+QString RegulatoryTemplate::getMapFileFromBookmap()
+{
+    //get map from bookmap - only supporting one map for now
+    pugi::xml_node bookmap = bookDoc.child("bookmap");
+    std::string mapHref = bookmap.child("chapter").attribute("href").value();
+    sourceMapFile = QFileInfo(sourceBookmapFile).absolutePath() + "/" + mapHref.c_str();
+    return sourceMapFile;
 }
 
 void RegulatoryTemplate::removePropRows()

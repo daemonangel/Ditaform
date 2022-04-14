@@ -44,13 +44,13 @@ XmlData::XmlData()
 	std::string mapHref = bookmapFile.child("bookmap").child("chapter").attribute("href").value();
 	auto& mapFile = xmlDocs.emplace_back();
 	auto fullMapPath = QFileInfo(_regTemp.sourceBookmapFile).absolutePath() + "/" + mapHref.c_str();
-	pugi::xml_parse_result resultMap = mapFile.load_file(_regTemp.sourceMapFile.toStdString().c_str());
+	pugi::xml_parse_result resultMap = mapFile.load_file(fullMapPath.toStdString().c_str());
 
 	_keysValues = GetKeyDefsAndValues(mapFile);
 
 	_topicHrefs = GetTopicHrefs(mapFile);
 
-	std::cout << _regTemp.sourceMapFile.toStdString().c_str() << std::endl;
+	std::cout << fullMapPath.toStdString().c_str() << std::endl;
 
 	processTopics();
 }

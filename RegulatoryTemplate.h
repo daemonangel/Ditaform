@@ -9,6 +9,7 @@
 
 extern pugi::xml_document mapDoc;
 extern pugi::xml_document valDoc;
+extern pugi::xml_document bookDoc;
 
 class RegulatoryTemplate : public QMainWindow
 {
@@ -17,8 +18,8 @@ class RegulatoryTemplate : public QMainWindow
 public:
     RegulatoryTemplate(QWidget *parent = Q_NULLPTR);
     static QString sourceBookmapFile;
-    static QString sourceMapFile;
     static QString sourceDitavalFile;
+    static QString sourceMapFile;
 
 private slots:
     void enableDisableContent(bool checked);
@@ -42,7 +43,6 @@ private:
     static QString bookFile;
     static QString ditavalFile;
     static QString mapFile;
-    static pugi::xml_document bookDoc;
     int premadeRows = 5; //number of premade form rows
 
     bool maybeSave();
@@ -51,4 +51,5 @@ private:
     void removePropRows();
     void addPropRows();
     void connectPropRowTextChange();
+    QString getMapFileFromBookmap();
 };
