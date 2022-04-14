@@ -65,7 +65,7 @@ bool RegulatoryTemplate::maybeSave()
     else
         return true;
 }
-//TODO make a button that exports versions of the document with translation info, like language codes. this is for later.
+//TODO future : make a button that exports versions of the document with translation info, like language codes
 
 void RegulatoryTemplate::enableDisableContent(bool checked)
 {
@@ -81,8 +81,6 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
     }
 }
 
-//TODO add a button to load files - loaded file should also populate the keyref QTextEdits
-
 void RegulatoryTemplate::fileLoad()
 {
     loadSource();
@@ -91,7 +89,7 @@ void RegulatoryTemplate::fileLoad()
 
 bool RegulatoryTemplate::fileSave()
 {
-    //TODO: Future? Make it so that you don't have to save the file before you can make any changes to the form.
+    //TODO future : Make it so that you don't have to save the file before you can make any changes to the form?
     if (!bookFile.isEmpty())
     {
         bookDoc.save_file(bookFile.toStdString().c_str());
