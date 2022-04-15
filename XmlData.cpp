@@ -50,14 +50,14 @@ XmlData::XmlData()
 
 	_topicHrefs = GetTopicHrefs(mapFile);
 
-	std::cout << fullMapPath.toStdString().c_str() << std::endl;
-
 	processTopics();
 }
 
 void XmlData::processTopics()
 {
 	RegulatoryTemplate _regTemp;
+	std::unordered_map<std::string, propValueCollection*> existingPropRows;
+	propValueCollection* propsRow;
 	for (const auto& href : _topicHrefs) // fancy ranged for-loop
 	{
 		//get the topic file.
@@ -71,15 +71,27 @@ void XmlData::processTopics()
 			auto propsNode = propResult.node();
 			auto propName = propsNode.attribute("props").value();
 
-			auto& propsRow = _propsRows[propName]; // make new or find existing (note that the & is VERY important)
-			propsRow.propsName = propName; // we may be re-assigning the name but that's ok
-			propsRow.propsNodes.push_back(propsNode);
+			auto it = existingPropRows.find(propName);
+			if (it == existingPropRows.end()) //end() is not end of list, it's past the end of the list, as in not found
+			{
+				propsRow = new propValueCollection();
+				_propsRows.emplace_back(propsRow); // make new at the back (note that the & is VERY important)
+				existingPropRows[propName] = propsRow;
+			}
+			else
+			{
+				propsRow = it->second;
+			}
+			
+			propsRow->propsName = propName; // we may be re-assigning the name but that's ok
+			std::cout << "Processing: " << propName << std::endl;
+			propsRow->propsNodes.push_back(propsNode);
 
 			//add all keyrefs inside this node
 			auto keyrefResult = propsNode.select_nodes(".//*[@auto_keyref]");
 			for (auto& propChild : keyrefResult)
 			{
-				propsRow._keysList.push_back(propChild.node().attribute("keyref").value());
+				propsRow->_keysList.push_back(propChild.node().attribute("keyref").value());
 			}
 		}
 	}

@@ -31,6 +31,6 @@ public:
 	void processTopics();
 	std::vector<key_value_pair> _keysValues; //from map: keys (keyref) value, keyword value
 	std::vector<std::string> _topicHrefs; //from map: list of all the hrefs to topics
-	std::unordered_map<std::string, propValueCollection> _propsRows;
+	std::vector<std::unique_ptr<propValueCollection>> _propsRows;
 	std::vector<pugi::xml_document> xmlDocs;
 };

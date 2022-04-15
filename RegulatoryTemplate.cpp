@@ -132,8 +132,8 @@ void RegulatoryTemplate::fileSaveAs()
 void RegulatoryTemplate::loadSource()
 {
     sourceBookmapFile = QFileDialog::getOpenFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap)"));
-    pugi::xml_parse_result bookresult = bookDoc.load_file(sourceBookmapFile.toStdString().c_str());
     sourceDitavalFile = QFileDialog::getOpenFileName(this, tr("Select Ditaval"), "", tr("DITA Bookmap (*.ditaval)"));
+    pugi::xml_parse_result bookresult = bookDoc.load_file(sourceBookmapFile.toStdString().c_str());
     pugi::xml_parse_result valResult = valDoc.load_file(sourceDitavalFile.toStdString().c_str());
     sourceMapFile = getMapFileFromBookmap();
     pugi::xml_parse_result mapResult = mapDoc.load_file(sourceMapFile.toStdString().c_str());
@@ -185,7 +185,7 @@ void RegulatoryTemplate::addPropRows()
     //for each prop set, add a row to the ui
     for (auto& propRow : _xmlData->_propsRows)
     {
-        auto propUI = new PropRow(propRow.second, ui.centralWidget);
+        auto propUI = new PropRow(*propRow, ui.centralWidget);
         ui.formLayout->addRow(propUI);
     }
 }

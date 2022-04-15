@@ -4,7 +4,7 @@
 #include "Xml.h"
 #include "DitaConvertTags.h"
 
-#define DitaConvertPrint true
+#define DitaConvertPrint false
 
 const bool continueTraversal = true;
 
@@ -141,13 +141,13 @@ struct convert_tags_walker : pugi::xml_tree_walker
 #if _DEBUG && DitaConvertPrint
 			std::stringstream ss;
 			node.print(ss);
-			std::cout << "Found entry for " << it->first << ":\n\tbefore: " << ss.str() << std::endl;
+			//std::cout << "Found entry for " << it->first << ":\n\tbefore: " << ss.str() << std::endl;
 			ss = {};
 #endif
             it->second(node);
 #if _DEBUG && DitaConvertPrint
 			node.print(ss);
-			std::cout << "\tAfter: " << ss.str() << std::endl;
+			//std::cout << "\tAfter: " << ss.str() << std::endl;
 #endif
         }
 		else if(it == DitaConvertTags::nodeEditingMap.end()) // found nothing 
@@ -167,5 +167,5 @@ void DitaConvertTags::convert(pugi::xml_node& node)
 	std::stringstream ss;
 	node.print(ss);
 
-	std::cout << "Converted xml:\n\n" << ss.str();
+	//std::cout << "Converted xml:\n\n" << ss.str();
 }
