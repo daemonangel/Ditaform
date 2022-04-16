@@ -84,7 +84,7 @@ void XmlData::processTopics()
 			}
 			
 			propsRow->propsName = propName; // we may be re-assigning the name but that's ok
-			std::cout << "Processing: " << propName << std::endl;
+
 			propsRow->propsNodes.push_back(propsNode);
 
 			//add all keyrefs inside this node

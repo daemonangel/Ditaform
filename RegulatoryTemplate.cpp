@@ -50,6 +50,7 @@ void RegulatoryTemplate::closeEvent(QCloseEvent *event)
     else {
         event->ignore();
     }
+    //TODO: Only ask the user if they want to save if they have unsaved changes
 }
 
 bool RegulatoryTemplate::maybeSave()
@@ -99,7 +100,6 @@ void RegulatoryTemplate::fileSaveAs()
 
 bool RegulatoryTemplate::fileSave()
 {
-    //TODO future : Make it so that you don't have to save the file before you can make any changes to the form?
     if (!bookFile.isEmpty())
     {
         bookDoc.save_file(bookFile.toStdString().c_str());
@@ -114,7 +114,6 @@ bool RegulatoryTemplate::fileSave()
     }
     // https://doc.qt.io/qt-5/qfilesystemwatcher.html#fileChanged
     //TODO: Notify the user that they have unsaved changes while editing using an *. 
-    //TODO: Notify user via a popup that they have unsaved changes when closing the app.
 }
 
 void RegulatoryTemplate::saveFiles()
@@ -124,11 +123,6 @@ void RegulatoryTemplate::saveFiles()
     bookFile = saveFiles.first;
     ditavalFile = saveFiles.second;
 
-    //get new bookmap filename
-    //bookFile = QFileDialog::getSaveFileName(this, tr("Save Bookmap As..."), "bm-PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
-    //get new ditaval filename
-    //auto dir = QFileInfo(bookFile).absolutePath() + "/dv-PRODUCT-rg-en.ditaval";
-    //ditavalFile = QFileDialog::getSaveFileName(this, tr("Save Ditaval As..."), dir, tr("Ditaval File (*.ditaval)"));
     //save a copy of the map source file at the bookmap file location
     mapFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(sourceMapFile).fileName();
 
@@ -153,6 +147,9 @@ void RegulatoryTemplate::loadSource()
     pugi::xml_parse_result valResult = valDoc.load_file(sourceDitavalFile.toStdString().c_str());
     sourceMapFile = getMapFileFromBookmap();
     pugi::xml_parse_result mapResult = mapDoc.load_file(sourceMapFile.toStdString().c_str());
+
+    //TODO Make it so that you don't have to save the file before you can make any changes to the form
+    fileSaveAs();
 
     _xmlData = std::make_unique<XmlData>();
 
