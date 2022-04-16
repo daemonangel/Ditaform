@@ -58,6 +58,12 @@
     <ClCompile Include="Xml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoadDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pugiconfig.hpp">
@@ -83,9 +89,21 @@
     <QtMoc Include="PropRow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="LoadDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SaveDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="PropRow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="LoadDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="SaveDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -32,6 +32,8 @@ private slots:
     void fileSaveAs();
     void fileLoad();
     void autoUpdateDupKeyrefs();
+    void loadSource();
+    void saveFiles();
 
 protected:
     void closeEvent(QCloseEvent* event);
@@ -46,7 +48,6 @@ private:
     int premadeRows = 5; //number of premade form rows
 
     bool maybeSave();
-    void loadSource();
     void clearBookInfo();
     void removePropRows();
     void addPropRows();

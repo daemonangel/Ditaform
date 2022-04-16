@@ -20,7 +20,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>RegulatoryTemplate</string>
+   <string>Ditaform</string>
   </property>
   <property name="dockNestingEnabled">
    <bool>false</bool>
@@ -382,5 +382,6 @@
   <slot>updateKeyref(QString)</slot>
   <slot>fileSaveAs()</slot>
   <slot>closeEvent(QCloseEvent)</slot>
+  <slot>loadSource()</slot>
  </slots>
 </ui>

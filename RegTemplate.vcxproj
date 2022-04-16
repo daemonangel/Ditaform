@@ -109,23 +109,29 @@
   <ItemGroup>
     <ClCompile Include="DitaConvertTags.cpp" />
     <ClCompile Include="DitaWellFormedHtml.cpp" />
+    <ClCompile Include="LoadDialog.cpp" />
     <ClCompile Include="PropRow.cpp" />
+    <ClCompile Include="SaveDialog.cpp" />
     <ClCompile Include="Xml.cpp" />
     <ClCompile Include="XmlData.cpp" />
     <QtRcc Include="RegulatoryTemplate.qrc" />
+    <QtUic Include="LoadDialog.ui" />
     <QtUic Include="PropRow.ui" />
     <QtUic Include="RegulatoryTemplate.ui" />
     <QtMoc Include="RegulatoryTemplate.h" />
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="RegulatoryTemplate.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="SaveDialog.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="PropRow.h" />
     <ClInclude Include="DitaConvertTags.h" />
     <ClInclude Include="DitaWellFormedHtml.h" />
+    <QtMoc Include="LoadDialog.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
+    <QtMoc Include="SaveDialog.h" />
     <ClInclude Include="Xml.h" />
     <ClInclude Include="XmlData.h" />
   </ItemGroup>

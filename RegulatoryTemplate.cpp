@@ -7,6 +7,8 @@
 #include "PropRow.h"
 #include <format>
 #include <QDateTime>
+#include "LoadDialog.h"
+#include "SaveDialog.h"
 
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
@@ -83,8 +85,16 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
 
 void RegulatoryTemplate::fileLoad()
 {
-    loadSource();
-    fileSaveAs();
+    auto openDialog = new LoadDialog(this);
+    openDialog->open();
+    connect(openDialog, &QDialog::accepted, this, &RegulatoryTemplate::loadSource);
+}
+
+void RegulatoryTemplate::fileSaveAs()
+{
+    auto openDialog = new SaveDialog(this);
+    openDialog->open();
+    connect(openDialog, &QDialog::accepted, this, &RegulatoryTemplate::saveFiles);
 }
 
 bool RegulatoryTemplate::fileSave()
@@ -107,15 +117,18 @@ bool RegulatoryTemplate::fileSave()
     //TODO: Notify user via a popup that they have unsaved changes when closing the app.
 }
 
-void RegulatoryTemplate::fileSaveAs()
+void RegulatoryTemplate::saveFiles()
 {
-    _xmlData = std::make_unique<XmlData>();
+    auto saveFiles = SaveDialog::savedFiles();
+
+    bookFile = saveFiles.first;
+    ditavalFile = saveFiles.second;
 
     //get new bookmap filename
-    bookFile = QFileDialog::getSaveFileName(this, tr("Save Bookmap As..."), "bm-PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
+    //bookFile = QFileDialog::getSaveFileName(this, tr("Save Bookmap As..."), "bm-PRODUCT-rg-en.ditamap", tr("DITA Bookmap (*.ditamap)"));
     //get new ditaval filename
-    auto dir = QFileInfo(bookFile).absolutePath() + "/dv-PRODUCT-rg-en.ditaval";
-    ditavalFile = QFileDialog::getSaveFileName(this, tr("Save Ditaval As..."), dir, tr("Ditaval File (*.ditaval)"));
+    //auto dir = QFileInfo(bookFile).absolutePath() + "/dv-PRODUCT-rg-en.ditaval";
+    //ditavalFile = QFileDialog::getSaveFileName(this, tr("Save Ditaval As..."), dir, tr("Ditaval File (*.ditaval)"));
     //save a copy of the map source file at the bookmap file location
     mapFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(sourceMapFile).fileName();
 
@@ -131,8 +144,11 @@ void RegulatoryTemplate::fileSaveAs()
 
 void RegulatoryTemplate::loadSource()
 {
-    sourceBookmapFile = QFileDialog::getOpenFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap)"));
-    sourceDitavalFile = QFileDialog::getOpenFileName(this, tr("Select Ditaval"), "", tr("DITA Bookmap (*.ditaval)"));
+    auto loadFiles = LoadDialog::openedFiles();
+    
+    sourceBookmapFile = loadFiles.first;
+    sourceDitavalFile = loadFiles.second;
+    
     pugi::xml_parse_result bookresult = bookDoc.load_file(sourceBookmapFile.toStdString().c_str());
     pugi::xml_parse_result valResult = valDoc.load_file(sourceDitavalFile.toStdString().c_str());
     sourceMapFile = getMapFileFromBookmap();
