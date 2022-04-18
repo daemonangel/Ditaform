@@ -50,7 +50,7 @@ void RegulatoryTemplate::closeEvent(QCloseEvent *event)
     else {
         event->ignore();
     }
-    //TODO: Only ask the user if they want to save if they have unsaved changes
+    //TODO future: Only ask the user if they want to save if they have unsaved changes
 }
 
 bool RegulatoryTemplate::maybeSave()
@@ -58,8 +58,8 @@ bool RegulatoryTemplate::maybeSave()
     //Save = Save, Cancel = return to app, Discard = close app without changes
     //If you Save, but then cancel without saving, you return to the app
     QMessageBox::StandardButton ret;
-    ret = QMessageBox::warning(this, tr("Application"),
-        tr("Save file before closing?"),
+    ret = QMessageBox::warning(this, tr("Ditaform"),
+        tr("<b>Save files now?</b>\nUnsaved changes will be lost."),
         QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
     if (ret == QMessageBox::Save)
         return fileSave();
@@ -113,7 +113,7 @@ bool RegulatoryTemplate::fileSave()
         return false;
     }
     // https://doc.qt.io/qt-5/qfilesystemwatcher.html#fileChanged
-    //TODO: Notify the user that they have unsaved changes while editing using an *. 
+    //TODO future: Notify the user that they have unsaved changes while editing using an *. 
 }
 
 void RegulatoryTemplate::saveFiles()
