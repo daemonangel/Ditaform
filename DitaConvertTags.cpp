@@ -3,6 +3,7 @@
 #include <sstream>
 #include "Xml.h"
 #include "DitaConvertTags.h"
+#include "RegulatoryTemplate.h"
 
 #define DitaConvertPrint false
 
@@ -52,6 +53,11 @@ void DitaConvertTags::image_node(pugi::xml_node& node)
 {
 	node.set_name("img");
 	node.attribute("href").set_name("src");
+	//look for images in the same folder as the source bookmap
+	RegulatoryTemplate rg;
+	auto fullPath = QFileInfo(rg.sourceBookmapFile).absolutePath() + "/" + node.attribute("src").value();
+	node.attribute("src").set_value(fullPath.toStdString().c_str());
+	std::cout << fullPath.toStdString().c_str() << std::endl;
 }
 
 void DitaConvertTags::table_node(pugi::xml_node& node)
@@ -136,7 +142,7 @@ struct convert_tags_walker : pugi::xml_tree_walker
     virtual bool for_each(pugi::xml_node& node)
     {
         auto it = DitaConvertTags::nodeEditingMap.find(node.name());
-        if (it != DitaConvertTags::nodeEditingMap.end() && !node.attribute("skip")) // found something
+        if (it != DitaConvertTags::nodeEditingMap.end()) // found something
         {
 #if _DEBUG && DitaConvertPrint
 			std::stringstream ss;

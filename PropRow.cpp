@@ -48,15 +48,16 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 	QLabel* label = new QLabel(this);
 	label->setFrameStyle(QFrame::NoFrame);
 	label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-	QFont labelFont("Normal", 10, QFont::Bold);
+	QFont labelFont("Normal", 10, QFont::Normal);
 	label->setFont(labelFont);
 	label->setText(node.attribute("data-keyref").value());
+	label->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+	label->setAlignment(Qt::AlignBottom);
 
 	QTextEdit* input = new QTextEdit();
 	auto senderName = node.attribute("data-keyref").value();
 	input->setObjectName(senderName);
 	input->setMaximumSize(QSize(130, 50));
-	input->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
 
 	//connect signal textchanged from input object to slot function updateKeyref
 	connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
