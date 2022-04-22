@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concept props="props43"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
+<title>Awkward Conversation</title>
+  <shortdesc>Oh, hey uh, you! Long time no see!</shortdesc>
+ <conbody>
+    <p>We dated for six months and you don't even remember my name, Sam.</p>
+	<p>Ha! Don't be silly. Of course, I remember you... <ph keyref="ex-name"></ph>?</p>
+	<p>Goodbye, Sam.</p>
+  </conbody> 
+</concept>

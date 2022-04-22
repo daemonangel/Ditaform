@@ -1,45 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
-  <title>Stuff</title>
-  <topicmeta>
-    <critdates>
-      <created date="2022-03-10"></created>
-    </critdates>
-  </topicmeta>
-  <keydef keys="degrees">
-    <topicmeta>
-      <keywords>
-        <keyword>why</keyword>
-      </keywords>
-    </topicmeta>
-  </keydef>
-  <keydef keys="degrees-again">
-    <topicmeta>
-      <keywords>
-        <keyword>84</keyword>
-      </keywords>
-    </topicmeta>
-  </keydef>
-  <keydef keys="something-boring">
-    <topicmeta>
-      <keywords>
-        <keyword>politics</keyword>
-      </keywords>
-    </topicmeta>
-  </keydef>
-  <keydef keys="ex-name">
-    <topicmeta>
-      <keywords>
-        <keyword>Geri</keyword>
-      </keywords>
-    </topicmeta>
-  </keydef>
- 
-  <topicref href="c-topic1.dita" type="concept"></topicref>
-  <topicref href="c-topic2.dita" type="concept"></topicref>
-  <topicref href="c-topic3.dita" type="concept"></topicref>
-  <topicref href="c-topic4.dita" type="concept"></topicref>
-  <topicref href="c-topic5.dita" type="concept"></topicref>
-  <topicref href="c-topic6.dita" type="concept"></topicref>
+<?xml version="1.0"?>
+<map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
+	<title>Stuff</title>
+	<topicmeta>
+		<critdates>
+			<created date="2022-03-10" />
+		</critdates>
+	</topicmeta>
+	<keydef keys="degrees">
+		<topicmeta>
+			<keywords>
+				<keyword>why</keyword>
+			</keywords>
+		</topicmeta>
+	</keydef>
+	<keydef keys="degrees-again">
+		<topicmeta>
+			<keywords>
+				<keyword>84</keyword>
+			</keywords>
+		</topicmeta>
+	</keydef>
+	<keydef keys="something-boring">
+		<topicmeta>
+			<keywords>
+				<keyword>politics</keyword>
+			</keywords>
+		</topicmeta>
+	</keydef>
+	<keydef keys="ex-name">
+		<topicmeta>
+			<keywords>
+				<keyword>Geri</keyword>
+			</keywords>
+		</topicmeta>
+	</keydef>
+	<topicref href="c-topic1.dita" type="concept" />
+	<topicref href="c-topic2.dita" type="concept" />
+	<topicref href="c-topic3.dita" type="concept" />
+	<topicref href="c-topic4.dita" type="concept" />
+	<topicref href="c-topic5.dita" type="concept" />
+	<topicref href="c-topic6.dita" type="concept" />
+	
+	<topicref href="c-topic1 - Copy (2).dita" type="concept" />
+	<topicref href="c-topic2 - Copy (2).dita" type="concept" />
+	<topicref href="c-topic3 - Copy (2).dita" type="concept" />
+	<topicref href="c-topic4 - Copy (2).dita" type="concept" />
+	<topicref href="c-topic5 - Copy (2).dita" type="concept" />
+	<topicref href="c-topic6 - Copy (2).dita" type="concept" />
+	
+	<topicref href="c-topic1 - Copy (3).dita" type="concept" />
+	<topicref href="c-topic2 - Copy (3).dita" type="concept" />
+	<topicref href="c-topic3 - Copy (3).dita" type="concept" />
+	<topicref href="c-topic4 - Copy (3).dita" type="concept" />
+	<topicref href="c-topic5 - Copy (3).dita" type="concept" />
+	<topicref href="c-topic6 - Copy (3).dita" type="concept" />
+	
+	<topicref href="c-topic1 - Copy (4).dita" type="concept" />
+	<topicref href="c-topic2 - Copy (4).dita" type="concept" />
+	<topicref href="c-topic3 - Copy (4).dita" type="concept" />
+	<topicref href="c-topic4 - Copy (4).dita" type="concept" />
+	<topicref href="c-topic5 - Copy (4).dita" type="concept" />
+	<topicref href="c-topic6 - Copy (4).dita" type="concept" />
 </map>

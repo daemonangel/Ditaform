@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<task
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
+<title props="props67">Making Friends</title>
+  <shortdesc props="props67">Easy steps on how to make friends.</shortdesc>
+	<taskbody>
+		<steps>
+			<step props="props68"><cmd>Introduce yourself.</cmd></step>
+			<step props="props69"><cmd>Ask the person a question about themself.</cmd></step>
+			<step props="props70"><cmd>Find a common interest to talk about.</cmd></step>
+			<step props="props71"><cmd>Politely excuse yourself.</cmd></step>
+		</steps>
+	</taskbody> 
+</task>
