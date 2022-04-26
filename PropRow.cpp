@@ -61,6 +61,7 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 
 	//connect signal textchanged from input object to slot function updateKeyref
 	connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
+	//_keyRefTextEdits.push_back(input);
 
 	ui.verticalLayout->addWidget(line);
 	ui.verticalLayout->addWidget(label);
@@ -84,9 +85,15 @@ void PropRow::updateKeyref()
 		{
 			auto keyValue = key.node().child("topicmeta").child("keywords").child("keyword");
 			QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
-			keyValue.text().set(senderText->toPlainText().toStdString().c_str()); //this is setting keyValue to the senderObject name...
+			auto qtext = senderText->toPlainText();
+			keyValue.text().set(qtext.toStdString().c_str()); //this is setting keyValue to the senderObject name...
+			emit updateAllOtherKeyrefs(senderName, qtext);
+			return;
 		}
 	}
+
+	// if it gets here it didn't do anything
+
 }
 
 void PropRow::updateDitaval()

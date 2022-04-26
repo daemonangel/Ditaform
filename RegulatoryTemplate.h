@@ -31,9 +31,9 @@ private slots:
     bool fileSave();
     void fileSaveAs();
     void fileLoad();
-    void autoUpdateDupKeyrefs();
     void loadSource();
     void saveFiles();
+    void autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText);
 
 protected:
     void closeEvent(QCloseEvent* event);
@@ -51,6 +51,6 @@ private:
     void clearBookInfo();
     void removePropRows();
     void addPropRows();
-    void connectPropRowTextChange();
+    //void connectPropRowTextChange();
     QString getMapFileFromBookmap();
 };

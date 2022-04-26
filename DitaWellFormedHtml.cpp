@@ -77,6 +77,6 @@ std::string DitaWellFormedHtml::makeWellFormed(pugi::xml_node& node)
 	std::stringstream ss;
 	node.print(ss);
 
-	std::cout << "\n\nWell-formed xml:\n\n" << ss.str();
+	//std::cout << "\n\nWell-formed xml:\n\n" << ss.str();
 	return ss.str();
 }

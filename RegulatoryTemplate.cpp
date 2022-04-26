@@ -26,7 +26,7 @@ RegulatoryTemplate::RegulatoryTemplate(QWidget *parent)
     ui.setupUi(this);
 }
 
-class SignalBlocker
+const class SignalBlocker
 {
 private:
     QObject* _widget;
@@ -159,7 +159,7 @@ void RegulatoryTemplate::loadSource()
 
     addPropRows();
 
-    connectPropRowTextChange();
+    //connectPropRowTextChange();
 }
 
 QString RegulatoryTemplate::getMapFileFromBookmap()
@@ -200,10 +200,11 @@ void RegulatoryTemplate::addPropRows()
     {
         auto propUI = new PropRow(*propRow, ui.centralWidget);
         ui.formLayout->addRow(propUI);
+        connect(propUI, &PropRow::updateAllOtherKeyrefs, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
     }
 }
 
-void RegulatoryTemplate::connectPropRowTextChange()
+/*void RegulatoryTemplate::connectPropRowTextChange()
 {
     //connect all QTextEdit textChange signals to autoUpdateDupKeyrefs slot
     auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>();
@@ -211,7 +212,7 @@ void RegulatoryTemplate::connectPropRowTextChange()
     {
         connect(key, &QTextEdit::textChanged, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
     }
-}
+}*/
 
 void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
 {
@@ -255,26 +256,35 @@ void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
-void RegulatoryTemplate::autoUpdateDupKeyrefs()
-{
-    //temporarily turn off the signal from sender
-    auto senderObject = QObject::sender();
-    SignalBlocker blocker(senderObject);
-
-    auto senderName = senderObject->objectName();
-    QTextEdit* senderCast = qobject_cast<QTextEdit*>(senderObject);
-
-    auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>(senderName);
-    if (keyrefs.size() < 2) { return; }; //only continue if list has at least 2 items
-
-    for (auto& key : keyrefs)
+void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText)
+{  
+    /* if findChildren slows the form down, can put all textedits in a vector, OR
+    * go through each row and use a premade vector of textedits to make changes as needed (see proprow //_keyRefTextEdits.push_back(input);)
+    * 
+    * for(auto& propRow : _propRows)
     {
-        auto keyName = key->objectName();
-        if (senderName == key->objectName())
-        {
-            auto senderText = senderCast->toPlainText();
-            key->clear();
-            key->insertPlainText(senderText);
-        }
+        propRow.UpdateKeyRefTextForKeyNameOrSomething(senderName, senderText);
     }
+    */ 
+    auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>(senderName);
+    /*
+        If there is only one, that was the one that sent us this signal, and we don't need to change it
+        (we ignore the fact that we could be updating the one that sent us this signal, too much trouble to skip for now)
+    */
+    if (keyrefs.size() > 1)
+    {
+        for (auto& key : keyrefs)
+        {
+            //temporarily turn off the signal from key text box
+            SignalBlocker blocker(key);
+            auto keyName = key->objectName();
+            if (senderName == key->objectName())
+            {
+                key->clear();
+                key->insertPlainText(senderText);
+            }
+        }
+    };   
 }
+
+//TODO add an about box with app info, Qt, and PugiXml

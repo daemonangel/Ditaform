@@ -12,13 +12,13 @@ LoadDialog::LoadDialog(QWidget *parent)
 
 void LoadDialog::openBookmap()
 {
-	bookmapFile = QFileDialog::getOpenFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap)"));
+	bookmapFile = QFileDialog::getOpenFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap);;All Files (*.*)"));
 	ui.bookmap_line->setText(bookmapFile);
 }
 
 void LoadDialog::openDitaval()
 {
-	ditavalFile = QFileDialog::getOpenFileName(this, tr("Select Ditaval"), "", tr("DITA Ditaval (*.ditaval)"));
+	ditavalFile = QFileDialog::getOpenFileName(this, tr("Select Ditaval"), "", tr("DITA Ditaval (*.ditaval);;All Files (*.*)"));
 	ui.ditaval_line->setText(ditavalFile);
 }
 

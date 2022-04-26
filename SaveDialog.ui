@@ -88,23 +88,7 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
-     <widget class="QLabel" name="ditaval_label">
-      <property name="text">
-       <string>Select Ditaval File (*.ditaval)</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLineEdit" name="ditaval_line"/>
-    </item>
     <item row="1" column="0">
-     <widget class="QLineEdit" name="bookmap_line"/>
-    </item>
-    <item row="0" column="0">
      <widget class="QLabel" name="bookmap_label">
       <property name="text">
        <string>Save Bookmap File (*.ditamap)</string>
@@ -114,17 +98,43 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
+    <item row="2" column="1">
      <widget class="QPushButton" name="bookmap_button">
       <property name="text">
        <string>Open...</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
+    <item row="4" column="1">
      <widget class="QPushButton" name="ditaval_button">
       <property name="text">
        <string>Open...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="ditaval_label">
+      <property name="text">
+       <string>Select Ditaval File (*.ditaval)</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLineEdit" name="ditaval_line"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLineEdit" name="bookmap_line"/>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QLabel" name="important_label">
+      <property name="text">
+       <string>&lt;b&gt;IMPORTANT: You must save before making changes to the form.&lt;/b&gt;</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::RichText</enum>
       </property>
      </widget>
     </item>

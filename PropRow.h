@@ -18,6 +18,9 @@ private slots:
 	void updateKeyref();
 	void updateDitaval();
 
+signals:
+	void updateAllOtherKeyrefs(const QString&, const QString&);
+
 private:
 	const int* i;
 	Ui::PropRow ui;

@@ -57,7 +57,7 @@ void DitaConvertTags::image_node(pugi::xml_node& node)
 	RegulatoryTemplate rg;
 	auto fullPath = QFileInfo(rg.sourceBookmapFile).absolutePath() + "/" + node.attribute("src").value();
 	node.attribute("src").set_value(fullPath.toStdString().c_str());
-	std::cout << fullPath.toStdString().c_str() << std::endl;
+	//std::cout << fullPath.toStdString().c_str() << std::endl;
 }
 
 void DitaConvertTags::table_node(pugi::xml_node& node)

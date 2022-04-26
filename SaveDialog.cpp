@@ -12,13 +12,13 @@ SaveDialog::SaveDialog(QWidget *parent)
 
 void SaveDialog::saveBookmap()
 {
-	bookmapFile = QFileDialog::getSaveFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap)"));
+	bookmapFile = QFileDialog::getSaveFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap);;All Files (*.*)"));
 	ui.bookmap_line->setText(bookmapFile);
 }
 
 void SaveDialog::saveDitaval()
 {
-	ditavalFile = QFileDialog::getSaveFileName(this, tr("Select Ditaval"), "", tr("DITA Ditaval (*.ditaval)"));
+	ditavalFile = QFileDialog::getSaveFileName(this, tr("Select Ditaval"), "", tr("DITA Ditaval (*.ditaval);;All Files (*.*)"));
 	ui.ditaval_line->setText(ditavalFile);
 }
 
