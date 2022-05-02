@@ -37,3 +37,4 @@ FORMS += ./LoadDialog.ui \
     ./SaveDialog.ui
 RESOURCES += RegulatoryTemplate.qrc
 QT += svg
+QT += network

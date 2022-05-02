@@ -201,6 +201,8 @@
      <string>File</string>
     </property>
     <addaction name="new_menu"/>
+    <addaction name="open_menu"/>
+    <addaction name="separator"/>
     <addaction name="save_menu"/>
     <addaction name="saveAs_menu_2"/>
     <addaction name="separator"/>
@@ -213,9 +215,9 @@
     <string>Save As...</string>
    </property>
   </action>
-  <action name="new_menu">
+  <action name="open_menu">
    <property name="text">
-    <string>Load</string>
+    <string>Open</string>
    </property>
   </action>
   <action name="save_menu">
@@ -231,6 +233,11 @@
   <action name="actionClose">
    <property name="text">
     <string>Close</string>
+   </property>
+  </action>
+  <action name="new_menu">
+   <property name="text">
+    <string>New</string>
    </property>
   </action>
  </widget>
@@ -320,7 +327,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>new_menu</sender>
+   <sender>open_menu</sender>
    <signal>triggered()</signal>
    <receiver>RegulatoryTemplateClass</receiver>
    <slot>fileLoad()</slot>
@@ -383,9 +390,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>new_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>fileNew()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
+     <y>305</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
-  <slot>clicked()</slot>
   <slot>prodnameEdit(QString)</slot>
   <slot>partnumEdit(QString)</slot>
   <slot>monthEdit(QString)</slot>
@@ -396,6 +418,7 @@
   <slot>updateKeyref(QString)</slot>
   <slot>fileSaveAs()</slot>
   <slot>closeEvent(QCloseEvent)</slot>
+  <slot>fileNew()</slot>
   <slot>loadSource()</slot>
  </slots>
 </ui>
