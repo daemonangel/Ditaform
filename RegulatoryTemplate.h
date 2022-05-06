@@ -32,7 +32,6 @@ private slots:
     void fileSaveAs();
     void fileLoad();
     void fileNew();
-    void replyFinished(QNetworkReply*);
     void loadSource();
     void saveFiles();
     void autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText);
@@ -47,7 +46,6 @@ private:
     static QString bookFile;
     static QString ditavalFile;
     static QString mapFile;
-    static QNetworkAccessManager* manager;
     int premadeRows = 5; //number of premade form rows
 
     bool maybeSave();

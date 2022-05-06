@@ -9,7 +9,7 @@
 #include <QDateTime>
 #include "LoadDialog.h"
 #include "SaveDialog.h"
-#include <QNetworkAccessManager>
+#include "FileDownloader.h"
 
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
@@ -94,17 +94,7 @@ void RegulatoryTemplate::fileLoad()
 
 void RegulatoryTemplate::fileNew()
 {
-    manager = new QNetworkAccessManager(this);
-    connect(manager, &QNetworkAccessManager::finished,
-        this, &RegulatoryTemplate::replyFinished);
-
-    manager->get(QNetworkRequest(QUrl("https://github.com/daemonangel/RegTemplate/blob/master/source/bm-rg-sample.ditamap")));
-}
-
-void RegulatoryTemplate::replyFinished(QNetworkReply* reply)
-{
-    //QNetworkReply* reply = manager->get(request);
-    
+    //FileDownloader *downloader = new FileDownloader(this);
 }
 
 void RegulatoryTemplate::fileSaveAs()

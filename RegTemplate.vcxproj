@@ -68,6 +68,9 @@
       <ConformanceMode>true</ConformanceMode>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>Urlmon.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -109,6 +112,7 @@
   <ItemGroup>
     <ClCompile Include="DitaConvertTags.cpp" />
     <ClCompile Include="DitaWellFormedHtml.cpp" />
+    <ClCompile Include="FileDownloader.cpp" />
     <ClCompile Include="LoadDialog.cpp" />
     <ClCompile Include="PropRow.cpp" />
     <ClCompile Include="SaveDialog.cpp" />
@@ -129,6 +133,7 @@
     <ClInclude Include="DitaConvertTags.h" />
     <ClInclude Include="DitaWellFormedHtml.h" />
     <QtMoc Include="LoadDialog.h" />
+    <QtMoc Include="FileDownloader.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <QtMoc Include="SaveDialog.h" />

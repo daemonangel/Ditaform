@@ -64,6 +64,9 @@
     <ClCompile Include="SaveDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FileDownloader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pugiconfig.hpp">
@@ -93,6 +96,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SaveDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="FileDownloader.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
