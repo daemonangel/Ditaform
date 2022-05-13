@@ -14,6 +14,9 @@
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
 QString RegulatoryTemplate::mapFile;
+QString RegulatoryTemplate::tempBook;
+QString RegulatoryTemplate::tempDitaval;
+QString RegulatoryTemplate::tempMap;
 QString RegulatoryTemplate::sourceBookmapFile;
 QString RegulatoryTemplate::sourceDitavalFile;
 QString RegulatoryTemplate::sourceMapFile;
@@ -67,6 +70,7 @@ bool RegulatoryTemplate::maybeSave()
     else if (ret == QMessageBox::Cancel)
         return false;
     else
+        deleteTempFiles(); //give a hoot don't pollute
         return true;
 }
 //TODO future : make a button that exports versions of the document with translation info, like language codes
@@ -85,16 +89,21 @@ void RegulatoryTemplate::enableDisableContent(bool checked)
     }
 }
 
-void RegulatoryTemplate::fileLoad()
+void RegulatoryTemplate::fileOpen()
 {
     auto openDialog = new LoadDialog(this);
     openDialog->open();
-    connect(openDialog, &QDialog::accepted, this, &RegulatoryTemplate::loadSource);
+    connect(openDialog, &QDialog::accepted, this, &RegulatoryTemplate::openSource);
 }
 
 void RegulatoryTemplate::fileNew()
 {
     //FileDownloader *downloader = new FileDownloader(this);
+
+    sourceBookmapFile = "source/bm-rg-sample.ditamap";
+    sourceDitavalFile = "source/dv-rg-sample.ditaval";
+
+    loadSource();
 }
 
 void RegulatoryTemplate::fileSaveAs()
@@ -136,26 +145,55 @@ void RegulatoryTemplate::saveFiles()
     bookDoc.save_file(bookFile.toStdString().c_str());
     valDoc.save_file(ditavalFile.toStdString().c_str());
     mapDoc.save_file(mapFile.toStdString().c_str());
+
+    //delete temp files since we don't need them anymore
+    deleteTempFiles();
+}
+
+void RegulatoryTemplate::saveTempFiles()
+{
+    tempBook = QDir::tempPath() + "/" + QFileInfo(sourceBookmapFile).fileName();
+    tempDitaval = QDir::tempPath() + "/" + QFileInfo(sourceDitavalFile).fileName();
+    
+    //save a copy of the map source file at the bookmap file location
+    tempMap = QDir::tempPath() + "/" + QFileInfo(sourceMapFile).fileName();
+
+    //save all docs
+    bookDoc.save_file(tempBook.toStdString().c_str());
+    valDoc.save_file(tempDitaval.toStdString().c_str());
+    mapDoc.save_file(tempMap.toStdString().c_str());
+}
+
+void RegulatoryTemplate::deleteTempFiles()
+{
+    QFile(tempBook).remove();
+    QFile(tempDitaval).remove();
+    QFile(tempMap).remove();
 }
 
 //QString format("%1/dv-%2.ditaval");
 //cppFormat = format.arg(QFileInfo(bookFile).absolutePath()).arg(QFileInfo(bookFile).baseName());
 //C++ string = auto ditavalFile = std::format("{}/dv-{}.ditaval", QFileInfo(bookFile).absolutePath(), QFileInfo(bookFile).baseName());
 
-void RegulatoryTemplate::loadSource()
+void RegulatoryTemplate::openSource()
 {
     auto loadFiles = LoadDialog::openedFiles();
-    
+
     sourceBookmapFile = loadFiles.first;
     sourceDitavalFile = loadFiles.second;
-    
+
+    loadSource();
+}
+
+void RegulatoryTemplate::loadSource()
+{
     pugi::xml_parse_result bookresult = bookDoc.load_file(sourceBookmapFile.toStdString().c_str());
     pugi::xml_parse_result valResult = valDoc.load_file(sourceDitavalFile.toStdString().c_str());
     sourceMapFile = getMapFileFromBookmap();
     pugi::xml_parse_result mapResult = mapDoc.load_file(sourceMapFile.toStdString().c_str());
 
-    //TODO Make it so that you don't have to save the file before you can make any changes to the form
-    fileSaveAs();
+    //save a copy of the files to the user's temp folder
+    saveTempFiles();
 
     _xmlData = std::make_unique<XmlData>();
 
@@ -293,4 +331,18 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
     };   
 }
 
-//TODO add an about box with app info, Qt, and PugiXml
+void RegulatoryTemplate::helpDitaform()
+{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("Ditaform Help");
+    msgBox.setText("<b>Ditaform has the following features:</b><br/><br/><b>New</b> opens a new copy of the form.<br/><br/><b>Open</b> opens a previously saved form.<br/><br/><b>Save</b> saves the form.<br/><br/><b>Save As</b> saves the form with a new name.<br/><br/><b>Close</b> exits Ditaform.");
+    msgBox.exec();
+}
+
+void RegulatoryTemplate::helpAbout()
+{
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("About Ditaform");
+    msgBox.setText("<b>Ditaform</b><br/><b>Version 0.1</b><br/><b>Copyright (C) 2022 Michelle Allison Mamistvalov.</b><br/><br/>Ditaform uses Qt open source libraries (https://www.qt.io/) available under LGPLv3 (https://www.gnu.org/licenses/lgpl-3.0.en.html) license. These libraries are dynamically linked and included in the application directory.<br/><br/>Ditaform is based on pugixml library (http://pugixml.org). pugixml is Copyright (C) 2006-2018 Arseny Kapoulkine.");
+    msgBox.exec();
+}

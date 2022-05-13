@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "technicalContent/dtd/concept.dtd">
+<concept id="Zebra-Concept.dita_ca2d4450-9819-4ecf-b974-d529d1468eae">
+  <title><ph props="regulatory-info">Regulatory Information</ph></title>
+  <shortdesc props="regulatory-info">This device is approved under Zebra Technologies Corporation.</shortdesc>
+  <conbody>
+    <draft-comment props="regulatory-info">MAKE SURE TO SELECT ONE OF THE FOLLOWING - SINGLE MODEL, PRODUCT SERIES, OR MULTIPLE MODELS</draft-comment>
+    <p props="single-model">This guide applies to the following model number: model1</p>
+    <p props="product-series">This guide applies to the following product series: model1</p>
+    <p props="multiple-model">This guide applies to the following model numbers:</p>
+    <ul id="ul_1">
+      <li props="multiple-model1">model1</li>
+      <li props="multiple-model2">model2</li>
+      <li props="multiple-model3">model3</li>
+      <li props="multiple-model4">model4</li>
+      <li props="multiple-model5">model5</li>
+      <li props="multiple-model6">model6</li>
+      <li props="multiple-model7">model7</li>
+      <li props="multiple-model8">model8</li>
+      <li props="multiple-model9">model9</li>
+      <li props="multiple-model10">model10</li>
+      <li props="multiple-model11">model11</li>
+      <li props="multiple-model12">model12</li>
+      <li props="multiple-model13">model13</li>
+      <li props="multiple-model14">model14</li>
+      <li props="multiple-model15">model15</li>
+    </ul>
+    <p props="regulatory-info">All Zebra devices are designed to be compliant with the rules and regulations in the locations they are sold and will be labeled as required.</p>
+    <p props="regulatory-info">Local language translation / (BG) Превод на местен език / (CZ) Překlad do místního jazyka / (DE) Übersetzung in die Landessprache / (EL) Μετάφραση τοπικής γλώσσας / (ES) Traducción de idiomas locales / (ET) Kohaliku keele tõlge / (FI) Paikallinen käännös / (FR) Traduction en langue locale / (HR) Prijevod na lokalni jezik / (HU) Helyi nyelvű fordítás / (IT) Traduzione in lingua locale / (JA) 現地語翻訳 / (LT) Vietinės kalbos vertimas / (LV) Tulkojums vietējā valodā / (NL) Vertaling in lokale taal / (PL) Tłumaczenie na język lokalny / (PT) Tradução do idioma local / (RO) Traducere în limba locală / (RU) Перевод на местный язык / (SK) Preklad do miestneho jazyka / (SL) Prevajanje v lokalni jezik / (SR) Превод на локални језик / (SV) Översättning av lokalt språk / (TR) Yerel dil çevirisi / (ZH-CN) 当地语言翻译 / (ZH-TW) 當地語言翻譯</p>
+    <p props="regulatory-info">zebra.com/support</p>
+    <p props="regulatory-info">Any changes or modifications to Zebra equipment not expressly approved by Zebra could void the user’s authority to operate the equipment.</p>
+    <p props="regulatory-info">Declared maximum operating temperature: xxxx°C</p>
+    <p props="regulatory-info">Zebra devices are professionally installed — the Radio Frequency Output Power will not exceed the maximum allowable limit for the country of operation.</p>
+    <p props="regulatory-info">Antennas: Use only the supplied or an approved replacement antenna. Unauthorized antennas, modifications, or attachments could cause damage and may violate regulations.</p>
+    <p props="regulatory-info">This device is only to be used with a Zebra Wireless Switch.</p>
+    <p props="regulatory-info">For use only with Zebra approved and UL Listed mobile devices, Zebra approved, and UL Listed/Recognized battery packs.</p>
+    <note props="regulatory-info" type="caution" id="note_1">Only use Zebra approved and NRTL-certified accessories, battery packs, and battery chargers.
+      <p>Do NOT attempt to charge damp/wet mobile computers, printers or batteries. All components must be dry before connecting to an external power source.</p>
+    </note>
+    <note props="regulatory-info" type="warning" id="note_2">This is a Class A ITE product. Operation in a residential environment could cause radio interference.</note>
+  </conbody>
+</concept>

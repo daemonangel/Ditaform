@@ -30,10 +30,12 @@ private slots:
     void revisionEdit(const QString& metadata);
     bool fileSave();
     void fileSaveAs();
-    void fileLoad();
+    void fileOpen();
     void fileNew();
-    void loadSource();
+    void openSource();
     void saveFiles();
+    void helpDitaform();
+    void helpAbout();
     void autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText);
 
 protected:
@@ -46,12 +48,18 @@ private:
     static QString bookFile;
     static QString ditavalFile;
     static QString mapFile;
+    static QString tempBook;
+    static QString tempDitaval;
+    static QString tempMap;
     int premadeRows = 5; //number of premade form rows
 
     bool maybeSave();
     void clearBookInfo();
     void removePropRows();
     void addPropRows();
+    void loadSource();
+    void saveTempFiles();
+    void deleteTempFiles();
     //void connectPropRowTextChange();
     QString getMapFileFromBookmap();
 };

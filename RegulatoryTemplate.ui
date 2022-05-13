@@ -208,7 +208,16 @@
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="help_menu"/>
+    <addaction name="separator"/>
+    <addaction name="about_menu"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
   </widget>
   <action name="saveAs_menu">
    <property name="text">
@@ -238,6 +247,16 @@
   <action name="new_menu">
    <property name="text">
     <string>New</string>
+   </property>
+  </action>
+  <action name="help_menu">
+   <property name="text">
+    <string>Ditaform Help</string>
+   </property>
+  </action>
+  <action name="about_menu">
+   <property name="text">
+    <string>About Ditaform</string>
    </property>
   </action>
  </widget>
@@ -330,7 +349,7 @@
    <sender>open_menu</sender>
    <signal>triggered()</signal>
    <receiver>RegulatoryTemplateClass</receiver>
-   <slot>fileLoad()</slot>
+   <slot>fileOpen()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -406,6 +425,38 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>help_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>helpDitaform()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
+     <y>305</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>about_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
+     <y>305</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>prodnameEdit(QString)</slot>
@@ -413,12 +464,14 @@
   <slot>monthEdit(QString)</slot>
   <slot>yearEdit(QString)</slot>
   <slot>revisionEdit(QString)</slot>
-  <slot>fileLoad()</slot>
+  <slot>fileOpen()</slot>
   <slot>fileSave()</slot>
   <slot>updateKeyref(QString)</slot>
   <slot>fileSaveAs()</slot>
   <slot>closeEvent(QCloseEvent)</slot>
   <slot>fileNew()</slot>
   <slot>loadSource()</slot>
+  <slot>helpDitaform()</slot>
+  <slot>helpAbout()</slot>
  </slots>
 </ui>

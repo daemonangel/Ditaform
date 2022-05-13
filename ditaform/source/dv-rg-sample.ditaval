@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<val
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
+	
+<prop att="props" val="regulatory-info" action="exclude"></prop>
+<prop att="props" val="single-model" action="exclude"></prop>
+<prop att="props" val="product-series" action="exclude"></prop>
+<prop att="props" val="multiple-mode1" action="exclude"></prop>
+<prop att="props" val="multiple-mode2" action="exclude"></prop>
+<prop att="props" val="multiple-mode3" action="exclude"></prop>
+<prop att="props" val="multiple-mode4" action="exclude"></prop>
+<prop att="props" val="multiple-mode5" action="exclude"></prop>
+<prop att="props" val="multiple-mode6" action="exclude"></prop>
+<prop att="props" val="multiple-mode7" action="exclude"></prop>
+<prop att="props" val="multiple-mode8" action="exclude"></prop>
+<prop att="props" val="multiple-mode9" action="exclude"></prop>
+<prop att="props" val="multiple-mode10" action="exclude"></prop>
+<prop att="props" val="multiple-model1" action="exclude"></prop>
+<prop att="props" val="multiple-model2" action="exclude"></prop>
+<prop att="props" val="multiple-model3" action="exclude"></prop>
+<prop att="props" val="multiple-model4" action="exclude"></prop>
+<prop att="props" val="multiple-model5" action="exclude"></prop>
+</val>

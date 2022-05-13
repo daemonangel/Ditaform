@@ -18,5 +18,8 @@ public slots:
     void error();
     void sslError();
     void progress();
+
+private:
+    void startDownload();
 };
 
