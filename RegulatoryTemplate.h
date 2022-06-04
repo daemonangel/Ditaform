@@ -24,10 +24,9 @@ public:
 private slots:
     void enableDisableContent(bool checked);
     void prodnameEdit(const QString& metadata);
-    void partnumEdit(const QString& metadata);
+    void requestornameEdit(const QString& metadata);
     void monthEdit(const QString& metadata);
     void yearEdit(const QString& metadata);
-    void revisionEdit(const QString& metadata);
     bool fileSave();
     void fileSaveAs();
     void fileOpen();

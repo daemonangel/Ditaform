@@ -10,6 +10,7 @@
 #include "LoadDialog.h"
 #include "SaveDialog.h"
 #include "FileDownloader.h"
+#include <filesystem>
 
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
@@ -63,7 +64,7 @@ bool RegulatoryTemplate::maybeSave()
     //If you Save, but then cancel without saving, you return to the app
     QMessageBox::StandardButton ret;
     ret = QMessageBox::warning(this, tr("Ditaform"),
-        tr("<b>Save files now?</b>\nUnsaved changes will be lost."),
+        tr("Save files now? Unsaved changes will be lost."),
         QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
     if (ret == QMessageBox::Save)
         return fileSave();
@@ -166,9 +167,9 @@ void RegulatoryTemplate::saveTempFiles()
 
 void RegulatoryTemplate::deleteTempFiles()
 {
-    QFile(tempBook).remove();
-    QFile(tempDitaval).remove();
-    QFile(tempMap).remove();
+    std::filesystem::remove(tempBook.toStdString());
+    std::filesystem::remove(tempDitaval.toStdString());
+    std::filesystem::remove(tempMap.toStdString());
 }
 
 //QString format("%1/dv-%2.ditaval");
@@ -202,6 +203,14 @@ void RegulatoryTemplate::loadSource()
     clearBookInfo();
 
     addPropRows();
+
+    if (!ui.prodname_edit->isEnabled())
+    {
+        ui.prodname_edit->setEnabled(true);
+        ui.requestorname_edit->setEnabled(true);
+        ui.month_edit->setEnabled(true);
+        ui.year_edit->setEnabled(true);
+    }
 
     //connectPropRowTextChange();
 }
@@ -266,11 +275,11 @@ void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
-void RegulatoryTemplate::partnumEdit([[maybe_unused]] const QString& metadata)
+void RegulatoryTemplate::requestornameEdit([[maybe_unused]] const QString& metadata)
 {
     pugi::xml_node bookmap = bookDoc.child("bookmap");
-    auto partnumNode = bookmap.child("bookmeta").child("bookid").child("bookpartno");
-    partnumNode.text().set(ui.partnumber_edit->text().toStdString().c_str());
+    auto requestorNode = bookmap.child("bookmeta").child("author");
+    requestorNode.text().set(ui.requestorname_edit->text().toStdString().c_str());
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
@@ -289,14 +298,6 @@ void RegulatoryTemplate::yearEdit([[maybe_unused]] const QString& metadata)
     auto yearCopyrightNode = bookmap.child("bookmeta").child("bookrights").child("copyrlast").child("year");
     yearCompletedNode.text().set(ui.year_edit->text().toStdString().c_str());
     yearCopyrightNode.text().set(ui.year_edit->text().toStdString().c_str());
-    bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
-}
-
-void RegulatoryTemplate::revisionEdit([[maybe_unused]] const QString& metadata)
-{
-    pugi::xml_node bookmap = bookDoc.child("bookmap");
-    auto revisionNode = bookmap.child("bookmeta").child("bookid").child("volume");
-    revisionNode.text().set(ui.revision_edit->text().toStdString().c_str());
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
@@ -333,9 +334,15 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
 
 void RegulatoryTemplate::helpDitaform()
 {
+    //TODO save msgbox text in a text file and read it in
     QMessageBox msgBox;
     msgBox.setWindowTitle("Ditaform Help");
-    msgBox.setText("<b>Ditaform has the following features:</b><br/><br/><b>New</b> opens a new copy of the form.<br/><br/><b>Open</b> opens a previously saved form.<br/><br/><b>Save</b> saves the form.<br/><br/><b>Save As</b> saves the form with a new name.<br/><br/><b>Close</b> exits Ditaform.");
+    msgBox.setText("<b>Ditaform has the following features:</b><br/><br/> \
+<b>New</b> opens a new copy of the form.<br/><br/> \
+<b>Open</b> opens a previously saved form.<br/><br/> \
+<b>Save</b> saves the form.<br/><br/> \
+<b>Save As</b> saves the form with a new name.<br/><br/> \
+<b>Close</b> exits Ditaform.");
     msgBox.exec();
 }
 
@@ -343,6 +350,9 @@ void RegulatoryTemplate::helpAbout()
 {
     QMessageBox msgBox;
     msgBox.setWindowTitle("About Ditaform");
-    msgBox.setText("<b>Ditaform</b><br/><b>Version 0.1</b><br/><b>Copyright (C) 2022 Michelle Allison Mamistvalov.</b><br/><br/>Ditaform uses Qt open source libraries (https://www.qt.io/) available under LGPLv3 (https://www.gnu.org/licenses/lgpl-3.0.en.html) license. These libraries are dynamically linked and included in the application directory.<br/><br/>Ditaform is based on pugixml library (http://pugixml.org). pugixml is Copyright (C) 2006-2018 Arseny Kapoulkine.");
+    msgBox.setText("<b>Ditaform</b><br/><b>Version 0.1</b><br/> \
+<b>Copyright (C) 2022 Michelle Allison Mamistvalov.</b><br/><br/> \
+Ditaform uses Qt open source libraries (https://www.qt.io/) available under LGPLv3 (https://www.gnu.org/licenses/lgpl-3.0.en.html) license. These libraries are dynamically linked and included in the application directory.<br/><br/> \
+Ditaform is based on pugixml library (http://pugixml.org). pugixml is Copyright (C) 2006-2018 Arseny Kapoulkine.");
     msgBox.exec();
 }

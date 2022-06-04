@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>657</width>
-    <height>190</height>
+    <height>180</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>150</y>
+     <y>130</y>
      <width>641</width>
      <height>31</height>
     </rect>
@@ -39,7 +39,7 @@
     <item>
      <widget class="QPushButton" name="confirm_button">
       <property name="text">
-       <string>Confirm</string>
+       <string>Save</string>
       </property>
      </widget>
     </item>
@@ -84,35 +84,11 @@
      <x>10</x>
      <y>0</y>
      <width>641</width>
-     <height>131</height>
+     <height>111</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QLabel" name="bookmap_label">
-      <property name="text">
-       <string>Save Bookmap File (*.ditamap)</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="bookmap_button">
-      <property name="text">
-       <string>Open...</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="ditaval_button">
-      <property name="text">
-       <string>Open...</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
+    <item row="2" column="0">
      <widget class="QLabel" name="ditaval_label">
       <property name="text">
        <string>Select Ditaval File (*.ditaval)</string>
@@ -122,21 +98,59 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <widget class="QLineEdit" name="ditaval_line"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLineEdit" name="bookmap_line"/>
-    </item>
-    <item row="0" column="0" colspan="2">
-     <widget class="QLabel" name="important_label">
-      <property name="text">
-       <string>&lt;b&gt;IMPORTANT: You must save before making changes to the form.&lt;/b&gt;</string>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="ditaval_button">
+      <property name="minimumSize">
+       <size>
+        <width>24</width>
+        <height>0</height>
+       </size>
       </property>
-      <property name="textFormat">
-       <enum>Qt::RichText</enum>
+      <property name="maximumSize">
+       <size>
+        <width>24</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>...</string>
       </property>
      </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="bookmap_label">
+      <property name="text">
+       <string>Save Bookmap File (*.ditamap)</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="bookmap_button">
+      <property name="minimumSize">
+       <size>
+        <width>24</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>24</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>...</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLineEdit" name="bookmap_line"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLineEdit" name="ditaval_line"/>
     </item>
    </layout>
   </widget>

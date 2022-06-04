@@ -25,6 +25,7 @@
       <booknumber></booknumber>
       <volume>Rev A</volume>
     </bookid>
+	<author type="requestor">John Doe</author>
     <bookrights>
       <copyrfirst>
         <year>2016</year>
