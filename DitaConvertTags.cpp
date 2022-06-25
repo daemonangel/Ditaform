@@ -89,6 +89,14 @@ void DitaConvertTags::note_node(pugi::xml_node& node)
 	//add admonitions in BOLD: before the node text
 }
 
+void DitaConvertTags::comment_node(pugi::xml_node& node)
+{
+	node.set_name("p");
+	Xml::CreateAttrib(node, "style", "color:red;background-color:yellow;");
+	//Xml::CreateAttrib(node, "background-color", "yellow");
+	//add admonitions in BOLD: before the node text
+}
+
 /*void DitaConvertTags::default_tag(pugi::xml_node& node)
 {
 	auto originalName =	std::string(node.name());
@@ -109,6 +117,7 @@ std::unordered_map<std::string, DitaConvertTags::nodeEditingFunction> DitaConver
     {"title", DitaConvertTags::title_node},
     {"image", DitaConvertTags::image_node},
     {"note", DitaConvertTags::note_node},
+    {"draft-comment", DitaConvertTags::comment_node},
 
 	//ordered list
     {"step", DitaConvertTags::step_node},

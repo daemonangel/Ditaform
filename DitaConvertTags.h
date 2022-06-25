@@ -23,6 +23,7 @@ private:
 	static void row_node(pugi::xml_node& node);
 	static void entry_node(pugi::xml_node& node);
 	static void note_node(pugi::xml_node& node);
+	static void comment_node(pugi::xml_node& node);
 	static void do_nothing([[maybe_unused]] pugi::xml_node& node);
 	//static void default_tag(pugi::xml_node& node)
 

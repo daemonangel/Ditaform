@@ -29,7 +29,7 @@
     <p props="regulatory-info">Local language translation / (BG) Превод на местен език / (CZ) Překlad do místního jazyka / (DE) Übersetzung in die Landessprache / (EL) Μετάφραση τοπικής γλώσσας / (ES) Traducción de idiomas locales / (ET) Kohaliku keele tõlge / (FI) Paikallinen käännös / (FR) Traduction en langue locale / (HR) Prijevod na lokalni jezik / (HU) Helyi nyelvű fordítás / (IT) Traduzione in lingua locale / (JA) 現地語翻訳 / (LT) Vietinės kalbos vertimas / (LV) Tulkojums vietējā valodā / (NL) Vertaling in lokale taal / (PL) Tłumaczenie na język lokalny / (PT) Tradução do idioma local / (RO) Traducere în limba locală / (RU) Перевод на местный язык / (SK) Preklad do miestneho jazyka / (SL) Prevajanje v lokalni jezik / (SR) Превод на локални језик / (SV) Översättning av lokalt språk / (TR) Yerel dil çevirisi / (ZH-CN) 当地语言翻译 / (ZH-TW) 當地語言翻譯</p>
     <p props="regulatory-info">zebra.com/support</p>
     <p props="regulatory-info">Any changes or modifications to Zebra equipment not expressly approved by Zebra could void the user’s authority to operate the equipment.</p>
-    <p props="regulatory-info">Declared maximum operating temperature: xxxx°C</p>
+    <p props="regulatory-info">Declared maximum operating temperature: <ph keyref="degrees-again"></ph>°C</p>
     <p props="regulatory-info">Zebra devices are professionally installed — the Radio Frequency Output Power will not exceed the maximum allowable limit for the country of operation.</p>
     <p props="regulatory-info">Antennas: Use only the supplied or an approved replacement antenna. Unauthorized antennas, modifications, or attachments could cause damage and may violate regulations.</p>
     <p props="regulatory-info">This device is only to be used with a Zebra Wireless Switch.</p>

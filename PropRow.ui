@@ -117,7 +117,7 @@ p, li { white-space: pre-wrap; }
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Enable/Disable</string>
+         <string>Include</string>
         </property>
        </widget>
       </item>
