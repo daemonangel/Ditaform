@@ -116,6 +116,7 @@
     <ClCompile Include="LoadDialog.cpp" />
     <ClCompile Include="PropRow.cpp" />
     <ClCompile Include="SaveDialog.cpp" />
+    <ClCompile Include="SelectLanguages.cpp" />
     <ClCompile Include="Xml.cpp" />
     <ClCompile Include="XmlData.cpp" />
     <QtRcc Include="RegulatoryTemplate.qrc" />
@@ -137,6 +138,7 @@
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <QtMoc Include="SaveDialog.h" />
+    <QtMoc Include="SelectLanguages.h" />
     <ClInclude Include="Xml.h" />
     <ClInclude Include="XmlData.h" />
   </ItemGroup>
