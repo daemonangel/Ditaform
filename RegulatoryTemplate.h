@@ -25,8 +25,7 @@ private slots:
     void enableDisableContent(bool checked);
     void prodnameEdit(const QString& metadata);
     void requestornameEdit(const QString& metadata);
-    void monthEdit(const QString& metadata);
-    void yearEdit(const QString& metadata);
+    void dateEdit(const QDate& metadata);
     bool fileSave();
     void fileSaveAs();
     void fileOpen();
@@ -35,6 +34,7 @@ private slots:
     void saveFiles();
     void helpDitaform();
     void helpAbout();
+    void languagesEdit();
     void autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText);
 
 protected:
@@ -50,7 +50,7 @@ private:
     static QString tempBook;
     static QString tempDitaval;
     static QString tempMap;
-    int premadeRows = 3; //number of premade form rows
+    int premadeRows = 4; //number of premade form rows
 
     bool maybeSave();
     void clearBookInfo();

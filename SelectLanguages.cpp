@@ -1,13 +1,14 @@
 #include "SelectLanguages.h"
 #include <qpushbutton.h>
 
-SelectLanguages::SelectLanguages(QWidget* parent) : QDialog(parent)
+SelectLanguages::SelectLanguages(QWidget* parent) 
+    : QDialog(parent)
 {
     setWindowTitle("Select Languages");
 
     createListWidget();
-    createOtherWidgets();
-    createLayout();
+    //createOtherWidgets();
+    //createLayout();
     createConnections();
 }
 
@@ -25,13 +26,16 @@ void SelectLanguages::createListWidget() {
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
         item->setCheckState(Qt::Unchecked);
     }
+
+    //buttonBox->addButton(QDialogButtonBox::Save);
+    //buttonBox->addButton(QDialogButtonBox::Cancel);
 }
 
 void SelectLanguages::createConnections() {
     QObject::connect(widget, &QListWidget::currentItemChanged,
         this, &SelectLanguages::highlightChecked);
-    QObject::connect(saveButton, &QPushButton::clicked, this, &SelectLanguages::save);
-    QObject::connect(closeButton, &QPushButton::clicked, this, &SelectLanguages::close);
+    //QObject::connect(buttonBox, &QDialogButtonBox::accepted, this, &SelectLanguages::save);
+    //QObject::connect(buttonBox, &QDialogButtonBox::rejected, this, &SelectLanguages::close);
 }
 
 void SelectLanguages::highlightChecked(QListWidgetItem* item) {
@@ -39,4 +43,8 @@ void SelectLanguages::highlightChecked(QListWidgetItem* item) {
         item->setBackground(QColor("#ffffb2"));
     else
         item->setBackground(QColor("#ffffff"));
+}
+
+void SelectLanguages::save() {
+
 }

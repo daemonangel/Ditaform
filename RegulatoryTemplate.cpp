@@ -11,6 +11,7 @@
 #include "SaveDialog.h"
 #include "FileDownloader.h"
 #include <filesystem>
+#include "SelectLanguages.h"
 
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
@@ -208,8 +209,9 @@ void RegulatoryTemplate::loadSource()
     {
         ui.prodname_edit->setEnabled(true);
         ui.requestorname_edit->setEnabled(true);
-        ui.month_edit->setEnabled(true);
-        ui.year_edit->setEnabled(true);
+        ui.date_edit->setEnabled(true);
+        ui.languages_button->setEnabled(true);
+        ui.date_edit->setDate(QDate::currentDate());
     }
 
     //connectPropRowTextChange();
@@ -283,22 +285,26 @@ void RegulatoryTemplate::requestornameEdit([[maybe_unused]] const QString& metad
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
-void RegulatoryTemplate::monthEdit([[maybe_unused]] const QString& metadata)
+void RegulatoryTemplate::dateEdit([[maybe_unused]] const QDate& metadata)
 {
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto monthNode = bookmap.child("bookmeta").child("publisherinformation").child("published").child("completed").child("month");
-    monthNode.text().set(ui.month_edit->text().toStdString().c_str());
+    monthNode.text().set(ui.date_edit->date().month());
+
+    auto yearCompletedNode = bookmap.child("bookmeta").child("publisherinformation").child("published").child("completed").child("year");
+    auto yearCopyrightNode = bookmap.child("bookmeta").child("bookrights").child("copyrlast").child("year");
+    yearCompletedNode.text().set(ui.date_edit->date().year());
+    yearCopyrightNode.text().set(ui.date_edit->date().year());
+
     bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
-void RegulatoryTemplate::yearEdit([[maybe_unused]] const QString& metadata)
+void RegulatoryTemplate::languagesEdit()
 {
-    pugi::xml_node bookmap = bookDoc.child("bookmap");
-    auto yearCompletedNode = bookmap.child("bookmeta").child("publisherinformation").child("published").child("completed").child("year");
-    auto yearCopyrightNode = bookmap.child("bookmeta").child("bookrights").child("copyrlast").child("year");
-    yearCompletedNode.text().set(ui.year_edit->text().toStdString().c_str());
-    yearCopyrightNode.text().set(ui.year_edit->text().toStdString().c_str());
-    bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
+    //TODO: auto fill the form using data from the source files
+
+    auto languagesDialog = new SelectLanguages(this);
+    languagesDialog->open();
 }
 
 void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText)

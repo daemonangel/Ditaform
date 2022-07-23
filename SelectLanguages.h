@@ -16,13 +16,10 @@ public slots:
 private:
     QListWidget* widget;
     QDialogButtonBox* buttonBox;
-    QGroupBox* viewBox;
-    QPushButton* saveButton;
-    QPushButton* closeButton;
 
     void createListWidget();
-    void createOtherWidgets();
-    void createLayout();
+    //void createOtherWidgets();
+    //void createLayout();
     void createConnections();
 };
 

@@ -138,152 +138,103 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0" colspan="2">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <property name="spacing">
+        <item row="2" column="0">
+         <widget class="QLabel" name="date_label">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>155</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>155</width>
+            <height>20</height>
+           </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Current Month/Year</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="margin">
+           <number>-1</number>
+          </property>
+          <property name="indent">
            <number>0</number>
           </property>
-          <property name="sizeConstraint">
-           <enum>QLayout::SetDefaultConstraint</enum>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QDateEdit" name="date_edit">
+          <property name="enabled">
+           <bool>false</bool>
           </property>
-          <property name="leftMargin">
-           <number>0</number>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <item>
-           <widget class="QLabel" name="monthyear_label">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>155</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>155</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Month / Year</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-            </property>
-            <property name="margin">
-             <number>-1</number>
-            </property>
-            <property name="indent">
-             <number>0</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="month_edit">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>75</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>75</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="slash_label">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>/</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="year_edit">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>75</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>75</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::MinimumExpanding</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="displayFormat">
+           <string>M/yyyy</string>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+          <property name="date">
+           <date>
+            <year>2000</year>
+            <month>1</month>
+            <day>1</day>
+           </date>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="languages_label">
+          <property name="text">
+           <string>Languages</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QPushButton" name="languages_button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Edit</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -394,38 +345,6 @@
     <hint type="sourcelabel">
      <x>388</x>
      <y>79</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>347</x>
-     <y>123</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>month_edit</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>RegulatoryTemplateClass</receiver>
-   <slot>monthEdit(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>388</x>
-     <y>107</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>347</x>
-     <y>123</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>year_edit</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>RegulatoryTemplateClass</receiver>
-   <slot>yearEdit(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>388</x>
-     <y>135</y>
     </hint>
     <hint type="destinationlabel">
      <x>347</x>
@@ -545,12 +464,43 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>date_edit</sender>
+   <signal>dateChanged(QDate)</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>dateEdit(QDate)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>106</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
+     <y>240</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>languages_button</sender>
+   <signal>released()</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>languagesEdit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>217</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>374</x>
+     <y>240</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>prodnameEdit(QString)</slot>
   <slot>requestornameEdit(QString)</slot>
-  <slot>monthEdit(QString)</slot>
-  <slot>yearEdit(QString)</slot>
+  <slot>dateEdit(QDate)</slot>
   <slot>revisionEdit(QString)</slot>
   <slot>fileOpen()</slot>
   <slot>fileSave()</slot>
@@ -561,5 +511,6 @@
   <slot>loadSource()</slot>
   <slot>helpDitaform()</slot>
   <slot>helpAbout()</slot>
+  <slot>languagesEdit()</slot>
  </slots>
 </ui>
