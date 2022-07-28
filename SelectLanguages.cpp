@@ -1,11 +1,26 @@
 #include "SelectLanguages.h"
 #include <qpushbutton.h>
+#include <qlayout.h>
+QStringList SelectLanguages::strList;
 
 SelectLanguages::SelectLanguages(QWidget* parent) 
     : QDialog(parent)
 {
     setWindowTitle("Select Languages");
-
+    if (strList.isEmpty())
+    {
+        strList.append("German");
+        strList.append("French");
+        strList.append("Italian");
+        strList.append("Japanese");
+        strList.append("Korean");
+        strList.append("Swedish");
+        strList.append("Traditional Chinese");
+        strList.append("Turkish");
+    }
+    
+    //TODO: make the list a static const vector here and remove from creatListWidget()
+    //TODO future: if the list is empty, read a text file to fill it in , push_back or append
     createListWidget();
     //createOtherWidgets();
     //createLayout();
@@ -13,12 +28,12 @@ SelectLanguages::SelectLanguages(QWidget* parent)
 }
 
 void SelectLanguages::createListWidget() {
-    widget = new QListWidget;
-    QStringList strList;
-    strList << "German" << "French" << "Italian" << "Japanese"
-        << "Korean" << "Swedish" << "Traditional Chinese" << "Turkish";
+    widget = new QListWidget(this); //remove
 
-    widget->addItems(strList);
+    widget->addItems(strList); //remove 
+    auto centralWidget = new QWidget(this); //remove
+    auto layout = new QVBoxLayout(centralWidget); //remove
+    layout->addWidget(widget); //remove
 
     QListWidgetItem* item = 0;
     for (int i = 0; i < widget->count(); ++i) {

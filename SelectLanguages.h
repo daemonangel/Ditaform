@@ -14,6 +14,7 @@ public slots:
 	void highlightChecked(QListWidgetItem* item);
 	void save();
 private:
+    static QStringList strList;
     QListWidget* widget;
     QDialogButtonBox* buttonBox;
 
