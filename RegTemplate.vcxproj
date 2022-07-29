@@ -113,13 +113,14 @@
     <ClCompile Include="DitaConvertTags.cpp" />
     <ClCompile Include="DitaWellFormedHtml.cpp" />
     <ClCompile Include="FileDownloader.cpp" />
+    <ClCompile Include="LanguageDialog.cpp" />
     <ClCompile Include="LoadDialog.cpp" />
     <ClCompile Include="PropRow.cpp" />
     <ClCompile Include="SaveDialog.cpp" />
-    <ClCompile Include="SelectLanguages.cpp" />
     <ClCompile Include="Xml.cpp" />
     <ClCompile Include="XmlData.cpp" />
     <QtRcc Include="RegulatoryTemplate.qrc" />
+    <QtUic Include="LanguageDialog.ui" />
     <QtUic Include="LoadDialog.ui" />
     <QtUic Include="PropRow.ui" />
     <QtUic Include="RegulatoryTemplate.ui" />
@@ -135,10 +136,10 @@
     <ClInclude Include="DitaWellFormedHtml.h" />
     <QtMoc Include="LoadDialog.h" />
     <QtMoc Include="FileDownloader.h" />
+    <QtMoc Include="LanguageDialog.h" />
     <ClInclude Include="pugiconfig.hpp" />
     <ClInclude Include="pugixml.hpp" />
     <QtMoc Include="SaveDialog.h" />
-    <QtMoc Include="SelectLanguages.h" />
     <ClInclude Include="Xml.h" />
     <ClInclude Include="XmlData.h" />
   </ItemGroup>

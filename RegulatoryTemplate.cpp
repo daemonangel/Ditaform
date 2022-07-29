@@ -11,7 +11,7 @@
 #include "SaveDialog.h"
 #include "FileDownloader.h"
 #include <filesystem>
-#include "SelectLanguages.h"
+#include "LanguageDialog.h"
 
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
@@ -303,7 +303,7 @@ void RegulatoryTemplate::languagesEdit()
 {
     //TODO: auto fill the form using data from the source files
 
-    auto languagesDialog = new SelectLanguages(this);
+    auto languagesDialog = new LanguageDialog(this);
     languagesDialog->open();
 }
 
