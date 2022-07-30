@@ -12,6 +12,7 @@
 #include "FileDownloader.h"
 #include <filesystem>
 #include "LanguageDialog.h"
+#include "Xml.h"
 
 QString RegulatoryTemplate::bookFile;
 QString RegulatoryTemplate::ditavalFile;
@@ -139,7 +140,7 @@ void RegulatoryTemplate::saveFiles()
 
     bookFile = saveFiles.first;
     ditavalFile = saveFiles.second;
-
+    
     //save a copy of the map source file at the bookmap file location
     mapFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(sourceMapFile).fileName();
 
@@ -301,10 +302,26 @@ void RegulatoryTemplate::dateEdit([[maybe_unused]] const QDate& metadata)
 
 void RegulatoryTemplate::languagesEdit()
 {
-    //TODO: auto fill the form using data from the source files
-
     auto languagesDialog = new LanguageDialog(this);
     languagesDialog->open();
+    connect(languagesDialog, &QDialog::accepted, this, &RegulatoryTemplate::updateLanguages);
+}
+
+void RegulatoryTemplate::updateLanguages()
+{
+    auto savedLanguages = LanguageDialog::savedLanguages();
+    
+    pugi::xml_node bookmap = bookDoc.child("bookmap");
+    auto metadata = bookmap.child("bookmeta");
+    auto data = Xml::CreateNode(metadata, "data", "");
+    Xml::CreateAttrib(data, "type", "languages");
+
+    for (auto& item : savedLanguages)
+    {
+        Xml::CreateNode(data, "data", item.toStdString());
+    }
+
+    bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
 void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText)

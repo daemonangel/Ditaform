@@ -1,49 +1,52 @@
 #include "LanguageDialog.h"
-QStringList LanguageDialog::strList;
+#include <QMessageBox>
+QStringList LanguageDialog::fullLanguageList;
+QStringList LanguageDialog::selectedLanguageList;
 
 LanguageDialog::LanguageDialog(QWidget *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
 
-    if (strList.isEmpty())
+    if (fullLanguageList.isEmpty())
     {
-        strList.append("German");
-        strList.append("French");
-        strList.append("Italian");
-        strList.append("Japanese");
-        strList.append("Korean");
-        strList.append("Swedish");
-        strList.append("Simplified Chinese");
-        strList.append("Traditional Chinese");
-        strList.append("Thai");
-        strList.append("Croatian");
-        strList.append("Turkish");
-        strList.append("Hebrew");
-        strList.append("Arabic");
-        strList.append("Bulgarian");
-        strList.append("Hungarian");
-        strList.append("Spanish");
-        strList.append("Portuguese");
-        strList.append("Polish");
-        strList.append("Russian");
+        fullLanguageList.append("German");
+        fullLanguageList.append("French");
+        fullLanguageList.append("Italian");
+        fullLanguageList.append("Japanese");
+        fullLanguageList.append("Korean");
+        fullLanguageList.append("Swedish");
+        fullLanguageList.append("Simplified Chinese");
+        fullLanguageList.append("Traditional Chinese");
+        fullLanguageList.append("Thai");
+        fullLanguageList.append("Croatian");
+        fullLanguageList.append("Turkish");
+        fullLanguageList.append("Hebrew");
+        fullLanguageList.append("Arabic");
+        fullLanguageList.append("Bulgarian");
+        fullLanguageList.append("Hungarian");
+        fullLanguageList.append("Spanish");
+        fullLanguageList.append("Portuguese");
+        fullLanguageList.append("Polish");
+        fullLanguageList.append("Russian");
     }
 
     //TODO future: pull languages from a text file
 
-    strList.sort();
+    fullLanguageList.sort();
     addLanguages();
     createConnections();
 }
 
 void LanguageDialog::addLanguages()
 {
-    ui.language_list->addItems(strList);
+    ui.language_list->addItems(fullLanguageList);
 
     QListWidgetItem* item = 0;
     for (int i = 0; i < ui.language_list->count(); ++i) {
         item = ui.language_list->item(i);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
+        //TODO if item is listed in saved bookmap, setCheckState = checked, else unchecked
         item->setCheckState(Qt::Unchecked);
     }
 }
@@ -64,8 +67,25 @@ void LanguageDialog::highlightChecked(QListWidgetItem* item) {
 void LanguageDialog::save()
 {
     //TODO future: saving creates a set of bookmaps with the correct language codes
+    auto list = ui.language_list;
+    for (int i = 0; i < list->count(); ++i)
+    {
+        QListWidgetItem* item = list->item(i);
+        if (item->checkState() == Qt::Checked)
+        {
+            selectedLanguageList.append(item->text());
+        }
+    }
+    QMessageBox::StandardButton ret;
+    ret = QMessageBox::information(this, tr("Languages Updated"),
+        tr("Make sure to save your changes."),
+        QMessageBox::Ok);
+    return accept();
+}
 
-
+QStringList LanguageDialog::savedLanguages()
+{
+    return selectedLanguageList;
 }
 
 LanguageDialog::~LanguageDialog()

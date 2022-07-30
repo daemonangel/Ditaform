@@ -59,6 +59,7 @@ private:
     void loadSource();
     void saveTempFiles();
     void deleteTempFiles();
+    void updateLanguages();
     //void connectPropRowTextChange();
     QString getMapFileFromBookmap();
 };

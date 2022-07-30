@@ -144,22 +144,6 @@
  <resources/>
  <connections>
   <connection>
-   <sender>save_button</sender>
-   <signal>released()</signal>
-   <receiver>LanguageDialogClass</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>86</x>
-     <y>379</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>149</x>
-     <y>199</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>cancel_button</sender>
    <signal>released()</signal>
    <receiver>LanguageDialogClass</receiver>
