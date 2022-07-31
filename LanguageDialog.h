@@ -9,7 +9,7 @@ class LanguageDialog : public QDialog
 	Q_OBJECT
 
 public:
-	LanguageDialog(QWidget *parent = nullptr);
+	LanguageDialog(const QStringList& selectedLanguages, QWidget *parent = nullptr);
 	static QStringList savedLanguages();
 	~LanguageDialog();
 
@@ -20,7 +20,9 @@ private:
 	static QStringList fullLanguageList;
 	static QStringList selectedLanguageList;
 	Ui::LanguageDialogClass ui;
-	void addLanguages();
+	void addLanguages(const QStringList& selectedLanguages);
+	void loadLanguages();
 	void createConnections();
 	void save();
 };
+

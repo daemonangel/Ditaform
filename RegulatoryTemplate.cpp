@@ -302,7 +302,8 @@ void RegulatoryTemplate::dateEdit([[maybe_unused]] const QDate& metadata)
 
 void RegulatoryTemplate::languagesEdit()
 {
-    auto languagesDialog = new LanguageDialog(this);
+    QStringList selectedLanguages; //fill this in from bookdoc node
+    auto languagesDialog = new LanguageDialog(selectedLanguages, this);
     languagesDialog->open();
     connect(languagesDialog, &QDialog::accepted, this, &RegulatoryTemplate::updateLanguages);
 }
@@ -316,12 +317,12 @@ void RegulatoryTemplate::updateLanguages()
     auto data = Xml::CreateNode(metadata, "data", "");
     Xml::CreateAttrib(data, "type", "languages");
 
+    //find data type="languages", if it exists delete and replace
+
     for (auto& item : savedLanguages)
     {
         Xml::CreateNode(data, "data", item.toStdString());
     }
-
-    bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
 }
 
 void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText)

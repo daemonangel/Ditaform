@@ -1,44 +1,52 @@
 #include "LanguageDialog.h"
 #include <QMessageBox>
+#include <qfile.h>
+#include <qtextstream.h>
+
 QStringList LanguageDialog::fullLanguageList;
 QStringList LanguageDialog::selectedLanguageList;
 
-LanguageDialog::LanguageDialog(QWidget *parent)
+LanguageDialog::LanguageDialog(const QStringList& selectedLanguages, QWidget *parent)
 	: QDialog(parent)
 {
 	ui.setupUi(this);
 
     if (fullLanguageList.isEmpty())
     {
-        fullLanguageList.append("German");
-        fullLanguageList.append("French");
-        fullLanguageList.append("Italian");
-        fullLanguageList.append("Japanese");
-        fullLanguageList.append("Korean");
-        fullLanguageList.append("Swedish");
-        fullLanguageList.append("Simplified Chinese");
-        fullLanguageList.append("Traditional Chinese");
-        fullLanguageList.append("Thai");
-        fullLanguageList.append("Croatian");
-        fullLanguageList.append("Turkish");
-        fullLanguageList.append("Hebrew");
-        fullLanguageList.append("Arabic");
-        fullLanguageList.append("Bulgarian");
-        fullLanguageList.append("Hungarian");
-        fullLanguageList.append("Spanish");
-        fullLanguageList.append("Portuguese");
-        fullLanguageList.append("Polish");
-        fullLanguageList.append("Russian");
+        loadLanguages();
     }
 
-    //TODO future: pull languages from a text file
-
-    fullLanguageList.sort();
-    addLanguages();
+    addLanguages(selectedLanguages);
     createConnections();
 }
 
-void LanguageDialog::addLanguages()
+void LanguageDialog::loadLanguages()
+{
+    if (QFile inputFile("source/languages.txt"); inputFile.exists())
+    {
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+            QTextStream in(&inputFile);
+            while (!in.atEnd())
+            {
+                QString line = in.readLine();
+                fullLanguageList.append(line);
+            }
+            inputFile.close();
+            fullLanguageList.sort();
+        }
+    }
+    else
+    {
+       QMessageBox::information(this, tr("Language List"),
+            tr("languages.txt cannot be found. Check if it exists in the source folder."),
+            QMessageBox::Ok);
+        ui.save_button->setEnabled(false);
+        ui.language_list->addItem("[languages.txt not found]");
+    }
+}
+
+void LanguageDialog::addLanguages(const QStringList& selectedLanguages)
 {
     ui.language_list->addItems(fullLanguageList);
 
@@ -46,8 +54,9 @@ void LanguageDialog::addLanguages()
     for (int i = 0; i < ui.language_list->count(); ++i) {
         item = ui.language_list->item(i);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-        //TODO if item is listed in saved bookmap, setCheckState = checked, else unchecked
         item->setCheckState(Qt::Unchecked);
+        //if selectedLanguages.contains
+        //TODO if item is listed in saved bookmap, setCheckState = checked, else unchecked
     }
 }
 
@@ -67,6 +76,7 @@ void LanguageDialog::highlightChecked(QListWidgetItem* item) {
 void LanguageDialog::save()
 {
     //TODO future: saving creates a set of bookmaps with the correct language codes
+
     auto list = ui.language_list;
     for (int i = 0; i < list->count(); ++i)
     {
@@ -76,10 +86,7 @@ void LanguageDialog::save()
             selectedLanguageList.append(item->text());
         }
     }
-    QMessageBox::StandardButton ret;
-    ret = QMessageBox::information(this, tr("Languages Updated"),
-        tr("Make sure to save your changes."),
-        QMessageBox::Ok);
+
     return accept();
 }
 
