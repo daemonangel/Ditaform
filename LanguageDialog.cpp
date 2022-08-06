@@ -54,10 +54,18 @@ void LanguageDialog::addLanguages(const QStringList& selectedLanguages)
     for (int i = 0; i < ui.language_list->count(); ++i) {
         item = ui.language_list->item(i);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
-        item->setCheckState(Qt::Unchecked);
-        //if selectedLanguages.contains
-        //TODO if item is listed in saved bookmap, setCheckState = checked, else unchecked
+        //if item is listed in saved bookmap, setCheckState = checked, else unchecked
+        if (selectedLanguages.contains(item->text()))
+        {
+            item->setCheckState(Qt::Checked);
+            item->setBackground(QColor("#ffffb2"));
+        }
+        else
+        {
+            item->setCheckState(Qt::Unchecked);
+        }  
     }
+    selectedLanguageList.clear(); // clear the list so save can repopulate it
 }
 
 void LanguageDialog::createConnections() {

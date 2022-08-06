@@ -303,6 +303,14 @@ void RegulatoryTemplate::dateEdit([[maybe_unused]] const QDate& metadata)
 void RegulatoryTemplate::languagesEdit()
 {
     QStringList selectedLanguages; //fill this in from bookdoc node
+
+    pugi::xml_node bookmap = bookDoc.child("bookmap");
+    auto languages = bookmap.child("bookmeta").find_child_by_attribute("type", "languages");
+    for (auto& child : languages)
+    {
+        selectedLanguages.append(child.child_value());
+    }
+
     auto languagesDialog = new LanguageDialog(selectedLanguages, this);
     languagesDialog->open();
     connect(languagesDialog, &QDialog::accepted, this, &RegulatoryTemplate::updateLanguages);
@@ -314,10 +322,13 @@ void RegulatoryTemplate::updateLanguages()
     
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto metadata = bookmap.child("bookmeta");
+
+    //delete <data type="languages"> if it exists
+    auto languages = metadata.find_child_by_attribute("type", "languages");
+    metadata.remove_child(languages);
+
     auto data = Xml::CreateNode(metadata, "data", "");
     Xml::CreateAttrib(data, "type", "languages");
-
-    //find data type="languages", if it exists delete and replace
 
     for (auto& item : savedLanguages)
     {
@@ -358,7 +369,7 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
 
 void RegulatoryTemplate::helpDitaform()
 {
-    //TODO save msgbox text in a text file and read it in
+    //TODO future: save msgbox text in a text file and read it in
     QMessageBox msgBox;
     msgBox.setWindowTitle("Ditaform Help");
     msgBox.setText("<b>Ditaform has the following features:</b><br/><br/> \
@@ -366,7 +377,8 @@ void RegulatoryTemplate::helpDitaform()
 <b>Open</b> opens a previously saved form.<br/><br/> \
 <b>Save</b> saves the form.<br/><br/> \
 <b>Save As</b> saves the form with a new name.<br/><br/> \
-<b>Close</b> exits Ditaform.");
+<b>Close</b> exits Ditaform.<br/><br/> \
+<b>Languages</b> > <b>Edit</b> selects translation languages.");
     msgBox.exec();
 }
 
