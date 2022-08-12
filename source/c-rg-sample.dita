@@ -25,8 +25,14 @@
       <li props="multiple-model14">model14</li>
       <li props="multiple-model15">model15</li>
     </ul>
+	<draft-comment props="regulatory-info">This is a comment!
+	<ul>
+      <li>im a bullet!</li>
+      <li>im also a bullet!</li>
+    </ul>
+	</draft-comment>
     <p props="regulatory-info">All Zebra devices are designed to be compliant with the rules and regulations in the locations they are sold and will be labeled as required.</p>
-    <p props="regulatory-info">Local language translation / (BG) Превод на местен език / (CZ) Překlad do místního jazyka / (DE) Übersetzung in die Landessprache / (EL) Μετάφραση τοπικής γλώσσας / (ES) Traducción de idiomas locales / (ET) Kohaliku keele tõlge / (FI) Paikallinen käännös / (FR) Traduction en langue locale / (HR) Prijevod na lokalni jezik / (HU) Helyi nyelvű fordítás / (IT) Traduzione in lingua locale / (JA) 現地語翻訳 / (LT) Vietinės kalbos vertimas / (LV) Tulkojums vietējā valodā / (NL) Vertaling in lokale taal / (PL) Tłumaczenie na język lokalny / (PT) Tradução do idioma local / (RO) Traducere în limba locală / (RU) Перевод на местный язык / (SK) Preklad do miestneho jazyka / (SL) Prevajanje v lokalni jezik / (SR) Превод на локални језик / (SV) Översättning av lokalt språk / (TR) Yerel dil çevirisi / (ZH-CN) 当地语言翻译 / (ZH-TW) 當地語言翻譯</p>
+    <p props="regulatory-info">Local language translation / (BG) Превод на местен език / (CZ) Překlad do místního jazyka / (DE) Übersetzung in die Landessprache / (EL) Μετάφραση τοπικής γλώσσας / (ES) Traducción de idiomas locales / (ET) Kohaliku keele tõlge / (FI) Paikallinen käännös / (FR) Traduction en langue locale / (HR) Prijevod na lokalni jezik / (HU) Helyi nyelvű fordítás / (IT) Traduzione in lingua locale / (JA) 現地語翻訳 / (LT) Vietinės kalbos vertimas / (LV) Tulkojums vietējā valodā / (NL) Vertaling in lokale taal / (PL) Tłumaczenie na język lokalny / (PT) Tradução do idioma local / (RO) Traducere în limba locală / (RU) Перевод на местный язык / (SK) Preklad do miestneho jazyka / (SL) Prevajanje v lokalni jezik / (SR) Превод на локални језик / (SV) Översättning av lokalt språk / (TR) Yerel dil çevirisi / (ZH-CN) 当地语言翻译 / (ZH-TW) 當地語言翻譯 <ph>stuff</ph></p>
     <p props="regulatory-info">zebra.com/support</p>
     <p props="regulatory-info">Any changes or modifications to Zebra equipment not expressly approved by Zebra could void the user’s authority to operate the equipment.</p>
     <p props="regulatory-info">Declared maximum operating temperature: <ph keyref="degrees-again"></ph>°C</p>

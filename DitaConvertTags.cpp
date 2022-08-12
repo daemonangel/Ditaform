@@ -11,11 +11,19 @@ const bool continueTraversal = true;
 
 void DitaConvertTags::ph_node(pugi::xml_node& node)
 {
-	auto text = node.attribute("keyref").value();
-	node.set_name("font");
-	Xml::CreateAttrib(node, "color", "red");
-	node.attribute("keyref").set_name("data-keyref");
-	Xml::SetNodeText(node, text);
+	std::string parent = node.parent().name();
+	if (node.attribute("keyref"))
+	{
+		auto text = node.attribute("keyref").value();
+		node.set_name("font");
+		Xml::CreateAttrib(node, "color", "red");
+		node.attribute("keyref").set_name("data-keyref");
+		Xml::SetNodeText(node, text);
+	}
+	else if (parent == "h1")
+	{
+		node.set_name("h1");
+	}
 }
 
 void DitaConvertTags::uicontrol_node(pugi::xml_node& node)
@@ -94,7 +102,6 @@ void DitaConvertTags::comment_node(pugi::xml_node& node)
 	node.set_name("p");
 	Xml::CreateAttrib(node, "style", "color:red;background-color:yellow;");
 	//Xml::CreateAttrib(node, "background-color", "yellow");
-	//add admonitions in BOLD: before the node text
 }
 
 /*void DitaConvertTags::default_tag(pugi::xml_node& node)
