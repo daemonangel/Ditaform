@@ -5,7 +5,7 @@
   <shortdesc props="regulatory-info">This device is approved under Zebra Technologies Corporation.</shortdesc>
   <conbody>
     <draft-comment props="regulatory-info">MAKE SURE TO SELECT ONE OF THE FOLLOWING - SINGLE MODEL, PRODUCT SERIES, OR MULTIPLE MODELS</draft-comment>
-    <p props="single-model">This guide applies to the following model number: model1</p>
+    <p props="single-model-with-an-extremely-long-variable-boop">This guide applies to the following model number: model1</p>
     <p props="product-series">This guide applies to the following product series: model1</p>
     <p props="multiple-model">This guide applies to the following model numbers:</p>
     <ul id="ul_1">

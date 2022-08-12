@@ -10,8 +10,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>750</width>
-    <height>481</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -75,8 +75,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>730</width>
-         <height>439</height>
+         <width>780</width>
+         <height>558</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -236,6 +236,13 @@
           </property>
          </widget>
         </item>
+        <item row="4" column="0" colspan="2">
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -247,7 +254,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>750</width>
+     <width>800</width>
      <height>22</height>
     </rect>
    </property>

@@ -50,7 +50,7 @@ private:
     static QString tempBook;
     static QString tempDitaval;
     static QString tempMap;
-    int premadeRows = 4; //number of premade form rows
+    int premadeRows = 5; //number of premade form rows
 
     bool maybeSave();
     void clearBookInfo();
