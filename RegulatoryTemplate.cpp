@@ -104,6 +104,7 @@ void RegulatoryTemplate::fileNew()
     //FileDownloader *downloader = new FileDownloader(this);
 
     sourceBookmapFile = "source/bm-rg-sample.ditamap";
+    //TODO create the ditaval from source DITA files
     sourceDitavalFile = "source/dv-rg-sample.ditaval";
 
     loadSource();

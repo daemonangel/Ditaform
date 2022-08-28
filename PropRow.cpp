@@ -71,6 +71,7 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 void PropRow::updateKeyref()
 {
 	//TODO future: get list of keyref values from topics into a vector and check against the list of keysResult - easy: compare list sizes - better: compare list sizes and values
+	//TODO can skip this comparison if the ditaval file is created automatically from the keyref values instead of loading a manually created file
 
 	auto senderObject = QObject::sender();
 	auto senderName = senderObject->objectName();
