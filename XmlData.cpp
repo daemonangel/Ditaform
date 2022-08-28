@@ -4,7 +4,7 @@
 
 // Linker -> System -> SubSystem" to Console for testing - was originally Windows
 
-//TODO future : support for keydef to resource topic file
+//TODO future : support for processing keydefs from a resource topic file
 std::vector<key_value_pair> GetKeyDefsAndValues(const pugi::xml_document& mapFile)
 {
 	std::vector<key_value_pair> keysAndValues;
