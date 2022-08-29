@@ -60,6 +60,7 @@ private:
     void saveTempFiles();
     void deleteTempFiles();
     void updateLanguages();
+    void createDitaval();
     //void connectPropRowTextChange();
     QString getMapFileFromBookmap();
 };

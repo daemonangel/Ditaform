@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
+<!DOCTYPE map
+  PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
 <map xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
 	<title>Stuff</title>
 	<topicmeta>
@@ -34,5 +36,5 @@
 			</keywords>
 		</topicmeta>
 	</keydef>
-	<topicref href="c-rg-sample.dita" type="concept" />
+	<topicref href="../topics/c-rg-sample.dita" type="concept" />
 </map>

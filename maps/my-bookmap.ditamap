@@ -1,13 +1,16 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap/dtd/bookmap.dtd">
 <bookmap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
 	<title>Sample Source</title>
 	<bookmeta>
-		<shortdesc />
+		<shortdesc>
+			<!--A brief description of this document. This text may appear in different output formats and the description field for PDF metadata. Length should not exceed 200 characters. -->
+		</shortdesc>
 		<publisherinformation>
 			<published>
 				<completed>
-					<month>May</month>
-					<year>2021</year>
+					<month>8</month>
+					<year>2022</year>
 				</completed>
 			</published>
 		</publisherinformation>
@@ -24,6 +27,7 @@
 			<booknumber />
 			<volume>Rev A</volume>
 		</bookid>
+		<author type="requestor">John Doe</author>
 		<bookrights>
 			<copyrfirst>
 				<year>2016</year>
@@ -36,5 +40,5 @@
 			</bookowner>
 		</bookrights>
 	</bookmeta>
-	<chapter format="ditamap" href="m-source.ditamap" type="map" />
+	<chapter format="ditamap" href="template-map.ditamap" type="map" />
 </bookmap>

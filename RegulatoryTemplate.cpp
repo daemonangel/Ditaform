@@ -103,9 +103,7 @@ void RegulatoryTemplate::fileNew()
 {
     //FileDownloader *downloader = new FileDownloader(this);
 
-    sourceBookmapFile = "source/bm-rg-sample.ditamap";
-    //TODO create the ditaval from source DITA files
-    sourceDitavalFile = "source/dv-rg-sample.ditaval";
+    sourceBookmapFile = "maps/template.ditamap";
 
     loadSource();
 }
@@ -140,10 +138,11 @@ void RegulatoryTemplate::saveFiles()
     auto saveFiles = SaveDialog::savedFiles();
 
     bookFile = saveFiles.first;
-    ditavalFile = saveFiles.second;
+    //ditavalFile = saveFiles.second;
     
     //save a copy of the map source file at the bookmap file location
-    mapFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(sourceMapFile).fileName();
+    mapFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(bookFile).baseName() + "-map.ditamap";
+    ditavalFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(bookFile).baseName() + ".ditaval";
 
     //save all docs
     bookDoc.save_file(bookFile.toStdString().c_str());
@@ -157,10 +156,10 @@ void RegulatoryTemplate::saveFiles()
 void RegulatoryTemplate::saveTempFiles()
 {
     tempBook = QDir::tempPath() + "/" + QFileInfo(sourceBookmapFile).fileName();
-    tempDitaval = QDir::tempPath() + "/" + QFileInfo(sourceDitavalFile).fileName();
+    tempDitaval = QDir::tempPath() + "/dv-" + QFileInfo(sourceBookmapFile).baseName() + ".ditaval";
     
     //save a copy of the map source file at the bookmap file location
-    tempMap = QDir::tempPath() + "/" + QFileInfo(sourceMapFile).fileName();
+    tempMap = QDir::tempPath() + "/m-" + QFileInfo(sourceBookmapFile).fileName();
 
     //save all docs
     bookDoc.save_file(tempBook.toStdString().c_str());
@@ -191,15 +190,17 @@ void RegulatoryTemplate::openSource()
 
 void RegulatoryTemplate::loadSource()
 {
-    pugi::xml_parse_result bookresult = bookDoc.load_file(sourceBookmapFile.toStdString().c_str());
-    pugi::xml_parse_result valResult = valDoc.load_file(sourceDitavalFile.toStdString().c_str());
+    //map and bookmap set to parse_full to avoid losing DOCTYPE
+    bookDoc.load_file(sourceBookmapFile.toStdString().c_str(), pugi::parse_full);
     sourceMapFile = getMapFileFromBookmap();
-    pugi::xml_parse_result mapResult = mapDoc.load_file(sourceMapFile.toStdString().c_str());
+    mapDoc.load_file(sourceMapFile.toStdString().c_str(), pugi::parse_full);
+
+    _xmlData = std::make_unique<XmlData>();
+
+    createDitaval();
 
     //save a copy of the files to the user's temp folder
     saveTempFiles();
-
-    _xmlData = std::make_unique<XmlData>();
 
     removePropRows();
 
@@ -366,6 +367,23 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
             }
         }
     };   
+}
+
+void RegulatoryTemplate::createDitaval()
+{
+    if (!valDoc.empty())
+    {
+        valDoc.reset();
+    }
+    pugi::xml_node val = valDoc.append_child("val");
+    for (auto& propRow : _xmlData->_propsRows)
+    {
+        auto node = Xml::CreateNode(val, "prop", "");
+        auto name = propRow->propsName;
+        Xml::CreateAttrib(node, "att", "props");
+        Xml::CreateAttrib(node, "val", name);
+        Xml::CreateAttrib(node, "action", "exclude");
+    }
 }
 
 void RegulatoryTemplate::helpDitaform()

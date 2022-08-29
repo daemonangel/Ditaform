@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>657</width>
-    <height>180</height>
+    <width>660</width>
+    <height>171</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,6 +47,9 @@
     </item>
     <item row="1" column="0">
      <widget class="QLineEdit" name="bookmap_line">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="readOnly">
        <bool>true</bool>
       </property>
@@ -54,6 +57,9 @@
     </item>
     <item row="3" column="0">
      <widget class="QLineEdit" name="ditaval_line">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="readOnly">
        <bool>true</bool>
       </property>

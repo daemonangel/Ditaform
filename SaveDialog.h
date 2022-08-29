@@ -20,5 +20,4 @@ private:
 
 private slots:
 	void saveBookmap();
-	void saveDitaval();
 };
