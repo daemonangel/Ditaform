@@ -10,7 +10,7 @@ class SaveDialog : public QDialog
 
 public:
 	SaveDialog(QWidget *parent = Q_NULLPTR);
-	static std::pair<QString, QString> savedFiles();
+	static QString savedFiles();
 	~SaveDialog();
 
 private:

@@ -89,9 +89,7 @@ void PropRow::updateKeyref()
 			return;
 		}
 	}
-
 	// if it gets here it didn't do anything
-
 }
 
 void PropRow::updateDitaval()

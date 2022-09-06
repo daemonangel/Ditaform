@@ -22,25 +22,26 @@ public:
     static QString sourceMapFile;
 
 private slots:
-    void enableDisableContent(bool checked);
-    void prodnameEdit(const QString& metadata);
-    void requestornameEdit(const QString& metadata);
+    void autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText);
     void dateEdit(const QDate& metadata);
     bool fileSave();
     void fileSaveAs();
     void fileOpen();
     void fileNew();
-    void openSource();
-    void saveFiles();
     void helpDitaform();
-    void helpAbout();
+    void helpAbout(); 
     void languagesEdit();
-    void autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText);
+    void openSource();
+    void prodnameEdit(const QString& metadata);
+    void requestornameEdit(const QString& metadata);
+    void saveFiles();
 
 protected:
     void closeEvent(QCloseEvent* event);
 
 private:
+    int premadeRows = 5; //number of premade form rows
+
     Ui::RegulatoryTemplateClass ui;
     std::vector<std::string> lines;
     std::unique_ptr<XmlData> _xmlData;
@@ -50,17 +51,15 @@ private:
     static QString tempBook;
     static QString tempDitaval;
     static QString tempMap;
-    int premadeRows = 5; //number of premade form rows
 
-    bool maybeSave();
-    void clearBookInfo();
-    void removePropRows();
     void addPropRows();
-    void loadSource();
-    void saveTempFiles();
-    void deleteTempFiles();
-    void updateLanguages();
+    void clearBookInfo();
     void createDitaval();
-    //void connectPropRowTextChange();
+    void deleteTempFiles();
     QString getMapFileFromBookmap();
+    bool maybeSave();
+    void loadSource();
+    void removePropRows();
+    void saveTempFiles();
+    void updateLanguages();
 };

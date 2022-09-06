@@ -12,17 +12,19 @@ SaveDialog::SaveDialog(QWidget *parent)
 
 void SaveDialog::saveBookmap()
 {
+	//TODO Set default file name using product name + requestor name
 	bookmapFile = QFileDialog::getSaveFileName(this, tr("Select Bookmap"), "maps/", tr("DITA Bookmap (*.ditamap);;All Files (*.*)"));
-	ui.bookmap_line->setText(bookmapFile);
-	ui.confirm_button->setEnabled(true);
+	if (bookmapFile != nullptr)
+	{
+		ui.bookmap_line->setText(bookmapFile);
+		ui.confirm_button->setEnabled(true);
+	}
 }
 
-
-std::pair<QString, QString> SaveDialog::savedFiles()
+QString SaveDialog::savedFiles()
 {
-	std::pair<QString, QString> _files;
-	_files.first = bookmapFile;
-	//_files.second = ditavalFile;
+	QString _files;
+	_files = bookmapFile;
 	return _files;
 }
 
