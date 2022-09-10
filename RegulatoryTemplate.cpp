@@ -57,13 +57,17 @@ void RegulatoryTemplate::addPropRows()
         auto propUI = new PropRow(*propRow, ui.centralWidget);
         ui.formLayout->addRow(propUI);
 
-        auto valNode = valDoc.find_child_by_attribute("val", propUI->propRowName().c_str());
-        if (valNode.attribute("action").value() == "include")
-        {
-            propUI->findChild<QCheckBox*>(propUI->propRowName().c_str())->setChecked(true);
-        }
-
         connect(propUI, &PropRow::updateAllOtherKeyrefs, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
+        
+        auto rowName = propUI->propRowName().c_str();
+        auto val = valDoc.child("val");
+        auto node = val.find_child_by_attribute("val", rowName);
+        std::string actionValue = node.attribute("action").value();
+
+        if (actionValue == "include")
+        {
+            propUI->findChild<QCheckBox*>(rowName)->setChecked(true);
+        }
     }
 
     /*
@@ -125,6 +129,7 @@ void RegulatoryTemplate::closeEvent(QCloseEvent *event)
 
 void RegulatoryTemplate::createDitaval()
 {
+    //if the doc already has info, reset it
     if (!valDoc.empty())
     {
         valDoc.reset();
@@ -266,10 +271,14 @@ void RegulatoryTemplate::loadSource()
 
     _xmlData = std::make_unique<XmlData>();
 
+    //if the doc doesn't exist or has no top level element, create it dynamically
     if (!valDoc.document_element())
     {
         createDitaval();
+    } else {
+        valDoc.load_file(sourceDitavalFile.toStdString().c_str());
     }
+
     //save a copy of the files to the user's temp folder
     saveTempFiles();
 

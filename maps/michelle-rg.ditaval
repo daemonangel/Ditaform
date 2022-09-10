@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <val>
-	<prop att="props" val="regulatory-info" action="exclude" />
-	<prop att="props" val="single-model-with-an-extremely-long-variable-boop" action="exclude" />
+	<prop att="props" val="regulatory-info" action="include" />
+	<prop att="props" val="single-model-with-an-extremely-long-variable-boop" action="include" />
 	<prop att="props" val="product-series" action="exclude" />
 	<prop att="props" val="multiple-model" action="exclude" />
 	<prop att="props" val="multiple-model1" action="exclude" />
