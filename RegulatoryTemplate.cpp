@@ -69,11 +69,6 @@ void RegulatoryTemplate::addPropRows()
             propUI->findChild<QCheckBox*>(rowName)->setChecked(true);
         }
     }
-
-    /*
-    auto lexis = this->findChildren<PropRow*>();
-    propUI->isIncluded();
-    */
 }
 
 void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText)
@@ -275,8 +270,6 @@ void RegulatoryTemplate::loadSource()
     if (!valDoc.document_element())
     {
         createDitaval();
-    } else {
-        valDoc.load_file(sourceDitavalFile.toStdString().c_str());
     }
 
     //save a copy of the files to the user's temp folder
@@ -328,6 +321,8 @@ void RegulatoryTemplate::openSource()
     sourceDitavalFile = loadFiles.second;
     saveDitavalFile = loadFiles.second;
 
+    valDoc.load_file(sourceDitavalFile.toStdString().c_str());
+
     loadSource();
 }
 
@@ -377,6 +372,17 @@ void RegulatoryTemplate::saveFiles()
 
     //delete temp files since we don't need them anymore
     deleteTempFiles();
+}
+
+void RegulatoryTemplate::exportDepenencies()
+{
+    auto allRows = this->findChildren<PropRow*>();
+    pugi::xml_document doc;
+    for (auto& row : allRows)
+    {
+        auto node = Xml::CreateNode(doc, row->propRowName(), "");
+        Xml::CreateAttrib(node, "att", "props");
+    }
 }
 
 void RegulatoryTemplate::saveTempFiles()

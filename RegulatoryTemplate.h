@@ -35,6 +35,7 @@ private slots:
     void prodnameEdit(const QString& metadata);
     void requestornameEdit(const QString& metadata);
     void saveFiles();
+    void exportDepenencies();
 
 protected:
     void closeEvent(QCloseEvent* event);
