@@ -12,6 +12,8 @@ class PropRow : public QWidget
 
 public:
 	PropRow(const propValueCollection& propsRow, QWidget *parent = Q_NULLPTR);
+	bool isIncluded() const;
+	const std::string& propRowName() const;
 	~PropRow();
 
 private slots:

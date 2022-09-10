@@ -45,9 +45,9 @@ private:
     Ui::RegulatoryTemplateClass ui;
     std::vector<std::string> lines;
     std::unique_ptr<XmlData> _xmlData;
-    static QString bookFile;
-    static QString ditavalFile;
-    static QString mapFile;
+    static QString saveBookFile;
+    static QString saveDitavalFile;
+    static QString saveMapFile;
     static QString tempBook;
     static QString tempDitaval;
     static QString tempMap;

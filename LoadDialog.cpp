@@ -13,13 +13,27 @@ LoadDialog::LoadDialog(QWidget *parent)
 void LoadDialog::openBookmap()
 {
 	bookmapFile = QFileDialog::getOpenFileName(this, tr("Select Bookmap"), "", tr("DITA Bookmap (*.ditamap);;All Files (*.*)"));
-	ui.bookmap_line->setText(bookmapFile);
+	if (bookmapFile != nullptr)
+	{
+		ui.bookmap_line->setText(bookmapFile);
+		if (ditavalFile != nullptr)
+		{
+			ui.confirm_button->setEnabled(true);
+		}
+	}
 }
 
 void LoadDialog::openDitaval()
 {
 	ditavalFile = QFileDialog::getOpenFileName(this, tr("Select Ditaval"), "", tr("DITA Ditaval (*.ditaval);;All Files (*.*)"));
-	ui.ditaval_line->setText(ditavalFile);
+	if (ditavalFile != nullptr)
+	{
+		ui.ditaval_line->setText(ditavalFile);
+		if (bookmapFile != nullptr)
+		{
+			ui.confirm_button->setEnabled(true);
+		}
+	}
 }
 
 std::pair<QString, QString> LoadDialog::openedFiles()

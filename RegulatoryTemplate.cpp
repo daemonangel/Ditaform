@@ -14,9 +14,9 @@
 #include "LanguageDialog.h"
 #include "Xml.h"
 
-QString RegulatoryTemplate::bookFile;
-QString RegulatoryTemplate::ditavalFile;
-QString RegulatoryTemplate::mapFile;
+QString RegulatoryTemplate::saveBookFile;
+QString RegulatoryTemplate::saveDitavalFile;
+QString RegulatoryTemplate::saveMapFile;
 QString RegulatoryTemplate::tempBook;
 QString RegulatoryTemplate::tempDitaval;
 QString RegulatoryTemplate::tempMap;
@@ -56,8 +56,20 @@ void RegulatoryTemplate::addPropRows()
     {
         auto propUI = new PropRow(*propRow, ui.centralWidget);
         ui.formLayout->addRow(propUI);
+
+        auto valNode = valDoc.find_child_by_attribute("val", propUI->propRowName().c_str());
+        if (valNode.attribute("action").value() == "include")
+        {
+            propUI->findChild<QCheckBox*>(propUI->propRowName().c_str())->setChecked(true);
+        }
+
         connect(propUI, &PropRow::updateAllOtherKeyrefs, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
     }
+
+    /*
+    auto lexis = this->findChildren<PropRow*>();
+    propUI->isIncluded();
+    */
 }
 
 void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText)
@@ -139,7 +151,7 @@ void RegulatoryTemplate::dateEdit([[maybe_unused]] const QDate& metadata)
     yearCompletedNode.text().set(ui.date_edit->date().year());
     yearCopyrightNode.text().set(ui.date_edit->date().year());
 
-    bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
+    bookDoc.save_file(RegulatoryTemplate::saveBookFile.toStdString().c_str());
 }
 
 void RegulatoryTemplate::deleteTempFiles()
@@ -150,15 +162,15 @@ void RegulatoryTemplate::deleteTempFiles()
 }
 
 //QString format("%1/dv-%2.ditaval");
-//cppFormat = format.arg(QFileInfo(bookFile).absolutePath()).arg(QFileInfo(bookFile).baseName());
-//C++ string = auto ditavalFile = std::format("{}/dv-{}.ditaval", QFileInfo(bookFile).absolutePath(), QFileInfo(bookFile).baseName());
+//cppFormat = format.arg(QFileInfo(saveBookFile).absolutePath()).arg(QFileInfo(saveBookFile).baseName());
+//C++ string = auto saveDitavalFile = std::format("{}/dv-{}.ditaval", QFileInfo(saveBookFile).absolutePath(), QFileInfo(saveBookFile).baseName());
 
 void RegulatoryTemplate::fileNew()
 {
     //FileDownloader *downloader = new FileDownloader(this);
 
     sourceBookmapFile = "maps/template.ditamap";
-
+    valDoc.reset(); //reset the file since we will create it automatically
     loadSource();
 }
 
@@ -171,11 +183,11 @@ void RegulatoryTemplate::fileOpen()
 
 bool RegulatoryTemplate::fileSave()
 {
-    if (!bookFile.isEmpty())
+    if (!saveBookFile.isEmpty())
     {
-        bookDoc.save_file(bookFile.toStdString().c_str());
-        valDoc.save_file(ditavalFile.toStdString().c_str());
-        mapDoc.save_file(mapFile.toStdString().c_str());
+        bookDoc.save_file(saveBookFile.toStdString().c_str());
+        valDoc.save_file(saveDitavalFile.toStdString().c_str());
+        mapDoc.save_file(saveMapFile.toStdString().c_str());
         return true;
     }
     else
@@ -254,8 +266,10 @@ void RegulatoryTemplate::loadSource()
 
     _xmlData = std::make_unique<XmlData>();
 
-    createDitaval();
-
+    if (!valDoc.document_element())
+    {
+        createDitaval();
+    }
     //save a copy of the files to the user's temp folder
     saveTempFiles();
 
@@ -299,8 +313,11 @@ void RegulatoryTemplate::openSource()
 {
     auto loadFiles = LoadDialog::openedFiles();
 
+    //when opening custom files, the source and save files are the same
     sourceBookmapFile = loadFiles.first;
+    saveBookFile = loadFiles.first;
     sourceDitavalFile = loadFiles.second;
+    saveDitavalFile = loadFiles.second;
 
     loadSource();
 }
@@ -310,7 +327,7 @@ void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto prodnameNode = bookmap.child("bookmeta").child("prodinfo").child("prodname");
     prodnameNode.text().set(ui.prodname_edit->text().toStdString().c_str());
-    bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
+    bookDoc.save_file(RegulatoryTemplate::saveBookFile.toStdString().c_str());
 }
 
 void RegulatoryTemplate::removePropRows()
@@ -331,23 +348,23 @@ void RegulatoryTemplate::requestornameEdit([[maybe_unused]] const QString& metad
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto requestorNode = bookmap.child("bookmeta").child("author");
     requestorNode.text().set(ui.requestorname_edit->text().toStdString().c_str());
-    bookDoc.save_file(RegulatoryTemplate::bookFile.toStdString().c_str());
+    bookDoc.save_file(RegulatoryTemplate::saveBookFile.toStdString().c_str());
 }
 
 void RegulatoryTemplate::saveFiles()
 {
     auto saveFiles = SaveDialog::savedFiles();
 
-    bookFile = saveFiles;
+    saveBookFile = saveFiles;
     
     //save a copy of the map source file at the bookmap file location
-    mapFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(bookFile).baseName() + "-map.ditamap";
-    ditavalFile = QFileInfo(bookFile).absolutePath() + "/" + QFileInfo(bookFile).baseName() + ".ditaval";
+    saveMapFile = QFileInfo(saveBookFile).absolutePath() + "/" + QFileInfo(saveBookFile).baseName() + "-map.ditamap";
+    saveDitavalFile = QFileInfo(saveBookFile).absolutePath() + "/" + QFileInfo(saveBookFile).baseName() + ".ditaval";
 
     //save all docs
-    bookDoc.save_file(bookFile.toStdString().c_str());
-    valDoc.save_file(ditavalFile.toStdString().c_str());
-    mapDoc.save_file(mapFile.toStdString().c_str());
+    bookDoc.save_file(saveBookFile.toStdString().c_str());
+    valDoc.save_file(saveDitavalFile.toStdString().c_str());
+    mapDoc.save_file(saveMapFile.toStdString().c_str());
 
     //delete temp files since we don't need them anymore
     deleteTempFiles();

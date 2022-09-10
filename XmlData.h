@@ -16,6 +16,7 @@ struct propValueCollection //one for each prop
 	std::string propsName;
 	std::vector<ditaval_node> propsNodes; //list of nodes because a props name could be on multiple nodes
 	std::vector<std::string> _keysList; //from topic: list of keyref values
+	//TODO add checkbox value 
 };
 
 struct key_value_pair

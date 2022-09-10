@@ -110,6 +110,16 @@ void PropRow::updateDitaval()
 	}
 }
 
+bool PropRow::isIncluded() const
+{
+	return ui.propRow_check->isChecked();
+}
+
+const std::string& PropRow::propRowName() const
+{
+	return _myPropsRow.propsName;
+}
+
 PropRow::~PropRow()
 {
 }
