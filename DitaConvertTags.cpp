@@ -101,7 +101,16 @@ void DitaConvertTags::comment_node(pugi::xml_node& node)
 {
 	node.set_name("p");
 	Xml::CreateAttrib(node, "style", "color:red;background-color:yellow;");
-	//Xml::CreateAttrib(node, "background-color", "yellow");
+}
+
+void DitaConvertTags::data_node(pugi::xml_node& node)
+{
+	node.set_name("p");
+	std::string selectionType = node.attribute("datatype").value();
+	std::string choices = node.attribute("value").value();
+	auto text = "Select " + selectionType + " of the following: " + choices;
+	Xml::CreateNode(node, "b", text);
+	Xml::CreateAttrib(node, "style", "color:red;background-color:yellow;");
 }
 
 /*void DitaConvertTags::default_tag(pugi::xml_node& node)
@@ -125,6 +134,7 @@ std::unordered_map<std::string, DitaConvertTags::nodeEditingFunction> DitaConver
     {"image", DitaConvertTags::image_node},
     {"note", DitaConvertTags::note_node},
     {"draft-comment", DitaConvertTags::comment_node},
+    {"data", DitaConvertTags::data_node},
 
 	//ordered list
     {"step", DitaConvertTags::step_node},

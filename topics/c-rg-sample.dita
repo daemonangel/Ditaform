@@ -2,10 +2,9 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "technicalContent/dtd/concept.dtd">
 <concept id="Zebra-Concept.dita_ca2d4450-9819-4ecf-b974-d529d1468eae">
   <title><ph props="regulatory-info">Regulatory Information</ph></title>
-  <shortdesc props="regulatory-info">This device is approved under Zebra Technologies Corporation.</shortdesc>
+  <shortdesc props="regulatory-info">This device is approved under Zebra Technologies Corporation.<data name="regulatory-info" datatype="any" value="product-series"/></shortdesc>
   <conbody>
-    <draft-comment props="regulatory-info">MAKE SURE TO SELECT ONE OF THE FOLLOWING - SINGLE MODEL, PRODUCT SERIES, OR MULTIPLE MODELS</draft-comment>
-    <p props="single-model-with-an-extremely-long-variable-boop">This guide applies to the following model number: model1</p>
+    <p props="single-model">This guide applies to the following model number: model1</p>
     <p props="product-series">This guide applies to the following product series: model1</p>
     <p props="multiple-model">This guide applies to the following model numbers:</p>
     <ul id="ul_1">

@@ -278,7 +278,14 @@
     <addaction name="separator"/>
     <addaction name="about_menu"/>
    </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionExport_Dependencies"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuTools"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="saveAs_menu">
@@ -319,6 +326,11 @@
   <action name="about_menu">
    <property name="text">
     <string>About Ditaform</string>
+   </property>
+  </action>
+  <action name="actionExport_Dependencies">
+   <property name="text">
+    <string>Export Dependencies</string>
    </property>
   </action>
  </widget>
@@ -503,6 +515,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionExport_Dependencies</sender>
+   <signal>triggered()</signal>
+   <receiver>RegulatoryTemplateClass</receiver>
+   <slot>exportDependencies()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>prodnameEdit(QString)</slot>
@@ -519,5 +547,6 @@
   <slot>helpDitaform()</slot>
   <slot>helpAbout()</slot>
   <slot>languagesEdit()</slot>
+  <slot>exportDependencies()</slot>
  </slots>
 </ui>
