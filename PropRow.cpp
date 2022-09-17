@@ -100,24 +100,42 @@ void PropRow::updateDitaval()
 	pugi::xml_node val = valDoc.child("val");
 	auto node = val.find_child_by_attribute("val", senderName.toStdString().c_str());
 
+	std::string dataPath = ".//*[@name='" + senderName.toStdString() + "']";
+	pugi::xpath_query data_query(dataPath.c_str());
+
+	//search through all props rows
 	for (auto& node : _myPropsRow.propsNodes)
 	{
-		std::string dataPath = ".//*[@name='" + senderName.toStdString() + "']";
-		pugi::xpath_query data_query(dataPath.c_str());
+		//look for nodes with @name that matches the senderName
 		auto data_results = node.select_nodes(data_query);
 
+		//for each node found, pull the @value into a vector so we can search for matching nodes
 		for (auto& data : data_results)
 		{
-			auto datatype = data.node().attribute("datatype").value();
-			auto datatype_value = data.node().attribute("value").value();
+			auto type = data.node().attribute("datatype").value();
+			std::string dataValue = data.node().attribute("value").value();
+			std::vector<std::string> values;
+			std::string props;
+			std::istringstream iss(dataValue);
+			while (iss >> props) values.push_back(props);
 
-			std::string dataTypePath = ".//*[@name='" + datatype_value + "']";
-			pugi::xpath_query data_query(dataTypePath.c_str());
-			auto dataType_results = node.select_nodes(data_query);
-
-			for (auto& type : dataType_results)
+			//for each node name found, 
+			for (auto& nodeName : values)
 			{
-				
+				//search through all the propsRows for the matching nodes
+				for (auto& node : _myPropsRow.propsNodes)
+				{
+					std::string propsPath = ".//*[@props='" + nodeName + "']";
+					pugi::xpath_query props_query(propsPath.c_str());
+					auto props_results = node.select_nodes(props_query);
+
+					//for each dependent node found, follow the dependency rules
+					for (auto& dependency : props_results)
+					{
+						std::cout << dependency.node().name() << std::endl;
+						//function call for dependency rules
+					}
+				}
 			}
 		}
 	}
