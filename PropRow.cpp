@@ -100,6 +100,28 @@ void PropRow::updateDitaval()
 	pugi::xml_node val = valDoc.child("val");
 	auto node = val.find_child_by_attribute("val", senderName.toStdString().c_str());
 
+	for (auto& node : _myPropsRow.propsNodes)
+	{
+		std::string dataPath = ".//*[@name='" + senderName.toStdString() + "']";
+		pugi::xpath_query data_query(dataPath.c_str());
+		auto data_results = node.select_nodes(data_query);
+
+		for (auto& data : data_results)
+		{
+			auto datatype = data.node().attribute("datatype").value();
+			auto datatype_value = data.node().attribute("value").value();
+
+			std::string dataTypePath = ".//*[@name='" + datatype_value + "']";
+			pugi::xpath_query data_query(dataTypePath.c_str());
+			auto dataType_results = node.select_nodes(data_query);
+
+			for (auto& type : dataType_results)
+			{
+				
+			}
+		}
+	}
+
 	if (senderObject->isChecked())
 	{
 		node.attribute("action").set_value("include");

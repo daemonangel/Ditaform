@@ -165,28 +165,6 @@ void RegulatoryTemplate::deleteTempFiles()
 //cppFormat = format.arg(QFileInfo(saveBookFile).absolutePath()).arg(QFileInfo(saveBookFile).baseName());
 //C++ string = auto saveDitavalFile = std::format("{}/dv-{}.ditaval", QFileInfo(saveBookFile).absolutePath(), QFileInfo(saveBookFile).baseName());
 
-void RegulatoryTemplate::exportDependencies()
-{
-    pugi::xml_document doc;
-    for (auto& propRow : _xmlData->_propsRows)
-    {
-        auto node = Xml::CreateNode(doc, propRow->propsName, "");
-        for (pugi::xml_node& rowNode : propRow->propsNodes)
-        {
-            if (rowNode.find_child_by_attribute("name", propRow->propsName.c_str()))
-            {
-                auto parentNode = doc.child(propRow->propsName.c_str());
-                node.append_move(parentNode);
-            };
-        }
-        //if node in this row contains an attribute "name" that has value of propRowName,
-        //move this node to be a child of that node
-    }
-
-    auto file = QFileDialog::getSaveFileName(this, tr("Export DITA depenencies"), "maps/", tr("XML (*.xml);;All Files (*.*)"));
-    doc.save_file(file.toStdString().c_str());
-}
-
 void RegulatoryTemplate::fileNew()
 {
     //FileDownloader *downloader = new FileDownloader(this);

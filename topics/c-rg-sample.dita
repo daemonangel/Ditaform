@@ -2,7 +2,8 @@
 <!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "technicalContent/dtd/concept.dtd">
 <concept id="Zebra-Concept.dita_ca2d4450-9819-4ecf-b974-d529d1468eae">
   <title><ph props="regulatory-info">Regulatory Information</ph></title>
-  <shortdesc props="regulatory-info">This device is approved under Zebra Technologies Corporation.<data name="regulatory-info" datatype="any" value="product-series"/></shortdesc>
+  <shortdesc props="regulatory-info">This device is approved under Zebra Technologies Corporation.
+  <data name="regulatory-info" datatype="any" value="product-series single-model multiple-model"/></shortdesc>
   <conbody>
     <p props="single-model">This guide applies to the following model number: model1</p>
     <p props="product-series">This guide applies to the following product series: model1</p>
