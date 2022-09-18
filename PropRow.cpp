@@ -163,3 +163,14 @@ const std::string& PropRow::propRowName() const
 PropRow::~PropRow()
 {
 }
+
+struct blahblah
+{
+	std::string parent;
+	std::vector<std::string> children;
+
+	bool isChild(const std::string& name); // check if `name` exists in `children`
+	bool isAnyChild(const std::vector<std::string>& names); // check if anything in `name` exists in `children`
+};
+
+std::vector<blahblah> parentStuff;
