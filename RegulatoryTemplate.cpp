@@ -57,7 +57,8 @@ void RegulatoryTemplate::addPropRows()
         auto propUI = new PropRow(*propRow, ui.centralWidget);
         ui.formLayout->addRow(propUI);
 
-        connect(propUI, &PropRow::updateAllOtherKeyrefs, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
+        connect(propUI, &PropRow::updateKeyrefs, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
+        connect(propUI, &PropRow::updateCheckboxes, this, &RegulatoryTemplate::autoUpdateCheckboxes);
         
         auto rowName = propUI->propRowName().c_str();
         auto val = valDoc.child("val");
@@ -100,6 +101,30 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
             }
         }
     };
+}
+
+void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
+{
+    //use senderName to search _dataNodes for related checkboxes
+    for (auto& node : _xmlData->_dataNodes)
+    {
+        if (senderName.toStdString() == node.parent)
+        {
+            //senderName is a parent
+            if (node.rule == "any")
+            {
+                //make sure at least one child is checked
+            }
+            else if (node.rule == "one")
+            {
+                //make sure only one child is checked
+            }
+        }
+        else if (node.isChild(senderName.toStdString()))
+        {
+            //this is a child of senderName - automatically check the parent
+        }
+    }
 }
 
 void RegulatoryTemplate::clearBookInfo()

@@ -1,6 +1,7 @@
 #include "XmlData.h"
 #include "DitaConvertTags.h"
 #include "RegulatoryTemplate.h"
+#include <ranges>
 
 // Linker -> System -> SubSystem" to Console for testing - was originally Windows
 
@@ -87,12 +88,41 @@ void XmlData::processTopics()
 
 			propsRow->propsNodes.push_back(propsNode);
 
-			//add all keyrefs inside this node
-			auto keyrefResult = propsNode.select_nodes(".//*[@auto_keyref]");
-			for (auto& propChild : keyrefResult)
-			{
-				propsRow->_keysList.push_back(propChild.node().attribute("keyref").value());
-			}
+			addKeyrefs(propsNode, propsRow);
+			addDataNodes(propsNode);
+		}
+	}
+}
+
+void XmlData::addKeyrefs(const pugi::xml_node& node, propValueCollection* row)
+{
+	//add all keyrefs inside the node
+	auto keyrefResult = node.select_nodes(".//*[@auto_keyref]");
+	for (auto& propChild : keyrefResult)
+	{
+		row->_keysList.push_back(propChild.node().attribute("keyref").value());
+	}
+}
+
+void XmlData::addDataNodes(const pugi::xml_node& node)
+{
+	std::vector<data_node*> existingDataNodes;
+	
+	//put all the data nodes in the data_nodes struct for processing later
+	auto dataResult = node.select_nodes(".//data");
+	for (auto& dataNode : dataResult)
+	{
+		data_node newDataNode;
+		newDataNode.parent = dataNode.node().attribute("name").value();
+		newDataNode.rule = dataNode.node().attribute("datatype").value();
+
+		std::string child_values{ dataNode.node().attribute("value").value() };
+		auto children = std::ranges::split_view(child_values, ' ');
+		
+		for (const std::string_view _child : children)
+		{
+			std::string child { _child };
+			newDataNode.children.push_back(child);
 		}
 	}
 }

@@ -18,10 +18,11 @@ public:
 
 private slots:
 	void updateKeyref();
-	void updateDitaval();
+	void updateDitavalAndCheckboxes();
 
 signals:
-	void updateAllOtherKeyrefs(const QString&, const QString&);
+	void updateKeyrefs(const QString&, const QString&);
+	void updateCheckboxes(const QString&);
 
 private:
 	const int* i;

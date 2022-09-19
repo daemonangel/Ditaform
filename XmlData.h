@@ -25,13 +25,51 @@ struct key_value_pair
 	std::string value;
 };
 
+struct data_node
+{
+	//relationship nodes for storing dependency info
+	std::string parent;
+	std::string rule;
+	std::vector<std::string> children;
+
+	// check if `name` exists in `children`
+	bool isChild(const std::string& name)
+	{
+		std::vector<std::string>::iterator it;
+
+		it = find(children.begin(), children.end(), name);
+		if (it != children.end())
+		{
+			return true;
+		}
+	}; 
+
+	// check if anything in `names` exists in `children`
+	bool isAnyChild(const std::vector<std::string>& names)
+	{
+		for (auto& name : names)
+		{
+			std::vector<std::string>::iterator it;
+
+			it = find(children.begin(), children.end(), name);
+			if (it != children.end())
+			{
+				return true;
+			}
+		}
+	};
+};
+
 class XmlData
 {
 public:
 	XmlData();
 	void processTopics();
+	void addKeyrefs(const pugi::xml_node&, propValueCollection*);
+	void addDataNodes(const pugi::xml_node&);
 	std::vector<key_value_pair> _keysValues; //from map: keys (keyref) value, keyword value
 	std::vector<std::string> _topicHrefs; //from map: list of all the hrefs to topics
 	std::vector<std::unique_ptr<propValueCollection>> _propsRows;
 	std::vector<pugi::xml_document> xmlDocs;
+	std::vector<data_node> _dataNodes;
 };

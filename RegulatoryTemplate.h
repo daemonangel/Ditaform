@@ -23,6 +23,7 @@ public:
 
 private slots:
     void autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText);
+    void autoUpdateCheckboxes(const QString& senderName);
     void dateEdit(const QDate& metadata);
     bool fileSave();
     void fileSaveAs();

@@ -35,7 +35,7 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 	ui.propRow_check->setObjectName(QString::fromStdString(_myPropsRow.propsName));
 
 	//connect checkbox signal to updateDitaval slot
-	connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitaval);
+	connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitavalAndCheckboxes);
 }
 
 void PropRow::insertKeyrefInput(const pugi::xml_node& node)
@@ -85,60 +85,20 @@ void PropRow::updateKeyref()
 			QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
 			auto qtext = senderText->toPlainText();
 			keyValue.text().set(qtext.toStdString().c_str()); //this is setting keyValue to the senderObject name...
-			emit updateAllOtherKeyrefs(senderName, qtext);
+			emit updateKeyrefs(senderName, qtext);
 			return;
 		}
 	}
 	// if it gets here it didn't do anything
 }
 
-void PropRow::updateDitaval()
+void PropRow::updateDitavalAndCheckboxes()
 {
 	QCheckBox* senderObject = qobject_cast<QCheckBox*>(QObject::sender());
 	auto senderName = senderObject->objectName();
 
 	pugi::xml_node val = valDoc.child("val");
 	auto node = val.find_child_by_attribute("val", senderName.toStdString().c_str());
-
-	std::string dataPath = ".//*[@name='" + senderName.toStdString() + "']";
-	pugi::xpath_query data_query(dataPath.c_str());
-
-	//search through all props rows
-	for (auto& node : _myPropsRow.propsNodes)
-	{
-		//look for nodes with @name that matches the senderName
-		auto data_results = node.select_nodes(data_query);
-
-		//for each node found, pull the @value into a vector so we can search for matching nodes
-		for (auto& data : data_results)
-		{
-			auto type = data.node().attribute("datatype").value();
-			std::string dataValue = data.node().attribute("value").value();
-			std::vector<std::string> values;
-			std::string props;
-			std::istringstream iss(dataValue);
-			while (iss >> props) values.push_back(props);
-
-			//for each node name found, 
-			for (auto& nodeName : values)
-			{
-				//search through all the propsRows for the matching nodes
-				for (auto& node : _myPropsRow.propsNodes)
-				{
-					std::string propsPath = ".//*[@props='" + nodeName + "']";
-					pugi::xpath_query props_query(propsPath.c_str());
-					auto props_results = node.select_nodes(props_query);
-
-					//for each dependent node found, follow the dependency rules
-					for (auto& dependency : props_results)
-					{
-						std::cout << dependency.node().name() << std::endl;
-						//function call for dependency rules
-					}
-				}
-			}
-		}
-	}
 
 	if (senderObject->isChecked())
 	{
@@ -148,6 +108,8 @@ void PropRow::updateDitaval()
 	{
 		node.attribute("action").set_value("exclude");
 	}
+
+	emit updateCheckboxes(senderName);
 }
 
 bool PropRow::isIncluded() const
@@ -163,14 +125,3 @@ const std::string& PropRow::propRowName() const
 PropRow::~PropRow()
 {
 }
-
-struct blahblah
-{
-	std::string parent;
-	std::vector<std::string> children;
-
-	bool isChild(const std::string& name); // check if `name` exists in `children`
-	bool isAnyChild(const std::vector<std::string>& names); // check if anything in `name` exists in `children`
-};
-
-std::vector<blahblah> parentStuff;
