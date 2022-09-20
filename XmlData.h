@@ -66,10 +66,10 @@ public:
 	XmlData();
 	void processTopics();
 	void addKeyrefs(const pugi::xml_node&, propValueCollection*);
-	void addDataNodes(const pugi::xml_node&);
+	void addDataNodes(const pugi::xpath_node_set&);
 	std::vector<key_value_pair> _keysValues; //from map: keys (keyref) value, keyword value
 	std::vector<std::string> _topicHrefs; //from map: list of all the hrefs to topics
 	std::vector<std::unique_ptr<propValueCollection>> _propsRows;
 	std::vector<pugi::xml_document> xmlDocs;
-	std::vector<data_node> _dataNodes;
+	std::vector<std::unique_ptr<data_node>> _dataNodes;
 };

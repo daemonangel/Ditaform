@@ -64,7 +64,11 @@ void XmlData::processTopics()
 		//get the topic file.
 		auto& topicFile = xmlDocs.emplace_back();
 		auto fullTopicPath = QFileInfo(_regTemp.sourceBookmapFile).absolutePath() + "/" + std::string(href).c_str();
-		pugi::xml_parse_result resultTopic = topicFile.load_file(fullTopicPath.toStdString().c_str());
+		topicFile.load_file(fullTopicPath.toStdString().c_str());
+
+		auto dataNodes = topicFile.select_nodes("//data");
+		addDataNodes(dataNodes);
+
 		DitaConvertTags::convert(topicFile);
 		auto _propResult = topicFile.select_nodes(".//*[@props]");
 		for (auto& propResult : _propResult)
@@ -89,7 +93,6 @@ void XmlData::processTopics()
 			propsRow->propsNodes.push_back(propsNode);
 
 			addKeyrefs(propsNode, propsRow);
-			addDataNodes(propsNode);
 		}
 	}
 }
@@ -104,17 +107,19 @@ void XmlData::addKeyrefs(const pugi::xml_node& node, propValueCollection* row)
 	}
 }
 
-void XmlData::addDataNodes(const pugi::xml_node& node)
+void XmlData::addDataNodes(const pugi::xpath_node_set& nodes)
 {
 	std::vector<data_node*> existingDataNodes;
 	
 	//put all the data nodes in the data_nodes struct for processing later
-	auto dataResult = node.select_nodes(".//data");
-	for (auto& dataNode : dataResult)
+	for (auto& dataNode : nodes)
 	{
-		data_node newDataNode;
-		newDataNode.parent = dataNode.node().attribute("name").value();
-		newDataNode.rule = dataNode.node().attribute("datatype").value();
+		//create a new data node and initialize it
+		data_node* newDataNode;
+		newDataNode = new data_node();
+
+		newDataNode->parent = dataNode.node().attribute("name").value();
+		newDataNode->rule = dataNode.node().attribute("datatype").value();
 
 		std::string child_values{ dataNode.node().attribute("value").value() };
 		auto children = std::ranges::split_view(child_values, ' ');
@@ -122,7 +127,10 @@ void XmlData::addDataNodes(const pugi::xml_node& node)
 		for (const std::string_view _child : children)
 		{
 			std::string child { _child };
-			newDataNode.children.push_back(child);
+			newDataNode->children.push_back(child);
 		}
+
+		//add the new data node struct to the vector
+		_dataNodes.emplace_back(newDataNode);
 	}
 }

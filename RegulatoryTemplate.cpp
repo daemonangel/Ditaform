@@ -108,21 +108,31 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
     //use senderName to search _dataNodes for related checkboxes
     for (auto& node : _xmlData->_dataNodes)
     {
-        if (senderName.toStdString() == node.parent)
+        if (senderName.toStdString() == node->parent) //senderName is a parent
         {
-            //senderName is a parent
-            if (node.rule == "any")
+            if (node->rule == "any") //make sure at least one child is checked
             {
-                //make sure at least one child is checked
+                //if no children are selected, warn user on save showing list of parents missing children
             }
-            else if (node.rule == "one")
+            else if (node->rule == "one") //make sure only one child is checked
             {
-                //make sure only one child is checked
+                //if one child is selected, selecting another child deselects the first one
             }
         }
-        else if (node.isChild(senderName.toStdString()))
+        else if (node->isChild(senderName.toStdString())) //this is a child of senderName
         {
-            //this is a child of senderName - automatically check the parent
+            QCheckBox* parent = ui.centralWidget->findChild<QCheckBox*>(node->parent.c_str());
+            QCheckBox* child = ui.centralWidget->findChild<QCheckBox*>(senderName);
+
+            //automatically check/uncheck the parent
+            if (child->isChecked())
+            {
+                parent->setChecked(true);
+            }
+            else
+            {
+                parent->setChecked(false);
+            }
         }
     }
 }
