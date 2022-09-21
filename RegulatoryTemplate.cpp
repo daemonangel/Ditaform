@@ -108,23 +108,43 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
     //use senderName to search _dataNodes for related checkboxes
     for (auto& node : _xmlData->_dataNodes)
     {
+        QCheckBox* parent = ui.centralWidget->findChild<QCheckBox*>(node->parent.c_str());
+
         if (senderName.toStdString() == node->parent) //senderName is a parent
         {
-            if (node->rule == "any") //make sure at least one child is checked
+            //if no children are checked, highlight this parent row
+
+        }
+        else if (node->isChild(senderName.toStdString())) //this is a child of senderName
+        {      
+            QCheckBox* child = ui.centralWidget->findChild<QCheckBox*>(senderName);
+
+            if (!child->isChecked())
             {
-                //if no children are selected, warn user on save showing list of parents missing children
+                //if no siblings are checked, highlight the parent row
+
+            }
+            else if (node->rule == "any") //make sure at least one child is checked
+            {
+                //if parent is checked and highlighted, unhighlight parent
+
+                //parent is not checked, highlight parent
+
             }
             else if (node->rule == "one") //make sure only one child is checked
             {
-                //if one child is selected, selecting another child deselects the first one
-            }
-        }
-        else if (node->isChild(senderName.toStdString())) //this is a child of senderName
-        {
-            QCheckBox* parent = ui.centralWidget->findChild<QCheckBox*>(node->parent.c_str());
-            QCheckBox* child = ui.centralWidget->findChild<QCheckBox*>(senderName);
+                //uncheck siblings
 
-            //automatically check/uncheck the parent
+                //if parent is checked and highlighted, unhighlight parent
+
+                //parent is not checked, highlight parent
+
+
+            }
+
+            
+
+            /* automatically check / uncheck the parent
             if (child->isChecked())
             {
                 parent->setChecked(true);
@@ -133,6 +153,7 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
             {
                 parent->setChecked(false);
             }
+            */
         }
     }
 }
