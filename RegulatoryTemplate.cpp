@@ -329,28 +329,64 @@ QString RegulatoryTemplate::getMapFileFromBookmap()
 
 void RegulatoryTemplate::helpAbout()
 {
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("About Ditaform");
-    msgBox.setText("<b>Ditaform</b><br/><b>Version 0.1</b><br/> \
-<b>Copyright (C) 2022 Michelle Allison Mamistvalov.</b><br/><br/> \
-Ditaform uses Qt open source libraries (https://www.qt.io/) available under LGPLv3 (https://www.gnu.org/licenses/lgpl-3.0.en.html) license. These libraries are dynamically linked and included in the application directory.<br/><br/> \
-Ditaform is based on pugixml library (http://pugixml.org). pugixml is Copyright (C) 2006-2018 Arseny Kapoulkine.");
-    msgBox.exec();
+    if (QFile inputFile("readme.md"); inputFile.exists())
+    {
+        QString text;
+
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+            QTextStream in(&inputFile);
+            while (!in.atEnd())
+            {
+                QString line = in.readLine();
+                text.append(line);
+                text.append("<br/>");
+            }
+            inputFile.close();
+        }
+
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("About Ditaform");
+        msgBox.setText(text);
+        msgBox.exec();
+    }
+    else
+    {
+        QMessageBox::warning(this, tr("IMPORTANT!"),
+            tr("Readme.md is missing."),
+            QMessageBox::Ok);
+    }
 }
 
 void RegulatoryTemplate::helpDitaform()
 {
-    //TODO future: save msgbox text in a text file and read it in
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("Ditaform Help");
-    msgBox.setText("<b>Ditaform has the following features:</b><br/><br/> \
-<b>New</b> opens a new copy of the form.<br/><br/> \
-<b>Open</b> opens a previously saved form.<br/><br/> \
-<b>Save</b> saves the form.<br/><br/> \
-<b>Save As</b> saves the form with a new name.<br/><br/> \
-<b>Close</b> exits Ditaform.<br/><br/> \
-<b>Languages</b> > <b>Edit</b> selects translation languages.");
-    msgBox.exec();
+    if (QFile inputFile("help.txt"); inputFile.exists())
+    {
+        QString text;
+
+        if (inputFile.open(QIODevice::ReadOnly))
+        {
+            QTextStream in(&inputFile);
+            while (!in.atEnd())
+            {
+                QString line = in.readLine();
+                text.append(line);
+                text.append("<br/>");
+            }
+            inputFile.close();
+        }
+
+        QMessageBox msgBox;
+        msgBox.setWindowTitle("Ditaform Help");
+        msgBox.setText(text);
+        msgBox.exec();
+    }
+    else
+    {
+        QMessageBox::warning(this, tr("IMPORTANT!"),
+            tr("help.txt is missing."),
+            QMessageBox::Ok);
+    }
 }
 
 void RegulatoryTemplate::languagesEdit()

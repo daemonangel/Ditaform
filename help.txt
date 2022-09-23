@@ -1,0 +1,10 @@
+Ditaform has the following features:
+
+- New: opens a new copy of the form.
+- Open: opens a previously saved form.
+- Save: saves the form. 
+- Save As: saves the form with a new name.
+- Close: exits Ditaform.
+- Languages > Edit: selects translation languages
+
+Checkboxes highlighted in yellow indicate an error. Check notes in that row for more information.

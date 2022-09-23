@@ -22,7 +22,7 @@ LanguageDialog::LanguageDialog(const QStringList& selectedLanguages, QWidget *pa
 
 void LanguageDialog::loadLanguages()
 {
-    if (QFile inputFile("source/languages.txt"); inputFile.exists())
+    if (QFile inputFile("topics/languages.txt"); inputFile.exists())
     {
         if (inputFile.open(QIODevice::ReadOnly))
         {
