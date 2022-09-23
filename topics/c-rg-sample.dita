@@ -25,7 +25,7 @@
       <li props="multiple-model14">model14</li>
       <li props="multiple-model15">model15</li>
     </ul>
-	<draft-comment props="regulatory-info">This is a comment!
+	<draft-comment props="regulatory-info" outputclass="translation">This is a comment!
 	<ul>
       <li>im a bullet!</li>
       <li>im also a bullet!</li>
@@ -38,11 +38,11 @@
     <p props="regulatory-info">Declared maximum operating temperature: <ph keyref="degrees-again"></ph>°C</p>
     <p props="regulatory-info">Zebra devices are professionally installed — the Radio Frequency Output Power will not exceed the maximum allowable limit for the country of operation.</p>
     <p props="regulatory-info">Antennas: Use only the supplied or an approved replacement antenna. Unauthorized antennas, modifications, or attachments could cause damage and may violate regulations.</p>
-    <p props="regulatory-info">This device is only to be used with a Zebra Wireless Switch.</p>
-    <p props="regulatory-info">For use only with Zebra approved and UL Listed mobile devices, Zebra approved, and UL Listed/Recognized battery packs.</p>
-    <note props="regulatory-info" type="caution" id="note_1">Only use Zebra approved and NRTL-certified accessories, battery packs, and battery chargers.
+    <p props="regulatory-info1"><data name="regulatory-info1" datatype="one" value="regulatory-info1a regulatory-info1b"/>This device is only to be used with a Zebra Wireless Switch.</p>
+    <p props="regulatory-info1">For use only with Zebra approved and UL Listed mobile devices, Zebra approved, and UL Listed/Recognized battery packs.</p>
+    <note props="regulatory-info1a" type="caution" id="note_1">Only use Zebra approved and NRTL-certified accessories, battery packs, and battery chargers.
       <p>Do NOT attempt to charge damp/wet mobile computers, printers or batteries. All components must be dry before connecting to an external power source.</p>
     </note>
-    <note props="regulatory-info" type="warning" id="note_2">This is a Class A ITE product. Operation in a residential environment could cause radio interference.</note>
+    <note props="regulatory-info1b" type="warning" id="note_2">This is a Class A ITE product. Operation in a residential environment could cause radio interference.</note>
   </conbody>
 </concept>

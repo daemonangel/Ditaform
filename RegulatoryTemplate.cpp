@@ -170,48 +170,46 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
                         parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
                         break;
                     }
+
                 }
             }
-            else  //make sure at least one child is checked
+            else if (node->rule == "one") //make sure only one child is checked
             {
-                if (node->rule == "any")
+                //uncheck siblings
+                for (auto& child : node->children)
                 {
-                    //if parent is checked, unhighlight it. else, highlight it
-                    if (parentCheckbox->isChecked())
+                    if (child != senderName.toStdString())
                     {
-                        parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
-                        break;
-                    }
-                    else
-                    {
-                        parentCheckbox->setStyleSheet("background-color:yellow;");
-                        break;
+                        ui.centralWidget->findChild<QCheckBox*>(child.c_str())->setChecked(false);
                     }
                 }
-                else if (node->rule == "one") //make sure only one child is checked
+
+                //if parent is checked, unhighlight it. else, highlight it
+                if (parentCheckbox->isChecked())
                 {
-                    //uncheck siblings
-
-                    //if parent is checked and highlighted, unhighlight parent
-
-                    //parent is not checked, highlight parent
-
+                    parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
+                    break;
+                }
+                else
+                {
+                    parentCheckbox->setStyleSheet("background-color:yellow;");
+                    break;
                 }
             }
-            
-
-            
-
-            /* automatically check / uncheck the parent
-            if (child->isChecked())
+            else if (node->rule == "any")
             {
-                parent->setChecked(true);
+                //if parent is checked, unhighlight it. else, highlight it
+                if (parentCheckbox->isChecked())
+                {
+                    parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
+                    break;
+                }
+                else
+                {
+                    parentCheckbox->setStyleSheet("background-color:yellow;");
+                    break;
+                }
             }
-            else
-            {
-                parent->setChecked(false);
-            }
-            */
         }
     }
 }

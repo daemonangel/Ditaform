@@ -100,9 +100,9 @@ void DitaConvertTags::note_node(pugi::xml_node& node)
 void DitaConvertTags::comment_node(pugi::xml_node& node)
 {
 	node.set_name("p");
-	if (node.attribute("outputclass").value() == "translation")
+	if (std::string(node.attribute("outputclass").value()) == "translation")
 	{
-		Xml::CreateAttrib(node, "style", "color:red;background-color:cyan;");
+		Xml::CreateAttrib(node, "style", "background-color:cyan;");
 	}
 	else
 	{
