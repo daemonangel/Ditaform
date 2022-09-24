@@ -57,6 +57,13 @@
      <number>5</number>
     </property>
     <item>
+     <widget class="QCheckBox" name="selectAllCheckbox">
+      <property name="text">
+       <string>Select All / Unselect All</string>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QListWidget" name="language_list">
       <property name="editTriggers">
        <set>QAbstractItemView::CurrentChanged|QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed|QAbstractItemView::SelectedClicked</set>
@@ -159,5 +166,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>selectAllCheckbox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>LanguageDialogClass</receiver>
+   <slot>selectUnselectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>130</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>175</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>selectUnselectAll()</slot>
+ </slots>
 </ui>

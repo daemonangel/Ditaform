@@ -15,6 +15,7 @@ public:
 
 public slots:
 	void highlightChecked(QListWidgetItem* item);
+	void selectUnselectAll();
 
 private:
 	static QStringList fullLanguageList;

@@ -103,5 +103,28 @@ QStringList LanguageDialog::savedLanguages()
     return selectedLanguageList;
 }
 
+void LanguageDialog::selectUnselectAll()
+{
+    QCheckBox* senderObject = qobject_cast<QCheckBox*>(QObject::sender());
+    QListWidgetItem* item = 0;
+
+    if (senderObject->isChecked())
+    {
+        //check all boxes
+        for (int i = 0; i < ui.language_list->count(); ++i) {
+            item = ui.language_list->item(i);
+            item->setCheckState(Qt::Checked);
+        }
+    }
+    else
+    {
+        //uncheck all boxes
+        for (int i = 0; i < ui.language_list->count(); ++i) {
+            item = ui.language_list->item(i);
+            item->setCheckState(Qt::Unchecked);
+        }
+    }
+}
+
 LanguageDialog::~LanguageDialog()
 {}
