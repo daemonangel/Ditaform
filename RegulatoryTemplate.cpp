@@ -56,19 +56,19 @@ void RegulatoryTemplate::addPropRows()
     {
         auto propUI = new PropRow(*propRow, ui.centralWidget);
         ui.formLayout->addRow(propUI);
-
-        connect(propUI, &PropRow::updateKeyrefs, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
-        connect(propUI, &PropRow::updateCheckboxes, this, &RegulatoryTemplate::autoUpdateCheckboxes);
         
         auto rowName = propUI->propRowName().c_str();
         auto val = valDoc.child("val");
-        auto node = val.find_child_by_attribute("val", rowName);
-        std::string actionValue = node.attribute("action").value();
+        auto valNode = val.find_child_by_attribute("val", rowName);
+        std::string actionValue = valNode.attribute("action").value();
 
         if (actionValue == "include")
         {
             propUI->findChild<QCheckBox*>(rowName)->setChecked(true);
         }
+
+        connect(propUI, &PropRow::updateKeyrefs, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
+        connect(propUI, &PropRow::updateCheckboxes, this, &RegulatoryTemplate::autoUpdateCheckboxes);
     }
 }
 
@@ -115,7 +115,7 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
 
             if (parentCheckbox->isChecked())
             {
-                //if checked and no children are checked, highlight this parent row
+                //if no children are checked, highlight this parent row
                 for (auto& child : node->children)
                 {
                     if (!ui.centralWidget->findChild<QCheckBox*>(child.c_str())->isChecked())
@@ -132,7 +132,7 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
             }
             else
             {
-                //if unchecked and no children are checked, unhighlight this parent row
+                //if no children are checked, unhighlight this parent row
                 for (auto& child : node->children)
                 {
                     if (!ui.centralWidget->findChild<QCheckBox*>(child.c_str())->isChecked())

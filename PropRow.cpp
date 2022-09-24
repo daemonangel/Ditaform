@@ -35,7 +35,7 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 	ui.propRow_check->setObjectName(QString::fromStdString(_myPropsRow.propsName));
 
 	//connect checkbox signal to updateDitaval slot
-	connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitavalAndCheckboxes);
+	connect(ui.propRow_check, &QCheckBox::stateChanged, this, &PropRow::updateDitavalEmitCheckbox);
 }
 
 void PropRow::insertKeyrefInput(const pugi::xml_node& node)
@@ -59,6 +59,8 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 	input->setObjectName(senderName);
 	input->setMaximumSize(QSize(130, 50));
 
+	//TODO insert keyword data from the map into the box in gray
+
 	//connect signal textchanged from input object to slot function updateKeyref
 	connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
 	//_keyRefTextEdits.push_back(input);
@@ -81,6 +83,7 @@ void PropRow::updateKeyref()
 		QString keyName = key.node().first_attribute().value();
 		if (keyName == senderName)
 		{
+			//TODO change text color to black when user starts typing
 			auto keyValue = key.node().child("topicmeta").child("keywords").child("keyword");
 			QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
 			auto qtext = senderText->toPlainText();
@@ -92,7 +95,7 @@ void PropRow::updateKeyref()
 	// if it gets here it didn't do anything
 }
 
-void PropRow::updateDitavalAndCheckboxes()
+void PropRow::updateDitavalEmitCheckbox()
 {
 	QCheckBox* senderObject = qobject_cast<QCheckBox*>(QObject::sender());
 	auto senderName = senderObject->objectName();
@@ -109,7 +112,7 @@ void PropRow::updateDitavalAndCheckboxes()
 		node.attribute("action").set_value("exclude");
 	}
 
-	emit updateCheckboxes(senderName);
+	emit updateCheckboxes(senderName); //signal is pickup up in RegulatoryTemplate.cpp
 }
 
 bool PropRow::isIncluded() const

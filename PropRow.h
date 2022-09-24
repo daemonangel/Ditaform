@@ -18,7 +18,7 @@ public:
 
 private slots:
 	void updateKeyref();
-	void updateDitavalAndCheckboxes();
+	void updateDitavalEmitCheckbox();
 
 signals:
 	void updateKeyrefs(const QString&, const QString&);
