@@ -2,6 +2,7 @@
 #include "DitaConvertTags.h"
 #include "RegulatoryTemplate.h"
 #include <ranges>
+#include <qmessagebox.h>
 
 // Linker -> System -> SubSystem" to Console for testing - was originally Windows
 
@@ -109,28 +110,41 @@ void XmlData::addKeyrefs(const pugi::xml_node& node, propValueCollection* row)
 
 void XmlData::addDataNodes(const pugi::xpath_node_set& nodes)
 {
-	std::vector<data_node*> existingDataNodes;
-	
-	//put all the data nodes in the data_nodes struct for processing later
-	for (auto& dataNode : nodes)
+	const static std::unordered_map<std::string, data_node::RuleType> RuleTypeMap
 	{
-		//create a new data node and initialize it
-		data_node* newDataNode;
-		newDataNode = new data_node();
+		{"any", data_node::RuleType::Any},
+		{"one", data_node::RuleType::One},
+	};
 
-		newDataNode->parent = dataNode.node().attribute("name").value();
-		newDataNode->rule = dataNode.node().attribute("datatype").value();
+	//put all the data nodes in the data_nodes struct for processing later
+	for (const auto& dataNode : nodes)
+	{
+		// add a new data node and initialize it
+
+		std::string parent = dataNode.node().attribute("name").value();
+		std::string ruleText = dataNode.node().attribute("datatype").as_string();
+		data_node::RuleType rule;
+		if (auto iter = RuleTypeMap.find(ruleText); iter != RuleTypeMap.end())
+		{
+			rule = iter->second;
+		}
+		else
+		{
+			const static QString prompt{ "The rule \"%1\" is not recognized." };
+			QMessageBox::warning(nullptr, "Unknown Rule", prompt.arg(QString::fromStdString(ruleText)));
+			// make it stop loading
+		}
+		std::vector<std::string> children;
 
 		std::string child_values{ dataNode.node().attribute("value").value() };
-		auto children = std::ranges::split_view(child_values, ' ');
+		auto childrenSplit = std::ranges::split_view(child_values, ' ');
 		
-		for (const std::string_view _child : children)
+		for (const std::string_view _child : childrenSplit)
 		{
 			std::string child { _child };
-			newDataNode->children.push_back(child);
+			children.emplace_back(std::move(child));
 		}
 
-		//add the new data node struct to the vector
-		_dataNodes.emplace_back(newDataNode);
+		_dataNodes.emplace_back(parent, rule, children);
 	}
 }

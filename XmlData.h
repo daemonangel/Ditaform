@@ -27,22 +27,22 @@ struct key_value_pair
 
 struct data_node
 {
+	enum class RuleType
+	{
+		One,
+		Any,
+	};
+
 	//relationship nodes for storing dependency info
 	std::string parent;
-	std::string rule;
+	RuleType rule;
 	std::vector<std::string> children;
 
 	// check if `name` exists in `children`
-	bool isChild(const std::string& name)
+	inline bool isChild(const std::string& name)
 	{
-		std::vector<std::string>::iterator it;
-
-		it = find(children.begin(), children.end(), name);
-		if (it != children.end())
-		{
-			return true;
-		}
-	}; 
+		return find(children.begin(), children.end(), name) != children.end();
+	}
 
 	// check if anything in `names` exists in `children`
 	bool isAnyChild(const std::vector<std::string>& names)
@@ -57,7 +57,8 @@ struct data_node
 				return true;
 			}
 		}
-	};
+		return false;
+	}
 };
 
 class XmlData
@@ -71,5 +72,5 @@ public:
 	std::vector<std::string> _topicHrefs; //from map: list of all the hrefs to topics
 	std::vector<std::unique_ptr<propValueCollection>> _propsRows;
 	std::vector<pugi::xml_document> xmlDocs;
-	std::vector<std::unique_ptr<data_node>> _dataNodes;
+	std::vector<data_node> _dataNodes;
 };

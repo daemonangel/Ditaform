@@ -105,60 +105,50 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
 
 void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
 {
+    const static QString OkColor { "background-color:#f0f0f0;" };
+    const static QString WarningColor { "background-color:yellow;" };
+
+    // find all checked boxes
+    auto checkboxes = ui.centralWidget->findChildren<QCheckBox*>();
+    std::vector<std::string> checked;
+    for (const auto box : checkboxes)
+    {
+        if (box->isChecked())
+        {
+            checked.push_back(box->objectName().toStdString());
+        }
+    }
+
     //use senderName to search _dataNodes for related checkboxes
     for (auto& node : _xmlData->_dataNodes)
     {
         //PARENT NODE
-        if (senderName.toStdString() == node->parent) 
+        if (senderName.toStdString() == node.parent) 
         {
             QCheckBox* parentCheckbox = ui.centralWidget->findChild<QCheckBox*>(senderName);
 
             if (parentCheckbox->isChecked())
             {
                 //if no children are checked, highlight this parent row
-                for (auto& child : node->children)
-                {
-                    if (!ui.centralWidget->findChild<QCheckBox*>(child.c_str())->isChecked())
-                    {
-                        parentCheckbox->setStyleSheet("background-color:yellow;");
-                        break;
-                    }
-                    else
-                    {
-                        parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
-                        break;
-                    }
-                }
+                parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? OkColor : WarningColor);
             }
             else
             {
                 //if no children are checked, unhighlight this parent row
-                for (auto& child : node->children)
-                {
-                    if (!ui.centralWidget->findChild<QCheckBox*>(child.c_str())->isChecked())
-                    {
-                        parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
-                        break;
-                    }
-                    else
-                    {
-                        parentCheckbox->setStyleSheet("background-color:yellow;");
-                        break;
-                    }
-                }
+                parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? WarningColor : OkColor);
             }
             
         }
         //CHILD NODE
-        else if (node->isChild(senderName.toStdString())) 
+        else if (node.isChild(senderName.toStdString())) 
         {      
             QCheckBox* childCheckbox = ui.centralWidget->findChild<QCheckBox*>(senderName);
-            QCheckBox* parentCheckbox = ui.centralWidget->findChild<QCheckBox*>(node->parent.c_str());
+            QCheckBox* parentCheckbox = ui.centralWidget->findChild<QCheckBox*>(node.parent.c_str());
 
             if (!childCheckbox->isChecked())
             {
                 //if parent is check and no children are checked, highlight this parent row
-                for (auto& child : node->children)
+                for (auto& child : node.children)
                 {
                     if (parentCheckbox->isChecked() && !ui.centralWidget->findChild<QCheckBox*>(child.c_str())->isChecked())
                     {
@@ -173,10 +163,10 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
 
                 }
             }
-            else if (node->rule == "one") //make sure only one child is checked
+            else if (node.rule == data_node::RuleType::One) //make sure only one child is checked
             {
                 //uncheck siblings
-                for (auto& child : node->children)
+                for (auto& child : node.children)
                 {
                     if (child != senderName.toStdString())
                     {
@@ -196,7 +186,7 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
                     break;
                 }
             }
-            else if (node->rule == "any")
+            else if (node.rule == data_node::RuleType::Any)
             {
                 //if parent is checked, unhighlight it. else, highlight it
                 if (parentCheckbox->isChecked())
