@@ -45,7 +45,7 @@ struct data_node
 	}
 
 	// check if anything in `names` exists in `children`
-	bool isAnyChild(const std::vector<std::string>& names)
+	inline bool isAnyChild(const std::vector<std::string>& names)
 	{
 		for (auto& name : names)
 		{

@@ -129,15 +129,14 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
 
             if (parentCheckbox->isChecked())
             {
-                //if no children are checked, highlight this parent row
+                //if any child is checked, unhighlight this parent row
                 parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? OkColor : WarningColor);
             }
             else
             {
                 //if no children are checked, unhighlight this parent row
-                parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? WarningColor : OkColor);
+                parentCheckbox->setStyleSheet(!node.isAnyChild(checked) ? OkColor : WarningColor);
             }
-            
         }
         //CHILD NODE
         else if (node.isChild(senderName.toStdString())) 
@@ -147,21 +146,8 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
 
             if (!childCheckbox->isChecked())
             {
-                //if parent is check and no children are checked, highlight this parent row
-                for (auto& child : node.children)
-                {
-                    if (parentCheckbox->isChecked() && !ui.centralWidget->findChild<QCheckBox*>(child.c_str())->isChecked())
-                    {
-                        parentCheckbox->setStyleSheet("background-color:yellow;");
-                        break;
-                    }
-                    else
-                    {
-                        parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
-                        break;
-                    }
-
-                }
+                //if any child is checked, unhighlight this parent
+                parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? OkColor : WarningColor);
             }
             else if (node.rule == data_node::RuleType::One) //make sure only one child is checked
             {
@@ -174,31 +160,13 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
                     }
                 }
 
-                //if parent is checked, unhighlight it. else, highlight it
-                if (parentCheckbox->isChecked())
-                {
-                    parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
-                    break;
-                }
-                else
-                {
-                    parentCheckbox->setStyleSheet("background-color:yellow;");
-                    break;
-                }
+                //if parent is checked, unhighlight the parent
+                parentCheckbox->setStyleSheet(parentCheckbox->isChecked() ? OkColor : WarningColor);
             }
             else if (node.rule == data_node::RuleType::Any)
             {
-                //if parent is checked, unhighlight it. else, highlight it
-                if (parentCheckbox->isChecked())
-                {
-                    parentCheckbox->setStyleSheet("background-color:#f0f0f0;");
-                    break;
-                }
-                else
-                {
-                    parentCheckbox->setStyleSheet("background-color:yellow;");
-                    break;
-                }
+                //if parent is checked, unhighlight the parent
+                parentCheckbox->setStyleSheet(parentCheckbox->isChecked() ? OkColor : WarningColor);
             }
         }
     }
