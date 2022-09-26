@@ -379,13 +379,9 @@ void RegulatoryTemplate::loadSource()
         createDitaval();
     }
 
-    //save a copy of the files to the user's temp folder
     saveTempFiles();
-
     removePropRows();
-
     clearBookInfo();
-
     addPropRows();
 
     if (!ui.prodname_edit->isEnabled())
@@ -396,8 +392,6 @@ void RegulatoryTemplate::loadSource()
         ui.languages_button->setEnabled(true);
         ui.date_edit->setDate(QDate::currentDate());
     }
-
-    //connectPropRowTextChange();
 }
 
 bool RegulatoryTemplate::maybeSave()
@@ -472,6 +466,10 @@ void RegulatoryTemplate::saveFiles()
     saveMapFile = QFileInfo(saveBookFile).absolutePath() + "/" + QFileInfo(saveBookFile).baseName() + "-map.ditamap";
     saveDitavalFile = QFileInfo(saveBookFile).absolutePath() + "/" + QFileInfo(saveBookFile).baseName() + ".ditaval";
 
+    //update bookmap chapter href to saveMapFile
+    pugi::xml_node bookmap = bookDoc.child("bookmap");
+    bookmap.child("chapter").attribute("href").set_value(QFileInfo(saveMapFile).fileName().toStdString().c_str());
+    
     //save all docs
     bookDoc.save_file(saveBookFile.toStdString().c_str());
     valDoc.save_file(saveDitavalFile.toStdString().c_str());
@@ -506,11 +504,11 @@ void RegulatoryTemplate::updateLanguages()
     auto languages = metadata.find_child_by_attribute("type", "languages");
     metadata.remove_child(languages);
 
-    auto data = Xml::CreateNode(metadata, "data", "");
-    Xml::CreateAttrib(data, "type", "languages");
+    auto dataNode = Xml::CreateNode(metadata, "data", "");
+    Xml::CreateAttrib(dataNode, "type", "languages");
 
     for (auto& item : savedLanguages)
     {
-        Xml::CreateNode(data, "data", item.toStdString());
+        Xml::CreateNode(dataNode, "data", item.toStdString());
     }
 }
