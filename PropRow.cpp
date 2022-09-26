@@ -60,6 +60,11 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 	input->setMaximumSize(QSize(130, 50));
 
 	//TODO insert keyword data from the map into the box in gray
+	input->setTextColor(QColor(150, 150, 150, 255));
+	pugi::xml_node map = mapDoc.child("map");
+	auto keyword = map.find_child_by_attribute("keys", senderName);
+	auto keywordValue = keyword.child("topicmeta").child("keywords").child("keyword").child_value();
+	input->setText(keywordValue);
 
 	//connect signal textchanged from input object to slot function updateKeyref
 	connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
@@ -74,6 +79,8 @@ void PropRow::updateKeyref()
 {
 	auto senderObject = QObject::sender();
 	auto senderName = senderObject->objectName();
+	QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
+	senderText->setTextColor(QColor(0, 0, 0, 255));
 
 	pugi::xml_node map = mapDoc.child("map");
 
@@ -83,9 +90,8 @@ void PropRow::updateKeyref()
 		QString keyName = key.node().first_attribute().value();
 		if (keyName == senderName)
 		{
-			//TODO change text color to black when user starts typing
 			auto keyValue = key.node().child("topicmeta").child("keywords").child("keyword");
-			QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
+			
 			auto qtext = senderText->toPlainText();
 			keyValue.text().set(qtext.toStdString().c_str()); //this is setting keyValue to the senderObject name...
 			emit updateKeyrefs(senderName, qtext);

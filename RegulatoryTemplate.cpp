@@ -98,6 +98,7 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
             {
                 key->clear();
                 key->insertPlainText(senderText);
+                key->setTextColor(QColor(0, 0, 0, 255));
             }
         }
     };
