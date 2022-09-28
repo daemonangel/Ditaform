@@ -63,7 +63,7 @@ void DitaConvertTags::image_node(pugi::xml_node& node)
 	node.attribute("href").set_name("src");
 	//look for images in the same folder as the source bookmap
 	RegulatoryTemplate rg;
-	auto fullPath = QFileInfo(rg.sourceBookmapFile).absolutePath() + "/" + node.attribute("src").value();
+	auto fullPath = "graphics/" + QFileInfo(node.attribute("src").value()).fileName();
 	node.attribute("src").set_value(fullPath.toStdString().c_str());
 	//std::cout << fullPath.toStdString().c_str() << std::endl;
 }

@@ -82,6 +82,9 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
         propRow.UpdateKeyRefTextForKeyNameOrSomething(senderName, senderText);
     }
     */
+    const static QString OkColor{ "background-color:#000000;" };
+    const static QString WarningColor{ "background-color:yellow;" };
+
     auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>(senderName);
     /*
         If there is only one, that was the one that sent us this signal, and we don't need to change it
@@ -99,6 +102,7 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
                 key->clear();
                 key->insertPlainText(senderText);
                 key->setTextColor(QColor(0, 0, 0, 255));
+                //key->setStyleSheet(key->parentWidget()->findChild<QCheckBox*>()->isChecked() ? OkColor : WarningColor);
             }
         }
     };
@@ -106,6 +110,8 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
 
 void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
 {
+    //TODO recommend breaking up this function into smaller functions for semantics
+
     const static QString OkColor { "background-color:#f0f0f0;" };
     const static QString WarningColor { "background-color:yellow;" };
 
