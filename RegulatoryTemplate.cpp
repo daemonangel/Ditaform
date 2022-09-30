@@ -82,8 +82,8 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
         propRow.UpdateKeyRefTextForKeyNameOrSomething(senderName, senderText);
     }
     */
-    const static QString OkColor{ "background-color:#000000;" };
-    const static QString WarningColor{ "background-color:yellow;" };
+    const static QString OkColor{ "background-color:#ffffff;color:#000000" };
+    const static QString WarningColor{ "background-color:yellow;color:#000000" };
 
     auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>(senderName);
     /*
@@ -96,15 +96,20 @@ void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const Q
         {
             //temporarily turn off the signal from key text box
             SignalBlocker blocker(key);
-            auto keyName = key->objectName();
             if (senderName == key->objectName())
             {
                 key->clear();
                 key->insertPlainText(senderText);
-                key->setTextColor(QColor(0, 0, 0, 255));
                 //key->setStyleSheet(key->parentWidget()->findChild<QCheckBox*>()->isChecked() ? OkColor : WarningColor);
             }
         }
+    }
+    else 
+    { 
+        //need to clear the data from single keyref boxes also, otherwise first letter stays gray
+        SignalBlocker blocker(keyrefs.first()); 
+        keyrefs.first()->clear(); 
+        keyrefs.first()->insertPlainText(senderText);
     };
 }
 

@@ -65,6 +65,7 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 	auto keyword = map.find_child_by_attribute("keys", senderName);
 	auto keywordValue = keyword.child("topicmeta").child("keywords").child("keyword").child_value();
 	input->setText(keywordValue);
+	input->setTextColor(QColor(0, 0, 0, 255));
 
 	//connect signal textchanged from input object to slot function updateKeyref
 	connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);

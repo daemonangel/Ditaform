@@ -39,7 +39,7 @@
     <p props="regulatory-info">Zebra devices are professionally installed — the Radio Frequency Output Power will not exceed the maximum allowable limit for the country of operation.</p>
     <p props="regulatory-info">Antennas: Use only the supplied or an approved replacement antenna. Unauthorized antennas, modifications, or attachments could cause damage and may violate regulations.</p>
     <p props="regulatory-info1"><data name="regulatory-info1" datatype="one" value="regulatory-info1a regulatory-info1b"/>This device is only to be used <ph keyref="degrees-again"></ph> with a Zebra Wireless Switch.</p>
-    <p props="regulatory-info1">For use only with Zebra approved and UL Listed mobile devices, Zebra approved, and UL Listed/Recognized battery packs.<br/><image src="../the/long/path/sample.png"/></p>
+    <p props="regulatory-info1">For use only with Zebra approved and UL Listed mobile devices, Zebra approved, and <ph keyref="degrees"></ph> UL Listed/Recognized battery packs.<br/><image src="../the/long/path/sample.png"/></p>
     <note props="regulatory-info1a" type="caution" id="note_1">Only use Zebra approved and NRTL-certified accessories, battery packs, and battery chargers.
       <p>Do NOT attempt to charge damp/wet mobile computers, printers or batteries. All components must be dry before connecting to an external power source.</p>
     </note>
