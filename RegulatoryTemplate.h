@@ -66,6 +66,6 @@ private:
     std::vector<std::string> findAllCheckedboxes();
     void parentCheckboxRules(const QString& senderName, data_node node);
     void childCheckboxRules(const QString& senderName, data_node node);
-    std::vector<std::string> findAllKeyrefsInRow(const QString& senderName);
+    std::vector<QObject*> findAllKeyrefsInRow(const QObject& senderObject);
     void updateDuplicateKeyrefs(const QString& senderName, const QString& senderText);
 };

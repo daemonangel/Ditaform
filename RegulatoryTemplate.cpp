@@ -76,14 +76,15 @@ void RegulatoryTemplate::autoUpdateKeyrefs(const QString& senderName, const QStr
 {
     updateDuplicateKeyrefs(senderName, senderText);
 
+    auto senderObject = QObject::sender();
     const static QString OkColor{ "background-color:#ffffff;color:#000000" };
     const static QString WarningColor{ "background-color:yellow;color:#000000" };
-    auto keyrefsInRow = findAllKeyrefsInRow(senderName);
+    auto keyrefsInRow = findAllKeyrefsInRow(*senderObject);
 
     for (auto& key : keyrefsInRow)
     {
-        auto keyref = ui.centralWidget->findChild<QTextEdit*>(key.c_str());
-        keyref->setStyleSheet(keyref->parentWidget()->findChild<QCheckBox*>()->isChecked() ? OkColor : WarningColor);
+        
+        //key->setStyleSheet(key->parentWidget()->findChild<QCheckBox*>()->isChecked() ? OkColor : WarningColor);
     }
 }
 
@@ -258,16 +259,14 @@ std::vector<std::string> RegulatoryTemplate::findAllCheckedboxes()
     return checked;
 }
 
-std::vector<std::string> RegulatoryTemplate::findAllKeyrefsInRow(const QString& senderName)
+std::vector<QObject*> RegulatoryTemplate::findAllKeyrefsInRow(const QObject& senderObject)
 {
-    auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>();
-    std::vector<std::string> keyrefsInRow;
-    for (const auto key : keyrefs)
+    //try using the parent row name instead
+    auto keyrefs = senderObject.findChildren<QTextEdit*>();
+    std::vector<QObject*> keyrefsInRow;
+    for (auto& key : keyrefs)
     {
-        if (key->parentWidget()->objectName() == senderName)
-        {
-            keyrefsInRow.push_back(key->objectName().toStdString());
-        }
+        keyrefsInRow.push_back(key);
     }
 
     return keyrefsInRow;
