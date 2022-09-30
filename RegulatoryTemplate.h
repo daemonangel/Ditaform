@@ -22,7 +22,7 @@ public:
     static QString sourceMapFile;
 
 private slots:
-    void autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText);
+    void autoUpdateKeyrefs(const QString& senderName, const QString& senderText);
     void autoUpdateCheckboxes(const QString& senderName);
     void dateEdit(const QDate& metadata);
     bool fileSave();
@@ -63,4 +63,9 @@ private:
     void removePropRows();
     void saveTempFiles();
     void updateLanguages();
+    std::vector<std::string> findAllCheckedboxes();
+    void parentCheckboxRules(const QString& senderName, data_node node);
+    void childCheckboxRules(const QString& senderName, data_node node);
+    std::vector<std::string> findAllKeyrefsInRow(const QString& senderName);
+    void updateDuplicateKeyrefs(const QString& senderName, const QString& senderText);
 };

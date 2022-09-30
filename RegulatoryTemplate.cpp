@@ -67,120 +67,75 @@ void RegulatoryTemplate::addPropRows()
             propUI->findChild<QCheckBox*>(rowName)->setChecked(true);
         }
 
-        connect(propUI, &PropRow::updateKeyrefs, this, &RegulatoryTemplate::autoUpdateDupKeyrefs);
+        connect(propUI, &PropRow::updateKeyrefs, this, &RegulatoryTemplate::autoUpdateKeyrefs);
         connect(propUI, &PropRow::updateCheckboxes, this, &RegulatoryTemplate::autoUpdateCheckboxes);
     }
 }
 
-void RegulatoryTemplate::autoUpdateDupKeyrefs(const QString& senderName, const QString& senderText)
+void RegulatoryTemplate::autoUpdateKeyrefs(const QString& senderName, const QString& senderText)
 {
-    /* if findChildren slows the form down, can put all textedits in a vector, OR
-    * go through each row and use a premade vector of textedits to make changes as needed (see proprow //_keyRefTextEdits.push_back(input);)
-    *
-    * for(auto& propRow : _propRows)
-    {
-        propRow.UpdateKeyRefTextForKeyNameOrSomething(senderName, senderText);
-    }
-    */
+    updateDuplicateKeyrefs(senderName, senderText);
+
     const static QString OkColor{ "background-color:#ffffff;color:#000000" };
     const static QString WarningColor{ "background-color:yellow;color:#000000" };
+    auto keyrefsInRow = findAllKeyrefsInRow(senderName);
 
-    auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>(senderName);
-    /*
-        If there is only one, that was the one that sent us this signal, and we don't need to change it
-        (we ignore the fact that we could be updating the one that sent us this signal, too much trouble to skip for now)
-    */
-    if (keyrefs.size() > 1)
+    for (auto& key : keyrefsInRow)
     {
-        for (auto& key : keyrefs)
-        {
-            //temporarily turn off the signal from key text box
-            SignalBlocker blocker(key);
-            if (senderName == key->objectName())
-            {
-                key->clear();
-                key->insertPlainText(senderText);
-                //key->setStyleSheet(key->parentWidget()->findChild<QCheckBox*>()->isChecked() ? OkColor : WarningColor);
-            }
-        }
+        auto keyref = ui.centralWidget->findChild<QTextEdit*>(key.c_str());
+        keyref->setStyleSheet(keyref->parentWidget()->findChild<QCheckBox*>()->isChecked() ? OkColor : WarningColor);
     }
-    else 
-    { 
-        //need to clear the data from single keyref boxes also, otherwise first letter stays gray
-        SignalBlocker blocker(keyrefs.first()); 
-        keyrefs.first()->clear(); 
-        keyrefs.first()->insertPlainText(senderText);
-    };
 }
 
 void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
 {
-    //TODO recommend breaking up this function into smaller functions for semantics
-
-    const static QString OkColor { "background-color:#f0f0f0;" };
-    const static QString WarningColor { "background-color:yellow;" };
-
-    // find all checked boxes
-    auto checkboxes = ui.centralWidget->findChildren<QCheckBox*>();
-    std::vector<std::string> checked;
-    for (const auto box : checkboxes)
-    {
-        if (box->isChecked())
-        {
-            checked.push_back(box->objectName().toStdString());
-        }
-    }
-
-    //use senderName to search _dataNodes for related checkboxes
+    //Checkbox rules from data nodes
     for (auto& node : _xmlData->_dataNodes)
     {
         //PARENT NODE
         if (senderName.toStdString() == node.parent) 
         {
-            QCheckBox* parentCheckbox = ui.centralWidget->findChild<QCheckBox*>(senderName);
-
-            if (parentCheckbox->isChecked())
-            {
-                //if any child is checked, unhighlight this parent row
-                parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? OkColor : WarningColor);
-            }
-            else
-            {
-                //if no children are checked, unhighlight this parent row
-                parentCheckbox->setStyleSheet(!node.isAnyChild(checked) ? OkColor : WarningColor);
-            }
+            parentCheckboxRules(senderName, node);
         }
         //CHILD NODE
         else if (node.isChild(senderName.toStdString())) 
         {      
-            QCheckBox* childCheckbox = ui.centralWidget->findChild<QCheckBox*>(senderName);
-            QCheckBox* parentCheckbox = ui.centralWidget->findChild<QCheckBox*>(node.parent.c_str());
+            childCheckboxRules(senderName, node);
+        }
+    }
+}
 
-            if (!childCheckbox->isChecked())
-            {
-                //if any child is checked, unhighlight this parent
-                parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? OkColor : WarningColor);
-            }
-            else if (node.rule == data_node::RuleType::One) //make sure only one child is checked
-            {
-                //uncheck siblings
-                for (auto& child : node.children)
-                {
-                    if (child != senderName.toStdString())
-                    {
-                        ui.centralWidget->findChild<QCheckBox*>(child.c_str())->setChecked(false);
-                    }
-                }
+void RegulatoryTemplate::childCheckboxRules(const QString& senderName, data_node node)
+{
+    const static QString OkColor{ "background-color:#f0f0f0;" };
+    const static QString WarningColor{ "background-color:yellow;" };
+    auto checked = findAllCheckedboxes();
+    QCheckBox* childCheckbox = ui.centralWidget->findChild<QCheckBox*>(senderName);
+    QCheckBox* parentCheckbox = ui.centralWidget->findChild<QCheckBox*>(node.parent.c_str());
 
-                //if parent is checked, unhighlight the parent
-                parentCheckbox->setStyleSheet(parentCheckbox->isChecked() ? OkColor : WarningColor);
-            }
-            else if (node.rule == data_node::RuleType::Any)
+    if (!childCheckbox->isChecked())
+    {
+        //if any child is checked, unhighlight this parent
+        parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? OkColor : WarningColor);
+    }
+    else if (node.rule == data_node::RuleType::One) //make sure only one child is checked
+    {
+        //uncheck siblings
+        for (auto& child : node.children)
+        {
+            if (child != senderName.toStdString())
             {
-                //if parent is checked, unhighlight the parent
-                parentCheckbox->setStyleSheet(parentCheckbox->isChecked() ? OkColor : WarningColor);
+                ui.centralWidget->findChild<QCheckBox*>(child.c_str())->setChecked(false);
             }
         }
+
+        //if parent is checked, unhighlight the parent
+        parentCheckbox->setStyleSheet(parentCheckbox->isChecked() ? OkColor : WarningColor);
+    }
+    else if (node.rule == data_node::RuleType::Any)
+    {
+        //if parent is checked, unhighlight the parent
+        if (parentCheckbox->isChecked()) parentCheckbox->setStyleSheet(OkColor);
     }
 }
 
@@ -286,6 +241,36 @@ void RegulatoryTemplate::fileSaveAs()
     auto openDialog = new SaveDialog(this);
     openDialog->open();
     connect(openDialog, &QDialog::accepted, this, &RegulatoryTemplate::saveFiles);
+}
+
+std::vector<std::string> RegulatoryTemplate::findAllCheckedboxes()
+{
+    auto checkboxes = ui.centralWidget->findChildren<QCheckBox*>();
+    std::vector<std::string> checked;
+    for (const auto box : checkboxes)
+    {
+        if (box->isChecked())
+        {
+            checked.push_back(box->objectName().toStdString());
+        }
+    }
+
+    return checked;
+}
+
+std::vector<std::string> RegulatoryTemplate::findAllKeyrefsInRow(const QString& senderName)
+{
+    auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>();
+    std::vector<std::string> keyrefsInRow;
+    for (const auto key : keyrefs)
+    {
+        if (key->parentWidget()->objectName() == senderName)
+        {
+            keyrefsInRow.push_back(key->objectName().toStdString());
+        }
+    }
+
+    return keyrefsInRow;
 }
 
 QString RegulatoryTemplate::getMapFileFromBookmap()
@@ -438,6 +423,26 @@ void RegulatoryTemplate::openSource()
     loadSource();
 }
 
+void RegulatoryTemplate::parentCheckboxRules(const QString& senderName, data_node node)
+{
+    const static QString OkColor{ "background-color:#f0f0f0;" };
+    const static QString WarningColor{ "background-color:yellow;" };
+    auto checked = findAllCheckedboxes();
+
+    QCheckBox* parentCheckbox = ui.centralWidget->findChild<QCheckBox*>(senderName);
+
+    if (parentCheckbox->isChecked())
+    {
+        //if any child is checked, unhighlight this parent row
+        parentCheckbox->setStyleSheet(node.isAnyChild(checked) ? OkColor : WarningColor);
+    }
+    else
+    {
+        //if no children are checked, unhighlight this parent row
+        parentCheckbox->setStyleSheet(!node.isAnyChild(checked) ? OkColor : WarningColor);
+    }
+}
+
 void RegulatoryTemplate::prodnameEdit([[maybe_unused]] const QString& metadata)
 {
     pugi::xml_node bookmap = bookDoc.child("bookmap");
@@ -504,10 +509,47 @@ void RegulatoryTemplate::saveTempFiles()
     mapDoc.save_file(tempMap.toStdString().c_str());
 }
 
+void RegulatoryTemplate::updateDuplicateKeyrefs(const QString& senderName, const QString& senderText)
+{
+    /* if findChildren slows the form down, can put all textedits in a vector, OR
+    * go through each row and use a premade vector of textedits to make changes as needed (see proprow //_keyRefTextEdits.push_back(input);)
+    *
+    * for(auto& propRow : _propRows)
+    {
+        propRow.UpdateKeyRefTextForKeyNameOrSomething(senderName, senderText);
+    }
+    */
+    auto keyrefs = ui.centralWidget->findChildren<QTextEdit*>(senderName);
+    /*
+        If there is only one, that was the one that sent us this signal, and we don't need to change it
+        (we ignore the fact that we could be updating the one that sent us this signal, too much trouble to skip for now)
+    */
+    if (keyrefs.size() > 1)
+    {
+        for (auto& key : keyrefs)
+        {
+            //temporarily turn off the signal from key text box
+            SignalBlocker blocker(key);
+            if (senderName == key->objectName())
+            {
+                key->clear();
+                key->insertPlainText(senderText);
+            }
+        }
+    }
+    else
+    {
+        //need to clear the data from single keyref boxes also, otherwise first letter stays gray
+        SignalBlocker blocker(keyrefs.first());
+        keyrefs.first()->clear();
+        keyrefs.first()->insertPlainText(senderText);
+    };
+}
+
 void RegulatoryTemplate::updateLanguages()
 {
     auto savedLanguages = LanguageDialog::savedLanguages();
-    
+
     pugi::xml_node bookmap = bookDoc.child("bookmap");
     auto metadata = bookmap.child("bookmeta");
 
@@ -523,3 +565,6 @@ void RegulatoryTemplate::updateLanguages()
         Xml::CreateNode(dataNode, "data", item.toStdString());
     }
 }
+
+
+
