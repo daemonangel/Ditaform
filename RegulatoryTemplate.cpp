@@ -99,7 +99,7 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
 
     //checkbox rules for keyrefs
     auto rowName = QObject::sender()->objectName();
-    highlightUncheckedKeyrefs(rowName);
+    keyrefRules(rowName);
 }
 
 void RegulatoryTemplate::childCheckboxRules(const QString& senderName, data_node node)
