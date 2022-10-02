@@ -76,16 +76,8 @@ void RegulatoryTemplate::autoUpdateKeyrefs(const QString& senderName, const QStr
 {
     updateDuplicateKeyrefs(senderName, senderText);
 
-    auto senderObject = QObject::sender();
-    const static QString OkColor{ "background-color:#ffffff;color:#000000" };
-    const static QString WarningColor{ "background-color:yellow;color:#000000" };
-    auto keyrefsInRow = findAllKeyrefsInRow(*senderObject);
-
-    for (auto& key : keyrefsInRow)
-    {
-        
-        //key->setStyleSheet(key->parentWidget()->findChild<QCheckBox*>()->isChecked() ? OkColor : WarningColor);
-    }
+    auto rowName = QObject::sender()->objectName();
+    keyrefRules(rowName);
 }
 
 void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
@@ -104,6 +96,10 @@ void RegulatoryTemplate::autoUpdateCheckboxes(const QString& senderName)
             childCheckboxRules(senderName, node);
         }
     }
+
+    //checkbox rules for keyrefs
+    auto rowName = QObject::sender()->objectName();
+    highlightUncheckedKeyrefs(rowName);
 }
 
 void RegulatoryTemplate::childCheckboxRules(const QString& senderName, data_node node)
@@ -259,17 +255,23 @@ std::vector<std::string> RegulatoryTemplate::findAllCheckedboxes()
     return checked;
 }
 
-std::vector<QObject*> RegulatoryTemplate::findAllKeyrefsInRow(const QObject& senderObject)
+void RegulatoryTemplate::keyrefRules(const QString& rowName)
 {
-    //try using the parent row name instead
-    auto keyrefs = senderObject.findChildren<QTextEdit*>();
+    const static QString OkColor{ "background-color:#ffffff" };
+    const static QString WarningColor{ "background-color:yellow" };
+    //find the row, then group, then find all the keyrefs in that group
+    auto row = ui.centralWidget->findChild<PropRow*>(rowName);
+    auto group = row->findChild<QGroupBox*>();
+    auto keyrefs = group->findChildren<QTextEdit*>();
     std::vector<QObject*> keyrefsInRow;
-    for (auto& key : keyrefs)
+    for (auto& keyref : keyrefs)
     {
-        keyrefsInRow.push_back(key);
+        keyrefsInRow.emplace_back(keyref);
+        QTextEdit* key = qobject_cast<QTextEdit*>(keyref);
+        bool isChecked = key->parentWidget()->findChild<QCheckBox*>()->isChecked();
+        bool isEmpty = key->document()->isEmpty();
+        key->setStyleSheet(isChecked || isEmpty ? OkColor : WarningColor);
     }
-
-    return keyrefsInRow;
 }
 
 QString RegulatoryTemplate::getMapFileFromBookmap()
@@ -536,13 +538,13 @@ void RegulatoryTemplate::updateDuplicateKeyrefs(const QString& senderName, const
             }
         }
     }
-    else
+    /*else
     {
         //need to clear the data from single keyref boxes also, otherwise first letter stays gray
         SignalBlocker blocker(keyrefs.first());
         keyrefs.first()->clear();
         keyrefs.first()->insertPlainText(senderText);
-    };
+    }*/;
 }
 
 void RegulatoryTemplate::updateLanguages()

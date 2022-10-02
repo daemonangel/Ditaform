@@ -28,8 +28,9 @@ PropRow::PropRow(const propValueCollection& propsRow, QWidget *parent)
 
 	ui.textBrowser->setHtml(QString::fromStdString(ss.str()));
 
-	//set title of groupbox to the props node name
+	//set title of groupbox and name of row to the props node name
 	ui.propRow_group->setTitle(QString::fromStdString(_myPropsRow.propsName));
+	ui.propRow_group->parent()->setObjectName(QString::fromStdString(_myPropsRow.propsName));
 
 	//set object name of checkbox to the props node name
 	ui.propRow_check->setObjectName(QString::fromStdString(_myPropsRow.propsName));
@@ -64,8 +65,9 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 	pugi::xml_node map = mapDoc.child("map");
 	auto keyword = map.find_child_by_attribute("keys", senderName);
 	auto keywordValue = keyword.child("topicmeta").child("keywords").child("keyword").child_value();
-	input->setText(keywordValue);
-	input->setTextColor(QColor(0, 0, 0, 255));
+	//input->setText(keywordValue);
+	input->setPlaceholderText(keywordValue);
+	//input->setTextColor(QColor(0, 0, 0, 255));
 
 	//connect signal textchanged from input object to slot function updateKeyref
 	connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
