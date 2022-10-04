@@ -61,7 +61,7 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 	input->setMaximumSize(QSize(130, 50));
 
 	//TODO insert keyword data from the map into the box in gray
-	input->setTextColor(QColor(150, 150, 150, 255));
+	//input->setTextColor(QColor(150, 150, 150, 255));
 	pugi::xml_node map = mapDoc.child("map");
 	auto keyword = map.find_child_by_attribute("keys", senderName);
 	auto keywordValue = keyword.child("topicmeta").child("keywords").child("keyword").child_value();
@@ -83,7 +83,7 @@ void PropRow::updateKeyref()
 	auto senderObject = QObject::sender();
 	auto senderName = senderObject->objectName();
 	QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
-	senderText->setTextColor(QColor(0, 0, 0, 255));
+	//senderText->setTextColor(QColor(0, 0, 0, 255));
 
 	pugi::xml_node map = mapDoc.child("map");
 

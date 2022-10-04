@@ -263,14 +263,25 @@ void RegulatoryTemplate::keyrefRules(const QString& rowName)
     auto row = ui.centralWidget->findChild<PropRow*>(rowName);
     auto group = row->findChild<QGroupBox*>();
     auto keyrefs = group->findChildren<QTextEdit*>();
-    std::vector<QObject*> keyrefsInRow;
     for (auto& keyref : keyrefs)
     {
-        keyrefsInRow.emplace_back(keyref);
         QTextEdit* key = qobject_cast<QTextEdit*>(keyref);
         bool isChecked = key->parentWidget()->findChild<QCheckBox*>()->isChecked();
+        bool hasEmptyKey = std::find_if(
+            keyrefs.begin(), keyrefs.end(),
+            [](QTextEdit* x) { return x->toPlainText() == ""; }
+        ) != keyrefs.end();
+        bool allEmptyKeys = std::find_if(
+            keyrefs.begin(), keyrefs.end(),
+            [](QTextEdit* x) { return x->toPlainText() != ""; }
+        ) == keyrefs.end();
         bool isEmpty = key->document()->isEmpty();
-        key->setStyleSheet(isChecked || isEmpty ? OkColor : WarningColor);
+        /* logic is hard...
+            if box is check and has no empty boxes
+            OR
+            if box is not checked and all the boxes are empty
+        */
+        key->setStyleSheet((isChecked && !hasEmptyKey) || (!isChecked && allEmptyKeys) ? OkColor : WarningColor);
     }
 }
 
