@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference id="reference.dita_c4399866-4ea9-40cd-aa7b-262fb73776e3">
+  <title><ph props="taiwan">臺灣
+    <draft-comment outputclass="translation"> (Taiwan)</draft-comment>
+    </ph></title>
+  <refbody>
+    <section props="taiwan-low-power-radio">
+      <draft-comment>Applicability: For all wireless devices supporting a low power radio technology (WLAN/BT/NFC/RFID/WPC/UWB) – NCC rule for sale in Taiwan</draft-comment>
+      <draft-comment outputclass="translation">Translation: According to the Administrative Regulations on Low Power Radio Waves Radiated Devices:
+        <p>Without permission granted by the NCC, any company, enterprise, or user is not allowed to change frequency, enhance transmitting power or alter original characteristic as well as performance to an approved low power radio-frequency device.</p>
+        <p>The low power radio-frequency devices shall not influence aircraft security and interfere legal communications; If found, the user shall cease operating immediately until no interference is achieved.</p>
+        <p>The said legal communications means radio communications is operated in compliance with the Telecommunications Management Act. The low power radio-frequency devices must be susceptible with the interference from legal communications or ISM radio wave radiated devices.</p>
+      </draft-comment>
+      <p>低功率電波輻射性電機管理辦法</p>
+      <p>取得審驗證明之低功率射頻器材，非經核准，公司、商號或使用者均不得擅自 變更頻率、加大功率或變更原設計之特性及功能。</p>
+      <p>低功率射頻器材之使用不得影響飛航安全及干擾合法通信；經發現有干擾現象 時，應立即停用，並改善至無干擾時方得繼續使用。</p>
+      <p>前述合法通信，指依電信管理法規定作業之無線電通信。低功率射頻器材須忍 受合法通信或工業、科學及醫療用電波輻射性電機設備之干擾。</p>
+    </section>
+    <section props="taiwan-dfs">
+      <draft-comment>Applicability: For the device supports DFS band</draft-comment>
+      <draft-comment outputclass="translation">Translation: Should avoid affecting the operating of nearby radar system.</draft-comment>
+      <p>應避免影響附近雷達系統之操作</p>
+    </section>
+    <section props="taiwan-wan" id="section_1">
+      <draft-comment>Applicability: For WAN enabled terminals only:
+        <ul id="ul_1">
+          <li>Note to Reg Lead: Replace [device model number] with model number of mobile computer(s). Replace xx with head SAR value from CE test report.</li>
+        </ul>
+      </draft-comment>
+      <draft-comment outputclass="translation">Translation: Reduce radio emission impact, please use properly.
+        <p>Model [device model number]: SAR standard value 2.0 W/kg; measured product measured value: xx W/kg</p>
+        <p>Translation: Model [device model number]: SAR limit 2.0 W/kg; Test result is: xxx W/kg.</p>
+      </draft-comment>
+      <p>減少電磁波影響，請妥適使用</p>
+      <p>型號 <ph keyref="taiwan-model"></ph> SAR 標準值2.0 W/kg ；送測產品實測值為：<ph keyref="taiwan-sar-head"></ph> W/kg</p>
+    </section>
+    <section props="taiwan-access-point" id="section_2">
+      <draft-comment>Applicability: For Access point only (Professional installation)</draft-comment>
+      <draft-comment outputclass="translation">Translation: Access Point (Professional installation):
+        <p>This equipment must be installed and set up by professional engineers, and must be set up and used, and must not be sold directly to the general consumer.</p>
+      </draft-comment>
+      <p>無線接入點 ( 專業安裝)</p>
+      <p>「本器材須經專業工程人員安裝及設定，始得設置使用，且不得直接販售給一般 消費者」警語。</p>
+    </section>
+    <section props="taiwan-rf" id="section_3">
+      <draft-comment>Applicability: For all RF devices</draft-comment>
+      <draft-comment outputclass="translation">Translation: Company information
+        <p>Taiwan Zebra Technology Co., Ltd. / Taipei Xinyi District Songgao Road 9, 13th Floor</p>
+      </draft-comment>
+      <p>公司資訊</p>
+      <p>台灣斑馬科技股份有限公司 / 台北市信義區松高路9 號13 樓</p>
+    </section>
+    <section props="taiwan-batteries" id="section_4">
+      <draft-comment>Applicability: For products containing batteries (Battery recycling)</draft-comment>
+      <draft-comment outputclass="translation">Translation: EPA (Environmental Protection Administration) requires dry battery producing or importing firms in accordance with Article 15 of the Waste Disposal Act are required to indicate the recycling marks on the batteries and used in sales, giveaway, or promotion. Contact a qualified Taiwanese recycler for proper battery disposal.</draft-comment>
+      <table>
+        <tgroup cols="2" id="simpletable_2">
+          <colspec colwidth="10%" colname="col_1"></colspec>
+          <colspec colwidth="90%" colname="col_2"></colspec>
+          <tbody>
+            <row>
+              <entry valign="top"><image href="../../../media/common/graphics/g-rg-taiwan-epa-lgo.png" id="image_2">
+                </image></entry>
+              <entry>
+                <p>行政院環保署 (EPA) 要求乾電池製造或進口商，需依廢棄物清理法第 15 條之規定，於販售、贈</p>
+                <p>送或促銷的電池上標示回收標誌。請聯絡合格的台灣回收廠商，以正確 棄置電池。</p>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section props="taiwan-dfs" id="section_5">
+      <draft-comment>Applicability: all products</draft-comment>
+      <draft-comment outputclass="translation">Translation: Restricted Substances Containment Status Declaration</draft-comment>
+      <p>限用物質含有情況標示聲明書</p>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/concept.dtd">
+<concept id="Zebra-Concept.dita_65a53a10-9204-43cd-a719-a51ab3f5f878">
+  <title><ph props="power-supply">Power Supply</ph></title>
+  <conbody>
+    <draft-comment props="power-supply"><data datatype="any" name="power-supply" type="dependencies" value="power-supply-poe power-supply-external power-supply-poe-lan"></data>Applicability: For products using an external power supply and/or PoE (Power over Ethernet)
+      <ul id="ul_1">
+        <li>Note to Reg Lead: Cradles are to be provided with their own RG.</li>
+      </ul>
+    </draft-comment>
+    <p props="power-supply-poe">
+      <draft-comment>Applicability: For products (e.g. Access Points/Micro Kiosks/Fixed RFID Readers) that can be powered optionally by PoE (Power over the Ethernet) or an external power supply:</draft-comment>
+      This device may be powered by either an external power supply or Power over Ethernet (PoE) 802.3af or 802.3at power source. Ensure the applicable instructions are followed.</p>
+    <note props="power-supply-external" id="note_1">
+      <draft-comment>Applicability: for products using an external power supply
+        <ul id="ul_2">
+          <li>Note to Reg Lead: . Select either LPS or SELV not both.</li>
+          <li>Note to writer: LPS or SELV need to be in bracket.</li>
+        </ul>
+      </draft-comment>
+      WARNING ELECTRICAL SHOCK: Use only a Zebra approved, Certified ITE <ph keyref="power-supply-lps-selv"></ph> power supply with appropriate electrical ratings. Use of alternative power supply will invalidate any approvals given to this unit and may be dangerous.</note>
+    <section props="power-supply-poe-lan" id="section_1">
+      <draft-comment>Applicability: For products powered by PoE (Power over the Ethernet)</draft-comment>
+      <p>This device must be powered from a 802.3af or 802.3at compliant power source which meets local compliance requirements.</p>
+    </section>
+  </conbody>
+</concept>

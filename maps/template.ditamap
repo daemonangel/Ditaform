@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "bookmap/dtd/bookmap.dtd">
-<bookmap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="XSD_FILE_PATH">
-  <title>Sample Source</title>
+<!DOCTYPE bookmap PUBLIC "-//OASIS//DTD DITA BookMap//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/bookmap/dtd/bookmap.dtd">
+<bookmap id="Zebra-Bookmap.ditamap_d02dff42-98ca-4a73-b3c3-e92079a87bf0" xml:lang="en-us">
+  <title>Regulatory Template</title>
   <bookmeta>
     <shortdesc><!--A brief description of this document. This text may appear in different output formats and the description field for PDF metadata. Length should not exceed 200 characters. --></shortdesc>
     <publisherinformation>
       <published>
-        <completed>
-        <month>May</month>
-        <year>2021</year>
-        </completed>
+      <completed>
+      <month>May</month>
+      <year>2021</year>
+      </completed>
       </published>
     </publisherinformation>
-    <category>Product Reference Guide</category>
+    <category>Regulatory Guide</category>
     <prodinfo>
-      <prodname>Product Name</prodname>
+      <prodname>ET Phone</prodname>
       <vrmlist>
         <vrm version="0"></vrm>
       </vrmlist>
-      <series>Product Series</series>
+      <series>Home</series>
     </prodinfo>
     <bookid>
-      <bookpartno>MN-123456-78</bookpartno>
-      <booknumber></booknumber>
-      <volume>Rev A</volume>
+    <bookpartno>MN-001234-56</bookpartno>
+    <booknumber></booknumber>
+    <volume>Rev A</volume>
     </bookid>
-	<author type="requestor">John Doe</author>
     <bookrights>
-      <copyrfirst>
-        <year>2016</year>
-      </copyrfirst>
-      <copyrlast>
-        <year>2022</year>
-      </copyrlast>
-      <bookowner>
-        <organization>Michelle Allison</organization>
-      </bookowner>
+    <copyrfirst>
+    <year>2016</year>
+    </copyrfirst>
+    <copyrlast>
+    <year>2021</year>
+    </copyrlast>
+    <bookowner>
+    <organization>Zebra Technologies Corporation</organization>
+    </bookowner>
     </bookrights>
   </bookmeta>
-  <chapter format="ditamap" href="template-map.ditamap" type="map">
+  <frontmatter props="PDF">
+    <booklists>
+      <toc></toc>
+    </booklists>
+  </frontmatter>
+  <chapter format="ditamap" href="m-regulatory-guide-warehouse.ditamap" type="map">
   </chapter>
+  <!--Add chapter and appendix elements here. These elements point to a map. Additional maps or individual topicrefs are added as children of the chapter or appendix. -->
 </bookmap>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="india" id="reference.dita_e6cfc98d-d5ab-4cc7-ad9d-4a20a2eacd08">
+  <title>India</title>
+  <shortdesc>
+    <draft-comment>Applicability: WAN devices that support SMS</draft-comment>
+    The sending and receiving of texts is supported in the following Indian languages:</shortdesc>
+  <refbody>
+    <section>
+      <p>Assamese, Bengali, Gujarati, Hindi, Kannada, Kashmiri, Konkani, Malayalam, Manipuri, Marathi, Nepali, Oriya, Punjabi, Sanskrit, Sindhi, Tamil, Telugu, Urdu, Bodo, Santhali, Maithili, and Dogri.</p>
+    </section>
+  </refbody>
+</reference>

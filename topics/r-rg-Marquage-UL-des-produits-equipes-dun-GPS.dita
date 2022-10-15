@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="ul-listed-products-gps" id="reference.dita_10c78503-26e6-4e9f-a0f8-bcf8312f44d8">
+  <title>Marquage UL des produits équipés d&#39;un GPS</title>
+  <refbody>
+    <section>
+      <draft-comment>Writers: This section is always included with &quot;UL Listed Products with GPS&quot;.</draft-comment>
+      Les tests menés par Underwriters Laboratories Inc. (UL) ne portent ni sur les performances, ni sur la fiabilité du matériel et du logiciel d&#39;exploitation du GPS (Global Positioning System), ni sur tout autre aspect de ce produit. UL a uniquement testé la résistance au feu, aux chocs et aux sinistres, comme le définit la norme UL60950-1 relative à la sécurité des matériels de traitement de l&#39;information. La certification UL ne couvre ni les performances, ni la fiabilité du matériel et du logiciel d&#39;exploitation GPS. UL ne formule aucune déclaration, ni ne délivre aucune garantie ni aucun certificat concernant les performances et la fiabilité des fonctions GPS de ce produit.</section>
+  </refbody>
+</reference>

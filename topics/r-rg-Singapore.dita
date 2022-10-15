@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="singapore" id="reference.dita_4ede4e07-09c4-4aba-9142-04392160a8b9">
+  <title>Singapore</title>
+  <shortdesc>
+    <draft-comment>Applicability: All devices supporting UHF RIFID and sold in Singapore</draft-comment>
+    End-users are required to obtain a site licence from the Infocomm Media Development Authority (“IMDA”) to operate RFID equipment in Singapore such as Zebra fixed and mobile RFID readers. For further information on this licensing requirement and the application process, end-users may contact IMDA (Tel: 6211 0647).</shortdesc>
+  <refbody>
+  </refbody>
+</reference>

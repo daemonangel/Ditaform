@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/concept.dtd">
+<concept id="Zebra-Concept.dita_cbf4c8f1-f8c6-4a90-8191-bd4003495ef8">
+  <title><ph props="rf-exposure">RF Exposure Guidelines</ph></title>
+  <conbody>
+    <draft-comment props="rf-exposure">Applicability: For all wireless Devices<data datatype="any" name="health-safety" type="dependencies" value="ergonomic vehicle-installation hazloc safety-hospitals-aircraft medical-devices rf-exposure optical-devices led"></data></draft-comment>
+    <note props="rf-exposure" type="important" id="note_1">Safety Information</note>
+    <section props="rf-exposure" id="section_1">
+      <title>Reducing RF Exposure – Use Properly</title>
+      <p>Only operate the device in accordance with the instructions supplied.</p>
+      <p>The device complies with internationally recognized standards covering human exposure to electromagnetic fields. For information on international human exposure to electromagnetic fields, refer to the Zebra Declaration of Conformity (DoC) at www.zebra.com/doc.</p>
+      <p>Use only Zebra tested and approved headset, belt-clips, holsters, and similar accessories to ensure RF exposure compliance. If applicable, follow the instructions for use as detailed in the accessory guide.</p>
+      <p>The use of third-party belt clips, holsters, and similar accessories may not comply with RF exposure compliance requirements and should be avoided.</p>
+      <p>For further information on the safety of RF energy from wireless devices, refer to RF exposure and assessment standards section at www.zebra.com/responsibility.</p>
+    </section>
+    <section props="rf-exposure-sar">
+      <p>
+        <draft-comment>Applicability: to any radio device intended to be used near/next to the body or in-front of mouth
+          <ul id="ul_1">
+            <li>Note to Reg Lead: Minimum separation distance xx cm must match the distance established in the SAR Test report.</li>
+            <li>Only applicable if SAR value or power density value is measured i.e. low power devices will not require this statement.</li>
+          </ul>
+          <data datatype="any" name="rf-exposure-sar" type="dependencies" value="rf-exposure-extremities-wrist rf-exposure-extremities-ankle rf-exposure-extremities-hand"></data></draft-comment>
+        To satisfy RF exposure requirements, this device must operate with a minimum separation distance of <ph keyref="sar-distance"></ph> cm or more from a user&#39;s body and nearby persons.</p>
+    </section>
+    <section>
+      <p props="rf-exposure-extremities-wrist">
+        <draft-comment>Applicability: For extremities only use (hands, wrists, feet and ankles) where device is not used directly against body/head or which may use an accessory
+          <ul id="ul_2">
+            <li>Note to Reg Lead:Select either wrist-worn, ankle-worn, or held in the hand.</li>
+            <li>Only applicable if SAR value or power density value is measured i.e. low power devices will not require this statement</li>
+          </ul>
+        </draft-comment>
+        To satisfy RF exposure requirements, this device must be wrist-worn only and, where applicable use only with Zebra tested and approved accessories. </p>
+      <p props="rf-exposure-extremities-ankle">
+        <draft-comment>Applicability: For extremities only use (hands, wrists, feet and ankles) where device is not used directly against body/head or which may use an accessory
+          <ul id="ul_3">
+            <li>Note to Reg Lead:Select either wrist-worn, ankle-worn, or held in the hand.</li>
+            <li>Only applicable if SAR value or power density value is measured i.e. low power devices will not require this statement</li>
+          </ul>
+        </draft-comment>
+        To satisfy RF exposure requirements, this device must be ankle-worn only and, where applicable use only with Zebra tested and approved accessories. </p>
+      <p props="rf-exposure-extremities-hand">
+        <draft-comment>Applicability: For extremities only use (hands, wrists, feet and ankles) where device is not used directly against body/head or which may use an accessory
+          <ul id="ul_4">
+            <li>Note to Reg Lead:Select either wrist-worn, ankle-worn, or held in the hand.</li>
+            <li>Only applicable if SAR value or power density value is measured i.e. low power devices will not require this statement</li>
+          </ul>
+        </draft-comment>
+        To satisfy RF exposure requirements, this device must be hand-held only and, where applicable use only with Zebra tested and approved accessories. </p>
+    </section>
+  </conbody>
+</concept>

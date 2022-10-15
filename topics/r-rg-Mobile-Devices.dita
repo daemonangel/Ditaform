@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference id="reference.dita_d3fa5082-02fe-4f66-8c6c-8e4ae4467d0d">
+  <title><ph props="mobile-devices">Mobile Devices</ph></title>
+  <abstract props="mobile-devices">
+    <draft-comment>Applicability: When SAR not tested, either Vehicle-mount or where used &gt;20cm distance from user’s body and cannot be body worn in a belt clip/holster.</draft-comment>
+  </abstract>
+  <refbody>
+    <section props="mobile-devices-distance">
+      <draft-comment>
+        <ul id="ul_1">
+          <li>Note to Reg Lead: For RFID (xx must be replaced with worst case MPE distance* for a 4W device)</li>
+          <li>MPE distance in ISED report should be worse case, but check EU/FCC reports if appropriate</li>
+        </ul>
+      </draft-comment>
+      <p>This equipment complies with RF Exposure limits established for an uncontrolled environment (General Population). This equipment should be installed and operated in such a way that a separation distance of greater than 20 (or <ph keyref="mobile-distance"></ph>) centimeters is maintained between the transmitter&#39;s radiating structure(s) and the body of the user or nearby persons.</p>
+      <p>Cet équipement est conforme aux limites d&#39;exposition aux RF établies pour un environnement non contrôlé (population générale). Cet équipement doit être installé et utilisé de manière à maintenir une distance de séparation supérieure à 20 or <ph keyref="mobile-distance"></ph> centimètres entre la (les) structure (s) rayonnante (s) de l&#39;émetteur et le corps de l&#39;utilisateur ou des personnes à proximité.</p>
+    </section>
+  </refbody>
+</reference>

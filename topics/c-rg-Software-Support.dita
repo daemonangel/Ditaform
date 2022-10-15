@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/concept.dtd">
+<concept props="software-support" id="Zebra-Concept.dita_1d197049-4459-4a27-b426-4611274dce40">
+  <title>Software Support</title>
+  <shortdesc>Zebra wants to ensure that customers have the latest entitled software at the time of device purchase in order to keep the device operating at peak performance levels. To confirm that your Zebra device has the latest entitled software available at the time of purchase, go to <xref href="https://www.zebra.com/support" scope="external">zebra.com/support</xref>.</shortdesc>
+  <conbody>
+    <p>Check for the latest software from Support &gt; Products, or search for the device and select <menucascade>
+      <uicontrol>Support</uicontrol>
+      <uicontrol>Software Downloads</uicontrol>
+      </menucascade>.</p>
+    <p>If your device does not have the latest entitled software as of your device purchase date, e-mail Zebra at entitlementservices@zebra.com and ensure you include the following essential device information:</p>
+    <ul id="ul_1">
+      <li>Model number</li>
+      <li>Serial number</li>
+      <li>Proof of purchase</li>
+      <li>Title of the software download you are requesting.</li>
+    </ul>
+    <p>If it is determined by Zebra that your device is entitled to the latest version of software, as of the date you purchased your device, you will receive an e-mail containing a link directing you to a Zebra Web site to download the appropriate software.</p>
+  </conbody>
+</concept>

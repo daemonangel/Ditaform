@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference id="reference.dita_b6caaf7d-a4fa-4321-ad62-2ad9f34e3a79">
+  <title><ph props="brasil">Brasil</ph></title>
+  <shortdesc props="brasil">
+    <draft-comment>Applicability: For Class A Devices intended to be sold in Brasil
+      <ul id="ul_3">
+        <li>THIS SECTION WILL HAVE TO BE UPDATED AT A LATER DATE</li>
+      </ul>
+    </draft-comment>
+    <draft-comment outputclass="translation">Translation: This equipment has no right to protection against harmful interference and cannot cause interference in duly authorized systems.</draft-comment>
+    Este equipamento não tem direito à proteção contra interferência prejudicial e não pode causar interferência em sistemas devidamente autorizados.</shortdesc>
+  <refbody>
+    <section props="brasil-sar">
+      <draft-comment>Applicability: For products tested for SAR at 0cm (with &amp; without holster): Both Head and Body SAR values shall be added if applicable</draft-comment>
+      <draft-comment>Writers: Create your own version of this topic for your product. Conref in the content you need. For sections you need to edit, right click on them and select <uicontrol>Replace reference with content</uicontrol>. You must replace the reference with the content so that you can edit it. Then you can delete unneeded rows or columns.
+        <ul id="ul_5">
+          <li>If a single model value - use bulleted form.</li>
+          <li>If multiple models - Use the table format. </li>
+        </ul>
+      </draft-comment>
+      <draft-comment outputclass="translation">Translation: “This product is approved by Anatel in accordance with the regulated procedures for conformity assessment of telecommunications products and meets the applicable technical requirements, including the limits of the measurement of human exposure relating to electric, magnetic and electromagnetic fields of radio frequency&quot;
+        <p>SAR values measured:</p>
+        <ul id="ul_6">
+          <li>Head: XX W / kg</li>
+          <li>Body: XX W / kg</li>
+        </ul>
+      </draft-comment>
+    </section>
+    <section props="brasil-sar" id="section_3">
+      <p>Este produto está homologado pela Anatel de acordo com os procedimentos regulamentados para avaliação da conformidade de produtos para telecomunicações e atende aos requisitos técnicos aplicáveis, incluindo os limites da medida da exposição humana referente a campos elétricos, magnéticos e eletromagnéticos de radiofrequência</p>
+    </section>
+    <section props="brasil-sar" id="section_1">
+      <draft-comment>Formatting suggestion: If these values could use one format, instead of choosing from bullets or table, then writers could reuse the whole topic and not have to make a copy of it. Maybe bullets with a comma separated list:
+        <ul id="ul_9">
+          <li>Model1: XX, Head: xx W/kg, Body: xx W/kg</li>
+          <li>Model2: XX, Head: xx W/kg, Body: xx W/kg</li>
+        </ul>
+      </draft-comment>
+      <p>Valores de SAR medidos:</p>
+      <ul id="ul_8">
+        <li>Cabeça: <ph keyref="brasil-sar-head-1"></ph> W/kg</li>
+        <li>Corpo: <ph keyref="brasil-sar-body-1"></ph> W/kg</li>
+      </ul>
+    </section>
+    <section props="brasil-sar" id="section_2">
+      <table id="table_2">
+        <tgroup cols="3">
+          <colspec colwidth="1*" colname="col_1"></colspec>
+          <colspec colwidth="1*" colname="col_2"></colspec>
+          <colspec colwidth="1*" colname="col_3"></colspec>
+          <thead>
+            <row>
+              <entry namest="col_1" nameend="col_3">Valores de SAR medidos</entry>
+            </row>
+            <row>
+              <entry>Nº do modelo</entry>
+              <entry>Cabeça W/kg</entry>
+              <entry>Corpo W/kg</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry><ph keyref="brasil-sar-model-1"></ph></entry>
+              <entry><ph keyref="brasil-sar-head-1"></ph></entry>
+              <entry><ph keyref="brasil-sar-body-1"></ph></entry>
+            </row>
+            <row>
+              <entry><ph keyref="brasil-sar-model-2"></ph></entry>
+              <entry><ph keyref="brasil-sar-head-2"></ph></entry>
+              <entry><ph keyref="brasil-sar-body-2"></ph></entry>
+            </row>
+            <row>
+              <entry><ph keyref="brasil-sar-model-3"></ph></entry>
+              <entry><ph keyref="brasil-sar-head-3"></ph></entry>
+              <entry><ph keyref="brasil-sar-body-3"></ph></entry>
+            </row>
+            <row>
+              <entry><ph keyref="brasil-sar-model-4"></ph></entry>
+              <entry><ph keyref="brasil-sar-head-4"></ph></entry>
+              <entry><ph keyref="brasil-sar-body-4"></ph></entry>
+            </row>
+            <row>
+              <entry><ph keyref="brasil-sar-model-5"></ph></entry>
+              <entry><ph keyref="brasil-sar-head-5"></ph></entry>
+              <entry><ph keyref="brasil-sar-body-5"></ph></entry>
+            </row>
+            <row>
+              <entry><ph keyref="brasil-sar-model-6"></ph></entry>
+              <entry><ph keyref="brasil-sar-head-6"></ph></entry>
+              <entry><ph keyref="brasil-sar-body-6"></ph></entry>
+            </row>
+            <row>
+              <entry><ph keyref="brasil-sar-model-7"></ph></entry>
+              <entry><ph keyref="brasil-sar-head-7"></ph></entry>
+              <entry><ph keyref="brasil-sar-body-7"></ph></entry>
+            </row>
+            <row>
+              <entry><ph keyref="brasil-sar-model-8"></ph></entry>
+              <entry><ph keyref="brasil-sar-head-8"></ph></entry>
+              <entry><ph keyref="brasil-sar-body-8"></ph></entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+    <section props="brasil-sar-without-holster" id="section_4">
+      <draft-comment outputclass="translation">Translation: This device complies with the Radio Frequency Exposure Guidelines when positioned at least XX cm from the body.</draft-comment>
+      <p>Este dispositivo está em conformidade com as diretrizes de exposição a radiofrequência quando posicionado à pelo menos <ph keyref="brasil-sar-distance"></ph> cm do corpo.</p>
+    </section>
+  </refbody>
+</reference>

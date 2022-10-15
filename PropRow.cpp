@@ -52,26 +52,21 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 	QFont labelFont("Normal", 10, QFont::Normal);
 	label->setFont(labelFont);
 	label->setText(node.attribute("data-keyref").value());
-	label->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
 	label->setAlignment(Qt::AlignBottom);
 
 	QTextEdit* input = new QTextEdit();
 	auto senderName = node.attribute("data-keyref").value();
 	input->setObjectName(senderName);
-	input->setMaximumSize(QSize(130, 50));
+	input->setMaximumSize(QSize(16777215, 50));
 
-	//TODO insert keyword data from the map into the box in gray
-	//input->setTextColor(QColor(150, 150, 150, 255));
+	//insert keyword data from the map into the box in gray
 	pugi::xml_node map = mapDoc.child("map");
 	auto keyword = map.find_child_by_attribute("keys", senderName);
 	auto keywordValue = keyword.child("topicmeta").child("keywords").child("keyword").child_value();
-	//input->setText(keywordValue);
 	input->setPlaceholderText(keywordValue);
-	//input->setTextColor(QColor(0, 0, 0, 255));
 
 	//connect signal textchanged from input object to slot function updateKeyref
 	connect(input, &QTextEdit::textChanged, this, &PropRow::updateKeyref);
-	//_keyRefTextEdits.push_back(input);
 
 	ui.verticalLayout->addWidget(line);
 	ui.verticalLayout->addWidget(label);
@@ -83,7 +78,6 @@ void PropRow::updateKeyref()
 	auto senderObject = QObject::sender();
 	auto senderName = senderObject->objectName();
 	QTextEdit* senderText = qobject_cast<QTextEdit*>(senderObject);
-	//senderText->setTextColor(QColor(0, 0, 0, 255));
 
 	pugi::xml_node map = mapDoc.child("map");
 

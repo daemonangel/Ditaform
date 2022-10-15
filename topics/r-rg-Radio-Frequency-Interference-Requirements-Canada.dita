@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference id="reference.dita_ffc3ef71-e690-415a-bbe9-82c99d4523d2">
+  <title><ph props="rf-int-req-canada">Radio Frequency Interference Requirements – Canada</ph></title>
+  <refbody>
+    <section>
+      <draft-comment props="rf-int-req-canada"><data datatype="any" name="rf-int-req-canada" type="dependencies" value="rf-int-req-canada-non-wireless rf-int-req-canada-exempt rf-int-req-canada-5ghz rf-int-req-canada-antenna rf-int-req-canada-antenna1 rf-int-req-canada-antenna2 rf-int-req-canada-antenna3 rf-int-req-canada-antenna4"></data>Applicability: This section is for all Class A or B devices</draft-comment>
+    </section>
+    <section props="rf-int-req-canada-non-wireless">
+      <draft-comment>Applicability: For all Class A or B NON-WIRELESS devices
+        <ul>
+          <li>Note to Reg Engineer: Enter either A or B but not both to identify the applicable Class of ITE.</li>
+        </ul>
+      </draft-comment>
+      <p>Innovation, Science and Economic Development Canada ICES-003 No Compliance Label: CAN ICES-003 (<ph keyref="ite-class"></ph>)/NMB-003(<ph keyref="ite-class"></ph>)</p>
+    </section>
+    <section props="rf-int-req-canada-exempt">
+      <draft-comment>Applicability: : For license-exempt equipment</draft-comment>
+      <p>This device complies with Innovation, Science and Economic Development Canada’s licence-exempt RSSs. Operation is subject to the following two conditions: (1) This device may not cause interference; and (2) This device must accept any interference, including interference that may cause undesired operation of the device.</p>
+      <p>L’émetteur/récepteur exempt de licence contenu dans le présent appareil est conforme aux CNR d’Innovation, Sciences et Développement économique Canada applicables aux appareils radio exempts de licence. L’exploitation est autorisée aux deux conditions suivantes : (1) l&#39;appareil ne doit pas produire de brouillage, et (2) l&#39;utilisateur de l&#39;appareil doit accepter tout brouillage radio électrique subi même si le brouillage est susceptible d&#39;en compromettre le fonctionnement.</p>
+    </section>
+    <section props="rf-int-req-canada-5ghz">
+      <draft-comment>Applicability: : For 5GHz Wireless LAN equipment</draft-comment>
+      <p>This device is restricted to indoor use when operating in the 5150 to 5350 MHz frequency range.</p>
+      <p>Lorsqu&#39;il fonctionne dans la plage de fréquences 5 150- 5350 MHz, cet appareil doit être utilisé exclusivement en extérieur.</p>
+    </section>
+    <section props="rf-int-req-canada-antenna">
+      <draft-comment>Applicability: For license-exempt equipment with detachable antenna</draft-comment>
+      <p>This radio transmitter <ph keyref="ic-cert"></ph> has been approved by Innovation, Science and Economic Development Canada to operate with the antenna types listed below, with the maximum permissible gain indicated. Antenna types not included in this list and having a gain greater than the maximum gain indicated for that type, are strictly prohibited for use with this device.</p>
+      <p>Le présent émetteur radio <ph keyref="ic-cert"></ph> a été approuvé par Innovation, Sciences et Développement économique Canada pour fonctionner avec les types d&#39;antenne énumérés cidessous et ayant un gain admissible maximal. Les types d&#39;antenne non inclus dans cette liste, et dont le gain est supérieur au gain maximal indiqué pour tout type figurant sur la liste, sont strictement interdits pour l&#39;exploitation de l&#39;émetteur</p>
+    </section>
+    <section props="rf-int-req-canada-antenna1">
+      <p>Antenna 1 ID: <ph keyref="antenna1-id"></ph></p>
+      <p>Dipole: <ph keyref="antenna1-dipole-dbi"></ph> dBi, <ph keyref="antenna1-dipole-ohms"></ph> ohms</p>
+      <p>Yagi: <ph keyref="antenna1-yagi-dbi"></ph> dBi, <ph keyref="antenna1-yagi-ohms"></ph> ohms</p>
+      <p>Patch: <ph keyref="antenna1-patch-dbi"></ph> dBi, <ph keyref="antenna1-patch-ohms"></ph> ohms</p>
+    </section>
+    <section props="rf-int-req-canada-antenna2">
+      <p>Antenna 2 ID: <ph keyref="antenna2-id"></ph></p>
+      <p>Dipole: <ph keyref="antenna2-dipole-dbi"></ph> dBi, <ph keyref="antenna2-dipole-ohms"></ph> ohms</p>
+      <p>Yagi: <ph keyref="antenna2-yagi-dbi"></ph> dBi, <ph keyref="antenna2-yagi-ohms"></ph> ohms</p>
+      <p>Patch: <ph keyref="antenna2-patch-dbi"></ph> dBi, <ph keyref="antenna2-patch-ohms"></ph> ohms</p>
+    </section>
+    <section props="rf-int-req-canada-antenna3">
+      <p>Antenna 3 ID: <ph keyref="antenna3-id"></ph></p>
+      <p>Dipole: <ph keyref="antenna3-dipole-dbi"></ph> dBi, <ph keyref="antenna3-dipole-ohms"></ph> ohms</p>
+      <p>Yagi: <ph keyref="antenna3-yagi-dbi"></ph> dBi, <ph keyref="antenna3-yagi-ohms"></ph> ohms</p>
+      <p>Patch: <ph keyref="antenna3-patch-dbi"></ph> dBi, <ph keyref="antenna3-patch-ohms"></ph> ohms</p>
+    </section>
+    <section props="rf-int-req-canada-antenna4">
+      <p>Antenna 4 ID: <ph keyref="antenna4-id"></ph></p>
+      <p>Dipole: <ph keyref="antenna4-dipole-dbi"></ph> dBi, <ph keyref="antenna4-dipole-ohms"></ph> ohms</p>
+      <p>Yagi: <ph keyref="antenna4-yagi-dbi"></ph> dBi, <ph keyref="antenna4-yagi-ohms"></ph> ohms</p>
+      <p>Patch: <ph keyref="antenna4-patch-dbi"></ph> dBi, <ph keyref="antenna4-patch-ohms"></ph> ohms</p>
+    </section>
+    <section>
+      <ul props="rf-int-req-canada-type-max-gain1">
+        <li><ph keyref="antenna1-type-max-gain"></ph></li>
+      </ul>
+    </section>
+    <section>
+      <ul props="rf-int-req-canada-type-max-gain2">
+        <li><ph keyref="antenna2-type-max-gain"></ph></li>
+      </ul>
+    </section>
+    <section>
+      <ul props="rf-int-req-canada-type-max-gain3">
+        <li><ph keyref="antenna3-type-max-gain"></ph></li>
+      </ul>
+    </section>
+    <section>
+      <ul props="rf-int-req-canada-type-max-gain4">
+        <li><ph keyref="antenna4-type-max-gain"></ph></li>
+      </ul>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,1303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN"
+                     "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/map.dtd">
+<map id="map.ditamap_008948d5-bac0-4eff-b789-87d074af0459">
+  <title>Regulatory Topic Warehouse</title>
+  <keydef keys="product-series">
+    <topicmeta>
+      <keywords>
+        <keyword>[product-series]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model1">
+    <topicmeta>
+      <keywords>
+        <keyword>[model1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model2">
+    <topicmeta>
+      <keywords>
+        <keyword>[model2]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model3">
+    <topicmeta>
+      <keywords>
+        <keyword>[model3]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model4">
+    <topicmeta>
+      <keywords>
+        <keyword>[model4]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model5">
+    <topicmeta>
+      <keywords>
+        <keyword>[model5]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model6">
+    <topicmeta>
+      <keywords>
+        <keyword>[model6]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model7">
+    <topicmeta>
+      <keywords>
+        <keyword>[model7]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model8">
+    <topicmeta>
+      <keywords>
+        <keyword>[model8]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model9">
+    <topicmeta>
+      <keywords>
+        <keyword>[model9]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model10">
+    <topicmeta>
+      <keywords>
+        <keyword>[model10]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model11">
+    <topicmeta>
+      <keywords>
+        <keyword>[model11]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model12">
+    <topicmeta>
+      <keywords>
+        <keyword>[model12]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model13">
+    <topicmeta>
+      <keywords>
+        <keyword>[model13]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model14">
+    <topicmeta>
+      <keywords>
+        <keyword>[model14]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="model15">
+    <topicmeta>
+      <keywords>
+        <keyword>[model15]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="max-operating-temp">
+    <topicmeta>
+      <keywords>
+        <keyword>[50]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="elabel-access">
+    <topicmeta>
+      <keywords>
+        <keyword>[Go to Settings &gt; Regulatory.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc">
+    <topicmeta>
+      <keywords>
+        <keyword>[Replace this with the statement from CB report.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="sar-distance">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel1">
+    <topicmeta>
+      <keywords>
+        <keyword>[scannermodel1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel1-wavelength">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx OR xxx-xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel1-max">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel1-laser-pulse">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel1-beam">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel1-repetition">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel2">
+    <topicmeta>
+      <keywords>
+        <keyword>[scannermodel1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel2-wavelength">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx OR xxx-xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel2-max">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel2-laser-pulse">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel2-beam">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel2-repetition">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel3">
+    <topicmeta>
+      <keywords>
+        <keyword>[scannermodel1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel3-wavelength">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx OR xxx-xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel3-max">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel3-laser-pulse">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel3-beam">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel3-repetition">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel4">
+    <topicmeta>
+      <keywords>
+        <keyword>[scannermodel1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel4-wavelength">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx] OR [xxx-xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel4-max">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel4-laser-pulse">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel4-beam">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel4-repetition">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodels">
+    <topicmeta>
+      <keywords>
+        <keyword>[scannermodels]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel1-led-pulse">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel2-led-pulse">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel3-led-pulse">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="scannermodel4-led-pulse">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx ms] OR [CW]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="weights-and-measures-models">
+    <topicmeta>
+      <keywords>
+        <keyword>[model#1, model#2, model#3]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="power-supply-lps-selv">
+    <topicmeta>
+      <keywords>
+        <keyword>[LPS] OR [SELV]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batterymodel1">
+    <topicmeta>
+      <keywords>
+        <keyword>[batterymodel1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryvoltage1">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryvoltage1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryamp1">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryamp1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batterymodel2">
+    <topicmeta>
+      <keywords>
+        <keyword>[batterymodel2]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryvoltage2">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryvoltage2]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryamp2">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryamp2]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batterymodel3">
+    <topicmeta>
+      <keywords>
+        <keyword>[batterymodel3]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryvoltage3">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryvoltage3]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryamp3">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryamp3]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batterymodel4">
+    <topicmeta>
+      <keywords>
+        <keyword>[batterymodel4]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryvoltage4">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryvoltage4]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryamp4">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryamp4]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batterymodel5">
+    <topicmeta>
+      <keywords>
+        <keyword>[batterymodel5]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryvoltage5">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryvoltage5]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryamp5">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryamp5]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batterymodel6">
+    <topicmeta>
+      <keywords>
+        <keyword>[batterymodel6]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryvoltage6">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryvoltage6]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="batteryamp6">
+    <topicmeta>
+      <keywords>
+        <keyword>[batteryamp6]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="battery-charge-temp-min-c">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="battery-charge-temp-max-c">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="battery-charge-temp-min-f">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="battery-charge-temp-max-f">
+    <topicmeta>
+      <keywords>
+        <keyword>[xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="io-input-usb-type">
+    <topicmeta>
+      <keywords>
+        <keyword>[aa]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="io-input-vdc">
+    <topicmeta>
+      <keywords>
+        <keyword>[bb]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="io-input-a">
+    <topicmeta>
+      <keywords>
+        <keyword>[cc]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="io-output-mah">
+    <topicmeta>
+      <keywords>
+        <keyword>[x,xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="io-output-vdc">
+    <topicmeta>
+      <keywords>
+        <keyword>[yy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="io-output-a">
+    <topicmeta>
+      <keywords>
+        <keyword>[zz]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="ite-class">
+    <topicmeta>
+      <keywords>
+        <keyword>[A or B]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="ic-cert">
+    <topicmeta>
+      <keywords>
+        <keyword>[IC Cert #]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-id">
+    <topicmeta>
+      <keywords>
+        <keyword>[ID1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-dipole-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-yagi-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-patch-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-dipole-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-yagi-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-patch-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-id">
+    <topicmeta>
+      <keywords>
+        <keyword>[ID1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna2-dipole-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna2-yagi-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna2-patch-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna2-dipole-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna2-yagi-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna2-patch-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna3-id">
+    <topicmeta>
+      <keywords>
+        <keyword>[ID1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna3-dipole-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna3-yagi-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna3-patch-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna3-dipole-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna3-yagi-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna3-patch-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna4-id">
+    <topicmeta>
+      <keywords>
+        <keyword>[ID1]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna4-dipole-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna4-yagi-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna4-patch-dbi">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna4-dipole-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna4-yagi-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna4-patch-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna1-type-max-gain">
+    <topicmeta>
+      <keywords>
+        <keyword>[TYPE1 - MAX GAIN]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna2-type-max-gain">
+    <topicmeta>
+      <keywords>
+        <keyword>[TYPE2 - MAX GAIN]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna3-type-max-gain">
+    <topicmeta>
+      <keywords>
+        <keyword>[TYPE3 - MAX GAIN]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna4-type-max-gain">
+    <topicmeta>
+      <keywords>
+        <keyword>[TYPE4 - MAX GAIN]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="sar-body">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="sar-bystander">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="mobile-distance">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="antenna-distance">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hearing-aid-rating">
+    <topicmeta>
+      <keywords>
+        <keyword>[Mx/Tx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report1-en">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statement here.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report2-en">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statement here.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report3-en">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statement here.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report4-en">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statement here.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report5-en">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statement here.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report1-fr">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statements here - IN FRENCH.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report2-fr">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statements here - IN FRENCH.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report3-fr">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statements here - IN FRENCH.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report4-fr">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statements here - IN FRENCH.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="hazloc-ul-report5-fr">
+    <topicmeta>
+      <keywords>
+        <keyword>[Insert UL report warning statements here - IN FRENCH.]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-model-1">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-head-1">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-body-1">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-model-2">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-head-2">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-body-2">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-model-3">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-head-3">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-body-3">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-model-4">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-head-4">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-body-4">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-model-5">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-head-5">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-body-5">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-model-6">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-head-6">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-body-6">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-model-7">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-head-7">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-body-7">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-model-8">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-head-8">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-body-8">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-distance">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="brasil-sar-distance">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="mexico-db">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="mexico-ohms">
+    <topicmeta>
+      <keywords>
+        <keyword>[yyyy]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="south-korea-model">
+    <topicmeta>
+      <keywords>
+        <keyword>[device model number]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="south-korea-sar-head">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="south-korea-sar-body">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="taiwan-model">
+    <topicmeta>
+      <keywords>
+        <keyword>[device model number]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="taiwan-sar-head">
+    <topicmeta>
+      <keywords>
+        <keyword>[xxxx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="thailand-model1">
+    <topicmeta>
+      <keywords>
+        <keyword>[device model number]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="thailand-sar1">
+    <topicmeta>
+      <keywords>
+        <keyword>[x.xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="thailand-model2">
+    <topicmeta>
+      <keywords>
+        <keyword>[device model number]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="thailand-sar2">
+    <topicmeta>
+      <keywords>
+        <keyword>[x.xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="thailand-model3">
+    <topicmeta>
+      <keywords>
+        <keyword>[device model number]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="thailand-sar3">
+    <topicmeta>
+      <keywords>
+        <keyword>[x.xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="thailand-sar3">
+    <topicmeta>
+      <keywords>
+        <keyword>[x.xx]</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <keydef keys="vanity-url">
+    <topicmeta>
+      <keywords>
+        <keyword>zebra.com/support</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+  <topicref href="../topics/c-rg-Regulatory-Information.dita" props="regulatory-info" type="concept">
+  </topicref>
+  <topicref href="../topics/c-rg-Bluetooth-Wireless-Technology.dita" props="bluetooth-wireless" type="concept" xml:lang="zh-CN">
+  </topicref>
+  <topicref href="../topics/c-rg-Regulatory-Markings.dita" props="regulatory-markings" type="concept">
+  </topicref>
+  <topicref href="../topics/c-rg-Health-and-Safety-Recommendations.dita" props="health-safety" type="concept">
+    <topicref href="../topics/c-rg-Ergonomic-Recommendations-.dita" props="ergonomic" type="concept">
+    </topicref>
+    <topicref href="../topics/c-rg-Vehicle-Installation.dita" props="vehicle-installation" type="concept">
+      <topicref href="../topics/c-rg-Safety-on-the-Road.dita" props="vehicle-installation" type="concept">
+      </topicref>
+    </topicref>
+    <topicref href="../topics/c-rg-Restricted-Use-Locations.dita" props="vehicle-installation" type="concept">
+    </topicref>
+    <topicref href="../topics/c-rg-Certified-devices-for-Hazloc--ATEX-.dita" props="hazloc" type="concept">
+    </topicref>
+    <topicref href="../topics/c-rg-Safety-in-Hospitals-and-Aircraft.dita" props="safety-hospitals-aircraft" type="concept">
+    </topicref>
+    <topicref href="../topics/c-rg-Medical-Devices.dita" props="medical-devices" type="concept">
+    </topicref>
+    <topicref href="../topics/c-rg-RF-Exposure-Guidelines.dita" props="rf-exposure" type="concept">
+    </topicref>
+    <topicref href="../topics/r-rg-Optical-Devices.dita" props="optical-devices" type="reference">
+      <topicref href="../topics/r-rg-Scanner-Labeling.dita" props="scanner-labeling" type="reference">
+      </topicref>
+    </topicref>
+    <topicref href="../topics/c-rg-LED.dita" props="led" type="concept">
+    </topicref>
+  </topicref>
+  <topicref href="../topics/c-rg-Weights-and-Measures.dita" props="weights-and-measures" type="concept">
+    <topicref href="../topics/c-rg-Non-automatic-Weighing-Instruments--NAWI--Scale-Certifications.dita" props="weights-and-measures-scales" type="concept">
+    </topicref>
+  </topicref>
+  <topicref href="../topics/c-rg-Power-Supply.dita" props="power-supply" type="concept">
+  </topicref>
+  <topicref href="../topics/c-rg-Connecting-to-a-LAN-Network.dita" props="power-supply-poe-lan" type="concept">
+  </topicref>
+  <topicref href="../topics/r-rg-Batteries-and-Power-Packs.dita" props="batteries" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-Marking-and-European-Economic-Area-EEA.dita" props="ce-eea" type="reference">
+  </topicref>
+  <topicref href="../topics/c-rg-United-States-and-Canada-Regulatory.dita" props="us-canada" type="concept">
+    <topicref href="../topics/r-rg-Radio-Frequency-Interference-Notices.dita" props="us-canada" type="reference">
+    </topicref>
+    <topicref href="../topics/r-rg-Radio-Frequency-Interference-Requirements-Canada.dita" props="rf-interference-req-canada" type="reference">
+    </topicref>
+    <topicref href="../topics/r-rg-RF-Exposure-Requirements-FCC-and-ISED.dita" props="rf-exposure-fcc-ised" type="reference">
+      <topicref href="../topics/r-rg-Hotspot-Mode.dita" props="hotspot-mode" type="reference">
+      </topicref>
+      <topicref href="../topics/r-rg-Mobile-Devices.dita" props="mobile-devices" type="reference">
+      </topicref>
+      <topicref href="../topics/r-rg-Remote-and-Standalone-Antenna-Configurations.dita" props="remote-standalone-antenna-config" type="reference">
+      </topicref>
+      <topicref href="../topics/r-rg-Co-located-Statement.dita" props="co-located-statement" type="reference">
+      </topicref>
+      <topicref href="../topics/r-rg-Hotspot-ISED-Notice.dita" props="hotspot-ised-notice" type="reference">
+      </topicref>
+    </topicref>
+    <topicref href="../topics/r-rg-Use-with-Hearing-Aids-FCC.dita" props="use-with-hearing-aids" type="reference">
+      <topicref href="../topics/r-rg-ANSI-C6319-Rating-System.dita" props="use-with-hearing-aids" type="reference">
+      </topicref>
+      <topicref href="../topics/r-rg-Hearing-Aid-Compatibility.dita" props="hearing-air-compatibility" type="reference">
+      </topicref>
+    </topicref>
+    <topicref href="../topics/r-rg-UL-Listed-Products-with-GPS.dita" props="ul-listed-products" type="reference">
+    </topicref>
+    <topicref href="../topics/r-rg-Marquage-UL-des-produits-equipes-dun-GPS.dita" props="ul-listed-products" type="reference">
+    </topicref>
+    <topicref href="../topics/r-rg-Hazardous-Locations.dita" props="hazardous-locations" type="reference">
+    </topicref>
+  </topicref>
+  <topicref href="../topics/r-rg-Japan.dita" props="japan" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-Brasil.dita" props="brasil" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-China.dita" props="china" type="reference">
+    <topicref href="../topics/r-rg-china-rhos-table.dita" type="reference">
+    </topicref>
+  </topicref>
+  <topicref href="../topics/r-rg-Colombia.dita" props="columbia" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-russia-EAC.dita" props="russia-eac" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-France.dita" props="france" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-India.dita" props="india" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-Mexico.dita" props="mexico" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-Paraguay.dita" props="paraguay" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-Singapore.dita" props="singapore" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-South-Korea.dita" props="south-korea" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-Taiwan.dita" props="taiwan" type="reference">
+    <topicref href="../topics/r-rg-taiwan-rhos-table.dita" type="reference">
+    </topicref>
+  </topicref>
+  <topicref href="../topics/r-rg-Turkey.dita" props="turkey" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-Thailand.dita" props="thailand" type="reference">
+  </topicref>
+  <topicref href="../topics/r-rg-United-Kingdom.dita" props="uk" type="reference">
+  </topicref>
+  <topicref href="../topics/c-rg-Warranty.dita" props="warranty" type="reference">
+  </topicref>
+  <topicref href="../topics/c-rg-Service-Information.dita" props="service-info" type="reference">
+  </topicref>
+  <topicref href="../topics/c-rg-Software-Support.dita" props="software-support" type="reference">
+  </topicref>
+  <topicref href="../topics/c-rg-Product-Support-Information.dita" props="product-support" type="reference">
+  </topicref>
+</map>

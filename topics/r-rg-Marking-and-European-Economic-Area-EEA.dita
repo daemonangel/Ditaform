@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference id="reference.dita_c390ac19-95d1-4293-876d-804050a11a28">
+  <title><image href="../../../media/common/graphics/g-rg-ce-mark-eu-ico.svg" props="ce-eea" alt="C E" id="image_2">
+    </image><ph props="ce-eea"> Marking and European Economic Area (EEA)</ph></title>
+  <refbody>
+    <section props="ce-eea">
+      <draft-comment><data datatype="one" name="ce-eea" type="dependencies" value="ce-eea-statement-1 ce-eea-statement-2 ce-eea-statement-3 ce-eea-statement-4"></data>Applicability: For devices to be sold in Europe.
+        <ul id="ul_2">
+          <li>Note to Reg Lead: Select the appropriate statement of compliance</li>
+          <li>Writers: Only one statement of compliance section should be selected</li>
+        </ul>
+      </draft-comment>
+    </section>
+    <section props="ce-eea-statement-1" id="section_1">
+      <title>Statement of Compliance</title>
+      <draft-comment>Statement 1- for printers using the same model name for wired and wireless versions</draft-comment>
+      <p>Non-radio devices: Zebra hereby declares that this equipment is in compliance with Directives 2014/30/EU, 2014/35/EU and 2011/65/EU.</p>
+      <p>Radio enabled devices: Zebra hereby declares that this equipment is in compliance with Directives 2014/53/EU and 2011/65/EU.</p>
+      <p>Any radio operation limitations within EEA countries are identified in Appendix A of EU Declaration of Conformity.</p>
+      <p>The full text of the EU Declaration of Conformities is available at: <xref href="https://www.zebra.com/doc" scope="external">zebra.com/doc</xref>.</p>
+    </section>
+    <section props="ce-eea-statement-2" id="section_2">
+      <title>Statement of Compliance</title>
+      <draft-comment>Statement 2- for wireless devices</draft-comment>
+      <p>Zebra hereby declares that this radio equipment is in compliance with Directives 2014/53/EU and 2011/65/EU.</p>
+      <p>Any radio operation limitations within EEA countries are identified in Appendix A of EU Declaration of Conformity. The full text of the EU Declaration of Conformities is available at: <xref href="https://www.zebra.com/doc" scope="external">zebra.com/doc</xref>.</p>
+    </section>
+    <section props="ce-eea-statement-3" id="section_3">
+      <title>Statement of Compliance</title>
+      <draft-comment>Statement 3- for non-wireless devices</draft-comment>
+      <p>Zebra hereby declares that this device is in compliance with Directives 2014/30/EU, 2014/35/EU and 2011/65/EU.</p>
+      <p>The full text of the EU Declaration of Conformities is available at: <xref href="https://www.zebra.com/doc" scope="external">zebra.com/doc</xref>.</p>
+    </section>
+    <section props="ce-eea-statement-4" id="section_4">
+      <title>Statement of Compliance</title>
+      <draft-comment>Statement 4- for non-automatic weighing devices</draft-comment>
+      <p>Zebra hereby declares that this device is in compliance with Directives 2014/30/EU, 2014/31/EU, 2014/35/EU and 2011/65/EU.</p>
+      <p>The full text of the EU Declaration of Conformities is available at: <xref href="https://www.zebra.com/doc" scope="external">zebra.com/doc</xref>.</p>
+    </section>
+    <section props="ce-eea-eu-importer" id="section_5">
+      <draft-comment>Applicability: For all devices and accessories</draft-comment>
+      <p>EU Importer : Zebra Technologies B.V</p>
+      <p>Address: Mercurius 12, 8448 GX Heerenveen, Netherlands</p>
+    </section>
+    <section props="ce-eea-weee" id="section_6">
+      <draft-comment>Applicability: For all devices</draft-comment>
+      <title>Waste Electrical and Electronic Equipment (WEEE)</title>
+      <p>For EU and UK Customers: For products at the end of their life, please refer to recycling/disposal advice at: www.zebra.com/weee.</p>
+    </section>
+  </refbody>
+</reference>

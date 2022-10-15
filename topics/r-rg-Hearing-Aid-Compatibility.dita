@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference id="reference.dita_71df87f6-ce4a-4343-9c0f-5e7b46450ea7">
+  <title><ph props="hearing-aid-compatibility">Hearing Aid Compatibility</ph></title>
+  <shortdesc props="hearing-aid-compatibility">
+    <draft-comment>Applicability: For WAN handset supporting voice calls and HAC
+      <ul id="ul_1">
+        <li>(Upon completion of HAC testing, include the appropriate ratings Mx and Tx – the x’s.)</li>
+        <li>Delete Mx or Tx if rating isn’t applicable (example values could M2/T2, or just M2)</li>
+      </ul>
+    </draft-comment>
+    This phone has been tested and rated for use with hearing aids for some of the wireless technologies that it uses. However, there may be some newer wireless technologies used in this phone that have not been tested yet for use with hearing aids. It is important to try the different features of this phone thoroughly and in different locations using your hearing aid or cochlear implant to determine if you hear any interfering noise. Consult your service provider or the manufacturer of this phone for information on hearing aid compatibility. If you have questions about return or exchange policies, consult your service provider or phone retailer.</shortdesc>
+  <refbody>
+    <section props="hearing-aid-compatibility">This phone has been tested to ANSI C63.19 and rated for use with hearing aids; it received a <ph keyref="hearing-aid-rating"></ph> rating. This device is marked HAC showing compliance with the applicable requirements of the FCC.</section>
+    <section props="hearing-aid-compatibility-voip"><data datatype="one" name="hearing-aid-compatibility-voip" type="dependencies" value="hearing-aid-compatibility"></data>This device is marked HAC showing compliance with the applicable requirements of FCC Part 68 and ISED CS-03-Part 5.</section>
+  </refbody>
+</reference>

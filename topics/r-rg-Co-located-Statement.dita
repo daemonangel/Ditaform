@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="co-located-statement" id="reference.dita_c08528fa-091f-4ce0-aae4-62c2d0e66482">
+  <title>Co-located Statement</title>
+  <shortdesc>
+    <draft-comment>Applicability: to all RF products except handheld/wearable devices</draft-comment>
+    To comply with FCC RF exposure compliance requirement, the antenna used for this transmitter must not be co-located (within 20 cm) or operating in conjunction with any other transmitter/antenna except those already approved in this filling. </shortdesc>
+</reference>

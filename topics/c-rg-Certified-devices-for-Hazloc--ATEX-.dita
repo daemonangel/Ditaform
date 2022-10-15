@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/concept.dtd">
+<concept props="hazloc" id="Zebra-Concept.dita_ac1cad42-bc64-4c0a-bfe4-4fdb690efcd9">
+  <title>Certified devices for Hazloc (ATEX)</title>
+  <shortdesc>
+    <draft-comment>Applicability: For all Hazloc devices. Refer to the actual CB report for the specific words to be used.</draft-comment>
+    <draft-comment>INSERT STATEMENT FROM CB REPORT</draft-comment>
+    <ph keyref="hazloc"></ph> </shortdesc>
+</concept>

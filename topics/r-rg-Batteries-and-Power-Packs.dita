@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference id="reference.dita_25196bf6-ea15-4efb-af02-0d43859ec907">
+  <title><ph props="batteries">Batteries and Power Packs</ph></title>
+  <shortdesc props="batteries">This information applies to Zebra-approved batteries and power packs containing batteries.</shortdesc>
+  <refbody>
+    <section>
+      <draft-comment props="batteries"><data datatype="any" name="batteries" type="dependencies" value="batterymodel1 batterymodel2 batterymodel3 batterymodel4 batterymodel5 batterymodel6"></data>Applicability: For terminals and printers with user accessible re-chargeable batteries
+        <ul id="ul_1">
+          <li>Note to Reg Lead: Replace [battery model number] with battery model number. Replace [battery voltage] with battery voltage. Replace [battery amp] with battery milli-amp hours. List all applicable batteries.</li>
+        </ul>
+      </draft-comment>
+      <title><ph props="batteries">Battery Information</ph></title>
+      <note props="batteries" type="caution" id="note_1">Risk of explosion if battery is replaced by an incorrect type. Dispose of batteries according to instructions.</note>
+      <p props="batteries">Use only Zebra approved batteries.  Accessories which have battery charging capability are approved for use with the following battery models:</p>
+      <ul id="ul_2">
+        <li props="batteries-model1">Model <ph keyref="batterymodel1"></ph> (<ph keyref="batteryvoltage1"></ph> VDC, <ph keyref="batteryamp1"></ph> mAh)</li>
+        <li props="batteries-model2">Model <ph keyref="batterymodel2"></ph> (<ph keyref="batteryvoltage2"></ph> VDC, <ph keyref="batteryamp2"></ph> mAh)</li>
+        <li props="batteries-model3">Model <ph keyref="batterymodel3"></ph> (<ph keyref="batteryvoltage3"></ph> VDC, <ph keyref="batteryamp3"></ph> mAh)</li>
+        <li props="batteries-model4">Model <ph keyref="batterymodel4"></ph> (<ph keyref="batteryvoltage4"></ph> VDC, <ph keyref="batteryamp4"></ph> mAh)</li>
+        <li props="batteries-model5">Model <ph keyref="batterymodel5"></ph> (<ph keyref="batteryvoltage5"></ph> VDC, <ph keyref="batteryamp5"></ph> mAh)</li>
+        <li props="batteries-model6">Model <ph keyref="batterymodel6"></ph> (<ph keyref="batteryvoltage6"></ph> VDC, <ph keyref="batteryamp6"></ph> mAh)</li>
+      </ul>
+      <p props="batteries1"><data datatype="one" name="batteries1" type="dependencies" value="batteries"></data>Zebra approved rechargeable battery packs are designed and constructed to the highest standards within the industry.</p>
+      <p props="batteries1">However, there are limitations as to how long a battery can operate or be stored before needing replacement. Many factors affect the actual life cycle of a battery pack such as heat, cold, harsh environmental conditions, and severe drops.</p>
+      <p props="batteries1">When batteries are stored over six months, some irreversible deterioration in overall battery quality may occur. Store batteries at half charge in a dry, cool place, removed from the equipment to prevent loss of capacity, rusting of metallic parts, and electrolyte leakage. When storing batteries for one year or longer, the charge level should be verified at least once a year and charged to half charge.</p>
+      <p props="batteries1">Replace the battery when a significant loss of run time is detected.</p>
+      <ul props="batteries1" id="ul_8">
+        <li>Standard warranty period for all Zebra batteries is one year, regardless if the battery was purchased separately or included as part of the host device. For more information on Zebra batteries, please visit: <xref href="https://www.zebra.com/batterydocumentation" scope="external">zebra.com/batterydocumentation</xref> and select the Battery Best Practices link.</li>
+      </ul>
+    </section>
+    <section props="batteries-safety">
+      <title>Battery Safety Guidelines</title>
+      <note type="important" id="note_2">SAFETY INSTRUCTIONS – SAVE THESE INSTRUCTIONS</note>
+      <note type="warning" id="note_3">When using this product basic safety precautions should always be followed, including the following:</note>
+      <p>The area in which the units are charged should be clear of debris and combustible materials or chemicals. Particular care should be taken where the device is charged in a non-commercial environment.</p>
+      <ul id="ul_9">
+        <li>Read all the instructions before using the product.</li>
+        <li>Follow battery usage, storage, and charging guidelines found in the user&#39;s guide.</li>
+        <li>Improper battery use may result in a fire, explosion, or other hazard.</li>
+        <li>Batteries subjected to extremely low air pressure may result in an explosion or the leakage of flammable liquid or gas.</li>
+      </ul>
+    </section>
+    <section props="batteries-not-power-packs" id="section_2">
+      <draft-comment>Applicability:
+        <ul id="ul_10">
+          <li>Note to Reg Lead: For power packs, do not include this paragraph statement (charging temperatures are covered in power pack section below).</li>
+          <li>Check safety report for permitted operating temperature Typical temperature ranges, 0°C and +40°C (+32°F and +104°F).</li>
+        </ul>
+      </draft-comment>
+      <p>To charge the mobile device battery, the battery and charger temperatures must be between <ph keyref="battery-charge-temp-min-c"></ph>°C and <ph keyref="battery-charge-temp-max-c"></ph>°C (<ph keyref="battery-charge-temp-min-f"></ph>°F and <ph keyref="battery-charge-temp-min-f"></ph>°F).</p>
+      <p>Do not use incompatible batteries and chargers. Use of an incompatible battery or charger may present a risk of fire, explosion, leakage, or other hazard. If you have any questions about the compatibility of a battery or a charger, contact Zebra support.</p>
+    </section>
+    <section props="batteries-usb" id="section_3">
+      <draft-comment>Applicability: For batteries and power packs that utilize a USB port as a charging source include the following paragraph statement (this does not include USB wall chargers)</draft-comment>
+      <p>For devices that utilize a USB port as a charging source, the device shall only be connected to products that bear the USB-IF logo or have completed the USB-IF compliance program.</p>
+    </section>
+    <section props="batteries-rechargeable" id="section_4">
+      <draft-comment>Applicability: For products with user accessible re-chargeable batteries - VALUES AUTO-SET BASED ON EARLIER SECTION</draft-comment>
+      <p>Do not disassemble or open, crush, bend or deform, puncture, or shred. Damaged or modified batteries may exhibit unpredictable behavior resulting in fire, explosion, or risk of injury.</p>
+      <p>Severe impact from dropping any battery-operated device on a hard surface could cause the battery to overheat.</p>
+      <p>Do not short circuit a battery or allow metallic or conductive objects to contact the battery terminals.</p>
+      <p>Do not modify, disassemble, or remanufacture, attempt to insert foreign objects into the battery, immerse or expose to water, rain, snow or other liquids, or expose to fire, explosion, or other hazard.</p>
+      <p>Do not leave or store the equipment in or near areas that might get very hot, such as in a parked vehicle or near a radiator or other heat source. Do not place battery into a microwave oven or dryer.</p>
+      <p>To reduce the risk of injury, close supervision is necessary when used near children.</p>
+      <p>Please follow local regulations to promptly dispose of used re-chargeable batteries.</p>
+      <p>Do not dispose of batteries in fire. Exposure to temperatures over 100°C (212°F) may cause explosion.</p>
+      <p>Seek medical advice immediately if a battery has been swallowed.</p>
+      <p>In the event of a battery leak, do not allow the liquid to come in contact with the skin or eyes. If contact has been made, wash the affected area with large amounts of water and seek medical advice.</p>
+      <p>If you suspect damage to your equipment or battery, contact Zebra support to arrange for inspection.</p>
+    </section>
+    <section props="batteries-power-packs" id="section_5">
+      <draft-comment>Applicability: Add the following bullets for batteries that are considered power packs:</draft-comment>
+      <p>Do not use a power pack in excess of its output rating. Overload outputs may result in risk of fire or injury to persons.</p>
+      <p>Have service performed by a qualified Zebra service center. This will insure safety of the product is maintained.</p>
+    </section>
+    <section props="batteries-power-packs-switches" id="section_6">
+      <draft-comment>Applicability: Add the following bullets for power packs that include switches:</draft-comment>
+      <p>Switch off the power pack when not in use.</p>
+    </section>
+    <section props="batteries-power-packs-io" id="section_1">
+      <draft-comment>Applicability: Only required for a battery pack that includes I/O connections which cause it to be considered a power pack.
+        <ul id="ul_11">
+          <li>Note to Reg Lead: Specify type of input connector, input and output ratings following the format below:</li>
+          <li>USB-x refers to the USB connector configuration / size (USB-A, -B, -C). Replace [x] with A, B, or C.; other connectors may also be used and described accordingly.</li>
+        </ul>
+      </draft-comment>
+      <title>Input / Output Rating</title>
+      <p>Input (USB-<ph keyref="io-input-usb-type"></ph>): <ph keyref="io-input-vdc"></ph> VDC <ph keyref="io-input-a"></ph> A (max.)</p>
+      <p>Output (<ph keyref="io-output-mah"></ph> mAh): <ph keyref="io-output-vdc"></ph> VDC [zz] <ph keyref="io-output-a"></ph> (max.)</p>
+    </section>
+  </refbody>
+</reference>

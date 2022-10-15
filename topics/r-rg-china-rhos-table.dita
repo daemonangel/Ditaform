@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="china-rohs-table" id="reference.dita_22311f1c-8d2f-4741-ac99-5aab895c4248">
+  <title>产品中有害物质的名称及含量
+    <draft-comment> (China RoHS)</draft-comment>
+  </title>
+  <refbody>
+    <section>
+      <draft-comment outputclass="translation">The name and content of hazardous substance in the product.
+        <p>(as the table title and appear on both English and Chinese version RG [China ROHS statement])</p>
+      </draft-comment>
+      <draft-comment>Applicability: EPUP disclosure table required for all devices to be sold in China.</draft-comment>
+      <draft-comment>Applicability: ROHS table
+        <ul id="ul_2">
+          <li>The first four rows apply to all products. The last four rows are optional depending on the product.</li>
+          <li>The comments in the first column are for applicability and be hidden in production.</li>
+          <li>Please provide this information to the writer outside this form.</li>
+        </ul>
+      </draft-comment>
+      <draft-comment>Writers: Make your own product-specific version of this topic. You can conref in the table, right-click inside your topic and choose <uicontrol>Replace reference with content</uicontrol>. You must replace the conref with the content to edit it. The RoHS information will be provided outside this form. Delete rows if not applicable.</draft-comment>
+    </section>
+    <section id="section_1">
+      <table>
+        <tgroup cols="7" id="simpletable_2">
+          <colspec colwidth="12.5%" colname="col_1"></colspec>
+          <colspec colwidth="12.5%" colname="col_3"></colspec>
+          <colspec colwidth="12.5%" colname="col_4"></colspec>
+          <colspec colwidth="12.5%" colname="col_5"></colspec>
+          <colspec colwidth="12.5%" colname="col_6"></colspec>
+          <colspec colwidth="12.5%" colname="col_7"></colspec>
+          <colspec colwidth="12.5%" colname="col_8"></colspec>
+          <thead>
+            <row>
+              <entry namest="col_1" nameend="col_1" morerows="1">部件名称 (Parts)</entry>
+              <entry align="center" namest="col_3" nameend="col_8" morerows="0">有害物质</entry>
+            </row>
+            <row>
+              <entry>铅(Pb)</entry>
+              <entry>汞(Hg)</entry>
+              <entry>镉(Cd)</entry>
+              <entry>六价铬(Cr(VI))</entry>
+              <entry>多溴联 苯(PBB)</entry>
+              <entry>多溴二 苯醚(PBDE)</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <draft-comment>EVM and SPG products</draft-comment>
+                金属部件 (Metal Parts)</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry>
+                <draft-comment>EVM and SPG products</draft-comment>
+                电路模块 (Circuit Modules)</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry>
+                <draft-comment>EVM and SPG products</draft-comment>
+                电缆及电缆组件 (Cables and Cable Assemblies)</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry>
+                <draft-comment>EVM and SPG products</draft-comment>
+                塑料和聚合物部件(Plastic and Polymeric Parts)</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry>
+                <draft-comment>Products with Optics and Optical components</draft-comment>
+                光学和光学组件 (Optics and Optical Components)</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry>
+                <draft-comment>SPG products</draft-comment>
+                打印头 (Print Heads) </entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry>
+                <draft-comment>Products with user-accessible re-chargeable batteries</draft-comment>
+                电池 (Batteries)</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry>
+                <draft-comment>Products using an external power supply</draft-comment>
+                外部电源 (Ext. Pwr Sply)</entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+              <entry></entry>
+            </row>
+            <row>
+              <entry namest="col_1" nameend="col_8" morerows="0">
+                <draft-comment outputclass="translation">This table was created to comply with China RoHS requirements.</draft-comment>
+                <p>本表格依据SJ/T 11364 的规定编制。</p>
+                <p>O: 表示该有害物质在该部件所有均质材料中的含量均在 GB/T 26572 规定的限量要求以下。</p>
+                <p>X: 表示该有害物质至少在该部件的某一均质材料中的含量超出GB/T 26572 规定的限量要求。(企业可在此处，根据实际情况对上表中打“×”的技术原因进行进一步说明。</p>
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="hotspot-mode" id="reference.dita_8e3e1311-4444-4137-8da5-0f222c22b766">
+  <title>Hotspot Mode</title>
+  <shortdesc>
+    <draft-comment>Applicability: For WWAN products only</draft-comment>
+    To satisfy RF exposure requirements in hotspot mode, this device must operate with a minimum separation distance of 1.0 cm or more from a user&#39;s body and nearby persons. </shortdesc>
+  <refbody>
+    <section>
+      <p>Pour satisfaire aux exigences d&#39;exposition RF en mode hotspot, cet appareil doit fonctionner avec une distance de séparation minimale de 1,0 cm ou plus du corps de l&#39;utilisateur et des personnes à proximité.</p>
+    </section>
+  </refbody>
+</reference>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/concept.dtd">
+<concept id="Zebra-Concept.dita_893aeed5-f194-4cc3-bf86-5c4c208aff05">
+  <title><ph props="weights-and-measures">Weights and Measures</ph></title>
+  <conbody>
+    <draft-comment props="weights-and-measures">THIS SHOULD HAVE A GENERAL SHORT DESCRIPTION.</draft-comment>
+    <draft-comment props="weights-and-measures"><data datatype="any" name="weights-and-measures" type="dependencies" value="weights-and-measures-legal-for-trade weights-and-measures-scales"></data>Applicability: For devices that incorporate “legal for Trade” instruments or with scale functionality (NAWI).</draft-comment>
+    <p props="weights-and-measures-legal-for-trade">
+      <draft-comment>Applicability: For devices that incorporate “legal for Trade” weighing or measurement instruments.</draft-comment>
+      For devices that incorporate a ‘Legal for Trade’ weighing or measuring instrument, Weights &amp; Measures regulations place responsibility of DEVICE OWNER to notify their local Weight &amp; Measures Authority and follow any Placing-in-Trade requirements. These steps must be done prior to using the device to perform measurement based financial transactions. More information can be found at zebra.com/weights-measures.</p>
+  </conbody>
+</concept>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/concept.dtd">
+<concept props="product-support" id="Zebra-Concept.dita_c421ad18-7c0a-44fb-9e0b-b863754ede27">
+  <title>Product Support Information</title>
+  <conbody>
+    <draft-comment>If available, include the vanity URL. If the URL will be provided later, you can leave the default value (zebra.com/support) for now. Please note that none of the URLs in this section are hyperlinks. This is intentional for consistency.</draft-comment>
+    <ul id="ul_1">
+      <li>For information on using this product, see the User Guide at <ph keyref="vanity-url"></ph>.</li>
+      <li>To find quick answers to known product behaviors, access our knowledge articles at supportcommunity.zebra.com/s/knowledge-base.</li>
+      <li>Ask your questions in our Support community at supportcommunity.zebra.com.</li>
+      <li>Download product manuals, drivers, software, and view how-to videos at zebra.com/support.</li>
+      <li>To request a repair for your product, go to zebra.com/repair.</li>
+    </ul>
+  </conbody>
+</concept>

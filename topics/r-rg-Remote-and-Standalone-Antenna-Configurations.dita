@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="remote-standalone-antenna-config" id="reference.dita_9c1f4f10-cd4d-4b18-b91e-3e5d3e5f61e1">
+  <title>Remote and Standalone Antenna Configurations</title>
+  <shortdesc>
+    <draft-comment>Applicability: For remote or standalone antenna configurations
+      <ul id="ul_1">
+        <li>Note to Reg Lead: xx must be replaced with worst case MPE distance.</li>
+      </ul>
+    </draft-comment>
+    To comply with FCC/ISED RF exposure requirements, antennas that are mounted externally at remote locations or operating near users at stand-alone desktop or similar configurations must operate with a minimum separation distance of <ph keyref="antenna-distance"></ph> cm from the user or nearby persons.</shortdesc>
+  <refbody>
+    <section>
+      <p>La conformité aux normes d&#39;exposition RF établies par les organismes FCC/ISED exige une distance minimale de <ph keyref="antenna-distance"></ph> cm entre l&#39;antenne et l&#39;utilisateur ou toute personne à proximité lorsque celle-ci est installée à l&#39;extérieur ou lorsqu&#39;elle est placée sur un bureau ou dans une configuration similaire.</p>
+    </section>
+  </refbody>
+</reference>

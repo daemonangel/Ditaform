@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference id="reference.dita_dcae5a74-2843-42f9-a999-232a51e72674">
+  <title><ph props="thailand">ประเทศไทย
+    <draft-comment outputclass="translation"> (Thailand)</draft-comment>
+    </ph></title>
+  <abstract>
+    <draft-comment props="thailand"><data datatype="any" name="thailand" type="dependency" value="thailand-class-a-b thailand-category1 thailand-category2"></data>Applicability: Class A or Class products, or NTC Radiocommunication Equipment category 1 or 2
+      <ul id="ul_2">
+        <li>See appropriate section for class or category definitions.</li>
+      </ul>
+    </draft-comment>
+    <shortdesc props="thailand-class-a-b">
+      <draft-comment>Applicability: For all Class A (UHF RFID) or Class B (WWAN) products</draft-comment>
+      <draft-comment outputclass="translation">Translation: This telecommunication equipment conforms to the requirements of the National Telecommunications Commission.</draft-comment>
+      เครื่ องโทรคมนาคมและอุปกรณ์นี้ มีความสอดคล้องตามข้อกำหนดของ กทช .</shortdesc>
+  </abstract>
+  <refbody>
+    <section props="thailand-category1" id="section_1">
+      <draft-comment><data datatype="any" name="thailand-category1" type="dependency" value="thailand-category1-sar1 thailand-category1-sar2 thailand-category1-sar3"></data>Applicability: For all NTC Radiocommunication Equipment Category 1 devices (wireless products used at a distance of less than 20cm from body)
+        <ul id="ul_4">
+          <li>Note to Reg Lead: Replace [x.xx] with SAR value.</li>
+          <li>Highest Body or Head SAR value to be used as applicable.</li>
+        </ul>
+      </draft-comment>
+      <draft-comment outputclass="translation">Translation: This radiocommunication equipment has the specific absorption rate (SAR) of X.XX W/kg (insert CE-SAR Avg 10g value) as related to the equipment</draft-comment>
+      <p>เครื่องวิทยุคมนาคมนี้มีอัตราการดูดกลืนพลังงานจำเพาะ (Specific Absorption Rate – SAR) อันเนื่ องมาจากเครื่ องวิทยุคมนาคมเท่ากับ</p>
+
+      <ul id="ul_7">
+        <li props="thailand-category1-sar1"><ph keyref="thailand-model1"></ph> <ph keyref="thailand-sar1"></ph> w/kg</li>
+        <li props="thailand-category1-sar2"><ph keyref="thailand-model2"></ph> <ph keyref="thailand-sar2"></ph> w/kg</li>
+        <li props="thailand-category1-sar3"><ph keyref="thailand-model3"></ph> <ph keyref="thailand-sar3"></ph> w/kg</li>
+      </ul>
+
+      <draft-comment outputclass="translation">which is in compliance with the Safety Standard for the Use of Radiocommunication Equipment on Human Health announced by the National Telecommunications Commission.</draft-comment>
+      <p>ซึ่งสอดคล้องตามมาตรฐานความปลอดภัยต่อสุขภาพของมนุษย์จากการใช้เครื่องวิทยุคม นาคมที่ คณะกรรมการกิจการโทรคมนาคมแห่งชาติประกาศกำ หนด</p>
+    </section>
+    <section props="thailand-category2" id="section_4">
+      <draft-comment>Applicability: For all NTC Radiocommunication Equipment Category 2 devices (wireless devices positioned at least 20 centimeters from the body of the user during normal use eg. Fixed RFID readers, vehicle mounted mobile computers)</draft-comment>
+      <draft-comment outputclass="translation">Translation: This radiocommunication equipment has the electromagnetic field strength in compliance with the Safety Standard for the Use of Radiocommunication Equipment on Human Health announced by the National Telecommunications Commission.</draft-comment>
+      <p>เครื่ องวิทยุคมนาคมนี้ มีระดับการแผ่คลื่ นแม่เหล็กไฟฟ้าสอดคล้องตาม มาตรฐานความปลอดภัยต่อสุขภาพของมนุษย์จากการใช้เครื่องวิทยุคมนาคมที่คณะกรรม การกิจการ</p>
+      <p>โทรคมนาคมแห่งชาติประกาศกำหนด</p>
+    </section>
+  </refbody>
+</reference>

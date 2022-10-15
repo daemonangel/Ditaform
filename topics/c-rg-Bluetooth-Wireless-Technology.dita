@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/concept.dtd">
+<concept xml:lang="zh-CN" id="Zebra-Concept.dita_204795dc-9d8c-41e6-b1a6-167c86ce340e">
+  <title><ph props="bluetooth-wireless">Bluetooth® Wireless Technology</ph></title>
+  <shortdesc props="bluetooth-wireless">
+    <draft-comment>Applicability: For devices supporting Bluetooth</draft-comment>
+    This is an approved Bluetooth® product. For more information on the Bluetooth SIG listing, please visit www.bluetooth.com.</shortdesc>
+  <conbody>
+    <draft-comment props="bluetooth-wireless-china">Applicability: For China Only Configurations</draft-comment>
+    <draft-comment props="bluetooth-wireless-china">TRANSLATION = Not for sale, service and use outside of China.</draft-comment>
+    <p props="bluetooth-wireless-china" xml:lang="zh-CN">不在中国之外销售服务和使用</p>
+  </conbody>
+</concept>

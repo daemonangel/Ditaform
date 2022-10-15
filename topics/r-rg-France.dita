@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="france" id="reference.dita_f20997f5-604e-49c2-bbec-fe02adba13f0">
+  <title>France</title>
+  <shortdesc>
+    <draft-comment outputclass="translation">This device has been tested and found to comply with the applicable limits for exposure of radio frequency energy (RF).</draft-comment>
+    Cet appareil a été testé et déclaré conforme aux limites applicables d&#39;exposition aux radiofréquences (RF).</shortdesc>
+  <refbody>
+    <section>
+      <draft-comment>Applicability: For radio devices intended to be sold in France where the device transmit power is greater than 20mW and used within 20cm of the human body</draft-comment>
+      <p>
+        <draft-comment outputclass="translation">The local Specific Absorption Rate (SAR) quantifies the user&#39;s exposure to electromagnetic waves from the equipment concerned.</draft-comment>
+        Le débit d&#39;absorption spécifique (DAS) local quantifie l&#39;exposition de l&#39;utilisateur aux ondes électromagnétiques de l&#39;équipement concerné.</p>
+      <p>
+        <draft-comment outputclass="translation">The highest SAR values are available on the Declaration of Conformity (DoC) available at: zebra.com/doc.</draft-comment>
+        Les valeurs SAR les plus élevées sont disponibles sur la déclaration de conformité (DoC) disponible sur: <xref href="https://www.zebra.com/doc" scope="external">zebra.com/doc</xref>.</p>
+    </section>
+  </refbody>
+</reference>

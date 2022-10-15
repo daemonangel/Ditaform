@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/reference.dtd">
+<reference props="use-with-hearing-aids" id="reference.dita_7468892b-67e8-4d9c-bab7-2dd91c51229e">
+  <title>ANSI C63.19 Rating System</title>
+  <shortdesc>
+    <draft-comment>Writers: This is always included with &quot;Use with Hearing Aids - FCC&quot;</draft-comment>
+    In accordance with FCC hearing aid compatibility rules, certain phones be tested and rated under the American National Standard Institute (ANSI) C63.19 hearing-aid compatibility standard. This standard contains two types of ratings:</shortdesc>
+  <refbody>
+    <section>
+      <ul id="ul_1">
+        <li>M-Rating: For reduced radio-frequency interference to enable acoustic coupling with hearing aids that don’t operate in telecoil mode</li>
+        <li>T-rating: For inductive coupling with hearing aids operating in telecoil mode (t-switch or telephone switch)</li>
+      </ul>
+      <p>These ratings are on a scale from one to four, where four is the most compatible. A phone is considered hearing-aid compatible under the FCC requirements if it&#39;s rated M3 or M4 for acoustic coupling and T3 or T4 for inductive coupling.</p>
+      <p>Hearing devices may also be measured for immunity to this type of interference. Your hearing device manufacturer or hearing health professional may help you find results for your hearing device. The more immune your hearing aid is, the less likely you are to experience interference noise from mobile phones.</p>
+    </section>
+  </refbody>
+</reference>
