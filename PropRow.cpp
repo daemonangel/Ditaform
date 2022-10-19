@@ -58,6 +58,7 @@ void PropRow::insertKeyrefInput(const pugi::xml_node& node)
 	auto senderName = node.attribute("data-keyref").value();
 	input->setObjectName(senderName);
 	input->setMaximumSize(QSize(16777215, 50));
+	input->setAcceptRichText(true);
 
 	//insert keyword data from the map into the box in gray
 	pugi::xml_node map = mapDoc.child("map");
