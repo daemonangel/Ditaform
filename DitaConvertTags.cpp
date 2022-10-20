@@ -99,7 +99,7 @@ void DitaConvertTags::note_node(pugi::xml_node& node)
 
 void DitaConvertTags::comment_node(pugi::xml_node& node)
 {
-	node.set_name("p");
+	node.set_name("div");
 	if (std::string(node.attribute("outputclass").value()) == "translation")
 	{
 		Xml::CreateAttrib(node, "style", "background-color:cyan;");
@@ -112,14 +112,12 @@ void DitaConvertTags::comment_node(pugi::xml_node& node)
 
 void DitaConvertTags::data_node(pugi::xml_node& node)
 {
-	node.set_name("span");
+	node.set_name("p");
 	std::string selectionType = node.attribute("datatype").value();
 	std::string choices = node.attribute("value").value();
 	auto text = "Select " + selectionType + " of the following: " + choices;
 	Xml::SetNodeText(node, text.c_str());
 	Xml::CreateAttrib(node, "style", "color:indigo;background-color:lavender;");
-	node.parent().insert_child_before("br", node);
-	node.parent().insert_child_after("br", node);
 }
 
 /*void DitaConvertTags::default_tag(pugi::xml_node& node)

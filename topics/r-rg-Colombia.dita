@@ -4,7 +4,7 @@
   <title>Colombia</title>
   <shortdesc>
     <draft-comment outputclass="translation">Translation: Dear User, the following information is given in conformity what is established in the Regime of user protection, issued by the CRC.</draft-comment>
-    Señor usuario, la siguiente información se entrega de conformidad con lo establecido en el Régimen de protección de los derechos de los usuarios, expedido por la Comisión de Regulación de Comunicaciones.</shortdesc>
+    <p>Señor usuario, la siguiente información se entrega de conformidad con lo establecido en el Régimen de protección de los derechos de los usuarios, expedido por la Comisión de Regulación de Comunicaciones.</p></shortdesc>
   <refbody>
     <section>
       <draft-comment>Applicability: For wan MOBILE COMPUTERS only.</draft-comment>

@@ -4,7 +4,7 @@
   <title><ph props="optical-devices">Optical Devices</ph></title>
   <refbody>
     <section props="optical-devices" id="section_1">
-      <draft-comment><data datatype="any" name="optical-devices" type="dependencies" value="optical-devices-laser optical-devices-class1 optical-devices-class2 optical-devices-laser1"></data>Applicability: For products with integrated Optical Devices (LED/Laser)
+      <draft-comment><data datatype="any" name="optical-devices" type="dependencies" value="optical-devices-laser optical-devices-class1 optical-devices-class2 optical-devices-laser1"></data><p>Applicability: For products with integrated Optical Devices (LED/Laser)</p>
         <ul>
           <li>Writers: This is a warehouse topic. Create your own version and conref in the content you need and replace the default graphics and tables.</li>
         </ul>

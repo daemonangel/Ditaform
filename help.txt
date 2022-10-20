@@ -7,4 +7,12 @@ Ditaform has the following features:
 - Close: exits Ditaform.
 - Languages > Edit: selects translation languages
 
-Checkboxes highlighted in yellow indicate an error. Check notes in that row for more information.
+Yellow text indicates a draft comment
+Blue text indicates translated content
+Purple text indicates dependencies
+
+Troubleshooting:
+
+Checkboxes and editable text boxes highlighted in yellow indicate an error. Check notes in that row for more information.
+
+Text not inside a block element may not format correctly. Wrap oddly formatted text in a <p> element.

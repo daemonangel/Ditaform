@@ -14,14 +14,14 @@
       <p>For further information on the safety of RF energy from wireless devices, refer to RF exposure and assessment standards section at www.zebra.com/responsibility.</p>
     </section>
     <section props="rf-exposure-sar">
-      <p>
+      
         <draft-comment>Applicability: to any radio device intended to be used near/next to the body or in-front of mouth
           <ul id="ul_1">
             <li>Note to Reg Lead: Minimum separation distance xx cm must match the distance established in the SAR Test report.</li>
             <li>Only applicable if SAR value or power density value is measured i.e. low power devices will not require this statement.</li>
           </ul>
           <data datatype="any" name="rf-exposure-sar" type="dependencies" value="rf-exposure-extremities-wrist rf-exposure-extremities-ankle rf-exposure-extremities-hand"></data></draft-comment>
-        To satisfy RF exposure requirements, this device must operate with a minimum separation distance of <ph keyref="sar-distance"></ph> cm or more from a user&#39;s body and nearby persons.</p>
+        <p>To satisfy RF exposure requirements, this device must operate with a minimum separation distance of <ph keyref="sar-distance"></ph> cm or more from a user&#39;s body and nearby persons.</p>
     </section>
     <section>
       <p props="rf-exposure-extremities-wrist">
