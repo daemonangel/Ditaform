@@ -15,4 +15,4 @@ Troubleshooting:
 
 Checkboxes and editable text boxes highlighted in yellow indicate an error. Check notes in that row for more information.
 
-Text not inside a block element may not format correctly. Wrap oddly formatted text in a <p> element.
+Text not inside a block element may not format correctly. Wrap oddly formatted text in a paragraph element.
