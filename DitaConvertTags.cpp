@@ -108,6 +108,7 @@ void DitaConvertTags::comment_node(pugi::xml_node& node)
 	{
 		Xml::CreateAttrib(node, "style", "color:red;background-color:yellow;");
 	}
+	Xml::CreateNode(node, "p", ""); //adds a line break for when there is text following the comment that is not inside a block
 }
 
 void DitaConvertTags::data_node(pugi::xml_node& node)
