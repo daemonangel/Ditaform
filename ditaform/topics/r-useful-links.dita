@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">
+<reference props="links">
+  <title>Useful Links</title>
+  <shortdesc>
+    Here are some helpful links.</shortdesc>
+  <refbody>
+    <section>
+      <p>Qt open source libraries (https://www.qt.io/) available under LGPLv3 (https://www.gnu.org/licenses/lgpl-3.0.en.html) license.</p>
+      <p>pugixml library (http://pugixml.org). pugixml is Copyright (C) 2006-2018 Arseny Kapoulkine.</p>
+	  <p>The DITA Open Toolkit is located at https://www.dita-ot.org/.</p>
+	  <p>If you are new to DITA, I recommend https://learningdita.com/.</p>
+	  <p>A very helpful DITA users group: https://dita-users.groups.io/g/main.</p>
+    </section>
+  </refbody>
+</reference>

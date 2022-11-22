@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Task//EN" "task.dtd">
+<task props="creating">
+  <title>Creating Content</title>
+  <shortdesc>Create a set of DITA files using any XML editor. When creating the content:</shortdesc>
+  <taskbody>
+	<steps>
+		<step><cmd>Add a unique props attribute to all blocks of content.</cmd></step>
+	</steps>
+  <taskbody/>
+</task>

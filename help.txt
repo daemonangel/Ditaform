@@ -1,5 +1,4 @@
 Ditaform has the following features:
-
 - New: opens a new copy of the form.
 - Open: opens a previously saved form.
 - Save: saves the form. 
@@ -7,12 +6,28 @@ Ditaform has the following features:
 - Close: exits Ditaform.
 - Languages > Edit: selects translation languages
 
-Yellow text indicates a draft comment
-Blue text indicates translated content
-Purple text indicates dependencies
+Text highlighting:
+- Yellow text indicates a draft comment
+- Blue text indicates translated content
+- Purple text indicates dependencies
+
+Creating DITA content:
+- Add a unique props attribute to all blocks of content. 
+  Each props name becomes a selectable row in Ditaform. You can add multiple blocks of content to a row by tagging them with the same props attribute.
+- Add variables
+  - In topics, use the following format: <ph keyref="variable-name"></ph>
+  - In the map, use the following format to define the variable:
+    <keydef keys="variable-name">
+      <topicmeta>
+        <keywords>
+          <keyword>[sample value]</keyword>
+        </keywords>
+      </topicmeta>
+    </keydef>
+- A ditaval file containing all props names is automatically generated when you save in Ditaform.
 
 Troubleshooting:
-
-Checkboxes and editable text boxes highlighted in yellow indicate an error. Check notes in that row for more information.
-
-Text not inside a block element may not format correctly. Wrap oddly formatted text in a paragraph element.
+- Checkboxes and editable text boxes highlighted in yellow indicate an error. Check notes in that row for more information.
+- Text not inside a block element may not format correctly. Wrap oddly formatted text in a paragraph element.
+- Any content not tagged with a props attribute will not display in Ditaform.
+- Avoid nesting blocks of content tagged with a props attribute. It may cause content to be duplicated in the form.

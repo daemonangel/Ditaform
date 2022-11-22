@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "../../../../dtd/etc/fmdita/dita_resources/DITA-1.3/dtd/technicalContent/dtd/concept.dtd">
-<concept props="health-safety" id="Zebra-Concept.dita_66ae79d5-e0c2-4dec-b9fb-27259f025154">
-  <title>Health and Safety Recommendations</title>
-  <shortdesc> This section provides important health and safety recommendations.
-    <draft-comment><data datatype="any" name="health-safety" type="dependencies" value="ergonomic vehicle-installation hazloc safety-hospitals-aircraft medical-devices rf-exposure optical-devices led"></data>Applicability: For products that require at least one of the following statements: Ergonomic recommendations, Vehicle installation, Hazloc (ATEX) or Medical Devices.</draft-comment>
-  </shortdesc>
-</concept>
