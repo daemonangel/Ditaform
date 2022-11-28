@@ -5,7 +5,28 @@
   <shortdesc>Create a set of DITA files using any XML editor. When creating the content:</shortdesc>
   <taskbody>
 	<steps>
-		<step><cmd>Add a unique props attribute to all blocks of content.</cmd></step>
+		<step><cmd>Add a unique props attribute to all blocks of content.</cmd>
+			<info>Each props name becomes a selectable row in Ditaform. You can add multiple blocks of content to a row by tagging them with the same props attribute.</info></step>
+		<step><cmd>Add variables as ph elements with a unique keyref attribute.</cmd>
+		<substeps>
+          <substep>
+            <cmd>In topics, use the following format: <ph keyref="variable-name"></ph></cmd>
+          </substep>
+          <substep>
+            <cmd>In the map, use the following format to define the variable:</cmd>
+		  <stepxmp>
+              <codeblock><keydef keys="variable-name">
+      <topicmeta>
+        <keywords>
+          <keyword>[sample value]</keyword>
+        </keywords>
+      </topicmeta>
+    </keydef></codeblock>
+            </stepxmp>
+          </substep>
+        </substeps>
+		</step>
 	</steps>
+	  <result>A ditaval file containing all props names is automatically generated when you save in Ditaform.</result>
   <taskbody/>
 </task>
