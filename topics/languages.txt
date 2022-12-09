@@ -1,0 +1,19 @@
+German
+French
+Italian
+Japanese
+Korean
+Swedish
+Simplified Chinese
+Traditional Chinese
+Thai
+Croatian
+Turkish
+Hebrew
+Arabic
+Bulgarian
+Hungarian
+Spanish
+Portuguese
+Polish
+Russian

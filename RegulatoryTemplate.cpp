@@ -389,7 +389,7 @@ void RegulatoryTemplate::loadSource()
 
     saveTempFiles();
     removePropRows();
-    clearBookInfo();
+    //clearBookInfo();
     addPropRows();
 
     if (!ui.prodname_edit->isEnabled())
@@ -400,6 +400,12 @@ void RegulatoryTemplate::loadSource()
         ui.languages_button->setEnabled(true);
         ui.date_edit->setDate(QDate::currentDate());
     }
+
+    ui.prodname_edit->setText(bookDoc.child("bookmap").child("bookmeta").child("prodinfo").child("prodname").text().as_string());
+    ui.requestorname_edit->setText(bookDoc.child("bookmap").child("bookmeta").child("author").text().as_string());
+    auto month = bookDoc.child("bookmap").child("bookmeta").child("publisherinformation").child("published").child("completed").child("month").text().as_int();
+    auto year = bookDoc.child("bookmap").child("bookmeta").child("publisherinformation").child("published").child("completed").child("year").text().as_int();
+    ui.date_edit->setDate(QDate::QDate(year, month, 1));
 }
 
 bool RegulatoryTemplate::maybeSave()

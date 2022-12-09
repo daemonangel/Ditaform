@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map>
+	<title>Topic Warehouse</title>
+	<keydef keys="about-xml-editor">
+		<topicmeta>
+			<keywords>
+				<keyword>[any XML editor]</keyword>
+			</keywords>
+		</topicmeta>
+	</keydef>
+	<keydef keys="about-engine">
+		<topicmeta>
+			<keywords>
+				<keyword>[DITA-OT]</keyword>
+			</keywords>
+		</topicmeta>
+	</keydef>
+	<keydef keys="link-type">
+		<topicmeta>
+			<keywords>
+				<keyword>[helpful]</keyword>
+			</keywords>
+		</topicmeta>
+	</keydef>
+	<topicref href="../topics/c-about-ditaform.dita" props="about" type="concept" />
+	<topicref href="../topics/t-using-ditaform.dita" props="using" type="task" />
+	<topicref href="../topics/t-creating-content.dita" props="using" type="task" />
+	<topicref href="../topics/r-useful-links.dita" props="links" type="reference" />
+</map>

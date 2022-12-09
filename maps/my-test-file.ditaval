@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<val>
+	<prop att="props" val="about" action="exclude" />
+	<prop att="props" val="about1" action="exclude" />
+	<prop att="props" val="about2" action="exclude" />
+	<prop att="props" val="about3" action="exclude" />
+	<prop att="props" val="about-benefits" action="exclude" />
+	<prop att="props" val="about-benefits1" action="exclude" />
+	<prop att="props" val="about-benefits2" action="exclude" />
+	<prop att="props" val="about-benefits3" action="exclude" />
+	<prop att="props" val="using" action="exclude" />
+	<prop att="props" val="creating" action="exclude" />
+	<prop att="props" val="links" action="exclude" />
+	<prop att="props" val="link0" action="exclude" />
+	<prop att="props" val="link1" action="exclude" />
+	<prop att="props" val="link2" action="exclude" />
+	<prop att="props" val="link3" action="exclude" />
+	<prop att="props" val="link4" action="exclude" />
+	<prop att="props" val="link5" action="exclude" />
+</val>

@@ -139,9 +139,9 @@ void XmlData::addDataNodes(const pugi::xpath_node_set& nodes)
 		std::string child_values{ dataNode.node().attribute("value").value() };
 		auto childrenSplit = std::ranges::split_view(child_values, ' ');
 		
-		for (const std::string_view _child : childrenSplit)
+		for (const auto _child : childrenSplit)
 		{
-			std::string child { _child };
+			std::string child{ std::string_view{_child.begin(), _child.end()} };
 			children.emplace_back(std::move(child));
 		}
 

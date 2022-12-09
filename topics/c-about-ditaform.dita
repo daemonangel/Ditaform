@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN" "concept.dtd">
+<concept>
+  <title><ph props="about">About the Application</ph></title>
+  <shortdesc props="about">
+    <draft-comment>Yellow comments describe the content block. The next comment block in blue is an English translation of the content.</draft-comment>
+	<draft-comment outputclass="translation">Allow subject matter experts to easily choose content from one source of truth.</draft-comment>Permita que los expertos en la materia elijan fácilmente el contenido de una fuente de verdad.
+    <data datatype="any" name="about" type="dependencies" value="about1 about2 about3"></data></shortdesc>
+  <conbody>
+    <p props="about1">Content authors create a set of XML files using any XML editor. For example, <ph keyref="about-xml-editor"></ph>.</p>
+	<p props="about2">Subject matter experts open the XML inside Ditaform. They select from the available pieces of content and edit variables defined by the content authors.</p>
+	<p props="about3">The XML output from Ditaform can be transformed into multiple formats using a publishing engine, such as <ph keyref="about-engine"></ph></p>
+	<p props="about-benefits"><data datatype="one" name="about-benefits" type="dependencies" value="about-benefits1 about-benefits2 about-benefits3"></data>The key benefit to using Ditaform is:</p>
+	<ul>
+		<li props="about-benefits1">Time savings</li>
+		<li props="about-benefits2">Error reduction</li>
+		<li props="about-benefits3">Simplified process</li>
+	</ul>
+  </conbody>
+</concept>

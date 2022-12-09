@@ -28,8 +28,7 @@ void DitaConvertTags::ph_node(pugi::xml_node& node)
 
 void DitaConvertTags::uicontrol_node(pugi::xml_node& node)
 {
-	node.set_name("font-weight");
-	Xml::CreateAttrib(node, "weight", "bold");
+	node.set_name("b");
 }
 
 void DitaConvertTags::title_node(pugi::xml_node& node)
@@ -97,6 +96,16 @@ void DitaConvertTags::note_node(pugi::xml_node& node)
 	//add admonitions in BOLD: before the node text
 }
 
+void DitaConvertTags::pre_node(pugi::xml_node& node)
+{
+	node.set_name("pre");
+}
+
+void DitaConvertTags::codeph_tag(pugi::xml_node& node)
+{
+	node.set_name("code");
+}
+
 void DitaConvertTags::comment_node(pugi::xml_node& node)
 {
 	node.set_name("div");
@@ -137,6 +146,7 @@ std::unordered_map<std::string, DitaConvertTags::nodeEditingFunction> DitaConver
 {
     //miscellaneous
 	{"ph", DitaConvertTags::ph_node},
+	{"codeph", DitaConvertTags::codeph_tag},
     {"uicontrol", DitaConvertTags::uicontrol_node},
     {"title", DitaConvertTags::title_node},
     {"image", DitaConvertTags::image_node},
@@ -157,8 +167,10 @@ std::unordered_map<std::string, DitaConvertTags::nodeEditingFunction> DitaConver
 
 	//blocks
     {"shortdesc", DitaConvertTags::p_tag},
+    {"result", DitaConvertTags::p_tag},
     {"info", DitaConvertTags::p_tag},
     {"cmd", DitaConvertTags::p_tag},
+    {"codeblock", DitaConvertTags::pre_node},
 
 	//tables
     {"table", DitaConvertTags::table_node},
