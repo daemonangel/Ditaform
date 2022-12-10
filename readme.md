@@ -1,4 +1,4 @@
-Ditaform - Version 0.2
+Ditaform - Version 2022.12.9
 
 ©2022 daemonangel. All rights reserved. See license for more information.
 
